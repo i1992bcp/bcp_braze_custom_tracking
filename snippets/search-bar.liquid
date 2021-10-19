@@ -1,0 +1,26 @@
+{%- if section.settings.show_search_bar and force_hidden == blank -%}
+  {%- assign search_hidden = false -%}
+{%- else -%}
+  {%- assign search_hidden = true -%}
+{%- endif -%}
+<div class="desktop-search-bar">
+  <div class="search-bar {% if search_hidden %}search-bar--fadein{% else %}search-bar--open{% endif %} {{ settings_class }}">
+    <div class="search-bar__container">
+      <form action="/search" method="get" class="search-form searchbar" role="search">
+        {% comment %}Below: SearchSpring hidden input field{% endcomment %}	  
+        <input type="hidden" name="view" value="spring">   
+        {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+        <input type="search" name="q" isp_ignore value="{{ search.terms | escape }}" id="{{ search_id }}" class="search-form__input input-group-field" placeholder="What can we help you find?">
+          <button type="submit" class="btn btn--plain search-header">
+            {% include 'search-01' %}
+          </button>
+        </form>   
+        <button class="dock-mobile-menu-search btn btn--plain feather-icon icon--header js-search-form-close " style="display: none;">
+          {% include 'feather-x' %}
+        </button>
+    </div>
+    
+  </div>
+</div>
+
+  

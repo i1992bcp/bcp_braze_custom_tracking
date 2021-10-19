@@ -1,0 +1,62 @@
+<style>
+@media only screen and (max-width: 901px) {
+    .amb_last_wrapper {
+        padding:0 20%;
+    }
+}
+    .amb_last_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+        padding: 0 10%;
+    }
+    .amb_text-last {
+        font-weight: 600;
+        color: #4f4f4f;
+        margin-bottom: 3%;
+    }
+    .amb_last_button {
+        width: 200px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        background-color: #264953;
+    }
+    .amb_last_wrapper {
+      padding: 5% 10%;
+    }
+</style>
+<section class="page-width container">
+    <div class="amb_last_wrapper">
+        <div class="amb_text-last">{{ section.settings.amb_last_section }}</div>
+        <a href="https://bestchoiceproducts.com/pages/pjap" class="amb_last_button">{{ section.settings.amb_last_section_button_text }}</a>
+    </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "About us Third Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "amb_last_section",
+        "label": "Text",
+        "default": "Are you the innovator amongst friends? If you’re interested in using your voice to represent thousands of BCP customers, click the link below to learn more!"
+      },
+      {
+        "type": "text",
+        "id": "amb_last_section_button_text",
+        "label": "Button Text",
+        "default": "Check Qualifications"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,699 @@
+<section class="site-header {% if section.settings.dock_nav %}docking-header{% endif %}" data-section-id="{{ section.id }}" data-section-type="header" role="banner" data-ajax-update="true">
+  
+  <div class="announcement-bar {% if section.settings.second_announcement_bar_text != blank %}slick-announcement{% endif %}">
+    {%- if section.settings.announcement_bar_url != blank -%}
+      <a href="{{ section.settings.announcement_bar_url }}" class="announcement-bar__content header_container">{{ section.settings.announcement_bar_text }}</a>
+    {%- else -%}
+      <div class="announcement-bar__content header_container">{{ section.settings.announcement_bar_text }}</div>
+    {%- endif -%}
+    {%- if section.settings.second_announcement_bar_url != blank -%}
+      <a href="{{ section.settings.second_announcement_bar_url }}" class="announcement-bar__content header_container">{{ section.settings.second_announcement_bar_text }}</a>
+    {%- else -%}
+      {%- if section.settings.second_announcement_bar_text != blank -%}<div class="announcement-bar__content header_container second">{{ section.settings.second_announcement_bar_text }}</div>{%- endif -%}
+    {%- endif -%}
+  </div>
+  
+  {%- if page.handle  == 'help-center'-%}
+  <header class="header-content container" role="banner"> 
+      <div class="page-header page-width">
+        {%- if section.settings.dock_nav -%}
+        	<div class="docked-mobile-navigation-container">
+          	<div class="docked-mobile-navigation-container__inner">
+      	{%- endif -%}
+              <div class="utils">
+              {%- if template.name == 'index' -%}
+              <h1 class="h1 store-logos">
+                {%- else -%}
+                  <div class="h1 store-logos">
+                {%- endif -%}
+                    <a href="/" itemprop="url" class="site-logo d-mobile-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %} small-down--hide">
+                      {%- if section.settings.logo != blank -%}
+                        <img src="{{ section.settings.logo | img_url: image_size }}"
+                              alt="{{ section.settings.logo.alt | default: shop.name }}"
+                              itemprop="logo">
+                      {%- else -%}
+                        {{ shop.name }}
+                      {%- endif -%}
+                    </a>
+                    <a href="/" itemprop="url" class="site-logo d-mobile-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %} medium-up--hide">
+                      {%- if section.settings.mobile_logo != blank -%}
+                        <img src="{{ section.settings.mobile_logo | img_url: image_size }}"
+                              alt="{{ section.settings.mobile_logo.alt | default: shop.name }}"
+                              itemprop="logo">
+                      {%- else -%}
+                        {{ shop.name }}
+                      {%- endif -%}
+                    </a>
+                {%- if template.name == 'index' -%}
+                  </h1>
+                {%- else -%}
+                  </div>
+                {%- endif -%}
+                <div style="display:flex;width:10%;justify-content: space-between;">
+                 <div class="customer-account new_account newhide-for-search">
+              <a href="#" class="feather-iconh d-account">{% include 'account-01' %}</a>
+              <div class="feather-iconh account-icon js-mobile-account-icon" style="cursor: pointer;">{% include 'account-01' %}</div>
+                <ul class="customer-account__menu">
+                {%- if customer -%}
+                  {%- for link in linklists.my-account.links -%}  
+                    <a href="{{ link.url }}" class="account-site-nav__link">{{ link.title }}</a>
+                  {%- endfor -%}
+                {%- else -%}
+                  <div class="account-holder">
+                    <li class="customer-account__link"><a href="/account/login" class="btn-login header-login-btn">Sign in</a></li>
+                    <li class="customer-account__link"><a href="/account/register" class="create-login header-createlogin-btn">Create account</a></li>
+                    {%- for link in linklists.my-account.links -%} 
+                      {%- unless link.title == 'Order History' or link.title == 'Profile' or link.title == 'Logout' -%}
+                        <a href="{{ link.url }}" class="account-site-nav__link" style="color:#282828;">{{ link.title }}</a>
+                      {%- endunless -%}
+                    {%- endfor -%}  
+                  </div>  
+                {%- endif -%}
+            </div>
+            <!-- wishlist -->
+            <div class="heart-wishlist feather-iconh hide-for-search">
+              <a class="wishlist-header" href="https://bestchoiceproducts.com/pages/my-wishlist"> {% include 'wishlist-heart-01' %} </a>
+              <div class="tooltiptext"><span class="hitarth">Save items you love and curate new lists to your favorites.</span></div>  
+            </div>
+                  </div>
+              </div>
+        {%- if section.settings.dock_nav -%}
+             </div>
+	         </div>
+      	{%- endif -%}
+      </div>
+      
+      
+      
+	</header>
+      <section class="header-mobile-navigation {% if section.settings.dock_nav %}docking-header{% endif %}" id="myNav">
+  	<div class="header_account_container">
+      <div class="new-header">
+          <a href="/" itemprop="url" class="d-mobile-logo site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+            <img src="{{ section.settings.mobile_logo | img_url: image_size }}"
+              alt="{{ section.settings.mobile_logo.alt | default: shop.name }}"
+              itemprop="logo" class="test">
+          </a>
+          <button class="btn btn--plain burger-x close-overlay">
+              <span class="feather-icon">
+                {% include 'feather-x' %}
+              </span>
+          </button>
+      </div>
+        <div class="main-account-container container page-width">
+          <div class="account-first-container">
+            {% if customer %}
+              {% capture first_name %} <div class="account-name search-list-heading">{{ customer.first_name }}</div> {% endcapture %}
+            {% else %}
+              <div class="account-name search-list-heading">Account</div>
+            {% endif %}
+          </div>
+          <div class="second-container">
+          {%- if customer -%}
+              <ul>
+                {%- for link in linklists.my-account.links -%}  
+                    <li class="mobile-account-link"><a href="{{ link.url }}" style="text-decoration: none;">{{ link.title }}</a></li>
+                  {%- endfor -%}
+              </ul>
+            {%- else -%}
+            <ul>
+                <li class="mobile-account-link"><a href="/account/login" style="text-decoration: none;">Sign in</a></li>
+                <li class="mobile-account-link"><a href="/account/register" style="text-decoration: none;">Creact Account</a></li>
+                {%- for link in linklists.my-account.links -%} 
+                    {%- unless link.title == 'Order History' or link.title == 'Profile' or link.title == 'Logout' -%}
+                      <li class="mobile-account-link"><a href="{{ link.url }}" class="" style="text-decoration: none;">{{ link.title }}</a></li>
+                    {%- endunless -%}
+                  {%- endfor -%} 
+              </ul>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+  </section>
+  
+  {%- else -%}
+  {%- capture cart_htmls -%}
+    <div class="cart-wrapper">
+      <a class="site-header__cart-toggle js-drawer-open-right" aria-expanded="false" style="cursor: pointer;" href="https://bestchoiceproducts.com/cart">
+        <span class="feather-iconh icon--header">{% include 'shopping-cart-01' %}</span><span id="CartCount" class="cart-count header-bar__cart-count{% if cart.item_count == 0 %} hidden-count{% endif %}">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  {%- endcapture -%}
+  <header class="header-content container" role="banner"> 
+    <div class="page-header page-width">
+      <!-- DESKTOP LOGO -->
+      {%- if section.settings.dock_nav -%}
+        <div class="docked-mobile-navigation-container">
+          <div class="docked-mobile-navigation-container__inner">
+      {%- endif -%}
+          <div class="utils">
+            {%- if template.name == 'index' -%}
+              <h1 class="h1 store-logos small-down--hide">
+            {%- else -%}
+              <div class="h1 store-logos small-down--hide">
+            {%- endif -%}
+                <a href="/" itemprop="url" class="site-logo d-mobile-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+                  {%- if section.settings.logo != blank -%}
+                    <img src="{{ section.settings.logo | img_url: image_size }}"
+                          alt="{{ section.settings.logo.alt | default: shop.name }}"
+                          itemprop="logo">
+                  {%- else -%}
+                    {{ shop.name }}
+                  {%- endif -%}
+                </a>
+                <!-- <a href="/" itemprop="url" class="site-logo d-mobile-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %} medium-up--hide">
+                  {%- if section.settings.mobile_logo != blank -%}
+                    <img src="{{ section.settings.mobile_logo | img_url: image_size }}"
+                          alt="{{ section.settings.mobile_logo.alt | default: shop.name }}"
+                          itemprop="logo">
+                  {%- else -%}
+                    {{ shop.name }}
+                  {%- endif -%}
+                </a> -->
+            {%- if template.name == 'index' -%}
+              </h1>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+             <!-- MOBILE BURGER -->
+            <div class="burger ham-bug">
+              <div class="burger-icon feather-iconh open-moverlay">
+                {% include 'hamburger-menu-01' %}
+              </div>
+            </div>
+            
+            <div class="medium-up--hide search-icon_mobile">
+              {% include 'search-01' %}
+            </div>
+             <!-- DESKTOP SEARCH -->
+            {%- if section.settings.show_search_bar -%}
+              {% include 'search-bar', settings_class: 'settings-open-bar', search_id: 'open-search-bar' %}
+            {%- endif -%}
+
+            <div class="medium-up--hide">
+              <a href="/" itemprop="url" class="site-logo d-mobile-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %} ">
+                {%- if section.settings.mobile_logo != blank -%}
+                  <img src="{{ section.settings.mobile_logo | img_url: image_size }}" alt="{{ section.settings.mobile_logo.alt | default: shop.name }}" itemprop="logo">
+                {%- else -%}
+                  {{ shop.name }}
+                {%- endif -%}
+              </a>
+            </div>
+            
+            <!-- ACCOUNT -->
+            <div class="customer-account hide-for-search">
+              <a href="#" class="feather-iconh d-account">{% include 'account-01' %}</a>
+              <div class="feather-iconh account-icon js-mobile-account-icon" style="cursor: pointer;">{% include 'account-01' %}</div>
+                <ul class="customer-account__menu">
+                {%- if customer -%}
+                  {%- for link in linklists.my-account.links -%}  
+                    <a href="{{ link.url }}" class="account-site-nav__link">{{ link.title }}</a>
+                  {%- endfor -%}
+                {%- else -%}
+                  <div class="account-holder">
+                    <li class="customer-account__link"><a href="/account/login" class="btn-login header-login-btn">Sign in</a></li>
+                    <li class="customer-account__link"><a href="/account/register" class="create-login header-createlogin-btn">Create account</a></li>
+                    {%- for link in linklists.my-account.links -%} 
+                      {%- unless link.title == 'Order History' or link.title == 'Profile' or link.title == 'Logout' -%}
+                        <a href="{{ link.url }}" class="account-site-nav__link" style="color:#282828;">{{ link.title }}</a>
+                      {%- endunless -%}
+                    {%- endfor -%}  
+                  </div>  
+                {%- endif -%}
+            </div>
+            <!-- wishlist -->
+            <div class="heart-wishlist feather-iconh hide-for-search" style="margin-top: 2px;">
+              <a class="wishlist-header" href="https://bestchoiceproducts.com/pages/my-wishlist"> {% include 'wishlist-heart-01' %} </a>
+              <div class="tooltiptext"><span class="hitarth">Save items you love and curate new lists to your favorites.</span></div>  
+            </div>
+             <!-- CART -->
+            {{ cart_htmls }}
+          </div>
+
+          <div id="mobile_search_toggle" class="search_heck" style="width:100%; position:relative;margin-bottom: 10px;padding: 0 15px;">
+            <form action="/search" method="get" class="search-form searchbar" role="search">
+              {% comment %}Below: SearchSpring hidden input field{% endcomment %}	  
+              <input type="hidden" name="view" value="spring">   
+              {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+              <input type="search" name="q" value="{{ search.terms | escape }}" id="Mymobilesearch_" placeholder="What can we help you find?" class="search-form__input input-group-field">
+              <div class="search-icon-mob feather-icon"> {% include 'search-01' %}</div>
+            </form>  
+          </div> 
+
+          
+       {%- if section.settings.dock_nav -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </header>
+  {%- if section.settings.dock_nav -%}
+    <div class="docked-navigation-container">
+    <div class="docked-navigation-container__inner">
+  {%- endif -%}
+      <section class="header-navigation container">
+        <nav class="navigation__container page-width">
+          <ul class="nav site-nav" role="menu">
+            {%- for link in linklists[section.settings.main_linklist].links -%}
+              {%- if link.links != blank -%}
+                {%- assign dropdown_type = 'mega' -%}
+                <li class="site-nav__item site-nav__item--has-dropdown {% if link.active %}site-nav__item--active{% endif %} site-nav__item--{{ dropdown_type }}dropdown">
+                  <a href="{{ link.url }}" class="site-nav__link" aria-haspopup="true" aria-expanded="false">{{ link.title }}</a>
+                  {%- assign has_promo = false -%}
+                  {%- for block in section.blocks -%}
+                    {%- capture setting_link_title_dcase -%}{{ block.settings.dropdown_link_title | downcase }}{%- endcapture -%}
+                    {%- capture link_title_dcase -%}{{ link.title | downcase }}{%- endcapture -%}
+                    {%- if setting_link_title_dcase == link_title_dcase -%}
+                      {%- assign has_promo = true -%}
+                      {%- assign promo_block = block -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if dropdown_type == 'mega' -%}
+                    <div class="site-nav__dropdown js-mobile-menu-dropdown mega-dropdown container" role="menu">
+                      <div class="page-width">
+                        {%- if has_promo -%}
+                        <div class="grid site-nav__promo-container">
+                          <div class="grid__item three-quarters">
+                        {%- endif -%}
+                        <div class="mega-dropdown__container">
+                          {%- for childlink in link.links -%}
+                            <div class="mega-dropdown__item {% if childlink.active %}site-nav--active{% endif %}">
+                              <a href="{{ childlink.url }}" class="site-nav__link site-nav__dropdown-heading">{{ childlink.title }}</a>
+                              <div class="site-nav__submenu">
+                                <ul class="site-nav__submenu-container">
+                                  {%- for sublink in childlink.links -%}
+                                    {%- assign count_links = count_links | plus: 1 -%}
+                                    <li class="mega-dropdown__subitem">
+                                      <a href="{{ sublink.url }}" class="site-nav__link site-nav__dropdown-link">{{ sublink.title }}</a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            </div>
+                          {%- endfor -%}
+                        </div>
+                        {%- if has_promo -%}
+                          </div>
+                            <div class="grid__item one-quarter text-center site-nav__promo">
+                              {%- if promo_block.settings.link_url != blank -%}
+                                <a href="{{ promo_block.settings.link_url }}">
+                              {%- endif -%}
+                              {% include 'responsive-image', image: promo_block.settings.image %}
+                              {%- if promo_block.settings.link_url != blank -%}
+                                </a>
+                              {%- endif -%}
+                              <div class="site-nav__dropdown-heading">{{ promo_block.settings.text }}</div>
+                              {%- if promo_block.settings.link_text != blank -%}
+                              <a href="{{ promo_block.settings.link_url }}" style="color:#5C79B9; text-decoration: underline;">{{ promo_block.settings.link_text }}</a>
+                              {%- endif -%}
+                            </div>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </li>
+              {%- else -%}
+                <li class="site-nav__item {% if link.active %}site-nav--active{% endif %}">
+                  <a href="{{ link.url }}" class="site-nav__link">{{ link.title }}</a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+    
+            <li class="site-nav__item site-nav__more-links more-links site-nav__invisible site-nav__item--has-dropdown">
+              <a href="#" class="site-nav__link" aria-haspopup="true" aria-expanded="false">
+                More
+              </a>
+              <div class="site-nav__dropdown small-dropdown more-links-dropdown" role="menu">
+                <div class="page-width relative">
+                  <ul class="small-dropdown__container"></ul>
+                  <div class="more-links__dropdown-container"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="docking-header__utils utils">
+            <a href="/search" class="plain-link utils__item hide-for-search js-search-form-open">
+              <span class="feather-icon icon--header">
+                {% include 'feather-search' %}
+              </span>
+              <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+            </a>
+          </div> 
+        </nav>
+        <div class="docking-header__utils utils">
+          <!-- DOCKED NAV SEARCH -->
+          {% include 'search-bar', settings_class: 'settings-closed-bar desktop-only', force_hidden: true, search_id: 'closed-docked-search' %}
+          <!-- DOCKED NAV CART -->
+        </div>
+      </section>
+  {%- if section.settings.dock_nav -%}
+      </div>
+      </div>
+  {%- endif -%}
+  <section class="header-mobile-navigation {% if section.settings.dock_nav %}docking-header{% endif %}" id="myNav">
+    <div class="animation-header">
+      <div class="new-header">
+          <a href="/" itemprop="url" class="d-mobile-logo site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+            <img src="{{ section.settings.mobile_logo | img_url: image_size }}"
+              alt="{{ section.settings.mobile_logo.alt | default: shop.name }}"
+              itemprop="logo" class="test">
+          </a>
+          <button class="btn btn--plain burger-x close-overlay">
+              <span class="feather-icon">
+                {% include 'feather-x' %}
+              </span>
+          </button>
+      </div>
+      <nav class="overlay-nav-m-wrapper page-width">
+        <ul class="nav mobile-site-nav overlay-nav-m" role="menu">
+          <li class="header-heading-text">Shop by Department</li>
+          {%- for link in linklists[section.settings.main_linklist].links -%}
+            <li class="mobile-site-nav__item">
+              <a href="{{ link.url }}" class="mobile-site-nav__link">
+                {{ link.title }}
+              </a>
+              {%- if link.links != blank -%}
+                <button class="btn--plain feather-icon mobile-site-nav__icon">{% include 'feather-arrow-right' %}</button>
+              {%- endif -%}
+              {%- if link.links != blank -%}   
+                <ul class="mobile-site-nav__menu main-m_nav-menu">
+                  <div class="heading-m_nav-menu" style="display:flex;padding: 10px 0px;border-bottom:1px solid #ececec;font-weight: 500;"><button class="btn--plain feather-icon heading-site-nav__icon" aria-haspopup="true" aria-expanded="false" style="padding-top:10px;">{% include 'left-arrow-01' %}</button><span style="padding-top: 4px;">{{ link.title }} </span></div>
+                  {%- for childlink in link.links -%}
+                    <li class="mobile-site-nav__item">
+                      <a href="{{ childlink.url }}" class="mobile-site-nav__link">
+                        {{ childlink.title }}
+                      </a>
+                      {%- if childlink.links != blank -%}
+                        <button class="btn--plain feather-icon mobile-site-nav__icon mobile-icon-rotate" aria-haspopup="true" aria-expanded="false">{% include 'feather-arrow-right' %}</button>
+                      {%- endif -%}
+                      {%- if childlink.links != blank -%}
+                        <ul class="mobile-site-nav__menu">
+                          {%- for childestlink in childlink.links -%}
+                            <li class="mobile-site-nav__item" style="border-bottom: none;">
+                              <a href="{{ childestlink.url }}" class="mobile-site-nav__link">
+                                {{ childestlink.title }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+      <div class="header_search_container">
+        <div class="main-search-container container page-width">
+            <div class="search-first-container">
+              <div style="width:100%; position:relative;">
+                <form action="/search" method="get" class="search-form searchbar" role="search">
+                  {% comment %}Below: SearchSpring hidden input field{% endcomment %}	  
+                  <input type="hidden" name="view" value="spring">   
+                  {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+                  <input type="search" name="q" value="{{ search.terms | escape }}" id="Mymobilesearch" placeholder="Search" class="search-form__input input-group-field">
+                  <div class="search-icon-mob feather-icon" style="padding-top: 10px;"> {% include 'search-01' %}</div>
+                </form>  
+              </div> 
+            </div>
+        </div>
+      </div>
+      <div class="header_account_container">
+        <div class="main-account-container container page-width">
+          <div class="account-first-container">
+            {% if customer %}
+              {% capture first_name %} <div class="account-name search-list-heading">{{ customer.first_name }}</div> {% endcapture %}
+            {% else %}
+              <div class="account-name search-list-heading">Account</div>
+            {% endif %}
+          </div>
+          <div class="second-container">
+          {%- if customer -%}
+              <ul>
+                {%- for link in linklists.my-account.links -%}  
+                    <li class="mobile-account-link"><a href="{{ link.url }}" style="text-decoration: none;">{{ link.title }}</a></li>
+                  {%- endfor -%}
+              </ul>
+            {%- else -%}
+            <ul>
+                <li class="mobile-account-link"><a href="/account/login" style="text-decoration: none;">Sign in</a></li>
+                <li class="mobile-account-link"><a href="/account/register" style="text-decoration: none;">Creact Account</a></li>
+                {%- for link in linklists.my-account.links -%} 
+                    {%- unless link.title == 'Order History' or link.title == 'Profile' or link.title == 'Logout' -%}
+                      <li class="mobile-account-link"><a href="{{ link.url }}" class="" style="text-decoration: none;">{{ link.title }}</a></li>
+                    {%- endunless -%}
+                  {%- endfor -%} 
+              </ul>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div> 
+  </section>
+    
+  {%- endif -%}
+</section>
+{%- capture image_size -%}{{ section.settings.logo_width | times: 2 }}x{%- endcapture -%}
+<style>
+  {%- if section.settings.show_announcement_bar -%}
+    .announcement-bar__content {
+      color: {{ section.settings.announcement_bar_txt_color }};
+      background-color: {{ section.settings.announcement_bar_bck_color }};
+    }
+    a.announcement-bar__content:hover {
+      color: {{ section.settings.announcement_bar_txt_color }};
+      background-color: {{ section.settings.announcement_bar_bck_color | color_darken: 10 }};
+    }
+  {%- endif -%}
+</style>
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "text",
+        "id": "logo_width",
+        "label": "Logo width (in pixels)",
+        "default": "250"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_logo",
+        "label": "Alternative mobile logo"
+      },
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+         "type": "text",
+         "id": "announcement_bar_text",
+         "label": "Text",
+         "default": "Add notices for your shoppers here"
+      },
+      {
+         "type": "url",
+         "id": "announcement_bar_url",
+         "label": "Link"
+      },
+      {
+         "type": "text",
+         "id": "second_announcement_bar_text",
+         "label": "second_Text",
+         "default": "Add notices for your shoppers here"
+      },
+      {
+         "type": "url",
+         "id": "second_announcement_bar_url",
+         "label": "second_Link"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_bck_color",
+        "label": "Background color",
+        "default": "#10079f"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_txt_color",
+        "label": "Text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "dock_nav",
+        "label": "Enable sticky header",
+        "info": "Only applicable on large screens",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Search"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_search_bar",
+        "label": "Show open search bar",
+        "default": false,
+        "info": "Keeps the search bar permanently open."
+      },
+      {
+        "type": "header",
+        "content": "Store messages"
+      },
+      {
+        "type": "paragraph",
+        "content": "These are displayed under the main menu, great for promotions and notices"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_messages",
+        "label": "Show store messages",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "home_only_messages",
+        "label": "Show only on the home page",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "slideshow_messages",
+        "label": "Enable carousel on large screens",
+        "default": false,
+        "info": "The messages will always be in a carousel on small screens"
+      },
+      {
+        "type": "text",
+        "id": "message_1_text",
+        "label": "Message 1 text"
+      },
+      {
+        "type": "url",
+        "id": "message_1_url",
+        "label": "Message 1 link"
+      },
+      {
+        "type": "text",
+        "id": "message_2_text",
+        "label": "Message 2 text"
+      },
+      {
+        "type": "url",
+        "id": "message_2_url",
+        "label": "Message 2 link"
+      },
+      {
+        "type": "text",
+        "id": "message_3_text",
+        "label": "Message 3 text"
+      },
+      {
+        "type": "url",
+        "id": "message_3_url",
+        "label": "Message 3 link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "menu_promo",
+        "name": "Menu promotion",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Promotions are shown in a selected dropdown menu. Not visible on mobile menu."
+          },
+          {
+            "type": "text",
+            "id": "dropdown_link_title",
+            "label": "Link title",
+            "info": "Use the menu title to select a dropdown for this promotion."
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link text"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "{{ shop.name }}",
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append:'x' %}
+      "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+    {% endif %}
+    "sameAs": [
+      "{{ settings.social_twitter_link }}",
+      "{{ settings.social_facebook_link }}",
+      "{{ settings.social_pinterest_link }}",
+      "{{ settings.social_instagram_link }}",
+      "{{ settings.social_tumblr_link }}",
+      "{{ settings.social_snapchat_link }}",
+      "{{ settings.social_youtube_link }}",
+      "{{ settings.social_vimeo_link }}"
+    ],
+    "url": "{{ shop.url }}{{ page.url }}"
+  }
+  </script>
+  {% if template.name == 'index' %}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "{{ shop.name }}",
+        "url": "{{ shop.url }}{{ page.url }}",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "{{ shop.url }}/search?view=spring&q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  {% endif %}
+

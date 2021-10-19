@@ -1,0 +1,62 @@
+ <div class="page-width" data-section-id="{{ section.id }}" style="margin-top:50px;">
+    {% if section.settings.i_title != blank %}
+      <div class="text-center" style="margin-bottom: 5px;">
+        <h2 class="heading-font-every">{{ section.settings.i_title | escape }}</h2>
+      </div>
+    {% endif %}
+      <div class="text-center">
+        <p style="font-size:14px; margin:0px 10px;">{{ section.settings.i_message | escape }}
+      {% if section.settings.i_linktext != blank %}    
+        <div><a href="{{section.settings.i_link}}" class="standard-link">{{section.settings.i_linktext | escape}}</a></div>
+        {% endif %}
+        </p>
+      </div>
+    <div>
+      <div data-crl8-container-id="{{ section.settings.i_instaid }}"></div>
+
+    </div>
+  </div>   
+{% schema %}
+  {
+    "name": "instagram-section-mother",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "i_title",
+        "label": "Heading",
+        "default": "Testimonials"
+      },
+      {
+        "type": "textarea",
+        "id": "i_message",
+        "label": "Welcome message"
+      },
+      {
+        "id": "i_link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "i_linktext",
+        "type": "text",
+        "label": "Link text",
+        "default": "Click here"
+      },
+      {
+        "id": "i_instaid",
+        "type": "text",
+        "label": "UCG ID",
+        "default": "gallery-uWO8D2k3"
+      }
+    ],
+    "presets": [
+      {
+        "name": "instagram-section-mother",
+        "category": "Text"
+        
+      }
+    ]
+    
+  }
+{% endschema %}

@@ -1,0 +1,62 @@
+{% for tag in customer.tags %}
+  {%- if tag == 'brand_ambassador' -%}
+	{%- assign brand_amb = true -%}
+  {%- endif -%}
+{% endfor %}
+
+
+<div class="container">
+  <div class="page-width">
+    <div class="account-mobile-links medium-up--hide">
+      <ul class="list-unstyled drop-down-ul" style="border: 1px #cccccc solid;margin:5% 0;">
+        <li class="init drop-down-li" style="padding:5px;">Dashboard  <i class="fa fa-angle-down" style="font-size:15px;padding: 5px;float:right;"></i></li>
+        <li class="drop-down-li" data-value="value 1" style="border-top: 1px solid #cccccc;padding:5px;"><a href="/account/" style="font-weight: bold;">Dashboard </a></li>
+        <li class="drop-down-li" data-value="value 2" style="padding:5px;"><a href="/account/addresses/">Addresses</a></li>
+        <li class="drop-down-li" data-value="value 3" style="{%- if brand_amb -%}{%- else -%}border-bottom: 1px solid #cccccc;{%- endif -%}padding:5px;"><a href="https://bestchoiceproducts.com/pages/my-wishlist">Wishlist</a></li>
+        {%- if brand_amb -%}<li class="drop-down-li" data-value="value 4" style="border-bottom: 1px solid #cccccc;padding:5px;"><a href="https://brandambassadorapp.net/bcp/portal/admin_ambas_admin/?id={{ customer.id }}">Brand Ambassador</a></li>{%- endif -%}
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="navigation-about small-down--hide">
+      <ul class="products-tabs-down">
+        <li class="product-tabs-li"><a href="/account" class="active">Dashboard </a></li>
+        <li class="product-tabs-li"><a href="" data-tab="account_profile">Addresses</a></li>
+        <li class="product-tabs-li"><a href="" data-tab="account_fev">Favorites</a></li>
+        {%- if brand_amb -%}<li class="product-tabs-li"><a href="" data-tab="account_brand" data-customer-id="{{ customer.id }}">Brand Ambassador</a></li>{%- endif -%}
+      </ul>
+    </div>
+    
+    <div class="swell-BCP-rewards">
+      {% include "swell-joining-account" %}
+    </div>
+
+    <div class="large-row">
+      <h2 class="title">{{ 'customer.orders.title' | t }}</h2>
+
+      {% paginate customer.orders by 5 %}
+        {% if customer.orders.size != 0 %}
+          <table class="responsive-table-account">
+            <tbody>
+              {% for order in customer.orders %}
+                <tr class="responsive-table-row">
+                  <td style="font-weight: 500;">Order {{ order.name | link_to: order.customer_url }}</td>
+                  <td>{{ order.created_at | date: format: 'abbreviated_date' }}</td>
+                  <td>{% for line_item in order.line_items %}{% if forloop.first %}{{ num | plus: line_item.quantity }} items{% endif %}{% endfor %}</td>
+                  <td>{{ order.total_price | money }}</td>
+                  <td class="text-right"><a class="margin-order-acc" href="{{ order.customer_url }}">{{ 'customer.orders.view_order' | t }}</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>{{ 'customer.orders.none' | t }}</p>
+        {% endif %}
+
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
+        {% endif %}
+
+      {% endpaginate %}
+    </div>
+  </div>
+</div>

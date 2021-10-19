@@ -1,0 +1,95 @@
+<style>
+  .quotes-slide-career{
+    background-color : {{ section.settings.box_color }};
+  }
+  .quote-career {
+    color : {{ section.settings.font_color }};
+  }
+  .employee-career {
+    color : {{ section.settings.font_color }};
+  }
+  
+</style>
+<div class="quotes" data-section-id="{{ section.id }}" data-section-type="quotes" style="margin-top: 5%;">
+  {% if section.blocks.size > 0 %}
+    <div class="quotes-wrapper">
+      <div class="employee-slider">
+        {% for block in section.blocks %}
+          <div>
+            <div class="quotes-slide-career" {{ block.shopify_attributes }}>
+              <div class="page-width">
+              <div class="quotes-slider__text grid">
+                  <div class="employee-image grid__item one-third small-down--one-whole">{{ block.settings.image | img_url: '1000x' | img_tag: image_alt }}</div>
+                  <div class="grid__item two-thirds small-down--one-whole">
+                    <div class="quote quote-career">{{ block.settings.quote }}</div>
+                    <div class="employee employee-career">{{ block.settings.employee }}</div>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Employee Quotes",
+    "class": "careers-section",
+    "settings": [
+          {
+            "type": "color",
+            "id": "box_color",
+            "label": "Box Color",
+			      "default": "#d40202"
+          },
+          {
+            "type": "color",
+            "id": "font_color",
+            "label": "Font Color",
+			      "default": "#fff"
+          }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Employee Quote",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Employee image"
+          },
+          {
+            "type": "textarea",
+            "id": "quote",
+            "label": "Quote",
+            "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+          },
+          {
+            "type": "text",
+            "id": "employee",
+            "label": "Employee",
+            "default": "employee name"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Quotes",
+        "category": "Careers",
+        "blocks": [
+          {
+            "type": "quote"
+          },
+          {
+            "type": "quote"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,102 @@
+<style>
+  @media only screen and (max-width: 968px) {
+  	.contact-form {
+  		width: 100%;
+  	}
+    #MainContent .container {
+    	padding-left: 10px !important;
+    }
+  }
+  @media only screen and (min-width: 969px) {
+  	.contact-form {
+  		width: 50%;
+  	}
+  }
+  .form-success {
+  	font-size:21px;
+  }
+</style>
+<div class="container">
+<div class="page-width">
+    {% form 'contact' %}
+
+      {% if form.posted_successfully? %}
+        <p class="form-success">
+          Thank you for submitting a request!  Our team is working hard and one of our teammates will respond to you shortly.
+        </p>
+  
+  	   {% else %}
+  
+		      {{ form.errors | default_errors }}
+
+      <div class="input-wrapper form-row">
+        <label for="ContactFormName">First Name</label>
+        <input type="text"
+          name="contact[firstName]"
+          id="ContactForFirstName"
+          value=""
+          required>
+      </div>
+  	  <div class="input-wrapper form-row">
+        <label for="ContactFormName">Last Name</label>
+        <input type="text"
+          name="contact[lastName]"
+          id="ContactForLastName"
+          value=""
+          required>
+      </div>
+
+      <div class="input-wrapper form-row">
+        <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+        <input type="email"
+          name="contact[email]"
+          id="ContactFormEmail"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          spellcheck="false"
+          autocomplete="off"
+          autocapitalize="off"
+          required>
+      </div>
+
+      <div class="input-wrapper form-row">
+        <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+        <input type="tel"
+          name="contact[phone]"
+          id="ContactFormPhone"
+          value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          pattern="[0-9\-]*"
+          required>
+      </div>
+   	<div class="input-wrapper form-row">
+        <label for="ContactFormOrderNumber">Order Number</label>
+        <input type="tel"
+          name="contact[Order Number]"
+          id="ContactFormOrderName"
+          value="">
+      </div>
+    <div class="input-wrapper form-row">
+      <label for="ContactFormFlavor">Contact Reason</label>
+      <select id="ContactFormOther" name="contact[Contact Reason]" required>
+        <option>Returns</option>
+        <option>Order Status</option>
+        <option>Product Support</option>
+        <option>BCP Rewards, My Account, Other Inquiries</option>
+      </select>
+    </div>
+      <div class="input-wrapper form-row">
+        <label for="ContactFormMessage">How Can We Help?</label>
+        <textarea rows="10" name="contact[body]" id="ContactFormMessage" required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+      </div>
+
+      <div class="large-row">
+        <input type="submit" class="btn" value="{{ 'contact.form.send' | t }}">
+      </div>  
+      {% endif %}
+
+    {% endform %}
+  </div>
+
+</div>
+
+
+

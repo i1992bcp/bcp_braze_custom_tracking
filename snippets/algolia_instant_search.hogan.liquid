@@ -1,0 +1,67 @@
+{%- if template contains 'search' -%}
+  <style>
+    .ais-page .ais-facets {
+      border-top: 1px solid #f3f3f3;
+    }
+  </style>
+{%- endif -%}
+<div class="container" id="Collection">
+  {%- if template contains 'search' -%}
+    <h1 class="collection_title"></h1>
+  {%- else -%}
+    <h1 class="collection_title"></h1>
+  {%- endif -%}
+  <div class="ais-page page-width">
+    <div id="ais-filter-results" class="ais_mobile_show"></div>
+    <div class="ais-collection-header_">
+      <div class="ais-facets-button"><span class="ais-show-fliters">FILTERS</span><span style="display: grid;width: 14px;"><svg width="15" height="24" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 15.5V1V15.5Z" stroke="#282828" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 23V20.5V23Z" stroke="#282828" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 15.5C4.88 15.5 6 16.619 6 18C6 19.381 4.88 20.5 3.5 20.5C2.12 20.5 1 19.381 1 18C1 16.619 2.12 15.5 3.5 15.5Z" stroke="#282828" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 4.5V1V4.5Z" stroke="#282828" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 23V9.5V23Z" stroke="#282828" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 4.5C12.88 4.5 14 5.619 14 7C14 8.381 12.88 9.5 11.5 9.5C10.12 9.5 9 8.381 9 7C9 5.619 10.12 4.5 11.5 4.5Z" stroke="#282828" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+      <div class="ais-search-header">
+        <div class="ais-flex-filter-result ais_desktop_show"><span class="ais-filter-title">Filter Results </span><span id="ais-filter-result"></span></div>
+        <div class="ais-desktop-refined-container">
+          <div class="ais-current-refined-values-container">
+          </div><div class="ais-clear-refinements-container"></div>
+        </div>
+        <div class="ais-stats-container" style="display: none;"></div>
+        <div class="ais-sort-orders-container"></div>
+        <div class="ais-change-display d-account">
+          <span class="ais-change-display-block ais-change-display-selected"><?xml version="1.0" encoding="UTF-8"?><svg width="23px" height="19px" viewBox="0 0 23 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Grid-View-Icon</title><g id="Grid-View-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="11" height="9" rx="1"></rect><rect id="Rectangle-Copy-29" fill="#D8D8D8" x="0" y="10" width="11" height="9" rx="1"></rect><rect id="Rectangle-Copy-33" fill="#D8D8D8" x="12" y="0" width="11" height="9" rx="1"></rect><rect id="Rectangle-Copy-34" fill="#D8D8D8" x="12" y="10" width="11" height="9" rx="1"></rect></g></svg></span>
+          <span class="ais-change-display-list"><?xml version="1.0" encoding="UTF-8"?><svg width="23px" height="19px" viewBox="0 0 23 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>List-View-Icon</title><g id="List-View-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group-11" fill="#D8D8D8"><rect id="Rectangle-Copy-35" x="6" y="0" width="17" height="5" rx="1"></rect><rect id="Rectangle-Copy-38" x="0" y="-4.4408921e-16" width="5" height="5" rx="1"></rect><rect id="Rectangle-Copy-36" x="6" y="7" width="17" height="5" rx="1"></rect><rect id="Rectangle-Copy-39" x="0" y="7" width="5" height="5" rx="1"></rect><rect id="Rectangle-Copy-37" x="6" y="14" width="17" height="5" rx="1"></rect><rect id="Rectangle-Copy-40" x="0" y="14" width="5" height="5" rx="1"></rect></g></g></svg></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ais-current-refined-values-container-mobile"></div>
+      <div class="ais-clear-refinements-container-mobile"></div>
+    </div>
+    <div class="ais-facets">
+      <div id="show_filter-close"><span style="font-family: Roboto Slab;font-size: 18px;font-weight: 600;">Filter Results</span><span id="show_filter-close-button"><svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Exit-Icon</title><g id="Exit-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="Path" stroke="#282828"><path d="M0,0 L16,16 L0,0 Z"></path><polyline points="0 16 11.3378363 4.66216373 16 0"></polyline></g></g></svg></span></div>
+     {% comment %} <div style="border-bottom: 1px solid #f3f3f3;border-top: 1px solid #f3f3f3;">
+        <div class="ais-facet--header">CATEGORY</div>
+        <div class="ais-facet-category"></div>
+      </div> {% endcomment %}
+      [[# facets ]]
+        <div class="ais-facet-[[ type ]] ais-facet-[[ escapedName ]]">
+          <div class="ais-range-slider--header ais-facet--header ais-header">[[ title ]]</div>
+          <div class="ais-facet-[[ escapedName ]]-container"></div>
+        </div>
+      [[/ facets ]]
+      <div id="show_filter-close-button-apply" class="apply_button">APPLY</div>
+    </div>
+    <div class="ais-block">
+      <div class="ais-input" style="display: none;">
+        <div class="ais-input--label">
+          [[ translations.search ]]
+        </div>
+        <div class="ais-search-box-container"></div>
+        <div class="ais-input-button">
+          <div class="ais-clear-input-icon"></div>
+          <a title="Search by Algolia - Click to know more" href="https://www.algolia.com/?utm_source=shopify&utm_medium=link&utm_campaign=instantsearch-[[ storeName ]]">
+            <div class="ais-algolia-icon"></div>
+          </a>
+        </div>
+      </div>
+      <div class="ais-hits-container ais-results-as-block"></div>
+      <div id="load-more_display"></div>
+    </div>
+  </div>      
+</div>

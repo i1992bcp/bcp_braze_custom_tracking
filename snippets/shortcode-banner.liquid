@@ -1,0 +1,21 @@
+{% capture flex %}{% include 'shortcode-render' render:'flex' %}{% endcapture %}
+{% capture image %}{% include 'shortcode-render' render:'image' %}{% endcapture %}
+{% if image == blank %}
+<div class="clearfix"></div>
+<div style="background-color:{% include 'shortcode-render' render:'bg-color' %};padding:40px 0;">
+  <div class="page-width text-center">
+    <h3 class="h2" style="margin-bottom:0;color:{% include 'shortcode-render' render:'heading-color' %};">{% include 'shortcode-render' render:'heading' %}</h3>
+    <sapn class="dash" style="border-top-color:{% include 'shortcode-render' render:'heading-color' %};"></sapn>
+    <div style="margin:30px 0;">{% include 'shortcode-render' render:'text' %}</div>
+    <div class="btn btn--small" style="border-radius:10px;">{% include 'shortcode-render' render:'button' %}</div>
+  </div>
+</div>
+{% else %}
+<div class="banner-shortcode {% if flex == 'yes' %}flex{% endif %}" style="background-color:{% include 'shortcode-render' render:'bg-color' %};">
+  <div><img src="{% include 'shortcode-render' render:'image' %}" /></div>
+  <div class="text">
+    <h3 class="h1">{% include 'shortcode-render' render:'heading' %}</h3>
+    <span style="text-transform:uppercase;color:{% include 'shortcode-render' render:'text-color' %};">{% include 'shortcode-render' render:'text' %}</span>
+  </div>
+</div>
+{% endif %}

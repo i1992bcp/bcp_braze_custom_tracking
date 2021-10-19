@@ -1,0 +1,30 @@
+<section class="relative container" style="margin-top:5%;">
+    <div class="page-width">
+        {%- if section.settings.about_image_1 != blank -%}<div class="one-half small-down--one-whole" style="display:inline-block"><img class="lazyload" data-src="{{ section.settings.about_image_1 | img_url: '800x800' }}"/></div>{%- endif -%}
+        {%- if section.settings.about_image_2 != blank -%}<div class="one-half small-down--one-whole" style="display:inline-block"><img class="lazyload" data-src="{{ section.settings.about_image_2 | img_url: '800x800' }}"/></div>{%- endif -%}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "About Us Two Image",
+    "settings" : [
+        {
+            "type": "image_picker",
+            "id": "about_image_1",
+            "label": "Image-one"
+        },
+        {
+            "type": "image_picker",
+            "id": "about_image_2",
+            "label": "Image-second"
+        }
+    ],
+    "presets" : [
+        {
+            "name" : "About Us Two Image",
+            "category" : "Image"
+        }
+    ]
+}
+{% endschema %}

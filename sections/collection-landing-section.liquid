@@ -1,0 +1,166 @@
+{%- for link in linklists.new-old-menu.links -%}
+    {%- assign colx = collection.handle | prepend : '/collections/' -%}
+    {%- if colx == link.url -%}
+        {%- assign main = 'yes' -%}
+    {%- endif -%}
+{%- endfor -%}
+{%- for link in linklists.shop-categories.links -%}
+    {%- assign colx = collection.handle | prepend : '/collections/' -%}
+    {%- if colx == link.url -%}
+        {%- assign main = 'yes' -%}
+    {%- endif -%}
+{%- endfor -%}
+{%- for link in linklists.all-collections.links -%}
+    {%- assign child_list_handle = link.title | handleize -%}
+    {%- assign colx = collection.handle | prepend : '/collections/' -%}
+    {%- if colx == link.url -%}
+        {%- assign linkw = collection.handle | prepend: 'popular-' -%}
+        {%- assign linkx = collection.handle | prepend: 'landing-' -%}
+        {% assign cols = collection.handle | prepend: 'sidebar-' %}
+        {%- assign linkz = collection.url -%}
+    {%- endif -%}
+{%- endfor -%}
+{%- if main == 'yes' -%}
+    {%- assign colmenu = linkx -%}
+{%- else -%}
+    {%- assign colmenu = collection.handle | handleize -%}
+{%- endif -%}
+{%- assign tipsidea = 'no' -%}
+{%- for link in linklists.blog-products.links -%}
+    {%- assign articlex = link.title -%}
+    {%- assign article = articles[articlex] -%}
+    {%- assign productx = link.object -%}
+    {%- assign collectionx = collection.title | replace: ' ', '_' -%}
+    {%- for tag in productx.tags -%}
+        {%- if tag contains 'hierarchy:' and tag contains collectionx -%}
+            {%- assign tipsidea = 'yes' -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endfor -%}
+<style>
+    .title-under-photo {
+        font-size:14px;
+    }
+</style>
+<div class="relative collection-landing-section">
+    <div id="collection-landing" >
+        <div class="collection-header-image container page-width">
+            <img class="small-down--hide collection-image" src="{{ linkx | append: '-d.jpg' | file_url }}" alt="landing image" onerror="this.style='display:none;'" />
+            <img class="medium-up--hide collection-image" src="{{ linkx | append: '-m.jpg' | file_url }}" alt="landing image" onerror="this.style='display:none;'" />
+        </div>
+        <div class="collection-category container page-width section-margin-collection">
+            <h2 class="heading-font-every text-center heading-margin-collection">Shop by Category</h2>
+            <div class="shop-categories-slider-menu" id="landing-more" style="display: inline-block;">
+                {%- for link in linklists[cols].links -%}
+                    <div class="one-fifth small-down--one-quarter extra-small--one-whole landing-feature-collections">
+                        <a href="{{ link.url }}" class="shop-collection-flex">
+                            <div class="cate-image-land">
+                                <img class="mobile-image" src="{{ link.handle | append:'.jpg' | file_img_url: '250x250' }}" alt="{{ link.handle }}" />
+                            </div>
+                            <div class="title-under-photo title-feature-collection">{{ link.title }}</div>
+                            <div class="small-up--hide icon-feature-collection feather-icon">{% include 'feather-arrow-right' %}</div>
+                        </a>
+                        
+                    </div>
+                {%- endfor -%}   
+            </div>
+        </div>
+        <div class="collection-popular container page-width text-center section-margin-collection">
+            <div class="heading-font-every text-center heading-margin-collection">Popular Collection</div>
+            <div class="popular-collection">
+                {%- for link in linklists[linkw].links limit: 4 -%}
+                    {%- assign collectionx = link.object -%}
+                    <div class="one-quarter small-down--one-half extra-small--one-whole popular-block">
+                        <a href="{{ link.url }}">  
+                            <div class="popular-image">
+                                {%- if collectionx.image -%}
+                                    {% include 'responsive-image', image: collectionx.image %}      
+                                {%- elsif collection.products.first and collection.products.first.images != empty -%}
+                                    {% include 'responsive-image', image: collectionx.image %}
+                                {%- else -%}
+                                {%- endif -%}
+                            </div>
+                            <div class="title-under-photo popular-title body-heading-font-every" style="margin:10px 0px;">{{ link.title }}</div>
+                            <!-- <div class="title-under-photo popular-title body-heading-font-every">{{ collectionx.image.alt }}</div> -->
+                        </a>  
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="collection-feature-items-landing container page-width section-margin-collection">
+            <div class="heading-font-every text-center heading-margin-collection">Featured Products</div>
+            <div class="collection-landing-fetured-overflow">
+                <div class="js-featured-collection-landing-slider">
+                    {%- for product in collection.products limit: 8 -%}
+                        {%- assign quickbuy_toggle = settings.quickbuy_buttons_toggle -%}
+                        <div class="featured-collection--product">
+                            {% include 'product-block', quickbuy: quickbuy_toggle %}
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        {%- if tipsidea == 'yes' -%}
+            <div class="collection-tip-ideas-items-landing container page-width section-margin-collection">
+                <div class="heading-font-every text-center heading-margin-collection">Tips & Ideas</div>
+                {%- assign count = 0 -%}
+                {%- assign typeList = ',' -%}
+                {%- for link in linklists.blog-products.links -%}
+                    {%- assign articlex = link.title -%}
+                    {%- assign article = articles[articlex] -%}
+          	        {%- assign productx = link.object -%}
+                    {%- assign collectionx = collection.title | replace: ' ', '_' -%}
+                    {%- for tag in productx.tags -%}
+                    {%- if tag contains 'hierarchy:' and tag contains collectionx -%}
+                        {%- assign count = count | plus: 1 -%}
+                        {%- if count < 3 -%}
+                            {%- capture compareType -%},{{ article.title }},{%- endcapture -%}
+                            {%- if typeList contains compareType -%}{%- else -%}
+                            <div class="blog-tips {{ count }} grid__item one-half text-left extra-small--one-whole"">
+                                <a href="{{ article.url }}">
+                                    <div class="tips-image">
+                                        {% include 'responsive-image', image: article.image, nomax: true %}
+                                    </div>
+                                    <div class="title-under-photo popular-title body-heading-font-every" style="margin-top:10px;font-weight: 500;">{{ article.title }}</div>
+                                    <div class="tips-body body-about" style="color:#282828;margin-top:10px;">{{ article.excerpt | truncate: 150 }}</div>
+                                </a>
+                            </div>
+                            {%- capture tempList -%}{{ typeList }}{{ article.title }},{%- endcapture -%}
+                            {%- assign typeList = tempList -%}
+                            {%- endif -%}
+                        {%- endif -%}
+                    {%- endif -%}
+                        
+                    {%- endfor -%}  
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+        <div class="clearfix"></div>
+        <div class="collection-insta-items-landing container page-width section-margin-collection">
+            <div class="heading-font-every text-center heading-margin-collection">Shop Instagram</div>
+            <div>
+                {%- if template contains 'collection' and collection.url == '/collections/patio-garden'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:patio"></div>
+                {%- elsif template contains 'collection' and collection.url == '/collections/home'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:home"></div>
+                {%- elsif template contains 'collection' and collection.url == '/collections/toys-games'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:toys"></div>                
+                {%- elsif template contains 'collection' and collection.url == '/collections/seasonal'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:seasonal"></div>
+                {%- elsif template contains 'collection' and collection.url == '/collections/pet-supplies'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:pet"></div>
+                {%- elsif template contains 'collection' and collection.url == '/collections/fitness'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:fitness"></div>
+                {%- elsif template contains 'collection' and collection.url == '/collections/musical-instruments'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:musical"></div>
+                {%- elsif template contains 'collection' and collection.url == '/collections/ride-ons'  -%}
+                    <div data-crl8-container-id="category" data-crl8-filter="label:toys"></div>
+                {%- else -%}
+                    <div data-crl8-container-id="homepage"></div>
+                {%- endif -%}
+            </div>              
+        </div>
+    </div>
+</div>

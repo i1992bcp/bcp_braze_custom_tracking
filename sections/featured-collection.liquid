@@ -1,0 +1,103 @@
+{%- assign collection = collections[section.settings.collection] -%}
+{%- assign product_count = section.settings.row_count | times: 5 -%}
+<style>
+  .arrow-slide{
+    display:none;
+  }
+  @media only screen and (max-width: 768px){
+    .arrow-slide{
+      display:block;
+    }
+  }
+  </style>
+<section class="relative container large-row featured-collection" data-section-id="{{ section.id }}" data-section-type="featured-collection">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.link_text != blank -%}
+    <div class="text-center large-row">
+      {%- if section.settings.title != blank -%}
+        <h2 class="heading-font-every row" style="margin-bottom: 5px;">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.link_text != blank -%}
+        <div class="row" style="margin-top: 5px;"><a class="standard-link" href="{{ collection.url }}">{{ section.settings.link_text | escape }}</a></div>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+
+    <div class="product-carousel-peek">
+      <div>
+        {%- for product in collection.products limit: product_count -%}
+          {%- assign quickbuy_toggle = settings.quickbuy_buttons_toggle -%}
+          <div class="relative grid__item one-fifth small-down--one-half margin_top_bottom">
+            <div class="featured-collection--product">
+              {% include 'product-block', quickbuy: quickbuy_toggle %}
+            </div>
+          </div>
+          {% else %}
+
+          {%- for i in (1..product_count) -%}
+            <div class="grid__item one-quarter small-down--one-half">
+              <div class="featured-collection--product">
+                <div class="product-block">
+                  {%- capture current -%}{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+                  <div class="global-border-radius">
+                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                  </div>
+
+                  <p>
+                    {{ 'homepage.onboarding.product_title' | t }}
+                  </p>
+
+                  <p><span class="theme-money">{{ 1999 | money }}</span></p>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text",
+        "default": "Shop now"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "row_count",
+        "label": "Rows",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 1
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+
+{% endschema %}

@@ -1,0 +1,101 @@
+{% comment %}
+  The data-label attributes on <td> elements are mobile-friendly
+  helpers used for responsive-table labels
+{% endcomment %}
+
+<div class="container">
+  <div class="page-width">
+    <div class="row">
+      <a class="standard-link" href="/account">Back to Dashboard</a>
+    </div>
+    <div class="main-order-container">
+      <div class="large-row">
+        <div class="bold-bcp" style="margin-bottom:10px;">{{ 'customer.order.title' | t: name: order.name }}</div>
+        <div>{{ 'customer.order.date' | t: date: order.created_at | date: format: 'abbreviated_date' }}</div>
+      </div>
+      <div class="grid grid--uniform large-row">
+        <div class="grid__item one-third medium-down--one-half small-down--one-whole">
+          <div class="row bold-bcp">{{ 'customer.order.billing_address' | t }}</div>
+          {% include 'format-address' with order.billing_address %}
+        </div>
+        <div class="grid__item one-third medium-down--one-half small-down--one-whole">
+          <div class="row bold-bcp">{{ 'customer.order.shipping_address' | t }}</div>
+          {% include 'format-address' with order.shipping_address %}
+        </div>
+      </div>
+      {% if order.cancelled %}
+        <div class="large-row">
+          {%- assign cancelled_at = order.cancelled_at | date: format: 'date_time_long' -%}
+          <p>{{ 'customer.order.cancelled' | t: date: cancelled_at }}</p>
+          <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason }}</p>
+        </div>
+      {% endif %}
+      <table class="responsive-table large-row order-table">
+        <tbody>
+          {% for line_item in order.line_items %}
+            <tr id="{{ line_item.key }}" class="responsive-table-row">
+              <td data-label="{{ 'customer.order.product' | t }}">
+                <div class="product-summary order-table-padding">
+                  {% if line_item.image != blank %}
+                    <a class="product-summary__image" href="{{ line_item.url }}">
+                      {% include 'responsive-image', image: line_item.image %}
+                    </a>
+                  {% endif %}
+                  <div class="product-summary__content">
+                    <div class="product-summary__title">
+                      {{ line_item.product.title | truncate: 50, '...' | link_to: line_item.product.url }}
+                    </div>
+                    <div class="product-summary__variants">
+                      {% unless line_item.product.options.size == 1 and line_item.variant.option1 == 'Default Title' %}
+                        {% for option in line_item.product.options %}
+                          <div class="product-summary__option">
+                            <span class="product-summary__option-label">
+                              {{ option }}:
+                            </span>
+                            {% capture option_key %}option{{ forloop.index }}{% endcapture %}
+                            <span class="product-summary__option-value">
+                              {{ line_item.variant[option_key] }}
+                            </span>
+                          </div>
+                        {% endfor %}
+                      {% endunless %}
+                    </div>
+  
+                    {% if line_item.fulfillment %}
+                      <dl class="product-summary__fulfillment">
+                        <dt>{{ 'customer.order.fulfilled_at' | t }}</dt>
+                        <dd>{{ line_item.fulfillment.created_at | date: format: 'month_day_year' }}</dd>
+  
+                        {% if line_item.fulfillment.tracking_url %}
+                          <dt>{{ 'customer.order.tracking_url' | t }}</dt>
+                          <dd>
+                            <a href="{{ line_item.fulfillment.tracking_url }}">
+                              {{ 'customer.order.track_shipment' | t }}
+                            </a>
+                          </dd>
+                        {% endif %}
+  
+                        <dt>{{ 'customer.order.tracking_company' | t }}</dt>
+                        <dd>{{ line_item.fulfillment.tracking_company }}</dd>
+  
+                        {% if line_item.fulfillment.tracking_number %}
+                          <dt>{{ 'customer.order.tracking_number' | t }}</dt>
+                          <dd>{{ line_item.fulfillment.tracking_number }}</dd>
+                        {% endif %}
+                      </dl>
+                    {% endif %}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="footer_price body-address-font-every">
+        <div class="subtotal_section order_flex"><div>Subtotal</div><div>{{ order.subtotal_price | money }}</div></div>
+        <div class="subtotal_section order_flex"><div>Tax</div><div>{{ order.tax_price | money }}</div></div>
+        <div class="subtotal_section order_flex"><div>Total</div><div>{{ order.total_price | money }}</div></div>
+      </div>
+    </div>
+  </div>
+</div>

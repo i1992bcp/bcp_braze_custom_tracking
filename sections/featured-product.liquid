@@ -1,0 +1,163 @@
+<style>
+  .section-{{ section.id }} .featured-product-section {
+    background-color: {{ section.settings.section_background_colour }};
+    color: {{ section.settings.section_text_colour }};
+  }
+</style>
+
+{%- assign product = all_products[section.settings.product] -%}
+
+{% if product == blank %}
+  {%- assign section_onboarding = true -%}
+  {%- assign onboarding_title = 'homepage.onboarding.product_title' | t -%}
+{% endif %}
+
+<section class="relative container large-row section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="featured-product" itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.images[0] | img_url: '800x' }}">
+  <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+  {% assign quickbuy_toggle = settings.quickbuy_buttons_toggle %}
+  <div class="page-width featured-product-section flex global-border-radius {% if section.settings.layout == 'image_after' %} featured-product-section--reverse {% endif %}{% if quickbuy_toggle == true %} js-contains-quickbuy{% endif %}">
+    <div class="one-half small-down--one-whole featured-product-image hover-images {% if product.images.size > 1 %}hover-images--two {% endif %} relative">
+      {% if product.images.size > 0 %}
+        <a href="{{ product.url }}" class="featured-product-image-link">
+        <img class="image-one" src="{{ product.images[0] | img_url: '800x' }}" alt="{{ image.alt | escape }}">
+        {% if product.images.size > 1 %}
+          <div class="image-two">
+            <div class="rimage-background fade-in lazyload"
+                  data-bgset="{% include 'bgset', image: product.images[1] %}"
+                  data-sizes="auto"
+                  data-parent-fit="cover">
+              <noscript>
+                <img src="{{ product.images[1] | img_url: '1024x1024' }}" alt="{{ product.images[1].alt | escape }}" class="rimage-background__image">
+              </noscript>
+            </div>
+          </div>
+        {% endif %}
+        </a>
+      {% else %}
+        <div class="featured-product-image-link">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="one-half small-down--one-whole relative">
+
+      <div class="featured-product-content center">
+        <h2 class="large-title">{{ product.title | default: onboarding_title | link_to: product.url }}</h2>
+        {% if section.settings.show_vendor %}
+          {% if product.vendor != blank %}
+            <p>{{ product.vendor }}</p>
+          {% endif %}
+        {% endif %}
+
+        <div class="featured-product-compare-price product-detail__price product-price giant-title" data-price-wrapper>
+
+          {% if product != blank %}
+            {% if product.price_varies %}
+              <span class="featured-product__price-from">{{ 'products.product.from_text' | t }}</span>
+            {% endif %}
+            <span class="{% if product.compare_at_price > product.price %}product-price__reduced{% endif %}" data-product-price>
+              <span class="theme-money">{{ product.price | money }}</span>
+            </span>
+
+            {% if product.compare_at_price > product.price %}
+              <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+              <span class="product-price__compare-large" data-compare-price>
+                {% if product.compare_at_price > product.price %}
+                  <span class="theme-money">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+              </span>
+            {% endif %}
+          {% else %}
+            <span class="theme-money">{{ 999 | money }}</span>
+          {% endif %}
+        </div>
+        {% if section.settings.product_description != blank %}
+          <p>{{ section.settings.product_description }}</p>
+        {% endif %}
+
+        {% if product != blank %}
+          {% if quickbuy_toggle == true %}
+            <a class="featured-product-link-desktop-only {% if section.settings.url_style == 'button_1' %}btn btn--small btn--primary{% elsif section.settings.url_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link{% endif %} js-quickbuy-button" href="{{ product.url }}">{{ 'products.quickbuy.quick_buy' | t }}
+            </a>
+            {% include 'quick-buy-placeholder' %}
+
+            <a class="featured-product-link-mobile-only {% if section.settings.url_style == 'button_1' %}btn btn--small btn--primary{% elsif section.settings.url_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link{% endif %}" href="{{ product.url }}">{{ 'products.product.shop_now' | t }}
+            </a>
+          {% else %}
+            <a class="{% if section.settings.url_style == 'button_1' %}btn btn--small btn--primary{% elsif section.settings.url_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link{% endif %}" href="{{ product.url }}">{{ 'products.product.shop_now' | t }}
+            </a>
+          {% endif %}
+        {% else %}
+          <a class="{% if section.settings.url_style == 'button_1' %}btn btn--small btn--primary{% elsif section.settings.url_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link{% endif %}">{{ 'products.product.shop_now' | t }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured product",
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      },
+      {
+        "type": "text",
+        "id": "product_description",
+        "label": "Short description",
+        "default": "Add a short description of your product"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "section_background_colour",
+        "label": "Background color",
+        "default": "#fbeae5"
+      },
+      {
+        "type": "color",
+        "id": "section_text_colour",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "radio",
+        "id": "layout",
+        "label": "Layout",
+        "options": [
+          { "value": "image_before", "label": "Image left" },
+          { "value": "image_after", "label": "Image right" }
+        ],
+        "default": "image_before"
+      },
+      {
+        "type": "radio",
+        "id": "url_style",
+        "label": "Button style",
+        "options": [
+          { "value": "button_1", "label": "Button - primary" },
+          { "value": "button_2", "label": "Button - secondary" },
+          { "value": "link_style", "label": "Link"}
+        ],
+        "default": "button_1"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured product",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}

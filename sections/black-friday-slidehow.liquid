@@ -1,0 +1,303 @@
+
+<style>
+  {% for block in section.blocks %}
+    .section-{{ section.id }} .block-{{ forloop.index }} .bf_overlay {
+      top: {{ block.settings.bf_overlay_position_y }}%;
+      left: {{ block.settings.bf_overlay_position_x }}%;
+      padding:20px;
+    }
+  .section-{{ section.id }} .block-{{ forloop.index }} .overlay-title-text {
+    font-size: {{ block.settings.bf_heading_font }};
+  }
+  .section-{{ section.id }} .block-{{ forloop.index }} .overlay-text {
+    font-size: {{ block.settings.bf_sub_heading_font }};
+  }
+  @media only screen and (max-width: 968px) { 
+    .section-{{ section.id }} .block-{{ forloop.index }} .overlay-title-text {
+      font-size: {{ block.settings.bf_mobile_heading_font }};
+    }
+      .section-{{ section.id }} .block-{{ forloop.index }} .overlay-text {
+      font-size: {{ block.settings.bf_mobile_sub_heading_font }};
+    }
+  }
+  {% endfor %}
+</style>
+<div class="clearfix"></div>
+<section class="container container--no-mobile-padding large-row full-width-slideshow full-width-background black-friday relative section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="slideshow" style="margin-top:0px;">
+  <div class="page-width relative">
+    <div class="full-width relative js-slideshow-section" data-autoplay="{{ section.settings.bf_slideshow_autoplay }}" data-autoplayspeed="{{ section.settings.bf_slideshow_autoplay_speed }}000">
+      {%- for block in section.blocks -%}
+        <div class="slide relative avoid-overlaps block-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <div class="avoid-overlaps__mobile-container">
+            <div class="desktop-image-slider">
+              {% if block.settings.bf_image == blank %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% else %}
+                {% include 'responsive-image', image: block.settings.bf_image, nomax: true %}
+              {% endif %}
+            </div>
+            <div class="mobile-image-slider">
+              {% if block.settings.bf_mobile_image == blank %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% else %}
+                {% include 'responsive-image', image: block.settings.bf_mobile_image, nomax: true, class:desktop %}
+              {% endif %}
+            </div>
+          </div>
+          {% include 'bf-image-overlay',
+            background_color: block.settings.bf_color_overlay_background,
+	        opacity_color: block.settings.color_overlay_opacity
+            title: block.settings.bf_overlay_title,
+            heading_text_color: block.settings.bf_head_color_overlay_text,
+            heading_fonts : block.settings.bf_heading_font,
+	        mobile_heading_fonts : block.settings.bf_mobile_heading_font,
+            text: block.settings.bf_overlay_text,
+            subheading_text_color: block.settings.bf_sub_color_overlay_text,
+            subheading_font : block.settings.bf_sub_heading_font,
+          	mobile_subheading_font : block.settings.bf_mobile_sub_heading_font,
+            url: block.settings.bf_overlay_url_1,
+            url_text: block.settings.bf_overlay_url_text_1,
+            url_1_position : block.settings.bf_button_1_position,
+            url_1_style: block.settings.bf_button_1_style,
+            url_1_bg_color: block.settings.bf_button_1_background_color,
+            url_1_text_color: block.settings.bf_button_1_text,
+            url_2: block.settings.bf_overlay_url_2,
+            url_text_2: block.settings.bf_overlay_url_text_2,
+            url_2_position : block.settings.bf_button_2_position,
+            url_2_style: block.settings.bf_button_2_style,
+            url_2_bg_color: block.settings.bf_button_2_background_color,
+            url_2_text_color: block.settings.bf_button_2_text %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Black Friday Slideshow",
+     "max_blocks": 10,
+     "settings": [
+      {
+        "type": "checkbox",
+        "id": "bf_slideshow_autoplay",
+        "label": "Auto rotate between slides",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "bf_slideshow_autoplay_speed",
+        "label": "Change slides every",
+        "min": 1,
+        "max": 7,
+        "unit": "s",
+        "step": 1,
+        "default": 4
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "bf_image",
+            "label": "Desktop-Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "bf_mobile_image",
+            "label": "Mobile-Image"
+          },
+          {
+            "type": "header",
+            "content": "Overlay"
+          },
+          {
+            "type": "color",
+            "id": "bf_color_overlay_background",
+            "label": "Background color",
+            "default": "#ffffff"
+          },
+		  {
+            "type": "text",
+            "id": "color_overlay_opacity",
+            "label": "opacity (0 - 1) Just number",
+            "default": "0.8"
+          },
+          {
+            "type": "text",
+            "id": "bf_overlay_title",
+            "label": "Heading",
+            "default": "Slideshow"
+          },
+          {
+            "type": "color",
+            "id": "bf_head_color_overlay_text",
+            "label": "Heading Text color",
+            "default": "#333333"
+          },
+          {
+            "type": "text",
+            "id": "bf_heading_font",
+            "label": "Heading Font (in pixels)",
+            "default": "16"
+          },
+		  {
+            "type": "text",
+            "id": "bf_mobile_heading_font",
+            "label": "Mobile Heading Font (in pixels)",
+            "default": "14"
+          },
+           {
+            "type": "text",
+            "id": "bf_overlay_text",
+            "label": "Subheading",
+            "default": "Use this section to welcome customers to your store, show off your images or display a promotion"
+          },
+          {
+            "type": "color",
+            "id": "bf_sub_color_overlay_text",
+            "label": "Subheading Text color",
+            "default": "#333333"
+          },
+          {
+            "type": "text",
+            "id": "bf_sub_heading_font",
+            "label": "Sub-Heading Font (in pixels)",
+            "default": "14"
+          },
+		  {
+            "type": "text",
+            "id": "bf_mobile_sub_heading_font",
+            "label": "Mobile Sub-Heading Font (in pixels)",
+            "default": "14"
+          },
+          {
+            "type": "text",
+            "id": "bf_overlay_url_text_1",
+            "label": "Button 1 text"
+          },
+          {
+            "type": "url",
+            "id": "bf_overlay_url_1",
+            "label": "Button 1 link"
+          },
+          {
+            "type": "radio",
+            "id": "bf_button_1_position",
+            "label": "Button 1 position",
+            "options": [
+              { "value": "right", "label": "Button - right" },
+              { "value": "center", "label": "Button - center" },
+              { "value": "left", "label": "left"}
+            ],
+            "default": "center"
+          },
+          {
+            "type": "color",
+            "id": "bf_button_1_background_color",
+            "label": "Background Button 1 color",
+            "default": "#333333"
+          },
+          {
+            "type": "color",
+            "id": "bf_button_1_text",
+            "label": "Button 1 Text color",
+            "default": "#333333"
+          },
+          {
+            "type": "radio",
+            "id": "bf_button_1_style",
+            "label": "Button 1 style",
+            "options": [
+              { "value": "button_1", "label": "Button - primary" },
+              { "value": "button_2", "label": "Button - secondary" },
+              { "value": "link_style", "label": "Link"}
+            ],
+            "default": "button_1"
+          },
+          {
+            "type": "text",
+            "id": "bf_overlay_url_text_2",
+            "label": "Button 2 text"
+          },
+          {
+            "type": "url",
+            "id": "bf_overlay_url_2",
+            "label": "Button 2 link"
+          },
+          {
+            "type": "radio",
+            "id": "bf_button_2_position",
+            "label": "Button 2 position",
+            "options": [
+              { "value": "right", "label": "Button - right" },
+              { "value": "center", "label": "Button - center" },
+              { "value": "left", "label": "left"}
+            ],
+            "default": "center"
+          },
+          {
+            "type": "color",
+            "id": "bf_button_2_background_color",
+            "label": "Background Button 2 color",
+            "default": "#333333"
+          },
+          {
+            "type": "color",
+            "id": "bf_button_2_text",
+            "label": "Button 2 Text color",
+            "default": "#333333"
+          },
+          {
+            "type": "radio",
+            "id": "bf_button_2_style",
+            "label": "Button 2 style",
+            "options": [
+              { "value": "button_1", "label": "Button - primary" },
+              { "value": "button_2", "label": "Button - secondary" },
+              { "value": "link_style", "label": "Link"}
+            ],
+            "default": "button_1"
+          },
+          {
+            "type": "range",
+            "id": "bf_overlay_position_x",
+            "label": "Horizontal position",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 50
+          },
+          {
+            "type": "range",
+            "id": "bf_overlay_position_y",
+            "label": "Vertical position",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 80
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Black Friday Slideshow",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

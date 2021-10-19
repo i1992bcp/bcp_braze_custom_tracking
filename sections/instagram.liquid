@@ -1,0 +1,56 @@
+<section class="large-row container section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="instagram">
+  <div class="page-width relative">
+    {% if section.settings.title != blank %}
+      <h2 class="text-center row title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+
+    {% unless section.settings.access_token == blank %}
+      <div class="willstagram" data-user_id="self" data-count="6" data-access_token="{{ section.settings.access_token | escape }}" data-show-hover="{{ section.settings.show_hover }}"></div>
+    {% else %}
+    <div class="willstagram willstagram-placeholder">
+      <div class="willstagram__items">
+        {% for i in (1..6) %}
+          <div class="willstagram__item item--{{ forloop.index }} global-border-radius">
+            <div class="placeholder-image">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endunless %}
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Instagram feed",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Instagram feed"
+      },
+      {
+        "type": "text",
+        "id": "access_token",
+        "label": "Access token",
+        "info": "Required - [get your access token](http:\/\/cleanthemes.co.uk\/pages\/instagram-integration)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_hover",
+        "label": "Show more details on hover",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instagram feed",
+        "category": "Social media",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

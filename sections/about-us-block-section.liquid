@@ -1,0 +1,98 @@
+<style>
+   @media only screen and (max-width: 540px) {
+    .about-b:nth-of-type(odd) {
+      display: block;
+    }
+    .about-b:nth-of-type(even) {
+      display: block;
+    }
+   
+  }
+  @media only screen and (min-width: 541px) {
+    .about-b:nth-of-type(odd) {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+    }
+    .about-b:nth-of-type(even) {
+      display: flex;
+    }
+    .details-about{
+      margin: auto 5%;
+    }
+  }
+  .about-b {
+    margin-bottom: 4%;
+  }
+  .body-about{
+    text-align: justify;
+    margin-top: 3%;
+    font-size: 14px;
+    color: #676767;
+    line-height: 1.57;
+  }
+ 
+
+</style>
+
+<div class="relative container section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="about-us-block-section" id="about-2">
+    {%- if section.blocks.size > 0 -%}
+        <div class="page-width">
+            {%- for block in section.blocks -%}
+                 <div class="about-block--{{ block.id }} about-b" {{ block.shopify_attributes }}>
+                    <div class="image-about one-half small-down--one-whole">
+                      {%- if block.settings.about_block_image != blank -%}<div><img src="{{ block.settings.about_block_image | img_url: '500x500' }}"/></div>{%- endif -%}
+                    </div>
+                    <div class="details-about one-half small-down--one-whole text-left">
+                        {%- if block.settings.about_block_title != blank -%}<div class="heading-font-every product-about">{{ block.settings.about_block_title }}</div>{%- endif -%}
+                        {%- if block.settings.body_text != blank -%}<div class="body-about" >{{ block.settings.body_text }}</div>{%- endif -%}
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+    {%- endif -%}
+</div>
+
+   
+{% schema %}
+  {
+    "name": "About-us-Block",
+    "class": "about-block-section",
+    "blocks": [
+      {
+        "type": "About-Us-Third",
+        "name": "Block-with image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "about_block_image",
+            "label": "Image"
+          },
+          {
+            "type": "richtext",
+            "id": "body_text",
+            "label": "Text",
+            "default": "<p>Behind every category are Category Managers who work with our Sourcing Team to make sure every item that wants to be listed on BCP has both quality and value. With over 16 years of partnerships with our global partners, we’re still one of the most trusted companies to work with. Sourcing and Category Management help us manufacture items at unbelievable prices. </p>"
+          },
+          {
+            "type": "text",
+            "id": "about_block_title",
+            "label": "Title",
+            "default": "Our Products"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "About-us-Block",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "About-Us-Third"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,742 @@
+{%- assign c_plus = collection.metafields.a_plus -%}
+{%- assign linkw = collection.handle | prepend: 'sidebar-' -%}
+<style>
+  .yotpo .text-m {
+    padding-left: 5px !important;
+    font-size : 10px !important;
+  }
+  .product-price__reduced {
+			font-size: 16px !important;
+		}
+  .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star, .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star, .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-half-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-empty-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-half-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-empty-star {
+			font-size: 12.5px !important;
+		}
+		.metafield__bgcolor {
+			background-color: {{ c_plus.Global_Department_Color }} !important;
+		}
+		.container .grid-center {
+			display: -ms-grid;
+			display: grid;
+			place-content: center;
+		}
+        .now__trending__block .slick-dots li button{
+          background-color: #fff !important;
+        }
+		.font_21_32 {
+			font-family: 'Roboto Slab', serif;
+			font-size: 21px;
+			margin-bottom: 3%;
+		}
+		.show__desktop {
+			display: none !important;
+		}
+		.show__mobile {
+			display: block !important;
+		}
+		.white {
+			color: #fff !important;
+		}
+		.section__margin {
+			margin-top: 5%;
+		}
+		.center {
+			text-align: center;
+		}
+		/* ...............start 1 ...............  */
+
+		.collection__banner{
+			display: block;
+		}
+		.banner_title {
+			font-size: 14px;
+			font-weight: 600;
+		}
+		.desktop__banner{
+			height: auto;
+		}
+		.banner__left_box {
+			text-align: center;
+			padding: 6%;
+			margin-bottom: 1%;
+		}
+		/* ...............end 1 ...............  */
+		/* ...............start 2 ...............  */
+
+		.navbar__wrapper {
+			display: block;
+			font-size: 14px;
+		}
+		.nav__title {
+			background-color: {{ c_plus.mobile_link_background_color }};
+			border-radius: 5px;
+			height: 50px;
+			margin-top: 1.5%;
+		}
+		.product-block {
+			width: 50% !important;
+          margin-bottom:2%;
+		}
+	/* ...............end 2 ...............  */
+	/* ...............start 3 ...............  */
+		.collection___now_trending {
+			background-color: {{ c_plus.Handpicked_Color }};
+			padding: 3% 0;
+		}
+		.trending_title {
+			margin-bottom: 3%;
+			font-size: 21px;
+			font-family: 'Roboto Slab', serif;
+		}
+		.now__trending__block{
+			display: block;
+		}
+		.new_treding__subtitle{
+			margin: 5px 0 2% 0;
+		}
+		.trending_header {
+			font-weight: 600;
+			margin: 2% 0;
+			cursor: pointer;
+		}
+		.trending_header:hover {
+			text-decoration: underline;
+		}
+		.trending_image__scale img{
+			width: 100% !important;
+		}
+		.trending_subheader {
+			padding: 0 10%;
+		}
+		.trending__card {
+				margin-bottom: 0;
+			}
+	/* ...............end 3 ...............  */
+	/* ...............start 4 ...............  */
+
+		.developer__subtitle{
+			font-size: 14px;
+			margin:2% 0 ;
+		}
+		.developer__box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			    -ms-transform: translate(-50%, -50%);
+			        transform: translate(-50%, -50%);
+			width: 80%;
+			height: 80%;
+			color: #fff;
+			padding: 0 3%;
+		}
+		.devloper__main_img {
+			position: relative;
+		}
+		.developer_name {
+			font-size: 14px;
+			font-weight: 600;
+			margin: 2% 0;
+		}
+	/* ...............end 4 ...............  */
+	/* ...............start 5 ...............  */
+		.hand__right_side {
+			margin: 0;
+			text-align: center;
+		}
+		.hand__left_side{
+			display: none;
+		}
+		.hand__right__subtitle{
+			font-size: 14px;
+			margin: 4% 0;
+			padding-right: 10%;
+		}
+		.hand__right__button {
+			display: inline-block;
+			padding: 2% 5%;
+			border-radius: 4px;
+		}
+		.hand__button {
+			font-size: 14px;
+			font-weight: 600;
+			color: #fff;
+		}
+
+	/* ...............end 5 ...............  */
+	/* ...............start 6 ...............  */
+		.grid_shop_by_collection {
+			height: auto;
+			display: -ms-grid;
+			display: grid;
+			grid-gap: 1rem;
+			-ms-grid-columns: 1fr 1rem 1fr;
+			grid-template-columns: repeat(2, 1fr);
+			margin-top: 2%;
+		}
+		.header_shop_by_coll {
+			font-size: 14px;
+			text-align: center;
+		}
+		.q4_shop_width {
+			text-align: center;
+		}
+		
+		.shop_img_class {
+			width: 100%;
+			height: auto;
+		}
+
+	/* ...............end 6 ...............  */
+	/* ...............start 7 ...............  */
+		.review__section__div {
+			background-color: #f6f6f6;
+			padding: 3% 0;
+		}
+	/* ...............end 7 ...............  */
+	/* ...............start 7 ...............  */
+		.margin_review {
+			margin: 5% 0;
+		}
+		.card_wrapper {
+			background-color: #fff;
+			padding: 20px;
+			margin: 0 10px;
+		}
+		.review__block { 
+			display: block !important;
+			text-align: center;
+			margin-bottom: 2%;
+		}
+		.star_review {
+			margin-right: 2%;
+		} 
+		.review__title {
+			font-size: 18px;
+			font-weight: 600;
+		}
+		.review_name {
+			font-size: 14px;
+			color: #989998;
+		}
+		.review__button {
+			text-align: center;
+			margin-top: 15%;
+		}
+
+	/* ...............end 7 ...............  */
+
+	/* Screen Change */
+	@media only screen and (min-width: 968px) {
+      .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star, .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star, .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-half-star, .yotpo.bottomline .yotpo-bottomline .yotpo-icon-empty-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-half-star, .yotpo .yotpo-modal-bottom-line .yotpo-bottomline .yotpo-icon-empty-star {
+			font-size: 17.5px !important;
+		}
+      .product-price__reduced {
+			font-size: 1.25rem !important;
+		}
+		.font_21_32 {
+			font-size: 32px;
+		}
+		.show__desktop {
+			display: block !important;
+		}
+		.show__mobile {
+			display: none !important;
+		}
+		/* ...............start 1 ...............  */
+
+		.collection__banner {
+			height: auto;
+			display: -ms-grid;
+			display: grid;
+			-ms-grid-columns: 35% 65%;
+			grid-template-columns: 35% 65%;
+		}
+		.banner__left_box {
+			text-align: left;
+			margin-bottom: 0;
+		}
+		.banner_title {
+			font-size: 18px;
+		}
+		.desktop__banner {
+			height: 400px;
+		}
+		/* ...............end 1 ...............  */
+		/* ...............start 2 ...............  */
+			.navbar__wrapper{
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				flex-wrap: nowrap; 
+				padding: 1% 0;
+			}
+			.nav_item_flex {
+              	width:100%;
+				display: flex;
+				flex-wrap: nowrap;
+				overflow: auto;
+				-webkit-overflow-scrolling: touch;
+				-ms-overflow-style: -ms-autohiding-scrollbar;
+			}
+			.collection__navbar {
+				border-bottom: solid 1px #979797;
+				margin-top: 2%;
+			}
+			.navbar__wrapper .line_item{
+				flex: 0 0 auto;
+				margin : 0 2% 0 0;
+			}
+			.nav__title {
+				background-color:transparent;
+				border-radius: 0;
+				height: auto;
+				margin-top: 0;
+			}
+			.product-block {
+				width: 20% !important;
+			}
+		/* ...............end 2 ...............  */
+		/* ...............start 3 ...............  */
+			.trending_image__scale img{
+				width: auto !important;
+				-webkit-transition: -webkit-transform .5s, -webkit-filter 1.5s ease-in-out;
+				transition: -webkit-transform .5s, -webkit-filter 1.5s ease-in-out;
+				-o-transition: transform .5s, filter 1.5s ease-in-out;
+				transition: transform .5s, filter 1.5s ease-in-out;
+				transition: transform .5s, filter 1.5s ease-in-out, -webkit-transform .5s, -webkit-filter 1.5s ease-in-out;
+			}
+			.trending_image__scale:hover img {
+				-webkit-transform: scale(1.03);
+				    -ms-transform: scale(1.03);
+				        transform: scale(1.03);
+			}
+			.now__trending__block {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+                
+				justify-content: center;
+			}
+			.trending_title {
+				font-size: 24px;
+			}
+			.trending__card {
+				margin-bottom: 2%;
+                  flex-basis: 100%;
+			}
+
+		/* ...............end 3 ...............  */
+		/* ...............start 4 ...............  */
+			.developer__box {
+				width: 80%;
+				height: 50%;
+			}
+			.developer_name {
+				margin: 3% 0;
+			}
+		/* ...............end 4 ...............  */
+		/* ...............start 5 ...............  */
+			.handpick_fev_section {
+				display: -ms-grid;
+				display: grid;
+				grid-gap: 2rem;
+				-ms-grid-columns: 1fr 2rem 1fr;
+				grid-template-columns: repeat(2, 1fr);
+			}
+			.hand__right_side{
+				position: relative;
+				text-align: left;
+				background-color: #f6f6f6;
+				padding: 0 0 2% 8%;
+			}
+			.hand__bottom_right {
+				position: absolute;
+				bottom: 15%;
+			}
+			.hand__left_side {
+				display: -ms-grid;
+				display: grid;
+				-ms-grid-columns: 250px 3rem 250px;
+				grid-template-columns: repeat(2, 250px);
+				grid-column-gap: 3rem;
+				grid-row-gap: 1rem;
+			}
+			.hand__right__subtitle{
+				padding-right: 0;
+			}
+		/* ...............end 5 ...............  */
+		/* ...............start 6 ...............  */
+
+			.grid_shop_by_collection {
+				-ms-grid-columns: 1fr 1rem 1fr 1rem 1fr 1rem 1fr;
+				grid-template-columns: repeat(4, 1fr);
+			}
+      		.shop_img_class {
+				width: 250px;
+				height: 250px;
+			}
+		/* ...............end 6 ...............  */
+		/* ...............start 7 ...............  */
+			.review__block {
+				height: auto;
+				display: -ms-grid !important;
+				display: grid !important;
+				grid-gap: 1rem;
+				-ms-grid-columns: 1fr 1rem 1fr 1rem 1fr;
+				grid-template-columns: repeat(3, 1fr);
+				margin: 2% 0;
+				text-align: left;
+			}
+			.card_wrapper { 
+				padding: 10%;
+			}
+			.review__button { 
+				margin-top: 2%;
+			}
+		/* ...............end 7 ...............  */
+		.section__margin {
+			margin-top: 3%;
+		}
+	}
+  
+  {%- if template contains 'collection' and collection.url == '/collections/patio-garden' or collection.url == '/collections/home' or collection.url == '/collections/pet-supplies' or collection.url == '/collections/holiday-gift-guide'  -%}
+  .trending_title {
+  	color : #282828;
+  } 
+  .trending_header {
+  	color : #282828;
+  }
+  .trending_subheader {
+  	color : #282828;
+  }
+  {%- else -%}
+  .trending_title {
+  	color : #fff;
+  } 
+  .trending_header {
+  	color : #fff;
+  }
+  .trending_subheader {
+  	color : #fff;
+  }
+  {%- endif -%}
+  
+</style>
+<div class="container page-width">
+	<section class="collection__banner">
+		<div class="grid-center banner__left_box metafield__bgcolor">
+			<div><div class="banner_title white">{{ c_plus.Banner_Title | upcase }}</div><div class="font_21_32 white">{{ c_plus.Banner_Subtitle }}</div></div>
+		</div>
+		<img class="show__desktop desktop__banner" src="{{ collection.handle | append: '-banner-m.jpg' | file_url }}" alt="{{ c_plus.Banner_Title | upcase }}"/>
+		<img class="show__mobile" src="{{ collection.handle | append: '-banner-m.jpg' | file_url }}" alt="{{ c_plus.Banner_Title | upcase }}"/>
+	
+	 {{ collection.description | split: '<!-- banner -->' | last | split: '<!--' | first }}
+	</section>
+</div>
+
+<div class="show__mobile container page-width" style="margin-bottom:13%;">
+	<section class="collection__best_seller section__margin">
+		<div class="font_21_32 center best_seller__header" style="margin-bottom: 1%;">Shop Best Sellers</div>
+		<div class="shop_best_seller">
+			{%- for product in collection.products -%}
+				{%- assign quickbuy_toggle = settings.quickbuy_buttons_toggle -%}
+				<div class="top_twe">
+					{% include 'product-block-q4', quickbuy: quickbuy_toggle %}
+				</div>
+			{%- endfor -%}
+		</div>
+	</section>
+</div>
+<div class="clearfix"></div>
+
+<section class="collection__navbar">
+	<div class="container page-width">
+		<div class="navbar__wrapper">
+			<span class="show__desktop line_item" style="font-weight: 600;">{{ collection.title }}</span>
+			<span class="show__desktop line_item" style="font-weight: 600;">|</span>
+			<div class="nav_item_flex">
+				{%- for link in linklists[linkw].links -%}
+					<a href="{{ link.url }}" class="nav__title grid-center line_item"><span>{{ link.title }}</span></a>
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="show__desktop container page-width">
+	<section class="collection__best_seller section__margin">
+		<div class="font_21_32 center best_seller__header" style="margin-bottom: 1%;">Shop Best Sellers</div>
+		<div class="three_image shop_best_seller">
+			{%- for product in collection.products -%}
+				{%- assign quickbuy_toggle = settings.quickbuy_buttons_toggle -%}
+				<div class="top_twe">
+					{% include 'product-block-q4', quickbuy: quickbuy_toggle %}
+				</div>
+			{%- endfor -%}
+		</div>
+	</section>
+</div>
+<div class="clearfix"></div>
+{%- if c_plus.Trending_Title_1 == "N/A" -%}
+{%- else -%}
+<section class="collection___now_trending section__margin">
+	<div class="container page-width">
+		<div class="trending_title center">{{ c_plus.Trending_Title }}</div>
+		{% if c_plus.Trending_Subtitle != "N/A" %}<div class="new_treding__subtitle center" style="color: #fff;">{{ c_plus.Trending_Subtitle }}</div>{% endif %}
+		<div class="three_image_trending now__trending__block">
+			<div class="trending__card center">
+				<a href="{{ c_plus.Trending_Link_1 }}">
+					<div class="trending_image__scale"><img src="{{ collection.handle | append: '-trending-1.jpg' | file_img_url : '340x340' }}" alt="{{ c_plus.Trending_Title_1 }}"/></div>
+					<div class="trending_header">{{ c_plus.Trending_Title_1 | upcase }}</div>
+                    <div class="trending_subheader">{{ c_plus.Trending_Subtext_1 }}</div>
+				</a>
+			</div>
+			<div class="trending__card center">
+				<a href="{{ c_plus.Trending_Link_2 }}">
+					<div class="trending_image__scale"><img src="{{ collection.handle | append: '-trending-2.jpg' | file_img_url : '340x340' }}" alt="{{ c_plus.Trending_Title_2 }}"/></div>
+					<div class="trending_header">{{ c_plus.Trending_Title_2 | upcase }}</div>
+                  <div class="trending_subheader">{{ c_plus.Trending_Subtext_2 }}</div>
+				</a>
+				
+				
+			</div>
+			<div class="trending__card center">
+				<a href="{{ c_plus.Trending_Link_3 }}">
+					<div class="trending_image__scale"><img src="{{ collection.handle | append: '-trending-3.jpg' | file_img_url : '340x340' }}" alt="{{ c_plus.Trending_Title_3 }}"/></div>
+					<div class="trending_header">{{ c_plus.Trending_Title_3 | upcase }}</div>
+                  <div class="trending_subheader">{{ c_plus.Trending_Subtext_3 }}</div>
+				</a>
+			</div>
+<!-- 			<div class="trending__card center">
+				<a href="{{ c_plus.Trending_Link_4 }}">
+					<div class="trending_image__scale"><img src="{{ collection.handle | append: '-trending-4.jpg' | file_img_url : '340x340' }}" alt="{{ c_plus.Trending_Title_4 }}"/></div>
+					<div class="trending_header" style="color: #fff;">{{ c_plus.Trending_Title_4 | upcase }}</div>
+				</a>
+				
+				
+			</div>
+			<div class="trending__card center">
+				<a href="{{ c_plus.Trending_Link_5 }}">
+					<div class="trending_image__scale"><img src="{{ collection.handle | append: '-trending-5.jpg' | file_img_url : '340x340' }}" alt="{{ c_plus.Trending_Title_5 }}"/></div>
+					<div class="trending_header" style="color: #fff;">{{ c_plus.Trending_Title_5 | upcase }}</div>
+				</a>
+				
+				
+			</div>
+			<div class="trending__card center">
+				<a href="{{ c_plus.Trending_Link_6 }}">
+					<div class="trending_image__scale"><img src="{{ collection.handle | append: '-trending-6.jpg' | file_img_url : '340x340' }}" alt="{{ c_plus.Trending_Title_6 }}"/></div>
+					<div class="trending_header" style="color: #fff;">{{ c_plus.Trending_Title_6 | upcase }}</div>
+				</a>
+				
+				
+			</div> -->
+		</div>
+	</div>
+</section>
+{%- endif -%}
+<div id="shop_by_link" class="container page-width">
+  {%- if c_plus.shop-by-title-1 == "N/A" -%}
+{%- else -%}
+	<section class="shop__by_collection section__margin">
+		<div class="font_21_32 center">{{ c_plus.shop-by-main-title }}</div>
+		<div class="grid_shop_by_collection">
+			<a href="{{ c_plus.shop-by-link-1 }}" class="q4_shop_width">
+				<img src="{{ collection.handle | append: '-shop-by-1.jpg' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+				<div class="header_shop_by_coll">{{ c_plus.shop-by-title-1 }}</div>
+			</a>
+			<a href="{{ c_plus.shop-by-link-2 }}" class="q4_shop_width">
+				<img src="{{ collection.handle | append: '-shop-by-2.jpg' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+				<div class="header_shop_by_coll">{{ c_plus.shop-by-title-2 }}</div>
+			</a>
+			<a href="{{ c_plus.shop-by-link-3 }}" class="q4_shop_width">
+				<img src="{{ collection.handle | append: '-shop-by-3.jpg' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+				<div class="header_shop_by_coll">{{ c_plus.shop-by-title-3 }}</div>
+			</a>
+			<a href="{{ c_plus.shop-by-link-4 }}" class="q4_shop_width">
+				<img src="{{ collection.handle | append: '-shop-by-4.jpg' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+				<div class="header_shop_by_coll">{{ c_plus.shop-by-title-4 }}</div>
+			</a>
+		</div>
+	</section>
+  {%- endif -%}
+	{%- if c_plus.shop-collection-main-title == "N/A" -%}
+
+	{%- else -%}
+		<section id="shop_by_collection" class="shop__by_collection section__margin">
+			<div class="font_21_32 center">{{ c_plus.shop-collection-main-title }}</div>
+			<div class="grid_shop_by_collection">
+				<a href="{{ c_plus.shop-collection-link-1 }}" class="q4_shop_width">
+					<img src="{{ collection.handle | append: '-shop-collection-1.png' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+					<div class="header_shop_by_coll">{{ c_plus.shop-collection-title-1 }}</div>
+				</a>
+				<a href="{{ c_plus.shop-collection-link-2 }}" class="q4_shop_width">
+					<img src="{{ collection.handle | append: '-shop-collection-2.png' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+					<div class="header_shop_by_coll">{{ c_plus.shop-collection-title-2 }}</div>
+				</a>
+				<a href="{{ c_plus.shop-collection-link-3 }}" class="q4_shop_width">
+					<img src="{{ collection.handle | append: '-shop-collection-3.png' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+					<div class="header_shop_by_coll">{{ c_plus.shop-collection-title-3 }}</div>
+				</a>
+				<a href="{{ c_plus.shop-collection-link-4 }}" class="q4_shop_width">
+					<img src="{{ collection.handle | append: '-shop-collection-4.png' | file_url }}" alt="{{ collection.handle }}" class="shop_img_class"/>
+					<div class="header_shop_by_coll">{{ c_plus.shop-collection-title-4 }}</div>
+				</a>
+			</div>
+		</section>
+	{%- endif -%}
+</div>
+{%- if c_plus.Review_Text_1 == "N/A" -%}
+{%- else -%}
+<section class="review__section__div section__margin">
+	<div class="container page-width">
+		<div class="font_21_32 center">Don’t Just Take it From Us</div>
+		<div class="three_image_review review__block">
+			<div class="card_wrapper">
+				<div>
+					<?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg>
+				</div>
+				<div class="review__title margin_review" style="color: {{ c_plus.Global_Department_Color }};">{{ c_plus.Review_Title_1 | upcase }}</div>
+				<div class="review_text margin_review">{{ c_plus.Review_Text_1 }}</div>
+				<div class="review_name margin_review">-{{ c_plus.Reviewer_Name_1 }}</div>
+			</div>
+			<div class="card_wrapper">
+				<div>
+					<?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg>
+				</div>
+				<div class="review__title margin_review" style="color: {{ c_plus.Global_Department_Color }};">{{ c_plus.Review_Title_2 | upcase }}</div>
+				<div class="review_text margin_review">{{ c_plus.Review_Text_2 }}</div>
+				<div class="review_name margin_review">-{{ c_plus.Reviewer_Name_2 }}</div>
+			</div>
+			<div class="card_wrapper">
+				<div>
+					<?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg><?xml version="1.0" encoding="UTF-8"?><svg class="star_review" width="36px" height="33px" viewBox="0 0 36 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Star</title><desc>Created with Sketch.</desc><g id="Collection-Landing-Pages-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Mobile---Collection-Landing-Page-FINAL" transform="translate(-38.000000, -2795.000000)" fill="#FCD040"><polygon id="Star" points="56 2822 45.4198655 2827.56231 47.4404914 2815.78115 38.8809827 2807.43769 50.7099327 2805.71885 56 2795 61.2900673 2805.71885 73.1190173 2807.43769 64.5595086 2815.78115 66.5801345 2827.56231"></polygon></g></g></svg>
+				</div>
+				<div class="review__title margin_review" style="color: {{ c_plus.Global_Department_Color }};">{{ c_plus.Review_Title_3 | upcase }}</div>
+				<div class="review_text margin_review">{{ c_plus.Review_Text_3 }}</div>
+				<div class="review_name margin_review">-{{ c_plus.Reviewer_Name_3 }}</div>
+			</div>
+		</div>
+		<div class="review__button"><a href="https://bestchoiceproducts.com/pages/reviews" class="hand__right__button metafield__bgcolor" style="padding: 1% 5%;"><div class="hand__button">VIEW ALL REVIEWS</div></a></div>
+	</div>
+</section>
+{%- endif -%}
+<div class="clearfix"></div>
+<div class="container page-width">	
+	<section class="instagram__feeds section__margin">
+		<div class="font_21_32 center">#myBCP Moments</div>
+		<div class="new_treding__subtitle center">See out products in action, find style and inspiration from BCP customers.</div>
+		<div>
+			{%- if template contains 'collection' and collection.url == '/collections/patio-garden'  -%}
+					<div data-crl8-container-id="category" data-crl8-filter="label:patio"></div>
+			{%- elsif template contains 'collection' and collection.url == '/collections/home'  -%}
+					<div data-crl8-container-id="category" data-crl8-filter="label:home"></div>
+			{%- elsif template contains 'collection' and collection.url == '/collections/toys-games'  -%}
+					<div data-crl8-container-id="category" data-crl8-filter="label:toys"></div>                
+			{%- elsif template contains 'collection' and collection.url == '/collections/christmas-trees'  -%}
+					<div data-crl8-container-id="category" data-crl8-filter="label:seasonal"></div>
+			{%- elsif template contains 'collection' and collection.url == '/collections/pet-supplies'  -%}
+					<div data-crl8-container-id="category" data-crl8-filter="label:pet"></div>
+			{%- elsif template contains 'collection' and collection.url == '/collections/fitness'  -%}
+					<div data-crl8-container-id="category" data-crl8-filter="label:fitness"></div>
+			{%- elsif template contains 'collection' and collection.url == '/collections/musical-instruments'  -%}
+					<div data-crl8-container-id="category" data-crl8-filter="label:musical"></div>
+			{%- else -%}
+					<div data-crl8-container-id="homepage"></div>
+			{%- endif -%}
+		</div>    
+	</section>
+</div>
+<section class="review__section section__margin"> 
+{%- if template contains 'collection' and collection.url == '/collections/christmas-trees'  -%}
+                <div class="section-margin-collection collection-header-image container page-width">
+                    <div class="reading-width text-center">
+                        <h2 class="heading-font-every faq_head_holiday">Any Questions? FAQs About Buying Christmas Tree Online</h2>
+                        <div class="rte" style="font-size:14px;">
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What are the best artificial Christmas trees?</div><div class="toggle_icon">+</div></div>
+                              <div class="faq_ans">The Pre-Lit Snow Flocked Pine, the minimalist-style Pre-Lit Hinged Fir Pencil Tree, and the darker green <b><a href="https://bestchoiceproducts.com/products/pre-lit-hinged-douglas-artificial-christmas-tree-w-stand">Pre-Lit Hinged Douglas</a></b> are all popular for their unique features. And they combine Christmas Tree and décor into one purchase.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What is the average price of a Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The typical tree will be about $89.99, but price point depends on many factors, like branch tip count or weather it comes with Christmas tree accessories. An un-lit Christmas tree will be less expensive than a pre-lit or snow-flocked pick.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What is the best way to decorate a Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">First, decide between lights or ribbon. Next spread out big globes and use smaller décor to fill gaps. Try to buy ornaments in 2-3 colors max. Lastly, deck gifts underneath with Christmas tree gift wraps and trims in matching designs.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">How to decorate Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Use Christmas tree décor sales to stock on essentials like lights, tinsel and ribbons. Pick shatterproof ornaments that will last. Add green paper clips and sturdy scissors and you've got a DYI Christmas tree décor kit to reuse over the years.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What are some trending ways to decorate the Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Keep in mind the deep, moody rustic look with variations like black, deep green Douglas or snow-flocked trees. Pick 2 base colors and 1 accent in décor. Match with a Pre-Lit Artificial Flocked Christmas Pine Wreath and your décor is up to date.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">How to put lights on a fake Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Don't spiral each layer in lights; spread randomly to look natural and include both tips and roots. You can simplify Christmas tree decoration with a pre-lit Christmas tree and even match with a pre-lit Christmas garland.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What are the most popular Christmas trees?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">You won't find certain trends in a typical Christmas tree shop. Snow-flocked and pre-lit trees add to the look of decor. Tinsel, white or other non-green trees are highly aesthetic. Instant setup trees are also trending for their convenience.</div></div>
+                        </div>
+                    </div>
+                </div>
+<style>
+    .collection_holiday {
+        padding-left: 50px;
+    }
+    @media only screen and (max-width: 968px) {
+        .collection_holiday {
+        padding-left: 0px;
+    }
+    }
+    .product-block{
+        margin-bottom:2%;
+    }.section-1526918570503 .rich-text-section {background-color: #fafafa; color: #333333;}
+ 
+  .faqs {display:flex;justify-content: space-between;background:#e1e1e1; padding:14px; color:#282828; border-radius:4px; font-size:16px; font-weight:500; text-align:left;}
+  .toggle_icon {font-size:20px; font-weight:500; color:#282828; text-decoration:none; cursor:pointer;}
+  .faq_ans {display:none; padding: 33px 37px; line-height:23px; color:#282828; font-size:16px;}
+  .faq_section {margin-bottom:15px;}
+  .review__section {background-color: #f6f6f6; padding: 1% 0;}
+  .collection-description.seo {padding: 10px 20px;}
+  </style>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    $(".toggle_icon").click(function(){
+      $('.faq_ans').slideUp();
+	  if($(this).parent().parent().find('.faq_ans').hasClass('open'))
+	  {
+		  $(this).text('+');
+		  $(this).parent().parent().find('.faq_ans').removeClass('open');
+		  $(this).parent().parent().find('.faq_ans').slideUp();
+	  }
+	  else
+	  {
+		 $('.faq_ans').removeClass('open');
+		 $(".toggle_icon").text('+');
+		 $(this).text('-');
+		 $(this).parent().parent().find('.faq_ans').addClass('open'); 
+	     $(this).parent().parent().find('.faq_ans').slideDown();
+	  }
+}); 
+});
+</script>
+            {%- endif -%}
+  </section>
+{%- if template contains 'collection' and collection.url == '/collections/christmas-trees'  -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the best artificial Christmas trees?","acceptedAnswer":{"@type":"Answer","text":"The Pre-Lit Snow Flocked Pine, the minimalist-style Pre-Lit Hinged Fir Pencil Tree, and the darker green Pre-Lit Hinged Douglas are all popular for their unique features. And they combine Christmas Tree and décor into one purchase."}},{"@type":"Question","name":"What is the average price of a Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"The typical tree will be about $89.99, but price point depends on many factors, like branch tip count or weather it comes with Christmas tree accessories. An un-lit Christmas tree will be less expensive than a pre-lit or snow-flocked pick."}},{"@type":"Question","name":"What is the best way to decorate a Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"First, decide between lights or ribbon. Next spread out big globes and use smaller décor to fill gaps. Try to buy ornaments in 2-3 colors max. Lastly, deck gifts underneath with Christmas tree gift wraps and trims in matching designs. "}},{"@type":"Question","name":"How to decorate some Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"Use Christmas tree décor sales to stock on essentials like lights, tinsel and ribbons. Pick shatterproof ornaments that will last. Add green paper clips and sturdy scissors and you've got a DYI Christmas tree décor kit to reuse over the years. "}},{"@type":"Question","name":"What are some trending ways to decorate the Christmas Tree? ","acceptedAnswer":{"@type":"Answer","text":"Keep in mind the deep, moody rustic look with variations like black, deep green Douglas or snow-flocked trees. Pick 2 base colors and 1 accent in décor. Match with a Pre-Lit Artificial Flocked Christmas Pine Wreath and your décor is up to date."}},{"@type":"Question","name":"How to put lights on a fake Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"Don't spiral each layer in lights; spread randomly to look natural and include both tips and roots. You can simplify Christmas tree decoration with a pre-lit Christmas tree and even match with a pre-lit Christmas garland."}},{"@type":"Question","name":"What are the most popular Christmas trees?","acceptedAnswer":{"@type":"Answer","text":"You won't find certain trends in a typical Christmas tree shop. Snow-flocked and pre-lit trees add to the look of decor. Tinsel, white or other non-green trees are highly aesthetic. Instant setup trees are also trending for their convenience."}}]}</script>
+
+  <div class="grid__item small-down--hide">&nbsp;</div>
+              <div class="rte container page-width collection-description seo">
+          <div class="heading-font-every border-bottom" style="font-weight: 500;margin-bottom:20px;">Shop Christmas Trees</div>
+                <div class="seo-text"><p>When you pick a <b><a href="https://bestchoiceproducts.com/collections/christmas-trees">Christmas tree</a></b>, you are not just picking a fun decoration piece. You’re picking an iconic memento to display “baby’s first Christmas” and a familiar monument that will be in family pictures for years on end! A tree that will spark sentimental feelings as the kids run down the stairs December 25th to see pretty gift wraps and trims underneath its boughs. 
+               At Best Choice Products, we have a collection of trees to fill your home with nostalgic Christmas magic. Choose one that speaks the most to you; go for a classic look, like a lush, hearty pine. Or try a trendy pick, perfect for small spaces, like one of our pencil Christmas trees for that minimalistic style. Our diverse collection of Artificial Christmas trees offers everything from spruce to alpine, and our trees come in multiple sizes to fit your living room, as well as your budget!</p>
+
+               <p><b>Stay Classic</b></p>
+                  <p>If you’re going for a traditional look, search no further! Best Choice Products offers numerous, full, green trees that have been bestsellers time and time again! Our <b><a href="https://bestchoiceproducts.com/products/snow-flocked-hinged-artificial-pine-christmas-tree-w-metal-stand">Hinged Artificial Christmas trees</a></b> are easy to fluff and style for a full-bodied, dreamy look. We even have Instant Set-Up trees for a quicker, simpler process. Dreading untangling the Christmas lights? Try our popular Pre-Lit Hinged Douglas Artificial Christmas Tree or choose from over a dozen other pre-lit options! 
+  To get into the winter theme and take your tree game even further, we suggest our snow-flocked options to bring a wintery ambiance to your living room, entryway, or any other area you want to display these majestic white-powdered greens!</p>
+
+               <p><b>Go Unconventional</b></p>
+                  <p>Although tradition is at the heart of Christmas, sometimes you want to spice things up a bit. We get it! That is why we offer a few non-traditional colorful trees for a fun twist to the evergreen, while still maintaining the full, lush shape you love to see this time of year. Try our gorgeous <b><a href="https://bestchoiceproducts.com/products/black-artificial-christmas-tree-w-easy-assembly-foldable-metal-stand">Black Artificial Tree</a></b> that can be kept up from Halloween to New Year’s Day! Or for a far-cry from the Jones’ decor, try our <b><a href="https://bestchoiceproducts.com/products/rose-gold-artificial-tinsel-christmas-tree-w-foldable-stand">Tinsel Christmas Trees</a></b> in pink, silver, or champagne. 
+  Whether you’re a holiday tradition aficionado or going for an avant-garde spin on the classic décor; you can find your family’s Christmas Tree right here at Best Choice Products and save big on quality you can celebrate!</p>
+                  <p>Get your <b><a href="https://bestchoiceproducts.com/collections/tabletop-trees">Tabletop Christmas Tree</a></b> from <a href="https://bestchoiceproducts.com/">Best Choice Products</a> today! Also our mini <b><a href="https://bestchoiceproducts.com/products/pre-lit-15in-ceramic-halloween-tree-w-orange-purple-bulb-lights">Ceramic Halloween Tree</a></b> and <b><a href="https://bestchoiceproducts.com/products/15in-pre-lit-hand-painted-ceramic-tabletop-christmas-tree-w-64-lights">Hand Painted Ceramic Christmas Tree</a></b> is the perfect addition to your holiday decor which is beautifully hand-painted and finished with a smooth gloss.</p>
+                </div>
+              </div>
+{%- endif -%}

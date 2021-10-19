@@ -1,0 +1,55 @@
+{% capture cart_html %}
+        <div class="utils__item header-cart hide-for-search">
+           <button class="btn--plain js-cart-open" style="padding-top: 10px;">
+            <span class="feather-icon">{% include 'icon-cart' %}</span>
+            {% comment %} <span class="header-cart__count">{{ cart.item_count }}</span> {% endcomment %}
+          </button>
+          {% if cart.items != empty %}
+            <div class="cart-summary global-border-radius" role="dialog">
+              <div style="display:flex;justify-content: space-between;margin-top:10%;">
+                {% if template contains 'cart' %}
+                  <a class="cart-summary__checkout" href="/checkout">{{ 'cart.general.checkout' | t }}</a>
+                {% else %}
+                  <div>SHOPPING CART</div>
+                {% endif %}
+                <div>
+                <button class="btn btn--plain js-cart-close">
+                  <span class="feather-icon icon--header" style="width:20px;height:20px;">
+                    {% include 'feather-x' %}
+                  </span>
+                </button>
+                </div>
+              </div>
+              {% for item in cart.items %}
+                <div class="cart-summary__product">
+                  <div class="cart-summary__product-image">
+                    {% include 'responsive-image', image: item.image %}
+                  </div>
+                  <div class="cart-summary__product__description">
+                    <div class="cart-summary__product-title">{{ item.product.title | link_to: item.product.url }}</div>
+                    <div class="cart-summary__price">
+                      <span class="theme-money">{{ item.price | money }}</span>
+                      {% if item.quantity > 0 %}
+                        <span class="cart-summary__quantity">{{ item.quantity }}</span>
+
+                      {% endif %}
+                    </div>
+                    <div class="cart-summary__product__variants">
+                      {% for option in item.product.options %}
+                        {% capture value_key %}option{{ forloop.index }}{% endcapture %}
+                        {% if item.variant[value_key] != 'Default Title' %}
+                        {% assign colorscart = option | split: ";"  %}
+                          <div class="added-notice__variant">
+                            <span class="added-notice__variant-label">{{ colorscart[0] }}:</span>
+                            <span class="added-notice__variant-value">{{ item.variant[value_key] }}</span>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        {% endcapture %}

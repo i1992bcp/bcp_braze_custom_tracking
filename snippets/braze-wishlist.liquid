@@ -1,0 +1,13 @@
+(function () {
+  if (!window.SwymCallbacks) {
+    window.SwymCallbacks = window.SwymCallbacks || [];
+  }
+  window.SwymCallbacks.push(function () {
+    _swat.fetchWrtEventType(function (products) {
+        let _wishProducts = products;
+        // console.log(products);
+        
+        BrazeDataLayer.ecommerce.wishlist.push(_wishProducts);
+    });
+  });
+})();

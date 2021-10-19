@@ -1,0 +1,372 @@
+<style>
+  .grid__item{padding-left:20px;}
+  .grid-view-item__title {font-size: 14px;}
+  .collection-name {font-size: 14px;}
+  .seo-text {font-size : 12px;}
+  .seo-btn {background-color: transparent; color: #5c79b9; text-decoration: underline; font-weight: 400;}
+  @media only screen and (max-width: 540px) {
+    .small--one-half {width: 50%;}
+    .page-width .grid__item {padding-left:30px !important;}
+  }
+  @media only screen and (min-width: 541px) {
+    .medium--one-third {width: 33%;}
+    .medium-four-fifths {width:100%;}
+  }
+  @media only screen and (max-width: 969px) {
+    .grid__item{padding-right:20px;}
+  }
+  @media only screen and (min-width: 969px) {
+    .medium-up--one-quarter{width: 25%;}
+    .medium-four-fifths{width: 80%;} 
+    .landing-seo{float:right;} 
+  } 
+</style>
+{%- assign linkw = 'mothers-day-gifts' -%}
+  {% if section.settings.layout == 'grid' %}
+    {%- assign limit = section.settings.grid | times: section.settings.rows -%}
+  {% else %}
+    {%- assign limit = 16 -%}
+  {% endif %}
+  
+  <section data-section-id="{{ section.id }}" data-section-type="collection-template" class="{%- if template contains 'collection' and collection.url == '/collections/outdoor-umbrellas'  -%}collect-offset-umbrella{%- endif -%}"> 
+    
+    <div class="col-sidebar main-content"></div>
+    {% if collection.description contains '<!-- seo -->' %}
+      <div class="clearfix"></div>
+    {% if section.settings.show_sidebar %}
+      <div class="grid__item small-down--hide">&nbsp;</div>
+      <div class="grid__item container medium-four-fifths landing-seo">
+    {% endif %}    
+    {% assign colseo = collection.description | split: '<!-- seo -->' | last %}
+    {% if colseo.size > 1300 %}  
+      <div class="rte page-width collection-description seo">
+          <div class="heading-font-every border-bottom" style="font-weight: 500;margin-bottom:20px;">{{ collection.title }}</div>
+            {% comment %}<div class="seo-text">{{ collection.description | split: '<!-- seo -->' | last | truncate:800 }}</div>{% endcomment %}<span class="seo-text">{{ collection.description | split: '<!-- seo -->' | last }}</span>
+      </div>
+    {% else %}
+      <div class="rte collection-description seo">
+          <div class="heading-font-every border-bottom" style="font-weight: 500;margin-bottom:20px;">{{ collection.title }}</div>
+          {{ collection.description | split: '<!-- seo -->' | last }}
+      </div>          
+    {% endif %}  
+  {% if section.settings.show_sidebar %}
+  </div>
+  {% endif %}          
+  {% endif %}
+  <div class="clearfix"></div>    
+  </section>
+
+  {% if collection.description contains '<!-- full_desc -->' %}
+   {%- if template contains 'collection' -%}
+      {{ collection.description | split: '<!-- full_desc -->' | last }}
+    {%- endif -%}
+  {%- endif -%}
+
+  <script>
+    $(".seo-btn").click(function(){ 
+      $(".seo-text").toggle();
+      $(".btn-text").toggle();
+    });    
+  </script>
+  {%- if template contains 'collection' -%}
+   <style>
+    .font_21_32 {font-family: 'Roboto Slab', serif;font-size: 21px;margin-bottom: 3%;}
+    .white {color: #fff !important;}
+    .section__margin {margin-top: 5%;}	
+    .review__section__div {background-color: #f6f6f6;padding: 3% 0;}
+    .margin_review {margin: 5% 0;}
+    .card_wrapper {background-color: #fff;padding: 20px;margin: 0 10px;}
+    .review__block {display: block !important;text-align: center;margin-bottom: 2%;}
+    .star_review {margin-right: 2%;} 
+    .review__title {font-size: 18px;font-weight: 600;}
+    .review_name {font-size: 14px;color: #989998;}
+    .review__button {text-align: center;margin-top: 15%;}
+    .metafield__bgcolor {background-color: #CC3333 !important;} 
+    .hand__right__button {display: inline-block;padding: 2% 5%;border-radius: 4px;}
+    .hand__button {font-size: 14px;font-weight: 600;color: #fff;}
+    .seo-text {font-size: 14px;}
+    .seo-text h2 {border-bottom: 1px solid #cccccc; margin-bottom: 15px; padding-bottom: 5px;}
+    .seo-text h2 b {font-weight: 500;} 
+    .seo-text h2 b a {font-weight: bolder;} 
+     .collect-offset-umbrella .landing-seo {max-width: 1340px; padding-left: 30px; padding-right: 30px; width: 100%; float: none;}
+    @media only screen and (min-width: 968px) {
+     .seo-text h2 {font-size: 20px;} 
+     .font_21_32 {font-size: 32px;}
+     .review__block {height: auto;display: -ms-grid !important;display: grid !important;grid-gap: 1rem;-ms-grid-columns: 1fr 1rem 1fr 1rem 1fr;grid-template-columns: repeat(4, 1fr);margin: 2% 0;text-align: left;}
+     .card_wrapper {padding: 10%;}
+     .review__button {margin-top: 2%;}
+     .section__margin {margin-top: 30px;}
+    }  
+    @media only screen and (max-width: 767px) { 
+     .review__button {margin-top: 20px; margin-bottom: 10px;}
+    }
+   </style>
+  {%- endif -%}
+
+  {%- if template contains 'collection' -%}
+   <style>
+    .collection_holiday {padding-left: 50px;}
+    @media only screen and (max-width: 968px) {
+      .collection_holiday {padding-left: 0px;}
+    }
+    .product-block{margin-bottom:2%;}
+    .section-1526918570503 .rich-text-section {background-color: #fafafa; color: #333333;}
+    .faqs {display:flex;justify-content: space-between;background:#e1e1e1; padding:14px; color:#282828; border-radius:4px; font-size:16px; font-weight:500; text-align:left;}
+    .toggle_icon {font-size:20px; font-weight:500; color:#282828; text-decoration:none; cursor:pointer;}
+    .faq_ans {display:none; padding: 33px 37px; line-height:23px; color:#282828; font-size:16px;}
+    .faq_section {margin-bottom:15px;}
+    .review__section {background-color: #f6f6f6; padding: 1% 0;}
+    .collection-description.seo {padding: 10px 20px;}
+   </style>
+
+   <script type="text/javascript">
+     $(document).ready(function() {
+      $('.collection_title').text(`${window.hitarthTitle}`);
+      $(".toggle_icon").click(function(){
+       $('.faq_ans').slideUp();
+	   if($(this).parent().parent().find('.faq_ans').hasClass('open'))
+	   {
+		  $(this).text('+');
+		  $(this).parent().parent().find('.faq_ans').removeClass('open');
+		  $(this).parent().parent().find('.faq_ans').slideUp();
+	   }
+	   else
+	   {
+		 $('.faq_ans').removeClass('open');
+		 $(".toggle_icon").text('+');
+		 $(this).text('-');
+		 $(this).parent().parent().find('.faq_ans').addClass('open'); 
+	     $(this).parent().parent().find('.faq_ans').slideDown();
+	   }
+     }); 
+    });
+   </script>
+{%- endif -%}           
+  
+{%- if template contains 'collection' and collection.url == '/collections/patio-swings-gliders' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will my patio swing suit all kinds of décor?","acceptedAnswer":{"@type":"Answer","text":"We cannot say if same patio will fit into the requirements of all kinds of décor but considering the diversity we try to deliver to our customers, you definitely can get alternatives that suit your décor style and space."}},{"@type":"Question","name":"How do I know which size I need/want?","acceptedAnswer":{"@type":"Answer","text":"For each product listed under our patio furniture, the details like materials it is made up of, fabric used, brief installation directions and sizes are mentioned. It will help you in deciding whether a specific product meets your needs or not."}},{"@type":"Question","name":"How much weight can my patio swings hold?","acceptedAnswer":{"@type":"Answer","text":"Even though you can find specifications along with each product, most of patio furniture is designed to carry around 550 lbs of weight. This can vary depending on the tensile strength of chains and anchors, that are holding it to the frames."}},{"@type":"Question","name":"How can I protect my swings, if they're a part of my outdoor space?","acceptedAnswer":{"@type":"Answer","text":"Since the swings are a part of your outdoor décor, they are subjected to climatic conditions like extreme heat, rain, winds and calamities as well. It is important to take care of them. You can make use of swing cover with ties and grommets at the bottom. This will minimize the probability of harm done to the furniture."}},{"@type":"Question","name":"In what all colors is the porch swing available?","acceptedAnswer":{"@type":"Answer","text":"The availability of each product depends highly on the demand of that type of item in our customer-oriented market. The available colors for each product are specified and also denoted by small round patches alongside the product."}}]}</script>
+{%- elsif template contains 'collection' and collection.url == '/collections/patio-conversation-sets' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"I'd like to order the black set but is it possible to have the cream color cushions instead of the white ones?","acceptedAnswer":{"@type":"Answer","text":"Sorry, not sure if there is a choice."}},{"@type":"Question","name":"How are these units outside after a year or so? We are worried about rust especially in a salty environment (near the ocean).","acceptedAnswer":{"@type":"Answer","text":"We just got them a few months ago but since they are all wicker and little metal they should be fine :)"}},{"@type":"Question","name":"How did this hold up for you during the rain? Did you cover it or left it?","acceptedAnswer":{"@type":"Answer","text":"It held up well still looks like new. I have them sitting under my canopy. I would recommend if you're going to keep them outside in the weather to spray the fabric cushions with Scotch Guard."}},{"@type":"Question","name":"Am I able to purchase individual parts of this set? ie. an additional sofa or 2 additional chairs. Thanks","acceptedAnswer":{"@type":"Answer","text":"This only comes in the set. I think you can find individual pieces on Amazon just make sure they are the same."}}]}</script>
+{%- elsif template contains 'collection' and collection.url == '/collections/bird-baths' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How Tall is Solar Lighted Bird Bath?","acceptedAnswer":{"@type":"Answer","text":"The Overall Dimension is 17\"(Dia) x 30\"(H), and the overall Weight is 3.3 lbs."}},{"@type":"Question","name":"Is there an on/off switch?","acceptedAnswer":{"@type":"Answer","text":"Yes ! The Solar Outdoor Bird Bath has an on/off switch.  You can locate the same at the bottom of the birdbath."}},{"@type":"Question","name":"Does this product have a non-slip surface in a bathing bowl?","acceptedAnswer":{"@type":"Answer","text":"The bathing bowl is a nonslip, the perfect size for smaller and medium-size birds."}},{"@type":"Question","name":"Does the birdbath available with a built-in planter?","acceptedAnswer":{"@type":"Answer","text":"Yes! A built-in planter is there with a drainage hole. You can personalize your garden with your favorite succulents, seasonal or perennial flowers."}}]}</script>
+{%- elsif template contains 'collection' and collection.url == '/collections/bird-baths-feeders' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which product would suit my garden?","acceptedAnswer":{"@type":"Answer","text":"It won't be wise to say what product would suit your set-up, since it depends on your choice and the style you go for. But you can get many options, kindly suit yourself according to your needs."}},{"@type":"Question","name":"Are only multi-feeders available?","acceptedAnswer":{"@type":"Answer","text":"No, multi-feeders is one of the category, there are bird baths and feeders available separately, depends on what you wish to take with you."}},{"@type":"Question","name":"How do I know which size I need/want?","acceptedAnswer":{"@type":"Answer","text":"For each product listed under our birth baths and feeder section, the details like materials it is made up of, design, brief assembly directions and sizes are mentioned. It will help you in deciding whether a specific product meets your needs or no. The dimensions vary for each product."}},{"@type":"Question","name":"How can I protect the feeders, if they're a part of my outdoor space?","acceptedAnswer":{"@type":"Answer","text":"Since the feeders are a part of your outdoor décor, they are subjected to direct outdoor environment like extreme heat, rain, winds and calamities as well. It is important to take care of them. You can make use of the product while making an occasional cleaning routine for the same. This will minimize the probability of harm done to the furniture. Also, use a dry cloth to avoid any kind of corrosion."}},{"@type":"Question","name":"In what all colors are the feeders and bird baths available?","acceptedAnswer":{"@type":"Answer","text":"The availability of each product depends highly on the demand of that type of item in our customer-oriented market. The available colors for each product are specified and also denoted by small round patches alongside the product. Mostly, they are available in dark colors so that their shelf-life is longer and they are more durable."}}]}</script>
+{%- elsif template contains 'collection' and collection.url == '/collections/hammock-sets' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which one of the two is better: double hammock or single hammock?","acceptedAnswer":{"@type":"Answer","text":"We cannot compare the two because the functionality differs. The quality is not compromised, irrespective of whether it is a single hammock or double hammock. Single hammock is meant for single person while double hammock is meant for two people."}},{"@type":"Question","name":"Is the elasticity affected by the number of people?","acceptedAnswer":{"@type":"Answer","text":"It depends on the material used but mostly, being high quality, it retains the shape and you can enjoy the luxury of relaxation with your family."}},{"@type":"Question","name":"How do I know which size I need/want?","acceptedAnswer":{"@type":"Answer","text":"For each product listed under our hammock section, the details like materials it is made up of, design, brief assembly directions and sizes are mentioned. It will help you in deciding whether a specific product meets your needs or no. The dimensions vary for each product."}},{"@type":"Question","name":"How can I take care of these hammock sets?","acceptedAnswer":{"@type":"Answer","text":"Hammock sets are to be used outdoor but have to be stored inside. Wash them with your hands and avoid any kind of harsh brushes. Store it in a dry and cool place. This will minimize the probability of harm done to the hammock fabric. Also, use a dry cloth to avoid any kind of corrosion."}},{"@type":"Question","name":"In what all colors are the sets available?","acceptedAnswer":{"@type":"Answer","text":"The availability of each product depends highly on the demand of that type of item in our customer-oriented market. The available colors for each product are specified and also denoted by small round patches alongside the product. Mostly, they are available in dark colors so that their shelf-life is longer and they are more durable."}}]}</script>
+{%- elsif template contains 'collection' and collection.url == '/collections/raised-garden-beds' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the wooden raised garden beds rot-resistant?","acceptedAnswer":{"@type":"Answer","text":"Yes, the raised beds made up of wood are rot-resistant and termites-resistant. It will have a longer shelf life and you can continue to cherish grow your plants and vegetables."}},{"@type":"Question","name":"Is the elasticity affected by the kind of plant?","acceptedAnswer":{"@type":"Answer","text":"No, it does not matter what plant you grow but it is more feasible to grow bushes, flowering plants and some leafy vegetables. So be particular in what you grow. The quality would not be compromised in any case."}},{"@type":"Question","name":"How do I know which size I need/want?","acceptedAnswer":{"@type":"Answer","text":"For each product listed under our hammock section, the details like materials it is made up of, design, brief assembly directions and sizes are mentioned. It will help you in deciding whether a specific product meets your needs or no. The dimensions vary for each product. This is to note, there is no size but dimensions. Kindly tally them according to your needs."}},{"@type":"Question","name":"How can I take care of these garden beds?","acceptedAnswer":{"@type":"Answer","text":"Hammock sets are to be used outdoor or indoor and are advised to be stored inside. Wash them with your hands and avoid any kind of harsh surfaces for cleaning. Store it in a dry and cool place. This will minimize the probability of harm done to the material which it is made up of. Also, use a dry cloth to avoid any kind of corrosion."}},{"@type":"Question","name":"In what all colors are the sets available?","acceptedAnswer":{"@type":"Answer","text":"The availability of each product depends highly on the demand of that type of item in our customer-oriented market. The available colors for each product are specified and also denoted by small round patches alongside the product. Mostly, they are available in dark colors so that their shelf-life is longer and they are more durable."}}]}</script>
+{%- elsif template contains 'collection' and collection.url == '/collections/umbrella-stands' -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will my umbrella base and holders suit all kinds of décor?","acceptedAnswer":{"@type":"Answer","text":"We cannot say if same base will fit into the requirements of all kinds of décor but considering the diversity we try to deliver to our customers, you definitely can get alternatives that suit your décor style and space."}},{"@type":"Question","name":"How do I know which size I need/want?","acceptedAnswer":{"@type":"Answer","text":"For each product listed under our patio furniture, the details like materials it is made up of, fabric used, brief installation directions and sizes are mentioned. It will help you in deciding whether a specific product meets your needs or not."}},{"@type":"Question","name":"How much weight can my patio bases hold?","acceptedAnswer":{"@type":"Answer","text":"Even though you can find specifications along with each product, most of patio furniture is designed to carry around poles ranging from 1.5 inches to 2.15 inches and weight around 125 pounds. This can vary depending on the tensile strength of chains and anchors, that are holding it to the frames."}},{"@type":"Question","name":"How can I protect my bases, if they're a part of my outdoor space?","acceptedAnswer":{"@type":"Answer","text":"Since the bases are a part of your outdoor décor, they are subjected to direct outdoor environment like extreme heat, rain, winds and calamities as well. It is important to take care of them. You can make use of the product while making an occasional cleaning routine for the same. This will minimize the probability of harm done to the furniture. Also, use a dry cloth to avoid any kind of corrosion."}},{"@type":"Question","name":"In what all colors is the umbrella holders available?","acceptedAnswer":{"@type":"Answer","text":"The availability of each product depends highly on the demand of that type of item in our customer-oriented market. The available colors for each product are specified and also denoted by small round patches alongside the product. Mostly, they are available in dark colors so that their shelf-life is longer and they are more durable."}}]}</script>
+{%- endif -%}
+  {% schema %}
+    {
+      "name": "Collection pages",
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "default": "grid",
+          "options": [
+            {
+              "value": "grid",
+              "label": "Grid"
+            },
+            {
+              "value": "list",
+              "label": "List"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "grid",
+          "label": "Products per row (grid only)",
+          "default": "4",
+          "options": [
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            },
+            {
+              "value": "6",
+              "label": "6"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "rows",
+          "label": "Rows per page (grid only)",
+          "default": "3"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_sidebar",
+          "label": "Show sidebar"
+        },
+        {
+          "type": "select",
+          "id": "sidebar_size",
+          "label": "Sidebar Size",
+          "default": "one-quarter",
+          "options": [
+            {
+              "value": "one-seventh",
+              "label": "15%"
+            },
+            {
+              "value": "one-fifth",
+              "label": "20%"
+            },
+            {
+              "value": "one-quarter",
+              "label": "25%"
+            },
+            {
+              "value": "one-third",
+              "label": "33%"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "grid_size",
+          "label": "Grid Size",
+          "default": "three-quarters",
+          "options": [
+            {
+              "value": "two-thirds",
+              "label": "66%"
+            },
+            {
+              "value": "three-quarters",
+              "label": "75%"
+            },
+            {
+              "value": "four-fifths",
+              "label": "80%"
+            },
+            {
+              "value": "sixth-sevenths",
+              "label": "85%"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_collection_image",
+          "label": "Show collection image",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "text-center",
+              "label": "Center"
+            },
+            {
+              "value": "text-left",
+              "label": "Left"
+            },
+            {
+              "value": "text-right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_breadcrumb",
+          "label": "Show breadcrumbs",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "image_rollover_enable",
+          "label": "Second image on rollover"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "label": "Show product vendor",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show price",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_title",
+          "label": "Show collection title"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_swatches",
+          "label": "Show swatches"
+        },
+        {
+          "type": "checkbox",
+          "id": "info_rollover_enable",
+          "label": "Show info on rollover"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_quick_add",
+          "label": "Show quick add",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "category_carousel",
+          "label": "Show category carousel",
+      "default": false
+        },
+        {
+          "type": "header",
+          "content": "Sorting options"
+        },
+        {
+          "type": "checkbox",
+          "id": "sort_enable",
+          "label": "Enable sorting",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "product_count_enable",
+          "label": "Enable product count"
+        },
+        {
+          "type": "checkbox",
+          "id": "vendor_sort_enable",
+          "label": "Enable vendor sorting",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "tags_enable",
+          "label": "Enable tag filtering",
+          "default": true
+        }
+      ]
+    }
+  {% endschema %}

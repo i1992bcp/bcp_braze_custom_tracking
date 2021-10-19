@@ -1,0 +1,131 @@
+<style>
+	.about_desktop_image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.slick-slide {
+    	margin: 0;
+	}	
+	#about_second .slick-list{padding:0 30% 0 0;}
+	.slick_slider_about {
+		text-align: center;
+	}
+	.slick-slide img {
+		margin: 0 auto;
+	}
+	.mobile_number_ab {
+		margin: 0.5em 0;
+	}
+	.mobile_header_ab {
+		margin:  0.5em 0;
+	}
+	.mobile_number_ab {
+		font-size: 29px;font-weight: bold;
+	}
+	.mobile_header_ab {
+		font-size: 14px; font-weight: bold;
+	}
+	.mobile_body_ab {
+		font-size: 14px;color: #676765;
+	}
+</style>
+<section id="about_second" class="about_us_product_developing about-us_new_section"> 
+	<div class="about_header" style="color: {{ section.settings.bg_color_about_us_second }};">{{ section.settings.text_about_us_two }}</div>
+	<div class="desktop_show">
+		<img class="about_desktop_image" src="{{ section.settings.image_about_us_two | img_url : '1200x' }}" />
+	</div>
+	<div class="mobile_show">
+		<div class="slick_slider_about">
+			{% for block in section.blocks %}
+				<div>
+					<div class="mobile_ab_iamge"><img src="{{ block.settings.about_mobile_image | img_url : '130x' }}"/></div>
+					<div class="mobile_number_ab" style="color: {{ block.settings.about_image_color }}; opacity: {{ block.settings.about_image_number_opacity }};">{{ block.settings.about_image_number }}</div>
+					<div class="mobile_header_ab">{{ block.settings.ab_mobile_header }}</div>
+					<div class="mobile_body_ab">{{ block.settings.about_image_body }}</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% schema %}
+{
+	"name": "About Us Second Section",
+	"settings": [
+		{
+			"type": "text",
+			"id": "text_about_us_two",
+			"label": "Header Title",
+			"default": "We start by developing products with elevated<br /> features you’ll value."
+		},
+		{
+			"type": "color",
+			"id": "bg_color_about_us_second",
+			"label": "Header Color",
+			"default": "#cc3333"
+		  },
+		{
+			"type": "image_picker",
+			"id": "image_about_us_two",
+			"label": "Desktop Image"
+		}
+	],
+	"blocks": [
+		{
+			"type": "mobile_de",
+			"name": "Mobile Image",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "about_mobile_image",
+					"label": "Mobile image picker"
+				},
+				{
+					"type": "text",
+					"id": "ab_mobile_header",
+					"label": "Header About",
+					"default": "employee name"
+				},
+				{
+					"type": "text",
+					"id": "about_image_number",
+					"label": "About Number",
+					"default": "1"
+				},
+				{
+					"type": "text",
+					"id": "about_image_number_opacity",
+					"label": "Opacity Number 0 to 1 Between",
+					"default": "0.32"
+				},
+				{
+					"type": "color",
+					"id": "about_image_color",
+					"label": "About color",
+					"default": "#db273c"
+				},
+				{
+					"type": "text",
+					"id": "about_image_body",
+					"label": "About Number Body",
+					"default": "sjasddfjkhsdjkfskjdbsb"
+				}
+			]	
+		}
+	],
+	"presets": [
+		{
+			"name": "Mobile_de",
+			"category": "MobileImage",
+			"blocks": [
+				{
+					"type": "mobile_de"
+				},
+				{
+					"type": "mobile_de"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

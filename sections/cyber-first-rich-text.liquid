@@ -1,0 +1,104 @@
+<style>
+  .section-{{ section.id }} .rich-text-section {
+    background-color: {{ section.settings.cyber_chri_firstonesection_background_colour }};
+    color: {{ section.settings.cyber_chri_firstonesection_text_colour }};
+  }.new-large-section {
+    padding-top:30px;
+    padding-bottom:30px;
+  }
+</style>
+
+<section class="relative container container--no-mobile-padding section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="rich-text-section" style="margin-top:20px;">
+  <div class="page-width rich-text-section new-large-section global-border-radius">
+    <div class="reading-width text-center">
+      {% if section.settings.cyber_chri_firstonesection_title != blank %}
+        <h2 class="heading-font-every">{{ section.settings.cyber_chri_firstonesection_title | escape }}</h2>
+      {% endif %}
+
+      {% if section.settings.cyber_chri_firstonetext != blank %}
+        <div class="rte" style="font-size:14px;">
+          {{ section.settings.cyber_chri_firstonetext }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.cyber_chri_firstonesection_url != blank and section.settings.cyber_chri_firstonesection_url_text != blank %}
+
+        {%- assign bg_alpha = section.settings.cyber_chri_firstonesection_background_colour | color_extract: 'alpha' -%}
+        {%- assign link_inherit_color = false -%}
+        {%- if section.settings.cyber_chri_firstonesection_url_style == 'link_style' -%}
+          {%- if bg_alpha > 0 and section.settings.cyber_chri_firstonesection_background_colour != settings.color_body_background -%}
+            {%- assign link_inherit_color = true -%}
+          {%- endif -%}
+        {%- endif -%}
+
+        <div class="rich-text-section__btn-row">
+          <a class="{% if section.settings.cyber_chri_firstonesection_url_style == 'button_1' %}btn btn--small btn--primary{% elsif section.settings.cyber_chri_firstonesection_url_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link {% if link_inherit_color == true %}standard-link--inherit-color{% endif %}{% endif %}" href="{{ section.settings.cyber_chri_firstonesection_url | escape }}">{{ section.settings.cyber_chri_firstonesection_url_text | escape }}</a>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Cyber To Enter",
+    "settings": [
+      {
+        "type": "color",
+        "id": "cyber_chri_firstonesection_background_colour",
+        "label": "Background color",
+        "default": "#f9f9f9"
+      },
+      {
+        "type": "color",
+        "id": "cyber_chri_firstonesection_text_colour",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "text",
+        "id": "cyber_chri_firstonesection_title",
+        "label": "Heading",
+        "default": "Rich text"
+      },
+      {
+        "type": "richtext",
+        "id": "cyber_chri_firstonetext",
+        "label": "Text",
+        "default": "<p>Use this section to share information about your brand with your customers.<\/p>\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>"
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "cyber_chri_firstonesection_url_text",
+        "label": "Text"
+      },
+      {
+        "type": "url",
+        "id": "cyber_chri_firstonesection_url",
+        "label": "Link"
+      },
+      {
+        "type": "radio",
+        "id": "cyber_chri_firstonesection_url_style",
+        "label": "Style",
+        "options": [
+          { "value": "button_1", "label": "Button - primary" },
+          { "value": "button_2", "label": "Button - secondary" },
+          { "value": "link_style", "label": "Link"}
+        ],
+        "default": "button_1"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Cyber To Enter",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,56 @@
+   
+  <div class="page-width" data-section-id="{{ section.id }}" style="margin-top:50px;">
+    {% if section.settings.title != blank %}
+      <div class="text-center" style="margin-bottom: 5px;">
+        <h2 class="heading-font-every" style="text-transform:lowercase;">{{ section.settings.title | escape }}</h2>
+      </div>
+    {% endif %}
+      <div class="text-center">
+        <p style="font-size:14px; margin:0px 10px;">{{ section.settings.message | escape }}
+      {% if section.settings.linktext != blank %}    
+        <div><a href="{{section.settings.link}}" class="standard-link">{{section.settings.linktext | escape}}</a></div>
+        {% endif %}
+        </p>
+      </div>
+    <div>
+      <div data-crl8-container-id="homepage"></div>
+    </div>
+  </div>   
+{% schema %}
+  {
+    "name": "instagram-section",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Testimonials"
+      },
+      {
+        "type": "textarea",
+        "id": "message",
+        "label": "Welcome message"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "linktext",
+        "type": "text",
+        "label": "Link text",
+        "default": "Click here"
+      }
+    ],
+    "presets": [
+      {
+        "name": "instagram-section",
+        "category": "Text"
+        
+      }
+    ]
+    
+  }
+{% endschema %}

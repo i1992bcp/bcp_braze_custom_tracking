@@ -1,0 +1,180 @@
+{% assign display_map = false %}
+{%- assign onboarding = false -%}
+{%- assign bg_image = section.settings.background_image -%}
+
+{%- if section.settings.api_key == blank and bg_image == blank -%}
+  {%- assign onboarding = true -%}
+{%- endif -%}
+{%- if section.settings.api_key != blank and section.settings.map_address -%}
+  {%- assign display_map = true -%}
+{%- endif -%}
+
+<style>
+  {% if bg_image.src != blank %}
+  .section-{{ section.id }} .map-section__image {
+    background-position: {{ section.settings.background_image_position }};
+  }
+  {% endif %}
+</style>
+
+<div class="relative container container--no-mobile-padding large-row">
+  <section class="page-width map-section section-{{ section.id }}
+      {% if display_map %}map-section--display-map{% endif %}
+      {% if onboarding == true %}map-section--onboarding{% endif %}"
+      data-section-id="{{ section.id }}"
+      data-section-type="map">
+    <div class="map-section__background-wrapper global-border-radius">
+      {% if bg_image.src != blank %}
+        <div class="map-section__image">
+          <div class="rimage-background fade-in lazyload"
+                data-bgset="{% include 'bgset', image: bg_image %}"
+                data-sizes="auto"
+                data-parent-fit="cover">
+            <noscript>
+              <img src="{{ bg_image | img_url: '1024x1024' }}" alt="{{ bg_image.alt | escape }}" class="rimage-background__image">
+            </noscript>
+          </div>
+        </div>
+      {% elsif onboarding == true %}
+        <div class="placeholder-background">
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+      {% if display_map %}
+        <div class="map-section__container"
+              id="Map-{{ section.id }}"
+              data-map
+              data-address-setting="{{ section.settings.map_address | escape }}"
+              data-api-key="{{ section.settings.api_key }}"
+              data-map-style="{{ section.settings.map_style }}">
+        </div>
+        <div class="map-section__overlay" data-map-overlay></div>
+      {% endif %}
+    </div>
+    <div class="page-width">
+      <div class="map-section__content-wrapper reading-width">
+        <div class="map-section__content global-border-radius">
+          {% if section.settings.heading != blank %}
+            <h3 class="large-title">{{ section.settings.heading | escape }}</h3>
+          {% endif %}
+          {% if section.settings.address != blank %}
+            <div class="rte">{{ section.settings.address }}</div>
+            {% if section.settings.map_address != blank and section.settings.button_text != blank %}
+              <p>
+                <a href="https://maps.google.com?daddr={{ section.settings.map_address | escape }}"
+                  class="btn btn--secondary map_section__directions-btn"
+                  target="_blank"
+                >
+                  {% if section.settings.show_pin %}
+                    <span class="feather-icon">{% include 'feather-pin' %}</span>
+                  {% endif %}
+                  {% if section.settings.button_text %}
+                    <span>{{ section.settings.button_text | escape }}</span>
+                  {% endif %}
+                </a>
+              </p>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+  {
+    "name": "Map",
+    "class": "index-section index-map-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Our store"
+      },
+      {
+        "id": "address",
+        "type": "richtext",
+        "label": "Address and hours",
+        "default": "<p>123 Fake St.<br>Toronto, Canada</p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>"
+      },
+      {
+        "id": "map_address",
+        "type": "text",
+        "label": "Map address",
+        "info": "Google Maps will find the exact location",
+        "default": "80 Spadina Ave, Toronto"
+      },
+      {
+        "id": "button_text",
+        "type": "text",
+        "label": "Map link label",
+        "default": "Get directions"
+      },
+      {
+        "id": "show_pin",
+        "type": "checkbox",
+        "label": "Show pin",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "id": "api_key",
+        "type": "text",
+        "label": "Google Maps API key",
+        "info": "You’ll need to [register a Google Maps API Key](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) to display the map"
+      },
+      {
+        "type": "select",
+        "id": "map_style",
+        "label": "Map style",
+        "default": "default",
+        "options": [
+          {
+            "label": "Default",
+            "value": "default"
+          },
+          {
+            "label": "Silver",
+            "value": "silver"
+          },
+          {
+            "label": "Retro",
+            "value": "retro"
+          },
+          {
+            "label": "Dark",
+            "value": "dark"
+          },
+          {
+            "label": "Night",
+            "value": "night"
+          },
+          {
+            "label": "Aubergine",
+            "value": "aubergine"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Image",
+        "info": "Displayed if the map isn’t loaded"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Map",
+        "category": "Store information"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,278 @@
+<style>
+    {% for block in section.blocks %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      .section-{{ section.id }}.split-image-section .block-{{ current }} .overlay {
+        top: {{ block.settings.overlay_position_y }}%;
+        left: {{ block.settings.overlay_position_x }}%;
+      }
+      .section-{{ section.id }}.split-image-section .block-{{ current }} .image-product-label {
+        top: {{ block.settings.label_position_y }}%;
+        left: {{ block.settings.label_position_x }}%;
+      }
+  
+  .section-{{ section.id }} .block-{{ forloop.index }} .overlay__bg{
+       opacity:0.8;
+      background-color: #fff;
+    }
+
+    {% endfor %}
+
+  </style>
+  
+  <section class="container container--no-mobile-padding large-row split-image-section section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="split-image">
+    <div class="page-width">
+      <div class="grid">
+        {% for block in section.blocks %}
+          {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+          <div class="grid__item one-half small-down--one-whole block-{{ current }}" {{ block.shopify_attributes }}>
+              <div style="text-align: {{ block.settings.ugc_style }}; font-size:10px; color:#676767;">{{  block.settings.ugc_text }}</div>
+            <div class="relative avoid-overlaps global-border-radius split-image__content-container">
+              <div class="avoid-overlaps__mobile-container">
+                {% if block.settings.image == blank %}
+                  <div class="split-image">
+                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% else %}
+                  <div class="split-image split-image-{{ current }} {% if section.settings.aspect_ratio == 'portrait' %} split-image--portrait{% else %} split-image--square{% endif %} rimage-background fade-in lazyload"
+                      data-bgset="{% include 'bgset', image: block.settings.image %}"
+                      data-sizes="auto"
+                      data-parent-fit="cover">
+                    <noscript>
+                      <img src="{{ block.settings.image | img_url: '1024x1024' }}" alt="{{ block.settings.image.alt | escape }}" class="rimage-background__image">
+                    </noscript>
+                  </div>
+                {% endif %}
+  
+                {% if block.settings.product_id != blank %}
+                  {% assign product_label = all_products[block.settings.product_id] %}
+                  {% capture current_number %}{{ current }}{% endcapture %}
+                  {% assign quickbuy_toggle = settings.quickbuy_labels_toggle %}
+                  {% include 'image-product-label',
+                            show_chevron: block.settings.show_chevron,
+                            chevron: block.settings.chevron_position,
+                            quickbuy: quickbuy_toggle,
+                            color_bg: block.settings.color_label_background,
+                            color_text: block.settings.color_label_text %}
+                {% endif %}
+              </div>
+  
+              {% if block.settings.overlay_title != blank or block.settings.overlay_url_text != blank %}
+                {% include 'image-overlay',
+                            background_color: block.settings.color_overlay_background,
+                            text_color: block.settings.color_overlay_text,
+                            heading_fonts : block.settings.heading_font,
+                            title: block.settings.overlay_title,
+                            url: block.settings.overlay_url,
+                            url_text: block.settings.overlay_url_text,
+                            url_style: block.settings.overlay_url_style %}
+              {% endif %}
+            </div>
+            
+          </div>
+          
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+  {% schema %}
+    {
+      "name": "Split image",
+      "max_blocks": 2,
+      "settings": [
+        {
+          "type": "radio",
+          "id": "aspect_ratio",
+          "label": "Image shape",
+          "options": [
+            { "value": "portrait", "label": "Portrait" },
+            { "value": "square", "label": "Square" }
+          ],
+          "default": "portrait"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "name": "Image",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "header",
+              "content": "Overlay"
+            },
+            {
+              "type": "color",
+              "id": "color_overlay_background",
+              "label": "Background color",
+              "default": "#ffffff"
+            },
+            {
+              "type": "color",
+              "id": "color_overlay_text",
+              "label": "Text color",
+              "default": "#333333"
+            },
+            {
+              "type": "text",
+              "id": "overlay_title",
+              "label": "Heading",
+              "default": "Split image"
+            },
+            {
+              "type": "text",
+              "id": "heading_font",
+              "label": "Heading Font (in pixels)",
+              "default": "16"
+            },
+            {
+              "type": "text",
+              "id": "overlay_url_text",
+              "label": "Button text"
+            },
+            {
+              "type": "url",
+              "id": "overlay_url",
+              "label": "Button link"
+            },
+            {
+              "type": "radio",
+              "id": "overlay_url_style",
+              "label": "Button style",
+              "options": [
+                { "value": "button_1", "label": "Button - primary" },
+                { "value": "button_2", "label": "Button - secondary" },
+                { "value": "link_style", "label": "Link"}
+              ],
+              "default": "button_1"
+            },
+            {
+              "type": "range",
+              "id": "overlay_position_x",
+              "label": "Horizontal position",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "step": 1,
+              "default": 50
+            },
+            {
+              "type": "range",
+              "id": "overlay_position_y",
+              "label": "Vertical position",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "step": 1,
+              "default": 80
+            },
+            {
+              "type": "header",
+              "content": "Product label"
+            },
+            {
+              "type": "color",
+              "id": "color_label_background",
+              "label": "Background color",
+              "default": "#ffffff"
+            },
+            {
+              "type": "color",
+              "id": "color_label_text",
+              "label": "Text color",
+              "default": "#333333"
+            },
+            {
+              "type": "product",
+              "id": "product_id",
+              "label": "Product"
+            },
+            {
+              "type": "checkbox",
+              "id": "show_chevron",
+              "label": "Show arrow",
+              "default": true
+            },
+            {
+              "type": "radio",
+              "id": "chevron_position",
+              "label": "Arrow position",
+              "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "right", "label": "Right" }
+              ],
+              "default": "right"
+            },
+            {
+              "type": "range",
+              "id": "label_position_x",
+              "label": "Horizontal position",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "step": 1,
+              "default": 20
+            },
+            {
+              "type": "range",
+              "id": "label_position_y",
+              "label": "Vertical position",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "step": 1,
+              "default": 20
+            },
+            {
+              "type": "text",
+              "id": "ugc_text",
+              "label": "Ugc credit",
+              "default": "@hitarth" 
+            },
+            {
+              "type": "radio",
+              "id": "ugc_style",
+              "label": "style for UGC",
+              "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "right", "label": "Right" },
+                { "value": "center", "label": "Center"}
+              ],
+              "default": "center"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Split image",
+          "category": "Image",
+          "blocks": [
+            {
+              "type": "image",
+              "settings": {
+                "overlay_position_x": 50,
+                "overlay_position_y": 80,
+                "label_position_x": 20,
+                "label_position_y": 20
+              }
+            },
+            {
+              "type": "image",
+              "settings": {
+                "overlay_position_x": 50,
+                "overlay_position_y": 20,
+                "label_position_x": 80,
+                "label_position_y": 80
+              }
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}
+  

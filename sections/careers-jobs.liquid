@@ -1,0 +1,240 @@
+<div id="jobs" class="page-width" style="margin-top: 5%;">
+<div class="jobs grid">
+        <div class="grid__item one-whole text-center">      
+            <h2 class="heading-font-every h3">{{ section.settings.title }}</h2>
+            <div class="sub-heading-career"> {{ section.settings.sub_title_career }} </div>
+             <div style="margin-top:5px;"><a href="{{ section.settings.sub_title_career_url }}">{{ section.settings.url_title_career }}</a> </div> 
+        </div>       
+    {% for block in section.blocks %}
+      {% case block.settings.width %}
+        {% when '16%' %}
+          {%- assign block_width = 'medium-up--one-sixth' -%}
+          {%- assign image_size = '400x400' -%}     
+        {% when '25%' %}
+          {%- assign block_width = 'medium-up--one-quarter' -%}
+          {%- assign image_size = '400x400' -%}
+        {% when '33%' %}
+          {%- assign block_width = 'medium-up--one-third' -%}
+          {%- assign image_size = '600x600' -%}
+        {% when '50%' %}
+          {%- assign block_width = 'medium-up--one-half' -%}
+          {%- assign image_size = '1024x1024' -%}
+        {% when '66%' %}
+          {%- assign block_width = 'medium-up--two-thirds' -%}
+          {%- assign image_size = '1024x1024' -%}
+        {% when '75%' %}
+          {%- assign block_width = 'medium-up--three-quarters' -%}
+          {%- assign image_size = '1024x1024' -%}
+        {% when '100%' %}
+          {%- assign block_width = 'one-whole' -%}
+          {%- assign image_size = '2048x2048' -%}
+      {% endcase %}
+     {% case block.type %}
+      {% when 'department' %}  
+      	<div class="grid__item {{ block_width }} medium--{{ block.settings.medium_width }} small--{{ block.settings.small_width }}" {{ block.shopify_attributes }}>
+          	<div class="border-bottom">
+          		<h3>{{ block.settings.department }}</h3>   
+          	</div>
+    	</div>
+      {% when 'job' %}  
+        <div class="job-listing grid__item {{ block_width }} medium--{{ block.settings.medium_width }} small--{{ block.settings.small_width }}" {{ block.shopify_attributes }}>              
+          <div class="job-holder border-bottom">
+        	<div class="position">
+             {{ block.settings.position }}
+        	</div>
+        	<div class="location text-center">
+             {{ block.settings.location }}
+        	</div> 
+        	<div class="apply text-right">
+          		<a href="{{ block.settings.apply }}">Apply {% include 'feather-arrow-right' %}</a>
+        	</div>
+          </div>
+    	</div>
+      {% endcase %}
+    {% endfor %}
+    <div class="clearfix"></div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Jobs",
+    "class": "careers-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Job Opportunities"
+      },
+      {
+        "type": "text",
+        "id": "sub_title_career",
+        "label": "Sub Title",
+        "default": "Job Opportunities"
+      },
+      {
+        "type": "text",
+        "id": "url_title_career",
+        "label": "URL Title",
+        "default": "Job Opportunities"
+      },
+      {
+        "type": "url",
+        "id": "sub_title_career_url",
+        "label": "Sub Title URL"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "department",
+        "name": "Department",
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+      	  {
+        	"type": "text",
+        	"id": "department",
+        	"label": "Department"
+          }
+        ]
+      },
+      {
+        "type": "job",
+        "name": "Job",
+        "settings": [
+          {
+            "type": "text",
+            "id": "position",
+            "label": "Position"
+          },
+          {
+            "type": "text",
+            "id": "location",
+            "label": "Location"
+          },
+          {
+            "type": "url",
+            "id": "apply",
+            "label": "Apply"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "medium_width",
+            "label": "Medium width",
+            "default": "one-whole",
+            "options": [
+              {
+                "value": "one-quarter",
+                "label": "25%"
+              },
+              {
+                "value": "one-third",
+                "label": "33%"
+              },
+              {
+                "value": "one-half",
+                "label": "50%"
+              },
+              {
+                "value": "two-thirds",
+                "label": "66%"
+              },
+              {
+                "value": "three-quarters",
+                "label": "75%"
+              },
+              {
+                "value": "one-whole",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "small_width",
+            "label": "Small width",
+            "default": "one-whole",
+            "options": [
+              {
+                "value": "one-third",
+                "label": "33%"
+              },
+              {
+                "value": "one-half",
+                "label": "50%"
+              },
+              {
+                "value": "two-thirds",
+                "label": "66%"
+              },
+              {
+                "value": "three-quarters",
+                "label": "75%"
+              },
+              {
+                "value": "one-whole",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Jobs",
+        "category": "Careers",
+        "blocks": [
+          {
+            "type": "department"
+          },
+          {
+            "type": "job"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

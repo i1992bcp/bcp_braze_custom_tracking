@@ -1,0 +1,39 @@
+<style>
+  #[[ sku ]]:hover {
+    background-image: url('[[# helpers.mediumhoverImage ]][[/ helpers.mediumhoverImage ]]');
+  }
+  #[[ sku ]] {
+    background-image: url('[[# helpers.mediumImage ]][[/ helpers.mediumImage ]]');
+  }
+</style><div class="[[ sku ]] ais-infinite-list-view" data-algolia-image="[[ meta.global.VARIANT_IMAGE_URLS ]]" data-algolia-index="[[ index ]]" data-aloglia-sku="[[ sku ]]" data-algolia-position="[[ productPosition ]]" data-algolia-queryid="[[ queryID ]]" data-algolia-objectid="[[ objectID ]]" class="ais-hit ais-product" data-handle="[[ handle ]]" data-variant-id="[[ objectID ]]" data-distinct="[[ _distinct ]]">
+  <a class="image_hover" href="[[# helpers.instantsearchLink ]][[/ helpers.instantsearchLink ]]" data-id="[[ objectID ]]">
+    <p class="ais-hit--price" style="display: none;">[[# helpers.instantsearchPrice ]][[/ helpers.instantsearchPrice ]]</p>
+    <div style="position: relative;">
+      <div id="[[ sku ]]" class="rimage-background fade-in lazyload ais-hit--picture"></div>
+      <div class="card__badge">
+        [[# helpers.fullCardBadge]][[/ helpers.fullCardBadge]]
+      </div>
+    </div>
+  </a>
+  <div class="ais-hit--details">
+    <a data-algolia-index="[[ index ]]" data-algolia-position="[[ productPosition ]]" data-id="[[ objectID ]]" data-algolia-queryid="[[ queryID ]]" data-algolia-objectid="[[ objectID ]]" href="[[# helpers.instantsearchLink ]][[/ helpers.instantsearchLink ]]" onclick="void(0)" title="[[# helpers.fullTitle ]][[/ helpers.fullTitle ]]"">
+      <p class="ais-hit--price" style="display: none;">[[# helpers.instantsearchPrice ]][[/ helpers.instantsearchPrice ]]</p>
+      <p class="ais-hit--title"> [[# helpers.fullEscapedHTMLTitle ]][[/ helpers.fullEscapedHTMLTitle ]] </p>
+    </a>
+    <p class="ais-hit--price">[[# helpers.instantsearchPrice ]][[/ helpers.instantsearchPrice ]]</p>
+    <div class="yotpo bottomLine" data-yotpo-product-id="[[ id ]]">
+      <div class="yotpo-display-wrapper" aria-hidden="true" style="visibility: hidden;">
+        <div class="standalone-bottomline" data-source="offload">
+            <div class="yotpo-bottomline pull-left star-clickable" tabindex="0">
+              <span class="yotpo-stars">[[# helpers.fullStarReview ]][[/ helpers.fullStarReview ]]</span>
+              <span class="text-m">[[# meta.yotpo ]]([[ meta.yotpo.reviews_count ]])[[/ meta.yotpo ]]</span>
+              <div class="yotpo-clr"></div>
+            </div>
+            <div class="yotpo-clr"></div>
+        </div>
+        <div class="yotpo-clr"></div>
+      </div>      
+    </div>
+    <div class="ais-hit-swatch">[[# helpers.fullSwatchProduct ]][[/ helpers.fullSwatchProduct ]]</div>
+  </div>
+</div>

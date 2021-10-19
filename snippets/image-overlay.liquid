@@ -1,0 +1,54 @@
+{% if title != blank or text != blank or url_text != blank or url_text_2 != blank %}
+{%- assign bg_alpha = background_color | color_extract: 'alpha' -%}
+{%- if bg_alpha == 0 -%}
+  {%- assign overlay_has_transparent_bg = true -%}
+{%- else -%}
+  {%- assign overlay_has_transparent_bg = false -%}
+{%- endif -%}
+{%- assign link_inherit_color = false -%}
+{%- if url_style == 'link_style' -%}
+  {%- if bg_alpha == 0 or background_color != settings.color_body_background -%}
+    {%- assign link_inherit_color = true -%}
+  {%- endif -%}
+{%- endif -%}
+
+
+
+<div class="overlay overlay--center global-border-radius-overlays {% if position != blank %}overlay--{{ position }}{% endif %} {% if url != blank and url_text != blank %}overlay--has-link{% endif %} {% if overlay_has_transparent_bg %}overlay--use-body-colours-mobile{% endif %} {% if background_color == settings.color_body_background %}overlay--bg-matches-page-bg{% endif %} avoid-overlaps__item">
+  <div class="overlay__bg {% if bg_alpha == 0 %}overlay__bg--transparent{% endif %}"></div>
+  <div class="overlay__content" style="color: {{ text_color }}">
+    {% if rssicon %}
+      <a class="blog-rsslink" href="{{ blog.url }}.atom" title="{{ blog.title | escape }} RSS">
+        <span class="feather-icon">{% include 'feather-rss' %}</span>
+      </a>
+    {% endif %}
+    {% if title != blank %}
+    <h2 class="overlay-title-text" style="color: {{ heading_text_color }};">{{ title }}</h2>
+    {% endif %}
+    {% if text != blank %}
+    <div class="overlay-text" style="font-size :{{subheading_font}}px; color:{{subheading_text_color}}">{{ text }}</div>
+    {% endif %}
+    
+    {% if url_text != blank or url_text_2 != blank %}
+      <div class="overlay__links">
+    {% endif %}
+    {% if url_text == "Watch Video" %}
+      {% assign videolink = url | split: '/' | last %}
+      <div class="btn btn--small btn--primary" style="cursor: pointer;{% if url_1_position == 'right' %}float:right {% endif %}{% if url_1_position == 'left' %}float:left {% endif %}"><div class="video-overlat-start" data-src="{{ videolink }}">{{ url_text | escape }}</div></div>
+    {% endif %}
+    {% if url_text == blank or url_text == "Watch Video" %}
+    {% else %}
+      <a class="{% if url_1_style == 'button_1' %}btn btn--small btn--primary{% elsif url_1_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link {% if link_inherit_color == true %}standard-link--inherit-color{% endif %}{% endif %}" href="{{ url }}" style="{% if url_1_position == 'right' %}float:right; {% endif %}{% if url_1_position == 'left' %}float:left; {% endif %}{% if url_1_style == 'button_2' %}background-color:#B9985E;{% endif %}" >{{ url_text | escape }}</a>
+    {% endif %}
+    {% if url_text_2 != blank %}
+      <a class="{% if url_2_style == 'button_1' %}btn btn--small btn--primary{% elsif url_2_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link {% if link_inherit_color == true %}standard-link--inherit-color{% endif %}{% endif %}" href="{{ url_2 }}" style="{% if url_2_position == 'right' %}float:right {% endif %}{% if url_2_position == 'left' %}float:left {% endif %}">{{ url_text_2 | escape  }}</a>
+    {% endif %}
+    {% if url_text != blank or url_text_2 != blank %}
+      </div>
+    {% endif %}
+    {% if footer != blank %}
+      <div class="overlay-footer">{{ footer }}</div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}

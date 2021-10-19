@@ -1,0 +1,126 @@
+<style>
+h3.faq-accordion{
+    border-bottom : 1px solid #cccccc;
+    cursor: pointer;
+    padding:11px 0px;    
+}
+#faq-icons{
+    float : right ;
+}
+div.panel-body {
+    margin-bottom:10px;
+    display:none;
+    transition: 0.4s ease-in-out;
+}
+div.panel-body.show {
+   display:block;
+}
+</style>
+<div class="container" id="page_container">
+  <div class="text-center"><h2 class="h1">FAQ<span class="dash"></span></h2></div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+   {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'faq' %}
+        <h3 class="faq-accordion"> {{ block.settings.faq_question }} <i id="faq-icons" class="fa fa-angle-down" aria-hidden="true"></i></h3>
+        <div class="panel-body">
+            {{ block.settings.faq_answer }}
+        </div>
+    {% endcase %}    
+   {% endfor %}
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+
+var acc = document.getElementsByClassName("faq-accordion");
+var panel = document.getElementsByClassName('panel-body');
+
+for (var i = 0; i < acc.length; i++) {
+    acc[i].onclick = function() {
+        var setClasses = !this.classList.contains('active');
+        setClass(acc, 'active', 'remove');
+        setClass(panel, 'show', 'remove');
+
+        if (setClasses) {
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("show");
+        }
+    }
+}
+
+function setClass(els, className, fnName) {
+    for (var i = 0; i < els.length; i++) {
+        els[i].classList[fnName](className);
+    }
+}
+
+});
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "FAQ",
+    "class": "gallery",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_categories",
+        "label": "Use Categories"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "FAQ",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "faq_question",
+            "label": "Question"
+          },
+          {
+            "type": "richtext",
+            "id": "faq_answer",
+            "label": "Answer",
+			"default": "<p>content</p>"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "name": "Category",
+        "settings": [
+          {
+            "type": "text",
+            "id": "faq_category",
+            "label": "Category"
+          }
+        ]
+      },
+      {
+        "type": "end",
+        "name": "End Category",
+        "settings": [
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "faq"
+          },
+          {
+            "type": "faq"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

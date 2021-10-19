@@ -1,0 +1,57 @@
+<style>
+    #bcp-promises p{
+        margin:5px 0;
+    }
+    .promise-text-body {
+        font-size:14px;
+    }
+</style>
+<section class="relative container" style="margin-top:5%;">
+    <div class="page-width">
+        <div id="bcp-promises">
+            <div class="bcp-promises-img">
+                {%- if section.settings.about_image_bcpomises != blank -%}<img class="lazyload about-promise-image" data-src="{{ section.settings.about_image_bcpomises | img_url: '800x800' }}"/>{%- endif -%}
+            </div>
+            <div class="bcp-promises-deatiles">
+                <div class="heading-font-every" style="margin-bottom:3%;">BCPromises</div>
+                <div><div class="titlee">Be Generous</div>
+                    <p class="promise-text-body">We always give more than we receive</p>
+                </div>
+                <div><div class="titlee">Be Meticulous</div>
+                    <p class="promise-text-body">We believe the little things make the biggest difference</p>
+                </div>
+                <div><div class="titlee">Be Uncomplicated</div>
+                    <p class="promise-text-body">We take pride in our honest values & fun-loving nature</p>
+                </div>
+                <div><div class="titlee">Be Dedicated</div>
+                    <p class="promise-text-body">We create lifelong connections</p>
+                </div>
+                <div><div class="titlee">Be Honest</div>
+                    <p class="promise-text-body">We praise hard work & accountability</p>
+                </div>
+                <div><div class="titlee">Be Infinite</div>
+                    <p class="promise-text-body">We know our possibilities are endless</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "About Us BCPromises",
+    "settings" : [
+        {
+            "type": "image_picker",
+            "id": "about_image_bcpomises",
+            "label": "Image-one"
+        }
+    ],
+    "presets" : [
+        {
+            "name" : "About Us BCPromises",
+            "category" : "Image"
+        }
+    ]
+}
+{% endschema %}

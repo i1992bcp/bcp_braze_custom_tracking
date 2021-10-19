@@ -1,0 +1,87 @@
+<style>
+        .about-animation-display{
+            display: flex;
+            align-items: center;
+            
+    }
+    @media only screen and (max-width: 968px){
+        .about-animation-display{
+            display: block;
+           
+            
+    }      
+    }
+</style>
+    
+    <div class="animated-pricing" style="background-color: #f9f9f9;margin-top:5%; padding:30px 0px;" id="about-4">
+        <div class="page-width container">
+            <div class="intro-details" style="text-align:center;">
+                <div class="heading-font-every" style="margin-bottom:3%;">Saving Has Never Been Easier</div>
+                <div style="line-height: 1.3;font-size: 14px;" class="body-about">It isn’t uncommon to find an item you love, but you may not love the price. At BCP, you get quality and savings on every product listed in our diverse catalog. That means your favorite things at unbelievably low pricing. You won’t get one without the other. </div>
+            </div>
+            <div class="navigation-about">
+                <ul class="products-tabs-down-about">
+                    <li class="product-tabs-li-about"><a class="active-about" data-tab="tab-1">Patio Sectional</a></li>
+                    <li class="product-tabs-li-about"><a class="" data-tab="tab-2">Air Fryer</a></li>
+                    <li class="product-tabs-li-about"><a class="" data-tab="tab-3">Ride-On</a></li>
+                </ul>
+            </div>
+            <div id="tab-1" class="patio-sectionals about-e current-about">
+                <div class="about-animation-display">
+                    <div class="price-image-animation four-tenths small-down--one-whole">
+                        <img src="{{ 'patio-g.png' | asset_url }}" />
+                    </div>
+                    <div class="price-image-animation p-i-a four-tenths small-down--one-whole">
+                        <div class="about-us-flex"><div class="price-title">Our Price</div>
+                        <div class="counter-holder">$<span class="counter" data-count="349.99">0</span></div></div>
+                        <div class="pricebar clearfix " data-percent="60%">
+                            <div class="pricebar-bar" style="background: #999"></div>
+                        </div>
+                        <div class="about-us-flex"> <div class="price-title">Typical Retailer</div>
+                        <div class="counter-holder">$<span class="counter" data-count="449.99">0</span></div></div>
+                        <div class="pricebar clearfix " data-percent="90%">
+                            <div class="pricebar-bar" style="background: #999"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-2" class="air-fryer about-e">
+                <div class="about-animation-display">
+                    <div class="price-image-animation four-tenths small-down--one-whole">
+                        <img src="{{ 'AirFryer-1.png' | asset_url }}" />
+                    </div>
+                    <div class="price-image-animation p-i-a four-tenths small-down--one-whole">
+                            <div class="about-us-flex"><div class="price-title">Our Price</div>  
+                            <div class="counter-holder">$<span class="counter" data-count="74.99">0</span></div></div>
+                        <div class="pricebar clearfix " data-percent="45%">
+                            <div class="pricebar-bar" style="background: #999"></div>
+                        </div>
+                        <div class="about-us-flex"> <div class="price-title">Typical Retailer</div>
+                        <div class="counter-holder">$<span class="counter" data-count="107.99">0</span></div></div>
+                        <div class="pricebar clearfix " data-percent="85%">
+                            <div class="pricebar-bar" style="background: #999"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-3" class="ride-on about-e">
+                <div class="about-animation-display">
+                    <div class="price-image-animation four-tenths small-down--one-whole">
+                        <img src="{{ 'RideOn-1.png' | asset_url }}" />
+                    </div>
+                    <div class="price-image-animation p-i-a four-tenths small-down--one-whole">
+                            <div class="about-us-flex"> <div class="price-title">Our Price</div>
+                            <div class="counter-holder">$<span class="counter" data-count="119.99">0</span></div></div>
+                        <div class="pricebar clearfix " data-percent="75%">
+                            <div class="pricebar-bar" style="background: #999"></div>
+                        </div>
+                        <div class="about-us-flex"> <div class="price-title">Typical Retailer</div>
+                        <div class="counter-holder">$<span class="counter" data-count="186.99">0</span></div></div>
+                        <div class="pricebar clearfix " data-percent="90%">
+                            <div class="pricebar-bar" style="background: #999"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

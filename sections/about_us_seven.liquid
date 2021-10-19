@@ -1,0 +1,71 @@
+<style>
+    .ab_seven_main_wrapper {
+        padding: 0 1em;
+    }
+    .about_desktop_image {
+        width: 100%;
+		height: 100%;
+		object-fit: cover;
+    }
+    .ab_seven_sub_header {
+        margin: 3em 0;
+    }
+    .ab_seven_main_wrapper .about_header{
+        margin-bottom: 1em;
+    }
+    @media only screen and (min-width: 901px) { 
+        .ab_seven_main_wrapper {
+            padding: 0 15em;
+        }
+    }
+</style>
+<div class="ab_seven_main_wrapper center about-us_new_section">
+    <div class="about_header" style="color: {{ section.settings.bg_color_about_us_seven }};">{{ section.settings.text_about_us_seven }}</div>
+    <div class="ab_seven_sub_header" style="color: {{ section.settings.bg_sub_color_about_us_seven }};">{{ section.settings.sub_text_about_us_seven }}</div>
+    <div>
+        <img class="about_desktop_image" src="{{ section.settings.image_about_us_seven | img_url: '900x' }}"/>
+    </div>
+    
+</div>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+        {
+            "type": "text",
+            "id": "text_about_us_seven",
+            "label": "Header Title",
+            "default": "Living Up to the Our Name"
+        },
+        {
+            "type": "color",
+            "id": "bg_color_about_us_seven",
+            "label": "Header Color",
+            "default": "#cc3333"
+        },
+        {
+            "type": "text",
+            "id": "sub_text_about_us_seven",
+            "label": "Header Title",
+            "default": "No matter who or what you’re shopping for, you can find it with us at Best Choice Products.From fulfillment centers up to management, we are dedicated to providing elevated features & value pricing in all our products. No gimmicks, just our promise to the most important person in this process, you."
+        },
+        {
+            "type": "color",
+            "id": "bg_sub_color_about_us_seven",
+            "label": "Header Color",
+            "default": "#676765"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_about_us_seven",
+            "label": "Image"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

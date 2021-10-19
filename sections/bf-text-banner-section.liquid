@@ -1,0 +1,119 @@
+
+<style>
+.first-bf-text-wrapper {
+    padding: 10px 0;
+}
+.text-banner-bf-wrapper p {
+    margin :0;
+}.header-bf-text-main {
+    margin-bottom : 0.5%;
+}
+.header-bf-text-main {
+  font-size:{{ section.settings.main_header_fonts_bf }};
+}
+.sub-header-bf-text-main {
+  font-size:{{ section.settings.main_sub_header_fonts_bf }};
+}
+  .banner_logo {
+    width:50px;
+    height:50px;
+    margin-right:2%;
+  }
+@media only screen and (max-width: 968px) {
+  .header-bf-text-main {
+  font-size:{{ section.settings.main_header_fonts_mobile_bf }};
+}
+   .banner_logo {
+    width:25px;
+    height:25px;
+    margin-right:3px;
+  }
+.sub-header-bf-text-main {
+  font-size:{{ section.settings.main_sub_header_mobile_fonts_bf }};
+}
+}
+</style>
+<section class="text-banner-bf-wrapper container container--no-mobile-padding">
+     <div class="first-bf-text-wrapper text-center page-width relative" style="{% if section.settings.logo_text_image.size > 0 %}display:flex; justify-content: center;{% endif %} background-color: {{ section.settings.bf_background_colour }};">
+       {% if section.settings.logo_text_image.size > 0 %}<img src="{{ section.settings.logo_text_image | img_url }}" class="banner_logo"/>{% endif %}
+        <a href="{{ section.settings.section_url_bf }}">
+            <div class="header-bf-text-main" style="color:{{ section.settings.section_text_colour_bf }};"> {{ section.settings.main_text_bf }}</div>
+            <div class="sub-header-bf-text-main" style="color:{{ section.settings.second_section_text_colour_bf }}; ">{{ section.settings.text_second_bf }} </div>
+        </a>
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "Banner Black Friday text",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bf_background_colour",
+        "label": "Background color",
+        "default": "#f9f9f9"
+      },
+ 	  {
+        "type": "image_picker",
+        "id": "logo_text_image",
+        "label": "L0g0"
+      },
+      {
+        "type": "richtext",
+        "id": "main_text_bf",
+        "label": "Heading"
+      },
+      {
+        "type": "color",
+        "id": "section_text_colour_bf",
+        "label": "Text color First Line",
+        "default": "#333333"
+      },
+      {
+        "type": "text",
+        "id": "main_header_fonts_bf",
+        "label": "Fonts for First line",
+        "default": "20px"
+      }, 
+      {
+        "type": "text",
+        "id": "main_header_fonts_mobile_bf",
+        "label": "Fonts for First line Mobile",
+        "default": "15px"
+      }, 
+      {
+        "type": "richtext",
+        "id": "text_second_bf",
+        "label": "Text"
+      },
+       {
+        "type": "color",
+        "id": "second_section_text_colour_bf",
+        "label": "Text color Second Line",
+        "default": "#333333"
+      },
+      {
+        "type": "text",
+        "id": "main_sub_header_fonts_bf",
+        "label": "Fonts for Second line",
+        "default": "20px"
+      },
+      {
+        "type": "text",
+        "id": "main_sub_header_mobile_fonts_bf",
+        "label": "Fonts for Second line mobile",
+        "default": "15px"
+      }, 
+      {
+        "type": "url",
+        "id": "section_url_bf",
+        "label": "Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner Black Friday text",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

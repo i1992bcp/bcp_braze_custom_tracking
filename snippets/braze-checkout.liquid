@@ -1,0 +1,122 @@
+$(document).ready(function() {
+
+    if (window.location.href.indexOf("checkouts") > -1) {
+        fetch('/cart.js/').then(async res => {
+            let cartJSON = await res.json();
+            let products = cartJSON.items;
+            let orderID = cartJSON.token;
+            let total = cartJSON.total_price;
+            var a = total.toString().split('');
+            var b = a.pop();
+            var c = a.pop();
+            a.unshift('$')
+            a.push('.');
+            a.push(b);
+            a.push(c);
+            var d = a.join('');
+
+            var productIDs = products.map(({id, product_title}) => {
+                return {
+                    product: product_title,
+                    product_id: id
+                }
+            })
+
+            // Checkout Started
+            setTimeout(() => {
+                appboy.logCustomEvent("Checkout Started", {
+                    order_id: orderID,
+                    revenue: d,
+                    products: productIDs
+                });
+            }, 
+            3000)
+
+
+            // Validate Payment Info Entered
+            $('.edit_checkout .step__footer #continue_button')
+            .click(() => {
+                if (
+                    $('#checkout_email').val().length > 0 &&
+                    $('#checkout_shipping_address_first_name').val().length > 0 &&
+                    $('#checkout_shipping_address_last_name').val().length > 0 &&
+                    $('#checkout_shipping_address_address1').val().length > 0 &&
+                    $('#checkout_shipping_address_city').val().length > 0 &&
+                    $('#checkout_shipping_address_zip').val().length > 0 &&
+                    $('#checkout_shipping_address_phone').val().length > 0
+                ) {
+                    
+                    // Payment Info Entered Correctly
+                    // console.log('Payment Info Entered');
+                    appboy.logCustomEvent("Payment Info Entered", {
+                        order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+                    })
+                } else {
+
+                    // Payment Info Entered Incorrectly
+                    // console.log('Payment Info Entered Incorrect');
+                }
+            })
+        })
+    }
+
+    fetch('/cart.js/').then(async res => {
+        console.log(res.json())
+    })
+
+    // Coupon Submit Fired
+    $('.order-summary__section.order-summary__section--discount form.edit_checkout:nth-child(3) div.fieldset button.field__input-btn.btn')
+    .click(() => {
+
+        // Coupon Entered [A]
+        // var coupon = $('input#checkout_reduction_code').val();
+        // appboy.logCustomEvent("Coupon Entered", {
+        //     order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+        //     coupon_id: coupon
+        // })
+
+        // After firing
+        setTimeout(function(){ 
+
+            if ( $('#error-for-reduction_code').text().length > 0 ) {
+                
+                // Coupon Denied
+                var coupon_id = $('#checkout_reduction_code').val();
+                appboy.logCustomEvent("Coupon Denied", {
+                    order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+                    coupon_id: coupon_id
+                })
+                
+            } else if ($('tr.total-line.total-line--reduction span.reduction-code span.reduction-code__text').text().length > 0) {
+                
+                // Coupon Entered [B]
+                var coupon = $('.total-line.total-line--reduction .reduction-code__text').text();
+                appboy.logCustomEvent("Coupon Entered", {
+                    order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+                    coupon_id: coupon
+                })
+
+                // Coupon Accepted [Optional]
+                // var coupon_id = $('.total-line.total-line--reduction .reduction-code__text').text();
+                //     appboy.logCustomEvent("Coupon Accepted", {
+                //         product_id: addedProduct.product_id,
+                //         price: productPrice
+                //     })
+                // }
+            }
+
+        }, 3000);
+    });
+
+    $('div.tags-list div.tag form.edit_checkout div.tag__wrapper button.tag__button')
+    .click(() => {
+        // Coupon Removed
+        console.log('Appboy Coupon Removed');
+        var coupon_id = $('.total-line.total-line--reduction .reduction-code__text').text();
+        appboy.logCustomEvent("Coupon Removed", {
+            order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+            coupon_id: coupon_id
+        })
+    })
+
+});

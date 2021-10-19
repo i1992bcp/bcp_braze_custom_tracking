@@ -1,0 +1,246 @@
+<style>
+  .gallery a {display:block;}
+  .gallery img {display:block;}
+  .gallery h5 {margin-top:10px;}
+  .gallery-block img {width:100%;}
+  .gallery-block .overlay-text {padding:0 20px;}
+  {% unless section.settings.remove_padding %}.gallery .grid__item {margin-bottom:30px;}{% endunless %}}  
+</style>
+	<div class="main-holder page-width" style="margin-top: 5%;">
+    {% if section.settings.title != blank %}
+    	<div class="section-header text-center">
+      		<h3 class="{{ section.settings.title_class }}">{{ section.settings.title | escape }}</h3>
+    	</div>
+      	<div class="clearfix"></div>
+  	{% endif %}      
+	<div class="gallery-slider grid{% if section.settings.masonry %} masonry{% endif %}{% if section.settings.remove_padding %} grid--no-gutters{% endif %}">
+	{% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'slide' %}
+      <div class="slide">
+      {% when 'column' %}
+      <div class="grid__item column medium-up--{{ block.settings.column_width }} medium-down--{{ block.settings.column_width_mobile }}" style="padding-left:0;">
+      {% when 'image_block' %}      
+      <div class="gallery-block grid__item medium-up--{{ block.settings.image_size }}" {{ block.shopify_attributes }}>
+          <img src="{{ block.settings.image | img_url: '1024x1024' }}" alt="{{ block.settings.image.alt }}" />
+      </div>
+      {% when 'column_end' %}
+       <div class="clearfix"></div></div>
+      {% when 'clear' %}
+       <div class="clearfix medium-up--hide"></div>     
+      {% when 'slide_end' %}
+      </div>
+      {% endcase %}
+    {% endfor %}
+	</div>
+	</div>
+{% schema %}
+  {
+    "name": "Careers Gallery",
+    "class": "careers-section gallery",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "title_class",
+        "label": "Heading Class",
+        "default": "h4",
+		"info": "h1, h2, h3, h4, h5 or h6"
+      },
+      {
+        "type": "checkbox",
+        "id": "remove_padding",
+        "label": "Remove padding"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+      	  {
+        	"type": "select",
+        	"id": "image_size",
+        	"label": "Width",
+        	"default": "one-whole",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 }
+        ]
+      },
+      {
+        "type": "column",
+        "name": "Column",
+        "settings": [
+      	  {
+        	"type": "select",
+        	"id": "column_width",
+        	"label": "Width",
+        	"default": "one-quarter",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "seven-twentieths",
+            "label": "thirty five - 35%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "thirteen-twentieths",
+            "label": "sixty five - 65%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },
+      	  {
+        	"type": "select",
+        	"id": "column_width_mobile",
+        	"label": "Mobile width",
+        	"default": "one-half",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "seven-twentieths",
+            "label": "thirty five - 35%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "thirteen-twentieths",
+            "label": "sixty five - 65%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 }
+		]
+	  },
+      {
+        "type": "slide_end",
+        "name": "Slide End"
+	  },
+      {
+        "type": "slide",
+        "name": "Slide"
+	  },
+      {
+        "type": "column_end",
+        "name": "Column End"
+	  },
+      {
+        "type": "clear",
+        "name": "Clear"
+	  }
+    ],
+    "presets": [
+      {
+        "name": "Careers Gallery",
+        "category": "Careers",
+        "blocks": [
+          {
+            "type": "image_block"
+          },
+          {
+            "type": "image_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

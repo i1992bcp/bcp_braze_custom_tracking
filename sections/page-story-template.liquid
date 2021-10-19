@@ -1,0 +1,571 @@
+<div class="container container--no-mobile-padding" data-section-id="{{ section.id }}" data-section-type="page-story-template">
+  <div class="reading-width">
+    <h1 class=" {% unless section.settings.show_title %}visually-hidden{% endunless %} large-title row">{{ page.title }}</h1>
+    <div class="rte rte--expanded-images">
+      {{ page.content }}
+    </div>
+  </div>
+  <div class="page-width large-row-under">
+    {% for block in section.blocks %}
+      {% if block.type == 'richtext' %}
+
+        <style>
+          .block-{{ block.id }}.rich-text {
+            background-color: {{ block.settings.richtext_background_colour }};
+            color: {{ block.settings.richtext_text_colour }};
+          }
+        </style>
+
+        <section class="large-row rich-text global-border-radius block-{{ block.id }} text-{{ block.settings.align }}" {{ block.shopify_attributes }}>
+          <div class="reading-width large-section">
+            <h1 class="title large-title">{{ block.settings.title }}</h1>
+            <div class="rte">
+              {{ block.settings.text }}
+            </div>
+          </div>
+        </section>
+
+      {% elsif block.type == 'image-with-text' %}
+
+        <style>
+          .block-{{ block.id }} .image-with-text {
+            background-color: {{ block.settings.section_background_colour }};
+            color: {{ block.settings.section_text_colour }};
+          }
+        </style>
+
+        <section class="large-row block-{{ block.id }}" {{ block.shopify_attributes }}>
+          <div class="image-with-text flex global-border-radius {% if block.settings.layout == 'right' %} image-with-text--reverse{% endif %}">
+            <div class="one-half small-down--one-whole relative image-with-text__image">
+              {% if block.settings.image == blank %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% else %}
+                {% include 'responsive-image', image: block.settings.image, nomax: true %}
+              {% endif %}
+            </div>
+
+            <div class="one-half small-down--one-whole relative image-with-text__content">
+              <div class="text-{{ block.settings.align }}">
+                <h2 class="large-title">{{ block.settings.title }}</h2>
+                {% if block.settings.text %}
+                  <div class="image-with-text__text">{{ block.settings.text }}</div>
+                {% endif %}
+
+                {% if block.settings.url and block.settings.url_text %}
+                  {%- assign inherit_colour = false -%}
+                  {%- if block.settings.url_style == 'link_style' -%}
+                    {%- assign alpha = block.settings.section_background_colour | color_extract: 'alpha' -%}
+                    {%- if alpha > 0 and block.settings.section_background_colour != settings.color_body_background -%}
+                      {%- assign inherit_colour = true -%}
+                    {%- endif -%}
+                  {%- endif -%}
+                  <a class="image-with-text__link {% if block.settings.url_style == 'button_1' %}btn btn--small btn--primary{% elsif block.settings.url_style == 'button_2' %}btn btn--small btn--secondary{% else %}standard-link {% if inherit_colour %}standard-link--inherit-color{% endif %}{% endif %}" href="{{ block.settings.url }}">
+                    {{ block.settings.url_text }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </section>
+
+      {% elsif block.type == 'full-width-image' %}
+
+        <style>
+          .block-{{ block.id }} .overlay {
+            top: {{ block.settings.overlay_position_y }}%;
+            left: {{ block.settings.overlay_position_x }}%;
+          }
+        </style>
+
+        <section class="large-row full-width-image block-{{ block.id }}" data-section-id="{{ block.id }}" data-section-type="full-width-image" {{ block.shopify_attributes }}>
+          <div class="full-width relative avoid-overlaps global-border-radius">
+            {% if block.settings.image == blank %}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% else %}
+              {% include 'responsive-image', image: block.settings.image, nomax: true %}
+            {% endif %}
+
+            {% if block.settings.overlay_title != blank or block.settings.overlay_url_text != blank  %}
+              {% include 'image-overlay',
+                          background_color: block.settings.color_overlay_background,
+                          text_color: block.settings.color_overlay_text,
+                          title: block.settings.overlay_title,
+                          text: block.settings.overlay_text,
+                          url: block.settings.overlay_url,
+                          url_text: block.settings.overlay_url_text,
+                          url_style: block.settings.overlay_url_style %}
+            {% endif %}
+          </div>
+        </section>
+
+      {% elsif block.type == 'map' %}
+
+        {%- assign display_map = false -%}
+        {%- assign onboarding = false -%}
+        {%- assign bg_image = block.settings.background_image -%}
+
+        {%- if block.settings.api_key == blank and bg_image == blank -%}
+          {%- assign onboarding = true -%}
+        {%- endif -%}
+        {%- if block.settings.api_key != blank and block.settings.map_address -%}
+          {%- assign display_map = true -%}
+        {%- endif -%}
+
+        <style>
+          {% if bg_image.src != blank %}
+          .block-{{ block.id }} .map-section__image {
+            background-position: {{ block.settings.background_image_position }};
+          }
+          {% endif %}
+        </style>
+
+        <section class="map-section block-{{ block.id }}
+            {% if display_map %}map-section--display-map{% endif %}
+            {% if onboarding == true %}map-section--onboarding{% endif %}"
+            data-section-id="{{ block.id }}"
+            data-section-type="map"
+            {{ block.shopify_attributes }}>
+          <div class="map-section__background-wrapper global-border-radius">
+            {% if bg_image.src != blank %}
+              <div class="map-section__image">
+                <div class="rimage-background fade-in lazyload"
+                      data-bgset="{% include 'bgset', image: bg_image %}"
+                      data-sizes="auto"
+                      data-parent-fit="cover">
+                  <noscript>
+                    <img src="{{ bg_image | img_url: '1024x1024' }}" alt="{{ bg_image.alt | escape }}" class="rimage-background__image">
+                  </noscript>
+                </div>
+              </div>
+            {% elsif onboarding == true %}
+              <div class="placeholder-background">
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+            {% if display_map %}
+              <div class="map-section__container"
+                    id="Map-{{ block.id }}"
+                    data-map
+                    data-address-setting="{{ block.settings.map_address | escape }}"
+                    data-api-key="{{ block.settings.api_key }}"
+                    data-map-style="{{ block.settings.map_style }}">
+              </div>
+              <div class="map-section__overlay" data-map-overlay></div>
+            {% endif %}
+          </div>
+          <div class="map-section__content-wrapper reading-width">
+            <div class="map-section__content global-border-radius">
+              {% if block.settings.heading != blank %}
+                <h3 class="large-title">{{ block.settings.heading | escape }}</h3>
+              {% endif %}
+              {% if block.settings.address != blank %}
+                <div class="rte">{{ block.settings.address }}</div>
+                {% if block.settings.map_address != blank and block.settings.button_text != blank %}
+                  <p>
+                    <a href="https://maps.google.com?daddr={{ block.settings.map_address | escape }}"
+                      class="btn btn--secondary map_section__directions-btn"
+                      target="_blank"
+                    >
+                      {% if block.settings.show_pin %}
+                        <span class="feather-icon">{% include 'feather-pin' %}</span>
+                      {% endif %}
+                      {% if block.settings.button_text %}
+                        <span>{{ block.settings.button_text | escape }}</span>
+                      {% endif %}
+                    </a>
+                  </p>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </section>
+
+      {% elsif block.type == 'collection' %}
+
+        <div class="large-row text-center" {{ block.shopify_attributes }}>
+          {% if block.settings.title != blank %}
+            <h2 class="small-title row">{{ block.settings.title }}</h2>
+          {% endif %}
+          {% if block.settings.link_text != blank %}
+            <div class="row"><a href="{{ collection.url }}">{{ block.settings.link_text | escape }}</a></div>
+          {% endif %}
+        </div>
+
+        <div class="large-row featured-collection product-carousel-peek">
+          <div class="grid grid--uniform grid--uniform-row-gutters js-collection-slider">
+            {%- assign collection = collections[block.settings.collection] -%}
+            {% for product in collection.products limit: 4 %}
+              <div class="relative grid__item one-quarter small-down--one-half">
+                <div class="featured-collection--product">
+                  {% include 'product-block', quickbuy: settings.quickbuy_buttons_toggle %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          {% include 'peek-carousel-advice' %}
+        </div>
+
+      {% elsif block.type == 'custom-html' %}
+
+        <div class="large-row" {{ block.shopify_attributes }}>
+          <div class="page-width">
+            {{ block.settings.custom_html }}
+          </div>
+        </div>
+
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Story page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_title",
+        "label": "Show title",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "richtext",
+        "name": "Rich text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Rich text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Content",
+            "default": "<p>Use this section to highlight key sections in your store</p>"
+          },
+          {
+            "type": "color",
+            "id": "richtext_background_colour",
+            "label": "Background color",
+            "default": "#f2f2f2"
+          },
+          {
+            "type": "color",
+            "id": "richtext_text_colour",
+            "label": "Text color",
+            "default": "#333333"
+          },
+          {
+            "type": "select",
+            "id": "align",
+            "label": "Text alignment",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "image-with-text",
+        "name": "Image with text",
+        "settings": [
+          {
+            "type": "radio",
+            "id": "layout",
+            "label": "Image position",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "right", "label": "Right" }
+            ],
+            "default": "left"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "color",
+            "id": "section_background_colour",
+            "label": "Background color",
+            "default": "#fbeae5"
+          },
+          {
+            "type": "color",
+            "id": "section_text_colour",
+            "label": "Text color",
+            "default": "#333333"
+          },
+          {
+            "type": "select",
+            "id": "align",
+            "label": "Text alignment",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" }
+            ],
+            "default": "left"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image with text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Add a highlight from your story page<\/p>"
+          },
+          {
+            "type": "header",
+            "content": "Button"
+          },
+          {
+            "type": "text",
+            "id": "url_text",
+            "label": "Text"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link"
+          },
+          {
+            "type": "radio",
+            "id": "url_style",
+            "label": "Style",
+            "options": [
+              { "value": "button_1", "label": "Button - primary" },
+              { "value": "button_2", "label": "Button - secondary" },
+              { "value": "link_style", "label": "Link"}
+            ],
+            "default": "button_1"
+          }
+        ]
+      },
+      {
+        "type": "full-width-image",
+        "name": "Full-width image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "header",
+            "content": "Text overlay"
+          },
+          {
+            "type": "color",
+            "id": "color_overlay_background",
+            "label": "Background color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "color_overlay_text",
+            "label": "Text color",
+            "default": "#333333"
+          },
+          {
+            "type": "text",
+            "id": "overlay_title",
+            "label": "Heading",
+            "default": "Full width image"
+          },
+          {
+            "type": "text",
+            "id": "overlay_text",
+            "label": "Subheading",
+            "default": "Show off your images with some text"
+          },
+          {
+            "type": "header",
+            "content": "Button"
+          },
+          {
+            "type": "text",
+            "id": "overlay_url_text",
+            "label": "Text"
+          },
+          {
+            "type": "url",
+            "id": "overlay_url",
+            "label": "Link"
+          },
+          {
+            "type": "radio",
+            "id": "overlay_url_style",
+            "label": "Style",
+            "options": [
+              { "value": "button_1", "label": "Button - primary" },
+              { "value": "button_2", "label": "Button - secondary" },
+              { "value": "link_style", "label": "Link"}
+            ],
+            "default": "button_1"
+          },
+          {
+            "type": "header",
+            "content": "Position"
+          },
+          {
+            "type": "range",
+            "id": "overlay_position_x",
+            "label": "Horizontal position",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 50
+          },
+          {
+            "type": "range",
+            "id": "overlay_position_y",
+            "label": "Vertical position",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 70
+          }
+        ]
+      },
+      {
+        "type": "map",
+        "name": "Map",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Text"
+          },
+          {
+            "id": "heading",
+            "type": "text",
+            "label": "Heading",
+            "default": "Our store"
+          },
+          {
+            "id": "address",
+            "type": "richtext",
+            "label": "Address and hours",
+            "default": "<p>123 Fake St.<br>Toronto, Canada</p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>"
+          },
+          {
+            "id": "map_address",
+            "type": "text",
+            "label": "Map address",
+            "info": "Google Maps will find the exact location",
+            "default": "80 Spadina Ave, Toronto"
+          },
+          {
+            "id": "button_text",
+            "type": "text",
+            "label": "Map link label",
+            "default": "Get directions"
+          },
+          {
+            "id": "show_pin",
+            "type": "checkbox",
+            "label": "Show pin",
+            "default": true
+          },
+          {
+            "type": "header",
+            "content": "Background"
+          },
+          {
+            "id": "api_key",
+            "type": "text",
+            "label": "Google Maps API key",
+            "info": "You’ll need to [register a Google Maps API Key](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) to display the map"
+          },
+          {
+            "type": "select",
+            "id": "map_style",
+            "label": "Map style",
+            "default": "default",
+            "options": [
+              {
+                "label": "Default",
+                "value": "default"
+              },
+              {
+                "label": "Silver",
+                "value": "silver"
+              },
+              {
+                "label": "Retro",
+                "value": "retro"
+              },
+              {
+                "label": "Dark",
+                "value": "dark"
+              },
+              {
+                "label": "Night",
+                "value": "night"
+              },
+              {
+                "label": "Aubergine",
+                "value": "aubergine"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Image",
+            "info": "Displayed if the map isn’t loaded"
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "name": "Product row",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Heading",
+            "default": "Products"
+          },
+          {
+            "id": "link_text",
+            "type": "text",
+            "label": "Link text",
+            "default": "Shop now"
+          },
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          }
+        ]
+      },
+      {
+        "type": "custom-html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "html",
+            "id": "custom_html",
+            "label": "Custom HTML",
+            "default": "<h2>Talk about your brand</h2><p>Use HTML to format your text so it can be easily read. This text can be used to share information about your brand with customers.</p>",
+            "info": "Please note that errors in any custom HTML can affect your theme layout. Please make sure all HTML is valid."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

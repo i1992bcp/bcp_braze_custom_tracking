@@ -1,0 +1,374 @@
+
+<style>
+    .home-text-holder-landing {
+    text-align: center;
+}.hs_title {
+    font-weight: 500;
+}
+  .hs_title_hover:hover {
+  text-decoration: underline;
+}
+.hs-up_price {
+    font-weight: 500;
+}
+.home-off-style {
+    font-weight: 500;
+}
+.main_button_style_deal {
+    width:320px;
+    text-align: center;
+}
+.new_deal_button_home {
+    color: #fff;height: 55px;border-radius: 4px;text-align: center;font-weight: 500;padding: 15px 0;font-size: 14px; margin: 0 auto;
+}
+@media only screen and (max-width: 968px) {
+  .hitarth_hide {
+    margin-bottom: 0;
+  }
+}
+@media only screen and (min-width: 968px) {
+  .hitarth_hide:nth-child(6) {
+    display: none !important;
+  }
+  .hitarth_hide {
+    margin-bottom: 30px;
+  }
+}
+.home-landing-page-flex {
+  text-align : center;
+}
+</style>
+
+<div class="container container--no-tablet-mobile-padding" style="margin-top: 30px;">
+	<div class="main-holder page-width" style="background-color : {{ section.settings.home_section_bgcolor_day_image_text }};padding-right:10px;">
+    {% if section.settings.home_section_title != blank %}
+      <div class="section-header text-center" style="color:{{ section.settings.home_section_bgcolor_day_header_text }}">
+        <h2 class="{{ section.settings.title_class }}">{{ section.settings.home_section_title | escape }}</h2>
+      </div>
+    {% endif %}
+    <div class="thanks_giving page_new_deal test">
+      {% for block in section.blocks %}
+        <div class="hitarth_hide {% unless section.settings.masonry %}grid__item test_hide_large extra-small--{{ block.settings.home_section_image_size_small_extra }}  small-down--{{ block.settings.home_section_image_size_small }} {{ block.settings.home_section_image_size }}{% endunless %}" {{ block.shopify_attributes }}>
+          <div class="home-landing_holder">
+            <div class="home-landing-page-flex">
+              {% if block.settings.home_section_image.size > 0 %}
+                <a href="{{ block.settings.home_section_image_link }}" target="_blank">
+                  <img src="{{ block.settings.home_section_image | img_url: '650x500' }}" alt="{{ block.settings.image.alt }}" style="position: relative;" class="image_home_wrapper" />
+                </a>
+              {% endif %}
+              <div class="home-text-holder-landing">
+                {% if block.settings.home_section_image_title.size > 0  %}
+                  {% if block.settings.home_section_image_title.size > 0 %}<a href="{{ block.settings.home_section_image_link }}" target="_blank"><div class="hs_title hs_title_hover" style="font-size:{{ block.settings.home_section_fonts_title }};color:{{ block.settings.home_section_color_title_text }}">{{ block.settings.home_section_image_title }}</div> </a>{% endif %}
+                  {% if block.settings.home_section_price_text.size > 0 %}<div class="home_price_title" style="font-size:{{ block.settings.home_section_fonts_price }};color:{{ block.settings.home_section_color_day_price_text }}">{{ block.settings.home_section_price_text | truncate : 20 }}</div>{% endif %}
+                  {% if block.settings.home_section_upto_text.size > 0 %}<div class="hs-up_price" style="font-size:{{ block.settings.home_section_fonts_up_to }};color:{{ block.settings.home_section_color_up_image_text }}">{{ block.settings.home_section_upto_text }}{% if block.settings.home_section_coupon_code.size > 0 %}<span class="home-off-style" style="font-size:{{ block.settings.home_section_fonts_off }};color:{{ block.settings.home_section_color_day_image_text }}">{{ block.settings.home_section_coupon_code }}</span>{% endif %}</div>{% endif %}
+                  {% if block.settings.block_section_image_button.size > 0 %}<a href="{{ block.settings.block_section_image_button_url }}" target="_blank"><div class="new_deal_button_home" style="background-color:{{ block.settings.block_section_image_button_color }};color : {{ block.settings.block_section_image_button_text_color }};font-size: {{ block.settings.block_section_image_button_font }};height: 45px; padding: 10px 0; margin: 10px auto 0 auto;">{{ block.settings.block_section_image_button }}</div></a>{% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if section.settings.home_section_image_button.size > 0 %}<a href="{{ section.settings.home_section_button_link }}" target="_blank"><div class="new_deal_button_home" style="background-color:{{ section.settings.home_section_color_day_new_button }};">{{ section.settings.home_section_image_button }}</div></a>{% endif %}
+	</div>
+</div>
+<div class="clearfix"></div>
+<br />
+{% schema %}
+  {
+    "name": "Home Gallery Grid CTA",
+    "class": "gallery",
+    "settings": [
+      {
+        "type": "text",
+        "id": "home_section_title",
+        "label": "Heading"
+      },
+ 		{
+         "type": "color",
+        "id": "home_section_bgcolor_day_header_text",
+        "label": "color for Header Text",
+        "default": "#ffffff" 
+      },
+      {
+         "type": "color",
+        "id": "home_section_bgcolor_day_image_text",
+        "label": "color for background",
+        "default": "#ffffff" 
+      },
+      {
+        "type": "url",
+        "id": "home_section_button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "text",
+        "id": "home_section_image_button",
+        "label": "Button"
+    },
+    {
+        "type": "color",
+        "id": "home_section_color_day_new_button",
+        "label": "color for new button",
+        "default": "#aa1919"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "home_section_image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "home_section_image_link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "home_section_image_title",
+            "label": "Title"
+          },
+           {
+            "type": "color",
+            "id": "home_section_color_title_text",
+            "label": "color for Title text",
+            "default": "#aa1919"
+          },
+          {
+            "type": "text",
+            "id": "home_section_upto_text",
+            "label": "Up to Text"
+          },
+           {
+            "type": "color",
+            "id": "home_section_color_up_image_text",
+            "label": "color for up to text",
+            "default": "#ffffff"
+          },
+          {
+            "type": "text",
+            "id": "home_section_coupon_code",
+            "label": "coupon code % off"
+          },
+           
+          {
+            "type": "color",
+            "id": "home_section_color_day_image_text",
+            "label": "color for image text",
+            "default": "#aa1919"
+          },
+          {
+            "type": "text",
+            "id": "home_section_price_text",
+            "label": "Price Text"
+          },
+		  {
+            "type": "text",
+            "id": "block_section_image_button",
+            "label": "Button"
+          },
+		  {
+            "type": "text",
+            "id": "block_section_image_button_font",
+            "label": "Button Font Size"
+          },
+		  {
+            "type": "url",
+            "id": "block_section_image_button_url",
+            "label": "Button URL"
+          },
+		  {
+            "type": "color",
+            "id": "block_section_image_button_color",
+            "label": "Button Color"
+          },
+		  {
+            "type": "color",
+            "id": "block_section_image_button_text_color",
+            "label": "Button Text Color"
+          },
+          {
+            "type": "color",
+            "id": "home_section_color_day_price_text",
+            "label": "color for price text",
+            "default": "#aa1919"
+          },
+          {
+            "type": "text",
+            "id": "home_section_fonts_title",
+            "label": "Fonts for Title",
+            "default": "20px"
+          }, 
+          {
+            "type": "text",
+            "id": "home_section_fonts_price",
+            "label": "Fonts for price",
+            "default": "20px"
+          }, 
+          {
+            "type": "text",
+            "id": "home_section_fonts_up_to",
+            "label": "Fonts for up to",
+            "default": "20px"
+          }, 
+          {
+            "type": "text",
+            "id": "home_section_fonts_off",
+            "label": "fonts for %off",
+            "default": "20px"
+          }, 
+      	  {
+        	"type": "select",
+        	"id": "home_section_image_size",
+        	"label": "Desktop Width",
+        	"default": "one-half",
+        	"options": [
+			{
+              "value": "one-fifth",
+              "label": "fifth - 20%"
+          	},
+          	{
+              "value": "one-quarter",
+              "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },
+      	  {
+        	"type": "select",
+        	"id": "home_section_image_size_small",
+        	"label": "Tablet Width",
+        	"default": "one-half",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },
+{
+        	"type": "select",
+        	"id": "home_section_image_size_small_extra",
+        	"label": "mobile Width",
+        	"default": "one-half",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home Gallery Grid CTA",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image_block"
+          },
+          {
+            "type": "image_block"
+          },
+          {
+            "type": "image_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+  
+</script>

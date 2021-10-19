@@ -1,0 +1,23 @@
+{% layout none %}
+{% paginate search.results by 8 %}
+ {% capture output %}
+ {% for result in search.results %}
+      {% assign resultURL = result.url %}
+		{% if result.images and result.images.size > 0 %}
+      {% assign thumbURL = result.images[0] | img_url: '80x80', crop: 'center' %}
+    {% elsif result.image %}
+      {% assign thumbURL = result.image | img_url: '80x80', crop: 'center' %}
+    {% else %}
+		  {% assign thumbURL = '' %}
+    {% endif %}
+
+        {"title":{{ result.title | json }},
+           "url":{{ result.url   | json }},
+         "thumb":{{ thumbURL     | json }},
+            "id":{{result.id}} }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+{% endcapture %}
+
+{% comment %} Output the json object {% endcomment %}
+{"results_total":{{paginate.items}},"results":[{{ output | strip_newlines }}]}
+{% endpaginate %}

@@ -1,0 +1,128 @@
+<style>
+	.about_desktop_image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.ab_fourth_main-wrapper {
+		display: block;
+	}
+	.half_to_full_fourth {
+		width: 100%;
+	}
+	.title_ab_fourth {
+		font-size: 14px;
+		margin-bottom: 2%;
+		font-weight: bold;
+	}
+	.sub_title_ab_fourth {
+		font-size: 14px;
+	}
+	.live_te_ab {
+		padding: 0 1em;
+	}
+	@media only screen and (min-width: 901px) {
+		.ab_fourth_main-wrapper {
+			display: flex;
+		}
+		.half_to_full_fourth {
+			width: 50%;
+		}
+		.live_te_ab {
+			display: grid;
+			justify-content: center;
+			align-content: center;
+			padding: 0 6em;
+		}
+		.title_ab_fourth {
+			font-size: 24px;
+		}
+		.sub_title_ab_fourth {
+			font-size: 18px;
+		}
+	}
+</style>
+<div class="about-us_fourth about-us_new_section">
+	<div class="about_header" style=" color: {{ section.settings.color_title_about_us_fourth }};">{{ section.settings.title_about_us_fourth }}</div>
+	{% for block in section.blocks %}
+		<div class="ab_fourth_main-wrapper" {% if block.settings.brand_bio_position == true %}style="flex-direction: row-reverse;"{% endif %}>
+			<div class="half_to_full_fourth img_ab">
+				<img class="about_desktop_image" src="{{ block.settings.ab_fourth_image | img_url: '650x' }}" />
+			</div>
+			<div class="half_to_full_fourth live_te_ab">
+				<div class="title_ab_fourth center">{{ block.settings.ab_fourth_header }}</div>
+				<div class="sub_title_ab_fourth center" style="color: {{ block.settings.ab_fourth_body_color }};">{{ block.settings.ab_fourth_body }}</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "About us Fourth",
+    "settings": [
+			{
+				"type": "header",
+        "content": "Title"
+			},
+			{
+				"type" : "text",
+				"id": "title_about_us_fourth",
+        "label": "Title",
+				"default" : "We Treat Quality & Customer Satisfaction as One"
+			},
+			{
+        "type": "color",
+        "id": "color_title_about_us_fourth",
+        "label": "Color for Title",
+        "default": "#cc3333"
+      }
+		],
+		"blocks": [
+			{
+				"type": "about_us_fourth_section",
+				"name": "Brand Bio",
+				"settings": [
+					{
+						"type": "checkbox",
+						"id": "brand_bio_position",
+						"default": false,
+						"label": "Image Right check"
+					},
+					{
+						"type": "image_picker",
+						"id": "ab_fourth_image",
+						"label": "Brand Bio Image"
+					},
+					{
+						"type": "text",
+						"id": "ab_fourth_header",
+						"label": "Brand Header",
+						"default": "PRODUCT JOURNEY AMBASSADORS"
+					},
+					{
+						"type": "richtext",
+						"id": "ab_fourth_body",
+						"label": "Brand Body"
+					},
+					{
+						"type": "color",
+						"id": "ab_fourth_body_color",
+						"label": "Brand Body Color",
+						"default": "#676765"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Brand Bio",
+				"category": "BrandBio",
+				"blocks": [
+					{
+						"type": "about_us_fourth_section"
+					}
+				]
+			}
+		]
+  }
+{% endschema %}

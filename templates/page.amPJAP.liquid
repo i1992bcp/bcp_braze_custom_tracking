@@ -1,0 +1,426 @@
+<style>
+ 	@media only screen and (max-width: 968px) {
+		.pj_qa_main_wrapper {
+			width:100%;
+		}
+		.pj_mainWrapper {
+			padding-left: 15px;
+		}
+		.pj_text {
+			width: 80%;
+		}
+  }
+	.pj_main_header {
+		font-size: 34px;
+		color: #282828;
+		font-family: Roboto Slab;
+	}
+
+	ol {
+		margin: 0;
+		padding: 0;
+		color: #4f4f4f;
+	}
+
+	.pj_qa_main_wrapper li {
+		list-style: decimal;
+		padding-left: 10px;
+		margin: 4% 0;
+	}
+
+	.answer_wrapper {
+		margin-top: 1%;
+	}
+
+	.pj_qa_main_wrapper {
+		padding-left: 25px;
+		line-height:1.69;
+	}
+
+	.radio {
+		display: block;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		text-align: left;
+	}
+
+	.radio+.radio {
+		margin-top: 7px;
+	}
+
+	.radio input {
+		display: none;
+	}
+
+	.radio input+span {
+		display: inline-block;
+		position: relative;
+		padding-left: 25px;
+		color: #4f4f4f;
+		line-height: 1.69;
+		font-size: 16px;
+	}
+
+	.radio input+span:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		margin: auto;
+		border-radius: 50%;
+		margin-right: 5px;
+		width: 15px;
+		height: 15px;
+		border: 1px solid #d9d9d9;
+		background: #f7f7f7;
+	}
+
+	.radio input+span:after {
+		content: '';
+		display: block;
+		width: 9px;
+		height: 9px;
+		background: #282828;
+		position: absolute;
+		border-radius: 50%;
+		opacity: 0;
+	}
+
+	.radio input:checked+span:after {
+		top: 9px;
+		left: 3px;
+		opacity: 1;
+	}
+
+	.checkbox_wrapper {
+		display: flex;
+		justify-content: space-between;
+		appearance: none;
+		border: none;
+		padding: 0;
+	}
+
+	.checkbox {
+		display: block;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		text-align: left;
+	}
+
+	.checkbox+.checkbox {
+		margin-top: 7px;
+	}
+
+	.checkbox input {
+		display: none;
+	}
+
+	.checkbox input+span {
+		display: inline-block;
+		position: relative;
+		padding-left: 25px;
+		color: #4f4f4f;
+		line-height: 1.69;
+		font-size: 16px;
+	}
+
+	.checkbox input+span:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		margin: auto;
+		border-radius: 2px;
+		margin-right: 5px;
+		width: 15px;
+		height: 15px;
+		border: 1px solid #d9d9d9;
+		background: #f7f7f7;
+	}
+
+	.checkbox input+span:after {
+		content: '';
+		display: block;
+		width: 9px;
+		height: 9px;
+		background: #282828;
+		position: absolute;
+		border-radius: 2px;
+		opacity: 0;
+	}
+
+	.checkbox input:checked+span:after {
+		top: 9px;
+		left: 3px;
+		opacity: 1;
+	}
+
+	.pj_text {
+		width: 60%;
+		height: 40px;
+		border-radius: 2px;
+		border: solid 1px #d9d9d9;
+		background-color: #f7f7f7;
+	}
+
+	#pj_mainWrapper .submit_button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 200px;
+		height: 50px;
+		padding: 12px 71px;
+		border-radius: 4px;
+		background-color: #264953;
+		color: #fff;
+		font-weight: 500;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	#error_msg {
+		display:none;
+		font-size: 21px;
+		font-weight: 600;
+	}
+	#thank_you {
+		display: none;
+	}
+	.pj_thank_you_subheader {
+		margin: 3% 0 ;
+		color: #4f4f4f;
+	}
+</style>
+<section id="pj_mainWrapper">
+	<div class="page-width container">
+		<div id="form_">
+		<div class="pj_main_header">Sign-Up Questionnaire</div>
+		<div class="pj_qa_main_wrapper">
+		<form id="ambForm">
+			<ol id="pj_ol_wrapper">
+				<li class="pj_li_wrapper">
+					<div class="question_header">Do you have a Facebook account?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Facebook" type="radio" value="yes"><span>Yes</span></label>
+						<label class="radio"><input name="Facebook" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+              	<li class="pj_li_wrapper">
+					<div class="question_header">Are you an influencer/content creator? Note: This program is not made for influencer and affiliated partnerships, and we are only focusing on bringing together customers to help with our product development efforts at BCP.</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="influencer" type="radio" value="yes"><span>Yes</span></label>
+						<label class="radio"><input name="influencer" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header"> Are you comfortable connecting with the BCP team frequently on Zoom?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Zoom" type="radio" value="yes" ><span>Yes</span></label>
+						<label class="radio"><input name="Zoom" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header">Do you enjoy leaving product reviews?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="BCP review" type="radio" value="yes"><span>Yes</span></label>
+						<label class="radio"><input name="BCP review" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header">Are you an “idea” person or someone that constantly ask how can I make this better?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Idea" type="radio" value="yes"><span>Yes</span></label>
+						<label class="radio"><input name="Idea" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header"> Do like to engage with others while making suggestions?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Engage" type="radio" value="yes"><span>Yes</span></label>
+						<label class="radio"><input name="Engage" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header"> When online shopping, are you an impulsive shopper or do you use critical thinking when making your purchase decisions? </div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Critical thinker" type="radio" value="I am a critical thinker"><span>I am a critical thinker</span></label>
+						<label class="radio"><input name="Critical thinker" type="radio" value="I am an Impulsive Shopper"><span>I am an Impulsive Shopper</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header"> Do you like participating in polls and surveys?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Poll survey" type="radio" value="yes"><span>Yes</span></label>
+						<label class="radio"><input name="Poll survey" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header">Have you shopped from any of these categories?</div>
+					<fieldset class="answer_wrapper checkbox_wrapper">
+						<div class="_checkbox">
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Adirondack Chairs"><span>Adirondack Chairs</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Arts & Crafts"><span>Arts & Crafts</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Awnings"><span>Awnings</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Bird Baths & Feeders"><span>Bird Baths & Feeders</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Canopies"><span>Canopies</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Chaise Lounge Chairs"><span>Chaise Lounge Chairs</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Charcoal Grills & Smokers"><span>Charcoal Grills & Smokers</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Fire Pit Tables"><span>Fire Pit Tables</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Fire Pits"><span>Fire Pits</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Fireplace Accessories"><span>Fireplace Accessories</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Foot Bath Spa"><span>Foot Bath Spa</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Foot Massagers"><span>Foot Massagers</span></label>
+						</div>
+						<div class="_checkbox">
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Greenhouses & Grow Tents"><span>Greenhouses & Grow Tents</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Hammock Beds"><span>Hammock Beds</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Hammock Chairs & Swings"><span>Hammock Chairs & Swings</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Hammock Sets"><span>Hammock Sets</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Hammock Stands"><span>Hammock Stands</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Jewelry Armoires"><span>Jewelry Armoires</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Massage Recliners"><span>Massage Recliners</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Bar Stools"><span>Outdoor Bar Stools</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Gaming Chairs"><span>Gaming Chairs</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Garden Fences"><span>Garden Fences</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Garden Planters & Stands"><span>Garden Planters & Stands</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Gardening Tools"><span>Gardening Tools</span></label>
+						</div>
+						<div class="_checkbox">
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Gazebos & Pergolas"><span>Gazebos & Pergolas</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Benches"><span>Outdoor Benches</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Coolers"><span>Outdoor Coolers</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Couches"><span>Outdoor Couches</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Daybeds"><span>Outdoor Daybeds</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Dining Chairs"><span>Outdoor Dining Chairs</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Lighting"><span>Outdoor Lighting</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Lounge Chairs"><span>Outdoor Lounge Chairs</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Storage"><span>Outdoor Storage</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Outdoor Tables"><span>Outdoor Tables</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Patio Bar Furniture"><span>Patio Bar Furniture</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Patio Furniture Sets"><span>Patio Furniture Sets</span></label>
+						</div>
+						<div class="_checkbox">
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Patio Swings & Gliders"><span>Patio Swings & Gliders</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Patio Umbrellas"><span>Patio Umbrellas</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Picnic Bag & Basket Sets"><span>Picnic Bag & Basket Sets</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Potting Benches & Tables"><span>Potting Benches & Tables</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Raised Garden Beds"><span>Raised Garden Beds</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Rocking Chairs"><span>Rocking Chairs</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Sewing"><span>Sewing</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Trellises & Arbors"><span>Trellises & Arbors</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Umbrella Stands"><span>Umbrella Stands</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Yard and Garden Decor"><span>Yard and Garden Decor</span></label>
+							<label class="checkbox"><input name="Checkboxes" type="checkbox" value="Zero Gravity Chairs"><span>Zero Gravity Chairs</span></label>
+						</div>
+					</fieldset>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header">What tier are you in the BCP Rewards Program?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Tier" type="radio" value="bronze"><span>Bronze</span></label>
+						<label class="radio"><input name="Tier" type="radio" value="silver"><span>Silver</span></label>
+						<label class="radio"><input name="Tier" type="radio" value="gold"><span>Gold</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header">Do you like sharing your positive shopping experiences with friends and family?</div>
+					<div class="answer_wrapper">
+						<label class="radio"><input name="Sharing" type="radio" value="yes"><span>Yes</span></label>
+						<label class="radio"><input name="Sharing" type="radio" value="no"><span>No</span></label>
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header">Full Name</div>
+					<div class="answer_wrapper">
+						<input class="pj_text" type="text" id="name" name="Full name" value="">
+					</div>
+				</li>
+				<li class="pj_li_wrapper">
+					<div class="question_header">Enter your email used in your BCP account.</div>
+					<div class="answer_wrapper">
+						<input class="pj_text" type="email" id="email" name="Email" value="" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+					</div>
+				</li>
+			</ol>
+			<input class="submit_button" type="submit" value="Submit">
+		</form>
+		<div id="error_msg">Please fill Out all the Fields</div>
+		</div>
+		</div>
+		<div id="thank_you">
+			<div class="pj_main_header">Thanks for signing up!</div>
+			<div class="pj_thank_you_subheader">If you’re a good fit for the program, someone in our team will contact you!</div>
+			<div id="thank_you_done" class="submit_button">DONE</div>
+		</div>
+	</div>
+</section>
+
+<script>
+$("#ambForm").submit(function(e){
+  e.preventDefault();
+	var formdata = JSON.stringify($(this).serializeArray());
+	var validate_name = ['Facebook', 'influencer', 'Zoom', 'BCP review', 'Idea', 'Engage', 'Critical thinker', 'Poll survey', 'Checkboxes', 'Tier', 'Sharing', 'Full name', 'Email'];
+	var empty_arr = [];
+	for(let i = 0 ; i < validate_name.length ; i++){
+		let ssa = this.elements[validate_name[i]],checkboxCheck ;
+		if(validate_name[i] === 'Checkboxes') {
+			for(let j = 0 ; j <ssa.length ; j++){
+				if(ssa[j].checked) {
+					checkboxCheck = true; 
+					break;
+				}else {
+					checkboxCheck = false;
+				}
+			}
+			(checkboxCheck) ? null : empty_arr.push(validate_name[i]);
+		}else {
+			if(ssa.value === ""){			
+				empty_arr.push(validate_name[i]);
+			}
+		}
+	}
+	console.log("empty_arr", empty_arr.length, { formdata });
+	if(empty_arr.length === 0){
+		$.ajax({
+			type:"GET",
+			url: "https://brandambassadorapp.net/bcp/admin/process_form",
+			data: { formdata },
+			success: function(response){
+				if(response.res == 0) { 
+					console.log('Success');
+					$('#error_msg').css('display', 'none');
+					$('#form_').css('display', 'none');
+					$('#thank_you').css('display', 'block');
+
+				} else {
+					console.log('Error');
+				}
+			},
+			error: function (err){ 
+				console.log(err.responseText);
+			},
+			dataType:"jsonp",
+			jsonp: "jsonp"
+		});
+	}else {
+		$('#error_msg').css('display', 'block');
+	}
+});
+
+document.getElementById("thank_you_done").onclick = function(e){
+	e.preventDefault();
+	document.getElementById('ambForm').reset();
+	$('#form_').css('display', 'block');
+	$('#thank_you').css('display', 'none');
+}
+	
+</script>

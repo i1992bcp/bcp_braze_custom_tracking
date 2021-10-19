@@ -1,0 +1,239 @@
+<style>
+	.flex-container {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-between;
+		margin: 3% 0;
+	}
+	.flex-items_container {
+		padding: 1%;
+	}
+	.afterpay_header {
+		font-size: 24px;
+		font-weight: 600;
+		font-family: Roboto Slab;
+	}
+	.three-header {
+		font-size: 16px;
+		font-weight: 600;
+		color: #282828;
+		line-height: 1.4;
+		margin: 5px 0;
+	}
+	.three-subheader {
+		font-size: 16px;
+		
+		color: #676765;
+		line-height: 1.69;
+	}
+	.afterpay_sub_header {
+		font-size: 14px;
+	}
+	.amb_three_section_wrapper {
+		padding: 10% 0;		
+	}
+	@media only screen and (min-width: 968px) {
+		.afterpay_header {
+			font-size: 32px;
+		}
+		.afterpay_sub_header {
+			font-size: 16px;
+			color: #4f4f4f;
+			font-weight: 500;
+		}
+		.amb_three_section_wrapper {
+			padding: 4% 0;
+		}
+	}
+</style>
+<section class="container">
+	<div class="page-width relative">
+		<div class="amb_three_section_wrapper" style="background-color:{{ section.settings.amb_bg_color }}; ">
+			<div class="section-header text-center">
+				<div class="afterpay_header">{{ section.settings.amb_promo_title }}</div>
+				<div class="afterpay_sub_header">{{ section.settings.amb_promo_subtitle }}</div>
+			</div>
+		<div class="flex-container">
+			{% for block in section.blocks %}
+				<div class="flex-items_container text-center extra-small--one-whole  small-down--{{ block.settings.amb_promo_image_size_small }} {{ block.settings.amb_promo_image_size }}">
+					<div style="width:37%; margin:auto;"><img src="{{ block.settings.amb_promo_image | img_url: '500x'}}" /></div>
+					<div class="flex_item">
+						<div class="three-header">{{ block.settings.amb_promo_image_header }}</div>
+						<div class="three-subheader">{{ block.settings.amb_promo_subheader }}</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		</div>
+	</div>
+</section>
+{% schema %}
+  {
+    "name": "Three Image Block 2021",
+    "class": "gallery",
+    "settings": [
+      {
+        "type": "text",
+        "id": "amb_promo_title",
+        "label": "Heading"
+      },
+			{
+        "type": "text",
+        "id": "amb_promo_subtitle",
+        "label": "Sub Heading"
+      },
+			{
+				"type": "color",
+				"id": "amb_bg_color",
+				"label": "Background Color",
+				"default": "#f9f5f1"
+			},
+      {
+        "type": "text",
+        "id": "amb_product_title_desktop_fonts",
+        "label": "product title desktop fonts"
+        },
+        {
+            "type": "text",
+            "id": "amb_product_title_mobile_fonts",
+            "label": "product title mobile fonts"
+        },
+        {
+            "type": "radio",
+            "id": "amb_product_title_1_style",
+            "label": "Button 1 style",
+            "options": [
+                { "value": "amb_product_title_1", "label": "Fonts-weight : bold" },
+                { "value": "amb_product_title_2", "label": "Fonts-weight : normal" }
+            ],
+            "default": "amb_product_title_2"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "amb_promo_image",
+						"label": "Image"
+					},
+					{
+            "type": "url",
+            "id": "amb_promo_image_link",
+            "label": "Link"
+          },
+					{
+            "type": "text",
+            "id": "amb_promo_image_header",
+            "label": "Header",
+						"default": "Select Afterpay"
+          },
+					{
+            "type": "text",
+            "id": "amb_promo_subheader",
+            "label": "Sub Header",
+						"default": "At checkout, select Afterpay as your payment method with your existing debit or credit card."
+          },
+					{
+						"type": "select",
+						"id": "amb_promo_image_size",
+						"label": "Desktop Width",
+						"default": "one-third",
+						"options": [
+							{
+								"value": "one-quarter",
+								"label": "quarter - 25%"
+							},
+							{
+							"value": "one-third",
+							"label": "third - 33.333%"
+							},
+							{
+							"value": "two-fifths",
+							"label": "two-fifths - 40%"
+							},
+							{
+							"value": "one-half",
+							"label": "half - 50%"
+							},
+							{
+							"value": "three-fifths",
+							"label": "three-fifths - 60%"
+							},
+							{
+							"value": "two-thirds",
+							"label": "two-thirds - 66.666%"
+							},
+							{
+							"value": "three-quarters",
+							"label": "three-quarters - 75%"
+							},
+							{
+							"value": "one-whole",
+							"label": "one-whole - 100%"
+							}
+						]
+			 		},
+					{
+						"type": "select",
+						"id": "amb_promo_image_size_small",
+						"label": "Mobile Width",
+						"default": "one-whole",
+						"options": [
+							{
+							"value": "one-quarter",
+							"label": "quarter - 25%"
+							},
+							{
+							"value": "one-third",
+							"label": "third - 33.333%"
+							},
+							{
+							"value": "two-fifths",
+							"label": "two-fifths - 40%"
+							},
+							{
+							"value": "one-half",
+							"label": "half - 50%"
+							},
+							{
+							"value": "three-fifths",
+							"label": "three-fifths - 60%"
+							},
+							{
+							"value": "two-thirds",
+							"label": "two-thirds - 66.666%"
+							},
+							{
+							"value": "three-quarters",
+							"label": "three-quarters - 75%"
+							},
+							{
+							"value": "one-whole",
+							"label": "one-whole - 100%"
+							}
+						]
+			 		}
+        ]
+			}
+    ],
+    "presets": [
+      {
+        "name": "Three Image Block 2021",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image_block"
+          },
+          {
+            "type": "image_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,241 @@
+  <style>
+    .dash {width:50px; height:1px; border-top:1px solid #666; margin:0 auto; display:inline-block; margin-bottom:15px;}
+    {% if section.settings.image != blank %}
+    .hero--{{ section.id }} {
+      background-position: {{ section.settings.alignment }};
+    }
+
+    @media screen and (max-width: 150px) {
+      .hero--{{ section.id }} {
+        background-image: url('{{ section.settings.image | img_url: '600x600' }}');
+      }
+    }
+
+    @media screen and (min-width: 151px) and (max-width: 300px) {
+      .hero--{{ section.id }} {
+        background-image: url('{{ section.settings.image | img_url: '900x900' }}');
+      }
+    }
+
+    @media screen and (min-width: 301px) and (max-width: 600px) {
+      .hero--{{ section.id }} {
+        background-image: url('{{ section.settings.image | img_url: '1300x1300' }}');
+      }
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 800px) {
+      .hero--{{ section.id }} {
+        background-image: url('{{ section.settings.image | img_url: '1300x1300' }}');
+      }
+    }
+
+    @media screen and (min-width: 801px) and (max-width: 1000px) {
+      .hero--{{ section.id }} {
+        background-image: url('{{ section.settings.image | img_url: '1600x1600' }}');
+      }
+    }
+
+    @media screen and (min-width: 1001px) {
+      .hero--{{ section.id }} {
+        background-image: url('{{ section.settings.image | img_url: '2048x2048' }}');
+      }
+    }   
+ {% endif %}   
+  </style>
+
+
+<div class="hero hero--{{ section.id }} hero--{{ section.settings.hero_size }}{% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %} hero__overlay{% endif %}">
+  {% if section.settings.image == blank %}
+    <div class="placeholder-background">
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {% endif %}
+  <div class="hero__inner" style="vertical-align:{{ section.settings.text_alignment }};">
+    <div class="page-width {{ section.settings.text_align }}">
+      <div class="holder" {% if section.settings.max_width != blank %}style="max-width:{{ section.settings.max_width }}; margin:20px auto;"{% endif %}>      
+      {% if section.settings.title != blank %}
+        <h1 style="color:#282828;" class="{{ section.settings.title_class }} mega-title{% if section.settings.text_size == 'large' %} mega-title--large{% endif %}">{{ section.settings.title }}</h1>
+      {% endif %}
+      {% if section.settings.dash_enable %}<span class="dash"></span>{% endif %}
+      {% if section.settings.text != blank %}
+        <div style="color:{{  section.settings.text_color }}; font-size:{{  section.settings.text_size }};" class="rte-setting mega-subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">{{ section.settings.text }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn hero__btn {{ section.settings.button_class }}">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image with text overlay",
+    "class": "careers-section index-section--flush",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Image alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Vertical text alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text align",
+        "default": "text-center",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000"
+      },
+      {
+        "type": "text",
+        "id": "title_class",
+        "label": "Heading class",
+        "default": "h1",
+		"info": "h1, h2, h3, h4, h5 or h6"
+      },
+      {
+        "type": "checkbox",
+        "id": "dash_enable",
+        "label": "Enable dash under header"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text overlay"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
+      },
+      {
+        "type": "select",
+        "id": "hero_size",
+        "label": "Section height",
+        "default": "medium",
+        "options": [
+          {
+            "label": "Extra Small",
+            "value": "x-small"
+          },
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          },
+          {
+            "label": "Extra Large",
+            "value": "x-large"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "max_width",
+        "label": "Max width",
+        "info": "In pixels - include pixels"
+      },
+      {
+        "type": "text",
+        "id": "text_size",
+        "label": "Text size",
+        "default": "20px"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "select",
+        "id": "button_class",
+        "label": "Button class",
+        "options": [
+            {"value": "", "label": "Main"},
+            {"value": "btn--secondary", "label": "Secondary"},
+            {"value": "btn--clear", "label": "Clear/White Border"}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text overlay",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

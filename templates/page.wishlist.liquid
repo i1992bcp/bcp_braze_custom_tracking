@@ -1,0 +1,89 @@
+<script src="https://kit.fontawesome.com/609c8293fa.js"></script>
+<style>
+  .counter-zero{
+  	display:none;	
+  }
+  .counter-zero-block{
+  	display:none;
+  }
+</style>
+
+{{ 'custome-wishlist.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'whislist.js' | asset_url }}"></script>
+<div class="container">
+  <div class="page-width" style="position:relative;">
+    {%- if customer -%}
+    {%- else -%}
+      <div class="banner">
+        <div class="banner_text">
+          <div style="font-size: 18px;font-weight: 500;padding-top: 15px;">Save your items for your next visit.</div>
+          <div style="padding-bottom: 25px;">Sign in or create an account to save your favorites forever.</div>              
+        </div>
+        <div class="banner_button">
+          <button class="banner_login" href="#login">Sign in</button>
+          <p class="inner_text ">or</p>
+          <button class="banner_register" href="#register">Create Account</button>
+        </div>
+      </div>
+    {%- endif -%}
+    <div class="counter-zero-block" style="text-align: center;margin: 100px 0px;">
+      <div>You have no items in your wishlist</div>
+      <button class="banner_login" style="height: 40px;margin-top: 10px;"><a href="https://bestchoiceproducts.com/collections/clearance" style="color:#ffffff;">Start Shopping</a></button>
+    </div> 
+    <div class="counter-zero"> 
+      <div class="col-grid-sidebar ss-targeted" >
+        <div class="header_wishlist" style="display:flex;justify-content: space-between;margin-bottom:20px;">
+          <div class="grid__item"><h4 class="title_wish" style="display: inline-block;">Wishlist</h4> <span class="delete-collection" style="font-size: 12px;font-weight:500;margin-left:10px;text-decoration: underline;cursor: pointer;">Delete list</span></div>
+          <div style="position:relative;"> <button style="font-size:24px;border:0px;" class="email_sub btn--plain" ><i class="fa fa-envelope"></i></button></div>
+        </div>
+        <div class="email_box" >
+          <div style="display:flex;justify-content: space-between;"><p style="margin-bottom:10px;font-weight: 500;">Share your List</p><p style="margin-bottom:10px;cursor: pointer;" class="close_wishlist">X</p></div>
+          <p style="margin-bottom:10px;">Share your list via email: </p>
+          <input type="email" name="email" value="" class="form_input" id="first"  placeholder="Enter your email address" />
+          <input type="email" name="email" value="" class="form_inputt" id="second" placeholder="To: Enter recipient’s email"/>
+          <textarea rows="4" cols="50" name="message" class="form_text" value="" id="third" placeholder="Check out my wishlist! "></textarea>
+          <input type="submit" name="Send Email" class="form_button"/>
+          <p class="success" style="margin-top:10px;">Email sent successfully </p>
+        </div>
+        <div id="wishlist-product-list"></div>
+      </div>  
+      <div id="zero-wishlist" style="display: none; margin: 5em 0;text-align:  center;">
+        <p style="margin-bottom:  15px;">Your wishlist are empty.</p>
+      </div> 
+      <div class="grid__item medium-up--no-gutter small-down--no-gutter">
+        <script style="display: none;" id="product-item-tmpl" type="x-tmpl-mustache"> 
+          <div class="grid__item extra-small--one-whole small-down--one-half one-quarter border-small" data-product-eventid="<%_id%>" data-product-id="<%epi%>"" data-product-price="<%pr%">
+            <div class="collection-grid-item row">             
+              <div class="small_img">
+                <a onclick="location.href='<%du%>'" style="cursor: pointer;">
+                  <img src="<%iu%>" alt="<%dt%>" class="grid-view-item__image img_hover">
+                  </a>
+                  <div class="heart"><i class="far fa-heart heart_left"></i></div>   
+              </div>               
+              <div class="small_text">
+                <p class="product-title">
+                  <%dt%>
+                </p>
+                <div style="display:inline-block;" class="small_price">
+                    <span>
+                  <span class="old-price" style="text-decoration: line-through;">$<%op%></span> <span class="new-price">$<%pr%></span>
+                    </span>
+                </div>
+                <button class="custom-wishlist-add-to-cart" data-product-id="<%epi%>">Add to cart</button>
+                <a class="remove_from custom-wishlist-delete delete_product" data-product-eventid="<%_id%>" style="cursor: pointer;color:#676765;"> Remove item</a>
+              </div>
+            </div>
+          </div>
+          </script>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(".email_sub").click(function(e){
+	$(".email_box").fadeIn(300,function(){$(this).focus();});;
+});
+$('.close_wishlist').click(function() {
+   $(".email_box").fadeOut(300);
+});
+</script>

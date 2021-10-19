@@ -1,0 +1,63 @@
+<style>
+	.about_header {
+		font-family: Roboto Slab;
+		font-size: 24px;
+		font-weight: 600;
+		text-align: center;
+		margin-bottom: 2em;
+	}
+	.desktop_show {
+		display: none !important;
+	}
+	.mobile_show {
+		display: block !important;
+	}
+	.about-us_new_section {
+		margin: 3em 0;
+	}
+	.center {
+		text-align: center;
+	}
+	#about-us .container{
+		padding-right: 20px;
+	}
+	.breadcrumb {
+		display: none;
+	}
+	@media only screen and (min-width: 901px) { 
+		#about-us .container{
+			padding-right: 30px;
+		}
+		.about_header {
+			font-size: 32px;
+		}
+		.desktop_show {
+			display: block !important;
+		}
+		.mobile_show {
+			display: none !important;
+		}
+	}
+	
+</style>
+<section id="about-us" class="main_wrapper_about-us">
+	{% section "about-slideshow" %}
+	<div class="container">
+		<div class="page-width">
+			{% section "about-us-second" %}
+		</div>
+	</div>
+	{% section "about-us-third" %}
+	<div class="container">
+		<div class="page-width">
+			{% section "about-us_fourth" %}
+		</div>
+	</div>
+	{% section "about-us_fifth" %}
+	<div class="container">
+		<div class="page-width">
+			{% section "about-us_fix" %}
+			{% section "about_us_seven" %}
+		</div>
+	</div>
+</section>

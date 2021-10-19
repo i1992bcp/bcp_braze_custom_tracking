@@ -1,0 +1,31 @@
+{% capture alt_attr %}{{ page.title | escape }}{% endcapture %}
+<div class="page-width container">
+	<div class="page-featuredimage flex medium-down--hide">
+      <a href="https://signup.cj.com/member/signup/publisher/?cid=5077378">{{ page.handle | append: '.jpg' | file_url | img_tag: alt_attr }}</a> 
+      {% if settings.page_featured_image_title_enable %}
+        <div class="header-box"><h1>{{ page.title }}</h1></div>
+      {% endif %}      
+	</div>
+	<div class="page-featuredimage flex medium-up--hide">
+      <a href="https://signup.cj.com/member/signup/publisher/?cid=5077378">{{ page.handle | append: '.jpg' | prepend: 'mobile-' | file_url | img_tag: alt_attr }}</a> 
+      {% if settings.page_featured_image_title_enable %}
+        <div class="header-box"><h1>{{ page.title }}</h1></div>
+      {% endif %}      
+	</div>      
+
+  <div class="grid">
+    <div class="grid__item one-whole text-left relative">
+      {% unless settings.page_featured_image_title_enable %}
+      <div class="section-header text-center" style="display:none;">
+        <h1>{{ page.title }}</h1>
+      </div>
+      {% endunless %}
+
+      <div class="rte">
+        {{ page.content | split: '<!-- split -->' | first }}
+      </div>
+    </div>
+  </div>
+
+{% section 'FAQ' %}
+</div>

@@ -1,0 +1,3282 @@
+{
+  "current": {
+    "color_body_background": "#ffffff",
+    "accent_color": "#dae4e6",
+    "color_body_text": "#212b36",
+    "color_body_link": "#5d68bf",
+    "color_sale_text": "#cd201a",
+    "header_bck_color": "#ffffff",
+    "logo_text_color": "#212b36",
+    "header_text_color": "#212b36",
+    "main_menu_bck_color": "#ffffff",
+    "main_menu_link_color": "#212b36",
+    "mobile_menu_bck_color": "#212b36",
+    "store_messages_bck_color": "#10079f",
+    "footer_bck_color": "#ecf1f2",
+    "footer_text_color": "#212b36",
+    "primary_btn_background": "#212b36",
+    "primary_btn_text": "#ffffff",
+    "secondary_btn_background": "#ffffff",
+    "secondary_btn_text": "#212b36",
+    "quickbuy_background": "#ffffff",
+    "quickbuy_form_background": "#ecf1f2",
+    "quickbuy_text": "#212b36",
+    "overlay_opacity": 80,
+    "collection_feature_header_background": "#dae4e6",
+    "filter_bar_colour": "#ffffff",
+    "type_base_font": "montserrat_n4",
+    "type_heading_font": "montserrat_n4",
+    "type_nav_font": "montserrat_n4",
+    "type_logo_font": "montserrat_n4",
+    "font_size_body_int": 14,
+    "font_size_nav_int": 14,
+    "font_size_logo_int": 16,
+    "global_border_radius": 0,
+    "hover_image_enabled": true,
+    "quickbuy_buttons_toggle": true,
+    "quickbuy_labels_toggle": true,
+    "enable_payment_button": true,
+    "variant_style": "listed",
+    "swatch_enabled": true,
+    "swatch_option_name": "Color",
+    "swatch_method": "css",
+    "share_image": "",
+    "social_twitter_url": "",
+    "social_facebook_url": "",
+    "social_pinterest_url": "",
+    "social_vimeo_url": "",
+    "social_youtube_url": "",
+    "social_instagram_url": "",
+    "social_custom_icon": "",
+    "social_custom_url": "",
+    "on_add_to_cart": "ajax",
+    "search_type": "product",
+    "favicon": "shopify:\/\/shop_images\/favicon-logo_2d5fe93a-ae57-43f8-9c1e-7293da43e2ca.png",
+    "show_multiple_currencies": false,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+    "default_currency": "USD",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/website-small_4099d032-e52b-411a-a1b1-637f65ad5822.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#282828",
+    "checkout_button_color": "#282828",
+    "checkout_error_color": "#e32c2b",
+    "announcement_bar_bck_color": "#43467f",
+    "primary_btn_border": "#212b36",
+    "secondary_btn_border": "#dfe3e8",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1571704962365": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Gifts",
+              "image": "shopify:\/\/shop_images\/SKY5468-Collection.png",
+              "text": "Gifts for Everyone in the Family",
+              "link_text": "Shop Gift Guide",
+              "link_url": "shopify:\/\/collections\/holiday-gift-guide"
+            }
+          },
+          "1556228284360": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Home",
+              "image": "shopify:\/\/shop_images\/SKY5578LRG-2_900x900_18b6def3-1e54-4a8f-bbcb-46b44bbd06ce.jpg",
+              "text": "Memory Foam Mattresses",
+              "link_text": "Shop Now",
+              "link_url": "shopify:\/\/collections\/mattresses-1"
+            }
+          },
+          "1556231782979": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Patio & Garden",
+              "image": "shopify:\/\/shop_images\/Garden-Nav-Promo.jpg",
+              "text": "Raised Garden Beds",
+              "link_text": "Shop Collection",
+              "link_url": "https:\/\/bestchoiceproducts.com\/collections\/raised-garden-beds"
+            }
+          },
+          "1556231842008": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Toys & Games",
+              "image": "shopify:\/\/shop_images\/SKY5271LRG-2.jpg",
+              "text": "Ride-On Cars & Trucks",
+              "link_text": "Shop Collection",
+              "link_url": "shopify:\/\/collections\/ride-on-cars"
+            }
+          },
+          "1556232350244": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Fitness",
+              "image": "shopify:\/\/shop_images\/Popular-Fitness-KettleBell.jpg",
+              "text": "All Fitness",
+              "link_text": "Shop Now",
+              "link_url": "shopify:\/\/collections\/shop-all-fitness"
+            }
+          },
+          "1556232465959": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Seasonal Decor",
+              "image": "shopify:\/\/shop_images\/SKY4227LRG-2.jpg",
+              "text": "Pre-Lit & Un-Lit Trees",
+              "link_text": "Shop Now",
+              "link_url": "shopify:\/\/collections\/christmas-trees"
+            }
+          },
+          "1560792397259": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Musical Instruments",
+              "image": "shopify:\/\/shop_images\/SKY1263LRG-2_900x900_04d58446-49ae-4653-b001-ba92f623f338.jpg",
+              "text": "Musical Instruments",
+              "link_text": "Shop Collections",
+              "link_url": "shopify:\/\/collections\/musical-instruments"
+            }
+          },
+          "1560792547514": {
+            "type": "menu_promo",
+            "settings": {
+              "dropdown_link_title": "Pet Supplies",
+              "image": "shopify:\/\/shop_images\/SKY5388LRG-2.jpg",
+              "text": "All Pet Supplies",
+              "link_text": "Shop Now",
+              "link_url": "shopify:\/\/collections\/pet-supplies"
+            }
+          }
+        },
+        "block_order": [
+          "1571704962365",
+          "1556228284360",
+          "1556231782979",
+          "1556231842008",
+          "1556232350244",
+          "1556232465959",
+          "1560792397259",
+          "1560792547514"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/klavyio-emailtemp-logo_0f17f1ba-395c-4d66-aa26-e97eac87402f.png",
+          "logo_width": "150",
+          "mobile_logo": "shopify:\/\/shop_images\/favicon-logo_2d5fe93a-ae57-43f8-9c1e-7293da43e2ca.png",
+          "show_announcement_bar": true,
+          "announcement_bar_text": "Fast & Free Shipping on ALL Orders!",
+          "announcement_bar_url": "",
+          "second_announcement_bar_text": "Fast & Free Shipping on ALL Orders!",
+          "second_announcement_bar_url": "",
+          "announcement_bar_bck_color": "#282828",
+          "announcement_bar_txt_color": "#ffffff",
+          "main_linklist": "1-home-main-navigation",
+          "dock_nav": true,
+          "show_search_bar": true,
+          "show_messages": true,
+          "home_only_messages": true,
+          "slideshow_messages": false,
+          "message_1_text": "",
+          "message_1_url": "",
+          "message_2_text": "",
+          "message_2_url": "",
+          "message_3_text": "",
+          "message_3_url": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1556232608758": {
+            "type": "menu",
+            "settings": {
+              "footer_linklist": "6-footer-account",
+              "linklist_heading_hide": false,
+              "width": "20%",
+              "text_align": "text-left"
+            }
+          },
+          "1560466382024": {
+            "type": "menu",
+            "settings": {
+              "footer_linklist": "quick-links",
+              "linklist_heading_hide": false,
+              "width": "20%",
+              "text_align": "text-left"
+            }
+          },
+          "1560466126048": {
+            "type": "menu",
+            "settings": {
+              "footer_linklist": "company-info",
+              "linklist_heading_hide": false,
+              "width": "20%",
+              "text_align": "text-left"
+            }
+          }
+        },
+        "block_order": [
+          "1556232608758",
+          "1560466382024",
+          "1560466126048"
+        ],
+        "settings": {}
+      },
+      "1526918570503": {
+        "type": "rich-text-section",
+        "disabled": true,
+        "settings": {
+          "section_background_colour": "#fafafa",
+          "section_text_colour": "#333333",
+          "section_title": "Quality & Value, Always!",
+          "text": "<p>We keep it simple: meticulously committed to providing you with a shopping experience that never compromises quality or value. You get both every time. It&#x27;s uncomplicated, it&#x27;s generous, and it&#x27;s our honest promise!<\/p>",
+          "section_url_text": "Our Story",
+          "section_url": "shopify:\/\/pages\/about-us-best-choice-products",
+          "section_url_style": "button_1"
+        }
+      },
+      "1526918577590": {
+        "type": "featured-collection",
+        "disabled": true,
+        "settings": {
+          "title": "Memorial Day Favorites",
+          "link_text": "Shop All",
+          "collection": "memorial-day",
+          "row_count": 2
+        }
+      },
+      "1526918592986": {
+        "type": "featured-blog",
+        "disabled": true,
+        "settings": {
+          "ugc_text_blog": "@emilywondree",
+          "ugc_style_blog": "left",
+          "heading_image": "shopify:\/\/shop_images\/blog1-2020.jpg",
+          "title": "BCP Blog",
+          "heading_font": "16",
+          "description": "Become an expert on finely crafted items & get exclusive <br> content written by our experts in-house.",
+          "color_overlay_background": "#ffffff",
+          "color_overlay_text": "#ffffff",
+          "show_view_all": true,
+          "overlay_url_style": "button_1",
+          "blog": "bcp-blog",
+          "post_limit": 2,
+          "blog_show_author": false,
+          "blog_show_date": false
+        }
+      },
+      "hitarth-product": {
+        "type": "hitarth-product",
+        "settings": {}
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": "4",
+          "rows": "12",
+          "show_sidebar": true,
+          "sidebar_size": "one-fifth",
+          "grid_size": "four-fifths",
+          "show_collection_image": false,
+          "text_align": "text-left",
+          "show_breadcrumb": true,
+          "image_rollover_enable": false,
+          "show_vendor": false,
+          "show_price": true,
+          "show_title": true,
+          "show_swatches": false,
+          "info_rollover_enable": false,
+          "show_quick_add": false,
+          "category_carousel": true,
+          "sort_enable": true,
+          "product_count_enable": false,
+          "vendor_sort_enable": true,
+          "tags_enable": false
+        }
+      },
+      "rich-text-section": {
+        "type": "rich-text-section",
+        "settings": {
+          "section_background_colour": "#fafafa",
+          "section_text_colour": "#333333",
+          "section_title": "Our Mission",
+          "text": "<p>At Best Choice Products, we're here to change how you shop. Defined by our products, motivated by customers, and devoted to savings; we're re-inventing the world of online retail. We keep it simple: meticulously committed to providing you with a shopping experience that never compromises quality or value. You get both every time. It's uncomplicated, it's generous, and it's our honest promise<\/p>",
+          "section_url_text": "",
+          "section_url": "",
+          "section_url_style": "button_1"
+        }
+      },
+      "about-us-block-section": {
+        "type": "about-us-block-section",
+        "blocks": {
+          "1557424039132": {
+            "type": "About-Us-Third",
+            "settings": {
+              "about_block_image": "shopify:\/\/shop_images\/about-us-image7.jpg",
+              "body_text": "<p>Unlike other product-based companies, we are industry experts. Our very center is all about the passion we have in creating our products. We take pride in our diverse categories and selections. By keeping our entire process in-house, we&rsquo;re able to design and build products we know you&rsquo;ll love. Every BCP team member listens to you and your needs through market insight and research.<\/p>\n<p><\/p>",
+              "about_block_title": "Our Products"
+            }
+          },
+          "1557426229925": {
+            "type": "About-Us-Third",
+            "settings": {
+              "about_block_image": "shopify:\/\/shop_images\/about-us-image-2.jpg",
+              "body_text": "<p>Behind every category are&nbsp;&nbsp;Product Developers who work with our Sourcing Team to make sure every item that wants to be listed on BCP has both quality and value. With over 16 years of partnerships with our global partners, we&rsquo;re still one of the most trusted companies to work with. Our Sourcing and Product Development teams help us manufacture items at unbelievable prices.<\/p>",
+              "about_block_title": "Building the Products"
+            }
+          }
+        },
+        "block_order": [
+          "1557424039132",
+          "1557426229925"
+        ],
+        "settings": {}
+      },
+      "about-us-about-section": {
+        "type": "about-us-about-section",
+        "blocks": {
+          "1557437323491": {
+            "type": "value",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/live-chat-icon.png",
+              "title_text": "Live Chat",
+              "text": "Part of being dedicated is helping you in real time. We’ve invested in 24\/7 live chat and email.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557437348628": {
+            "type": "value",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/help-center-icon.png",
+              "title_text": "Help Center",
+              "text": "Self-support is available when you’d like to track your order or find helpful tips & tricks.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557437364245": {
+            "type": "value",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Call-Us-icon.png",
+              "title_text": "Phone Support",
+              "text": "When you need us, call us! Our customer support reps are trained product & case specialists.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          }
+        },
+        "block_order": [
+          "1557437323491",
+          "1557437348628",
+          "1557437364245"
+        ],
+        "settings": {
+          "title": "Here for Our Customers",
+          "intro": "Our customers really make BCP. Your voice lets us know where to start. We do whatever it takes to get to know you better: surveys, reviews, and overall trend analysis. <br> When you let us know what you like, we can build more of what you want, and none of what you don’t."
+        }
+      },
+      "about-us-two-image": {
+        "type": "about-us-two-image",
+        "settings": {
+          "about_image_1": "shopify:\/\/shop_images\/Aboutus-image4.jpg",
+          "about_image_2": "shopify:\/\/shop_images\/Aboutus-image1_5f2fd945-ef59-4b3f-aa67-5381341b7c43.jpg"
+        }
+      },
+      "about-us-bcpromises-section": {
+        "type": "about-us-bcpromises-section",
+        "settings": {
+          "about_image_bcpomises": "shopify:\/\/shop_images\/Aboutus-image6.jpg"
+        }
+      },
+      "banner-video-section": {
+        "type": "banner-video-section",
+        "blocks": {
+          "1557615843593": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slidertest-D1.2.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/slidertest-M1.jpg",
+              "overlay_title": "Our Story",
+              "overlay_text": "At BCP, it’s all about quality and value.",
+              "overlay_url_text_1": "Play Video",
+              "overlay_url_1": "",
+              "button_1_position": "center",
+              "button_1_style": "button_1"
+            }
+          }
+        },
+        "block_order": [
+          "1557615843593"
+        ],
+        "settings": {}
+      },
+      "about-us-bottom-rich-text": {
+        "type": "about-us-bottom-rich-text",
+        "settings": {
+          "section_background_colour": "#fafafa",
+          "section_text_colour": "#333333",
+          "section_title": "Our Promise to You",
+          "text": "<p>No matter who or what you&rsquo;re shopping for, you can find it with us at Best Choice Products. We keep things simple, so shopping becomes fun again. From our warehouses to management, we remain committed to providing both quality and value on all our products. No gimmicks, just our promise to the most important person in this process, you.<\/p>",
+          "section_url_text": "",
+          "section_url": "",
+          "section_url_style": "button_1"
+        }
+      },
+      "careers-header": {
+        "type": "careers-header",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/desktop_b1_v1_798ff97e-3b97-4b9e-85e1-4f6d752e7d50.jpg",
+          "alignment": "center",
+          "text_alignment": "center",
+          "text_align": "text-center",
+          "text_color": "#000",
+          "title_class": "h1",
+          "dash_enable": false,
+          "title": "Image with text overlay",
+          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+          "hero_size": "medium",
+          "max_width": "",
+          "text_size": "20px",
+          "button_label": "",
+          "button_link": "",
+          "button_class": ""
+        }
+      },
+      "careers-about": {
+        "type": "careers-about",
+        "blocks": {
+          "1557877121532": {
+            "type": "value",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/product.png",
+              "header_text": "Products",
+              "text": "We live and breathe quality products.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557877157908": {
+            "type": "value",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/customer.png",
+              "header_text": "Customer",
+              "text": "We make everything for our customers.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557877178884": {
+            "type": "value",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/savings_45880c16-4592-4904-8f4a-4255f8699566.png",
+              "header_text": "Savings",
+              "text": "We create affordable prices that disrupt the market.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          }
+        },
+        "block_order": [
+          "1557877121532",
+          "1557877157908",
+          "1557877178884"
+        ],
+        "settings": {
+          "title": "Who We Are",
+          "intro": "We bring our customers elevated products at affordable prices, never sacrificing one for the other.<br>\nBy staying dedicated to who we are, we infinitely make this mission a reality."
+        }
+      },
+      "careers-slider": {
+        "type": "careers-slider",
+        "blocks": {
+          "1557877241218": {
+            "type": "quote",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/lea.jpg",
+              "quote": "\"From my first day of work, I felt like I was already part of a family. There’s a sense of pride in working for a company that values your ideas and focuses on innovation and growth.\"",
+              "employee": "Lea Ibalio - Marketing Intern"
+            }
+          },
+          "1557877332865": {
+            "type": "quote",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Nick_63a6b65d-dbe8-4f29-b0bc-2e485625a694.jpg",
+              "quote": "\"I feel like I’m part of a growing movement focused on satisfying our customers with great products at amazing prices. BCP’s positive and energetic culture makes it easy to be excited to come to work.\"",
+              "employee": "Nicholas Bryan - Strategic Account Manager"
+            }
+          },
+          "1557877390104": {
+            "type": "quote",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/linda.jpg",
+              "quote": "\"BCP always looks for the next innovative product to bring to our customers. With a value to be infinite in what we do, the energetic culture makes for an enjoyable work day, every day.\"",
+              "employee": "Linda Nespole - Director of Human Resources"
+            }
+          },
+          "1557877404860": {
+            "type": "quote",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/evan_c39f9e84-6d48-4728-920f-99c26b71ee86.jpg",
+              "quote": "The culture and environment at BCP are second to none. Being an employee who made the jump from customer service rep to marketing; I’m a prime example of how awesome the opportunity for growth is.\"",
+              "employee": "Evan Brooks - Copywriter"
+            }
+          }
+        },
+        "block_order": [
+          "1557877241218",
+          "1557877332865",
+          "1557877390104",
+          "1557877404860"
+        ],
+        "settings": {
+          "box_color": "#d40202",
+          "font_color": "#ffffff"
+        }
+      },
+      "careers-depts": {
+        "type": "careers-depts",
+        "blocks": {
+          "1557951216526": {
+            "type": "dept",
+            "settings": {
+              "heading": "Marketing",
+              "text": "Our most diversely intertwined department, Marketing makes sure our brand is always on track by handling sales data and producing social media and creative content. This team makes sure our brand is always on track.",
+              "width": "33%",
+              "medium_width": "one-third",
+              "small_width": "one-half"
+            }
+          },
+          "1557951330568": {
+            "type": "dept",
+            "settings": {
+              "heading": "Customer Experience",
+              "text": "Part of listening to our customers is making sure we’re always available, which is why everyday communication is important. BCP’s first voice does that for our customers.",
+              "width": "33%",
+              "medium_width": "one-third",
+              "small_width": "one-half"
+            }
+          },
+          "1557951345687": {
+            "type": "dept",
+            "settings": {
+              "heading": "Category Management",
+              "text": "Our diverse catalog starts with our leaders in category management. They play a huge role in creating products based on input from our customers’ needs and requests.",
+              "width": "33%",
+              "medium_width": "one-third",
+              "small_width": "one-half"
+            }
+          },
+          "1557951359446": {
+            "type": "dept",
+            "settings": {
+              "heading": "Operations",
+              "text": "As part of Operations, our warehouses all over the country are in-sync to make sure orders are fulfilled and safely arrive to our customer’s door.",
+              "width": "33%",
+              "medium_width": "one-third",
+              "small_width": "one-half"
+            }
+          },
+          "1557951379562": {
+            "type": "dept",
+            "settings": {
+              "heading": "Purchasing",
+              "text": "Our purchasing team builds and maintains partnerships with our manufacturers all over the world. They meticulously ensure all our products carry quality and design, always.",
+              "width": "33%",
+              "medium_width": "one-third",
+              "small_width": "one-half"
+            }
+          },
+          "1557951389933": {
+            "type": "dept",
+            "settings": {
+              "heading": "Information Technology",
+              "text": "The heroes behind the curtain are our tech-savvy geniuses. From coding to creation, IT makes sure our customers enjoy the BCP experience without any glitches.",
+              "width": "33%",
+              "medium_width": "one-third",
+              "small_width": "one-half"
+            }
+          }
+        },
+        "block_order": [
+          "1557951216526",
+          "1557951330568",
+          "1557951345687",
+          "1557951359446",
+          "1557951379562",
+          "1557951389933"
+        ],
+        "settings": {
+          "title": "Departments"
+        }
+      },
+      "careers-gallery": {
+        "type": "careers-gallery",
+        "blocks": {
+          "1560209895839": {
+            "type": "slide",
+            "settings": {}
+          },
+          "1560209902967": {
+            "type": "column",
+            "settings": {
+              "column_width": "one-quarter",
+              "column_width_mobile": "one-half"
+            }
+          },
+          "1560198341984": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/002.jpg",
+              "image_size": "one-whole"
+            }
+          },
+          "1560198697745": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/006_66169fdc-0ae6-47ad-9c8a-0c85ef50c41b.jpg",
+              "image_size": "one-whole"
+            }
+          },
+          "1560210083278": {
+            "type": "column_end",
+            "settings": {}
+          },
+          "1560210093299": {
+            "type": "column",
+            "settings": {
+              "column_width": "one-quarter",
+              "column_width_mobile": "one-half"
+            }
+          },
+          "1560199029197": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/L3_b57d1558-d3f5-4043-9b75-fda9fa63be79.jpg",
+              "image_size": "one-whole"
+            }
+          },
+          "1560210107508": {
+            "type": "column_end",
+            "settings": {}
+          },
+          "1560210114483": {
+            "type": "column",
+            "settings": {
+              "column_width": "one-quarter",
+              "column_width_mobile": "one-half"
+            }
+          },
+          "1560198823588": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/011_d6770ea5-c09b-49fb-a4cf-5e6859de2fca.jpg",
+              "image_size": "one-whole"
+            }
+          },
+          "1560198804969": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/016_b66c8b8b-b15b-4c2a-99d8-9fd3d99211e3.jpg",
+              "image_size": "one-whole"
+            }
+          },
+          "1560210173973": {
+            "type": "column_end",
+            "settings": {}
+          },
+          "1560210180991": {
+            "type": "column",
+            "settings": {
+              "column_width": "one-quarter",
+              "column_width_mobile": "one-half"
+            }
+          },
+          "1560210015166": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/L5_30574211-fe42-4fe1-993d-735c42df8afd.jpg",
+              "image_size": "one-whole"
+            }
+          },
+          "1560210186536": {
+            "type": "column_end",
+            "settings": {}
+          },
+          "1560210225944": {
+            "type": "slide_end",
+            "settings": {}
+          }
+        },
+        "block_order": [
+          "1560209895839",
+          "1560209902967",
+          "1560198341984",
+          "1560198697745",
+          "1560210083278",
+          "1560210093299",
+          "1560199029197",
+          "1560210107508",
+          "1560210114483",
+          "1560198823588",
+          "1560198804969",
+          "1560210173973",
+          "1560210180991",
+          "1560210015166",
+          "1560210186536",
+          "1560210225944"
+        ],
+        "settings": {
+          "title": "",
+          "title_class": "",
+          "remove_padding": false
+        }
+      },
+      "careers-perks": {
+        "type": "careers-perks",
+        "blocks": {
+          "1557951452914": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Medical-Plan_d5aed79f-9e67-4b04-b052-89c89f5f89c0.png",
+              "heading": "Medical Plan",
+              "text": "We take care of our employees. Enjoy medical benefits, including vision, dental, and life coverage.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951532395": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/401K_254145fb-c469-45a8-a369-47b492076fdd.png",
+              "heading": "401K Package",
+              "text": "We invest in you & your future. We offer a comprehensive 401k plan that prepares you for retirement.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951550598": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Employee-Assistance.png",
+              "heading": "Employee Assistance",
+              "text": "When you need an ear, counseling services are made available to you 24\/7.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951565576": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Social-Events.png",
+              "heading": "Social Events",
+              "text": "Don’t expect boring with BCP! Celebrate birthdays, come to the ball game, and other team outings.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951576610": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Paid-Vacay.png",
+              "heading": "Paid Vacation & Holidays",
+              "text": "You’ll be working hard on a regular basis, and we make sure to take well deserved breaks!",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951590714": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Employee-Discounts.png",
+              "heading": "Employee Discounts",
+              "text": "Our customers enjoy the best prices in quality products. Employees get that too!",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951614981": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Gym_12cfe6f1-d9aa-4f11-b4b2-b6eec799867e.png",
+              "heading": "On-Site Gym",
+              "text": "Healthy bodies and minds lead to a happy workplace! Enjoy a workout in our on-site gym.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951631079": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Arcade-Room.png",
+              "heading": "Arcade Room",
+              "text": "Give your mind a break or wake up from a lunch food coma with an array of games, including ping-pong, pool, or foosball!",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          },
+          "1557951646460": {
+            "type": "perk",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Snacks.png",
+              "heading": "Free Snacks",
+              "text": "Fuel up with snacks and beverages, from classic favorites to hearty options. Plus, all the coffee you need.",
+              "width": "33%",
+              "medium_width": "one-whole",
+              "small_width": "one-whole"
+            }
+          }
+        },
+        "block_order": [
+          "1557951452914",
+          "1557951532395",
+          "1557951550598",
+          "1557951565576",
+          "1557951576610",
+          "1557951590714",
+          "1557951614981",
+          "1557951631079",
+          "1557951646460"
+        ],
+        "settings": {
+          "title": "Perks & Benefits"
+        }
+      },
+      "careers-jobs": {
+        "type": "careers-jobs",
+        "settings": {
+          "title": "Job Opportunities",
+          "sub_title_career": "We're always looking toward building a bigger, better BCP! <br>Interested in joining us? Check out all our career opportunities through Indeed!",
+          "url_title_career": "<u>View All Open Positions<\/u>",
+          "sub_title_career_url": "https:\/\/workforcenow.adp.com\/mascsr\/default\/mdf\/recruitment\/recruitment.html?cid=c657fecb-eda2-42b3-a456-16fb4622b44a&ccId=19000101_000001&lang=en_US"
+        }
+      },
+      "slideshow-section": {
+        "type": "slideshow-section",
+        "blocks": {
+          "1557873944439": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/about-build.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/about-build-m.jpg",
+              "overlay_title": "A Look Inside BCP",
+              "head_color_overlay_text": "#333333",
+              "heading_font": "32",
+              "overlay_text": "Meticulously committed to providing both quality & value in every item we build for you.",
+              "sub_color_overlay_text": "#333333",
+              "sub_heading_font": "16",
+              "color_overlay_background": "#ffffff",
+              "overlay_url_text_1": "Watch Video",
+              "overlay_url_1": "https:\/\/youtu.be\/um3BkCBSYWs",
+              "button_1_position": "center",
+              "button_1_style": "button_1",
+              "overlay_url_text_2": "",
+              "overlay_url_2": "",
+              "button_2_position": "center",
+              "overlay_url_style": "button_1",
+              "overlay_position_x": 50,
+              "overlay_position_y": 50,
+              "color_label_background": "#ffffff",
+              "color_label_text": "#333333",
+              "show_chevron": true,
+              "product_id_1": "",
+              "chevron_position_1": "right",
+              "label_position_x_1": 20,
+              "label_position_y_1": 30,
+              "product_id_2": "",
+              "chevron_position_2": "right",
+              "label_position_x_2": 80,
+              "label_position_y_2": 50
+            }
+          }
+        },
+        "block_order": [
+          "1557873944439"
+        ],
+        "settings": {
+          "slideshow_autoplay": true,
+          "slideshow_autoplay_speed": 4
+        }
+      },
+      "1557941630645": {
+        "type": "testimonials",
+        "blocks": {
+          "1557941630645-1": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>&quot;We received an amazing coffee table set from <a href=\"https:\/\/www.instagram.com\/bcproducts\/\">@bcproducts<\/a> &amp; it really completes our living room. 😍 The prices are amazing, the shipping is fast &amp; putting it together was quick!&quot;<\/p>",
+              "author": "@babybumpsandmombuns_",
+              "date": "",
+              "profile": "shopify:\/\/shop_images\/babybumpsandmombuns.jpg",
+              "stars": ""
+            }
+          },
+          "1557941630645-2": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Loving our new recliner! @bcproducts offers great prices. I love making our house a home and they make it so affordable.<\/p>",
+              "author": "@lakishafranklin5.0",
+              "date": "",
+              "profile": "shopify:\/\/shop_images\/lakishafranklin5.0.jpg",
+              "stars": ""
+            }
+          },
+          "1557941630645-0": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p><em>&quot;Best Choice Products is where I’ll be shopping for toys and gifts until the end of time. They have the best quality with affordable pricing, and the customer service is EVERYTHING!&quot;<\/em><\/p>",
+              "author": "@brittfusilier",
+              "date": "",
+              "profile": "shopify:\/\/shop_images\/brittfusilier.jpg",
+              "stars": ""
+            }
+          },
+          "1563312720850": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>&quot;Best Choice Products  has the best customer service, affordable prices, and a huge selection of stuff for the home and kids!<\/p>",
+              "author": "@teeenzy",
+              "date": "",
+              "profile": "shopify:\/\/shop_images\/teeenzy.jpg",
+              "stars": ""
+            }
+          }
+        },
+        "block_order": [
+          "1557941630645-1",
+          "1557941630645-2",
+          "1557941630645-0",
+          "1563312720850"
+        ],
+        "settings": {
+          "title": "Why Customers Love BCP",
+          "slides_to_show": "3"
+        }
+      },
+      "1557972038235": {
+        "type": "home-instafeed",
+        "settings": {
+          "title": "#mybcp Moments",
+          "message": "Share your picture-perfect savings. Get inspired & Shop our Instagram.",
+          "link": "shopify:\/\/pages\/mybcp",
+          "linktext": "View All Customer Photos"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "header_image": "",
+          "header_mobile_image": "",
+          "blog_show_date": true
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "split_layout": false,
+          "article_show_author": false,
+          "article_show_date": true,
+          "article_show_share_buttons": true,
+          "required_fields": true,
+          "privacy_link": ""
+        }
+      },
+      "about-animated-price": {
+        "type": "about-animated-price",
+        "settings": {}
+      },
+      "career-slide": {
+        "type": "career-slide",
+        "blocks": {
+          "1559948192275": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/AboutUs-Main-Desktop.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/AboutUs-Main-Mobile.jpg",
+              "overlay_title": "Join Our Team",
+              "head_color_overlay_text": "#282828",
+              "heading_font": "32",
+              "overlay_text": "The possibilities at BCP are endless, and <br> we’d love to have you on board.",
+              "sub_color_overlay_text": "#333333",
+              "sub_heading_font": "14",
+              "color_overlay_background": "#ffffff",
+              "overlay_url_text_1": "View Open Positions",
+              "overlay_url_1": "#jobs",
+              "button_1_position": "center",
+              "button_1_style": "button_1",
+              "overlay_url_text_2": "",
+              "button_2_position": "center",
+              "overlay_url_style": "button_1",
+              "overlay_position_x": 50,
+              "overlay_position_y": 60,
+              "color_label_background": "#ffffff",
+              "color_label_text": "#333333",
+              "show_chevron": true,
+              "product_id_1": "",
+              "chevron_position_1": "right",
+              "label_position_x_1": 20,
+              "label_position_y_1": 30,
+              "product_id_2": "",
+              "chevron_position_2": "right",
+              "label_position_x_2": 80,
+              "label_position_y_2": 50
+            }
+          }
+        },
+        "block_order": [
+          "1559948192275"
+        ],
+        "settings": {
+          "slideshow_autoplay": true,
+          "slideshow_autoplay_speed": 4
+        }
+      },
+      "collection-landing-section": {
+        "type": "collection-landing-section",
+        "settings": {}
+      },
+      "today-deal-landing": {
+        "type": "today-deal-landing",
+        "settings": {
+          "title": "Today's Deal",
+          "today_image": "shopify:\/\/shop_images\/DAY25_Long-Web.jpg",
+          "day_text": "Day 25",
+          "color_day_today_text": "#be9f65",
+          "image_link": "shopify:\/\/products\/heated-2d-3d-shiatsu-neck-back-massage-chair-w-adjustable-air-compression",
+          "image_heading": "$119.99",
+          "image_text": "Shiatsu Massage Chair",
+          "image_button": "Buy Now",
+          "color_day_today_button": "#be9f65",
+          "coupon_code": "Use Code DAY25",
+          "save_price": "Was: $139.99 | You Save: $20"
+        }
+      },
+      "page_new_deal_tweenty": {
+        "type": "page_new_deal_tweenty",
+        "blocks": {
+          "1572563634011": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web_Day1_SKY2845.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/best-choice-products-100-piece-clear-multi-colors-magnetic-tiles-educational-stem-toy-building-set-w-car-carrying-bag",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572564027389": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/day2_Tall-web.png",
+              "mobile_image": "shopify:\/\/shop_images\/day2_Long-Web.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/8-piece-12-4qt-xl-air-fryer-oven-rotisserie-dehydrator-set-w-12-presets",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572563972616": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/day3_Tall-web.png",
+              "mobile_image": "shopify:\/\/shop_images\/day3_Long-Web.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/snow-flocked-hinged-artificial-pine-christmas-tree-w-metal-stand",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572564881155": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5508.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5508.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/12v-kids-ride-on-truck-car-w-parent-remote-control-spring-suspension",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572564953988": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY2095.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY2095.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "https:\/\/bestchoiceproducts.com\/products\/electric-foot-massager-w-remote-3-modes?variant=30871092265038",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565005212": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5143.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5143.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/142-piece-jurassic-racetrack-toy-play-set-w-2-dinosaurs-car",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565027375": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5374.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5374.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/long-range-foam-ball-blaster-rifle-w-barrel-extension-bipod-12-foam-balls",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565103087": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5645.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5645.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/kids-247-piece-building-block-marble-run-stem-toy-track-set-w-ramps-slides",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565518330": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY2870.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY2870.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/2-4ghz-kids-transforming-remote-control-robot-car-toy-w-led-lights-sounds",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565579278": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5349.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5349.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/pre-lit-instant-setup-artificial-christmas-tree-w-memory-wire-branches",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565631332": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5072.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5072.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/1-6qt-900w-digital-compact-kitchen-air-fryer-w-recipes",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565673620": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5163.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5163.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/2x4ft-10-in-1-combo-game-table-set-w-billiards-foosball-ping-pong-more",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565702261": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5138.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5138.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/61-key-beginner-keyboard-piano-musical-instrument-set-w-h-stand-stool",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565723515": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-webSKY5272.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-WebSKY5272.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/12v-2-seater-licensed-land-rover-ride-on-w-parent-remote-control",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565746014": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5488.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5488.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/hollywood-vanity-make-up-mirror-w-led-bulbs-phone-mount-3-light-settings",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565771287": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5431.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5431.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/16-9qt-1800w-10-in-1-xxxl-air-fryer-countertop-oven-rotisserie-toaster",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565787943": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5456.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5456.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/pre-lit-artificial-spruce-christmas-tree-w-incandescent-lights",
+              "image_heading": "DEAL ENDED",
+              "image_text": "",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "&nbsp",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565812103": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Tall-web-SKY5468.png",
+              "mobile_image": "shopify:\/\/shop_images\/Long-Web-SKY5468.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/glow-in-the-dark-foam-dart-blasters-target-set-w-24-darts-2-guns",
+              "image_heading": "$26.99",
+              "image_text": "Deal Ends 11\/25 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY18<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565835405": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DAY19_Tall-web.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/DAY19_Long-Web.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/6v-kids-ride-on-car-truck-w-parent-control-3-speeds",
+              "image_heading": "$89.99",
+              "image_text": "Deal Ends 11\/26 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY19<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565867672": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DAY20_Tall-web.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/DAY20_Long-Web.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/best-choice-products-portable-kids-junior-height-adjustable-basketball-hoop-stand-backboard-system-w-wheels",
+              "image_heading": "$44.99",
+              "image_text": "Deal Ends 11\/27 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY20<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572565886904": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DAY21_Tall-web_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/DAY21_Long-Web.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/electric-stainless-steel-wine-opener-set-w-aerator-foil-cutter-charger",
+              "image_heading": "$34.99",
+              "image_text": "Deal Ends 11\/27 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY21<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572566018199": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DAY22_Tall-web.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/DAY22_Long-Web.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/360-degree-swivel-folding-floor-gaming-chair-w-4-adjustable-positions",
+              "image_heading": "$99.99",
+              "image_text": "Deal Ends 11\/27 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY22<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572566039435": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DAY23_Tall-web.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/DAY23_Long-Web.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/hinged-douglas-full-fir-artificial-christmas-tree-w-metal-stand",
+              "image_heading": "$64.99 and up",
+              "image_text": "Deal Ends 11\/27 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY23<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572566057718": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DAY24_Tall-web.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/DAY24_Long-Web.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/electric-heated-sherpa-throw-blanket-w-3-heat-settings-auto-shut-off",
+              "image_heading": "$39.99",
+              "image_text": "Deal Ends 11\/27 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY24<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572566078966": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DAY25_Tall-web.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/DAY25_Long-Web.jpg",
+              "color_day_image_text": "#be9f65",
+              "image_link": "shopify:\/\/products\/heated-2d-3d-shiatsu-neck-back-massage-chair-w-adjustable-air-compression",
+              "image_heading": "$199.99",
+              "image_text": "Deal Ends 11\/27 11:59pm PST",
+              "image_button": "Shop Now",
+              "color_day_new_button": "#be9f65",
+              "coupon_code": "Use Code <b>DAY25<\/b>",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572566129629": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Toys-Tall.png",
+              "mobile_image": "shopify:\/\/shop_images\/Toys-Rectangle-1.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "",
+              "image_heading": "",
+              "image_text": "",
+              "image_button": "",
+              "color_day_new_button": "#aa1919",
+              "coupon_code": "",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          },
+          "1572566162366": {
+            "type": "image_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Seasonal-Tall.png",
+              "mobile_image": "shopify:\/\/shop_images\/Seasonal-Rectangle-1.png",
+              "color_day_image_text": "#be9f65",
+              "image_link": "",
+              "image_heading": "",
+              "image_text": "",
+              "image_button": "",
+              "color_day_new_button": "#aa1919",
+              "coupon_code": "",
+              "image_size": "one-quarter",
+              "image_size_small": "one-half",
+              "text_align": "text-center"
+            }
+          }
+        },
+        "block_order": [
+          "1572563634011",
+          "1572564027389",
+          "1572563972616",
+          "1572564881155",
+          "1572564953988",
+          "1572565005212",
+          "1572565027375",
+          "1572565103087",
+          "1572565518330",
+          "1572565579278",
+          "1572565631332",
+          "1572565673620",
+          "1572565702261",
+          "1572565723515",
+          "1572565746014",
+          "1572565771287",
+          "1572565787943",
+          "1572565812103",
+          "1572565835405",
+          "1572565867672",
+          "1572565886904",
+          "1572566018199",
+          "1572566039435",
+          "1572566057718",
+          "1572566078966",
+          "1572566129629",
+          "1572566162366"
+        ],
+        "settings": {
+          "title": "All Deals"
+        }
+      },
+      "full-width-image-section": {
+        "type": "full-width-image-section",
+        "settings": {
+          "image": "",
+          "mobile_full_image": "",
+          "color_overlay_background": "#ffffff",
+          "color_overlay_text": "#333333",
+          "overlay_title": "",
+          "overlay_text": "",
+          "overlay_url_text_1": "",
+          "overlay_url_1": "",
+          "overlay_url_text_2": "",
+          "overlay_url_2": "",
+          "overlay_url_style": "button_1",
+          "overlay_position_x": 50,
+          "overlay_position_y": 70,
+          "color_label_background": "#ffffff",
+          "color_label_text": "#333333",
+          "show_chevron": true,
+          "product_id_1": "",
+          "chevron_position_1": "right",
+          "label_position_x_1": 20,
+          "label_position_y_1": 30,
+          "product_id_2": "",
+          "chevron_position_2": "right",
+          "label_position_x_2": 80,
+          "label_position_y_2": 50
+        }
+      },
+      "new_deal_text-section": {
+        "type": "new_deal_text-section",
+        "settings": {
+          "new_section_background_colour": "#be9f65",
+          "new_section_text_colour": "#ffffff",
+          "new_section_title": "How it Works",
+          "new_text": "<p>Get a new deal each day! Selected from categories, gift guides, or our favorites list, deals will have exclusive pricing and a discount code to make sure you get the best savings online. Check back with us everyday to reveal new, jaw-dropping deals along with new codes that help you save big! Enter a code at checkout through 11:59 PM PST November 27th or while supplies last.<\/p>",
+          "new_section_url_text": "",
+          "new_section_url": "",
+          "new_section_url_style": "new_button_1"
+        }
+      },
+      "new_slideshow-section": {
+        "type": "new_slideshow-section",
+        "blocks": {
+          "1572906079048": {
+            "type": "image",
+            "settings": {
+              "new_image": "shopify:\/\/shop_images\/web-banner-1.jpg",
+              "new_mobile_image": "shopify:\/\/shop_images\/mobile-banner.jpg",
+              "new_overlay_title": "",
+              "new_head_color_overlay_text": "#333333",
+              "new_heading_font": "",
+              "new_overlay_text": "",
+              "new_sub_color_overlay_text": "#333333",
+              "new_sub_heading_font": "",
+              "new_color_overlay_background": "#ffffff",
+              "new_overlay_url_text_1": "",
+              "new_overlay_url_1": "",
+              "new_button_1_position": "center",
+              "new_button_1_style": "button_1",
+              "new_overlay_url_text_2": "",
+              "new_overlay_url_2": "",
+              "new_button_2_position": "center",
+              "new_overlay_url_style": "button_1",
+              "new_overlay_position_x": 50,
+              "new_overlay_position_y": 80,
+              "new_color_label_background": "#ffffff",
+              "new_color_label_text": "#333333",
+              "new_show_chevron": true,
+              "new_product_id_1": "",
+              "chevron_position_1": "right",
+              "new_label_position_x_1": 20,
+              "new_label_position_y_1": 30,
+              "product_id_2": "",
+              "chevron_position_2": "right",
+              "new_label_position_x_2": 80,
+              "new_label_position_y_2": 50
+            }
+          }
+        },
+        "block_order": [
+          "1572906079048"
+        ],
+        "settings": {
+          "slideshow_autoplay": true,
+          "slideshow_autoplay_speed": 4
+        }
+      },
+      "cyber-one": {
+        "type": "cyber-one",
+        "settings": {
+          "cyber_bf_background_colour": "#282828",
+          "cyber_logo_text_image": "shopify:\/\/shop_images\/clock_1.png",
+          "cyber_main_text_bf": "<p>These offers are&nbsp;valid for a limited time. Shop Now!<\/p>",
+          "cyber_section_text_colour_bf": "#ffffff",
+          "cyber_main_header_fonts_bf": "16px",
+          "cyber_main_header_fonts_mobile_bf": "12px",
+          "cyber_text_second_bf": "<p>Codes expire 11:59 PM PST March 21, 2020<\/p>",
+          "cyber_second_section_text_colour_bf": "#ffffff",
+          "cyber_main_sub_header_fonts_bf": "14px",
+          "cyber_main_sub_header_mobile_fonts_bf": "12px",
+          "cyber_section_url_bf": ""
+        }
+      },
+      "cyber-five": {
+        "type": "cyber-five",
+        "settings": {
+          "cyber_image": "shopify:\/\/shop_images\/exclusive-offers-web-final.png",
+          "cyber_mobile_full_image": "shopify:\/\/shop_images\/exclusive-offers-mobile.png",
+          "cyber_overlay_url_1_full": ""
+        }
+      },
+      "cyber-three": {
+        "type": "cyber-three",
+        "settings": {
+          "cyber_home_section_title": "",
+          "cyber_home_section_bgcolor_day_image_text": "#eeeeee",
+          "cyber_home_section_button_link": "",
+          "cyber_home_section_image_button": "",
+          "cyber_home_section_color_day_new_button": "#df1f26"
+        }
+      },
+      "cyber-fourth": {
+        "type": "cyber-fourth",
+        "blocks": {
+          "1584475099979": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4531LRG-1_800x_73123001-1e47-4990-9ad9-93b029995822.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/4-in-1-arcade-game-table-multicolor",
+              "cyber_promo_image_heading": "$64.99",
+              "cyber_promo_compare_price_image_heading": "$75.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "4-in-1 Table Game Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: BCPGAMES",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475236021": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4546LRG-1_800x_e0b243a6-3c71-4d7a-b774-60386bded047.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/6-cubbie-kids-bookcase-furniture-accent-w-cushioned-reading-nook",
+              "cyber_promo_image_heading": "$79.99",
+              "cyber_promo_compare_price_image_heading": "$89.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "6-Cubbie Kids Bookcase",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: BCPCUBBY",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584486660628": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY3696LRG-1a_800x_5fcc2f8f-d605-4d01-9ee0-b12f43289c2c.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/toy-cash-register-w-scanner-mic-and-calculator",
+              "cyber_promo_image_heading": "$18.99",
+              "cyber_promo_compare_price_image_heading": "$21.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Pretend Cash Register Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: FUNBCP",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584486656621": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY5611LRG-2_800x_5468d420-1d89-4384-a720-8c03e827a0ba.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/105-piece-kids-magnetic-car-track-stem-building-playset-w-2-light-up-cars",
+              "cyber_promo_image_heading": "$49.99",
+              "cyber_promo_compare_price_image_heading": "$54.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Magnetic Tile Race Track",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: 105RACE",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475250032": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4892LRG-1_600x_7005cbbd-1db4-4087-bfa6-a8a310b2c388.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/set-of-2-laser-tag-rifle-blasters-w-cheat-avoiding-extra-lives-life-tracker-1",
+              "cyber_promo_image_heading": "$24.99",
+              "cyber_promo_compare_price_image_heading": "$29.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Set of 2 Laser Tag Blasters",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: FAMILYFUN",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475261638": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY5332LRG-2_600x_6cf9bbc5-079d-41d8-a52c-654e476ade9a.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/realistic-roaring-t-rex-dinosaur-figurine-toy",
+              "cyber_promo_image_heading": "$27.99",
+              "cyber_promo_compare_price_image_heading": "$30.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "32in Realistic Roaring T-Rex",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: REALDINO",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475274366": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY5333LRG-3_600x_bb33e44f-7408-446e-9bdd-0c5185d65053.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/realistic-roaring-triceratops-dinosaur-figurine-toy",
+              "cyber_promo_image_heading": "$27.99",
+              "cyber_promo_compare_price_image_heading": "$30.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "30in Roaring Triceratops",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: REALDINO",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475284511": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY5463LRG-2_600x_89b66630-8b9f-42f4-9b4d-1b2646ff653d.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/1-18-scale-rc-transforming-robot-car-toys-w-1-button-transformation",
+              "cyber_promo_image_heading": "$25.99",
+              "cyber_promo_compare_price_image_heading": "$29.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "2 RC Transforming Cars",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: TOYFUN",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475301216": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY5121LRG-2_600x_3da13125-792a-4f36-9a61-b030c2bf7c69.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/3-in-1-kids-building-block-activity-play-table-set-w-storage-2-chairs",
+              "cyber_promo_image_heading": "$39.99",
+              "cyber_promo_compare_price_image_heading": "$43.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "3-in-1 Activity Table Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: HOMEFUN",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475311608": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY2086lrg-1_600x_ed6aa818-32f8-4dfb-b21c-019182550804.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/kids-boxing-set-childrens-beginning-freestanding-reflex-punching-bag-w-pair-of-gloves",
+              "cyber_promo_image_heading": "$21.99",
+              "cyber_promo_compare_price_image_heading": "$25.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Kids Bounce Bag Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: FUNTOYS",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475322685": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4520LRG-1_600x_2066c8bd-feff-4825-b1cf-2e260f93a2eb.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/kids-standing-boxing-punching-ball-set-w-gloves",
+              "cyber_promo_image_heading": "$21.99",
+              "cyber_promo_compare_price_image_heading": "$25.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Adjustable Punching Bag",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: FUNTOYS",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1574906848275": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY2859lrg-1_600x_1317f2c9-1707-4354-a14e-551cba5b14ff.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/best-choice-products-105-piecetranslucent-marble-run-coaster-railway-toy-game-set-75-building-blocks-30-marbles",
+              "cyber_promo_image_heading": "$17.99",
+              "cyber_promo_compare_price_image_heading": "$21.99",
+              "cyber_promo_color_comp_price": "#676767",
+              "cyber_promo_image_text": "Marble Run Coaster Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: FUNTOYS",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475340824": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4716LRG-1_600x_96a340cd-c46a-48f2-8b7e-e223cc32ed6b.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/set-of-4-kids-water-gun-blasters-multicolor",
+              "cyber_promo_image_heading": "$24.99",
+              "cyber_promo_compare_price_image_heading": "$29.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Set of 4 Water Blasters",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: WATERFUN",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475386360": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4627LRG-1_600x_3b7ba5c7-5ddd-46cd-b79b-8c2494c6dff5.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/set-of-2-fire-and-police-megaphone-toy-set-w-siren-volume-control-black-red",
+              "cyber_promo_image_heading": "$20.99",
+              "cyber_promo_compare_price_image_heading": "$24.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Set of 2 Police Megaphones",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: FUNTOYS",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475404599": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4926LRG-1_600x_47a5cd83-0ca4-43e0-9de4-2af64fafbc3e.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/6-in-1-kids-dinosaur-building-brick-set-multicolor",
+              "cyber_promo_image_heading": "$17.99",
+              "cyber_promo_compare_price_image_heading": "$20.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "6-in-1 Dinosaur Building Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: DINOSET",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475416982": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4656LRG-1_600x_8eea4998-05b2-4a5b-89d0-9b271c7a3eef.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/light-up-hover-disk-soccer-set-w-air-power-soccer-pump-ball-goal",
+              "cyber_promo_image_heading": "$16.99",
+              "cyber_promo_compare_price_image_heading": "$20.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Light Up Hover Disk Soccer",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: FUNTOYS",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475434584": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4255LRG-1_600x_0496460e-89cc-4934-bd64-42cf462ab09a.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/best-choice-products-37-piece-pretend-kitchen-cake-tea-foods-kids-party-playset",
+              "cyber_promo_image_heading": "$17.99",
+              "cyber_promo_compare_price_image_heading": "$20.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "37-Piece Tea Party Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: BCP4255",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475446166": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4267LRG-1_600x_9392836f-a12b-4f73-8f17-e98ec323d320.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/best-choice-products-double-sided-flocking-dart-board-w-6-steel-darts",
+              "cyber_promo_image_heading": "$17.99",
+              "cyber_promo_compare_price_image_heading": "$20.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "Double-Sided Dart Board Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: DARTS",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          },
+          "1584475456264": {
+            "type": "image_block",
+            "settings": {
+              "cyber_promo_image": "shopify:\/\/shop_images\/SKY4754LRG-1_600x_bf548803-7c0a-47df-9f59-322385eccf9e.jpg",
+              "cyber_promo_mobile_image": "",
+              "cyber_promo_color_day_image_text": "#aa1919",
+              "cyber_promo_image_link": "shopify:\/\/products\/13-piece-kids-golf-set",
+              "cyber_promo_image_heading": "$20.99",
+              "cyber_promo_compare_price_image_heading": "$24.99",
+              "cyber_promo_color_comp_price": "#aa1919",
+              "cyber_promo_image_text": "13-Piece Kids Golf Set",
+              "cyber_promo_image_button": "Shop Now",
+              "cyber_promo_color_day_new_button_text": "#ffffff",
+              "cyber_promo_color_day_new_button": "#aa1919",
+              "cyber_promo_color_day_new_button_border": "",
+              "cyber_promo_coupon_code": "Use Code: GOLF",
+              "cyber_promo_image_size": "one-quarter",
+              "cyber_promo_image_size_small": "one-half",
+              "cyber_promo_text_align": "text-center"
+            }
+          }
+        },
+        "block_order": [
+          "1584475099979",
+          "1584475236021",
+          "1584486660628",
+          "1584486656621",
+          "1584475250032",
+          "1584475261638",
+          "1584475274366",
+          "1584475284511",
+          "1584475301216",
+          "1584475311608",
+          "1584475322685",
+          "1574906848275",
+          "1584475340824",
+          "1584475386360",
+          "1584475404599",
+          "1584475416982",
+          "1584475434584",
+          "1584475446166",
+          "1584475456264"
+        ],
+        "settings": {
+          "cyber_promo_title": "",
+          "cyber_product_title_desktop_fonts": "",
+          "cyber_product_title_mobile_fonts": "",
+          "cyber_product_title_1_style": "cyber_product_title_2"
+        }
+      },
+      "cyber-christmas-slide": {
+        "type": "cyber-christmas-slide",
+        "blocks": {
+          "1575325852031": {
+            "type": "image",
+            "settings": {
+              "cyber_image": "shopify:\/\/shop_images\/DesktopBanner_1.jpg",
+              "cyber_mobile_image": "shopify:\/\/shop_images\/Mobile_Banner_1.jpg",
+              "cyber_overlay_title": "This contest has ended",
+              "cyber_head_color_overlay_text": "#ae130e",
+              "cyber_heading_font": "21",
+              "cyber_overlay_text": "Seasonal Style Showcase",
+              "cyber_sub_color_overlay_text": "#282828",
+              "cyber_sub_heading_font": "18",
+              "cyber_color_overlay_background": "#ffffff",
+              "cyber_overlay_url_text_1": "",
+              "cyber_overlay_url_1": "",
+              "cyber_button_1_position": "center",
+              "cyber_button_1_style": "button_1",
+              "cyber_overlay_url_text_2": "",
+              "cyber_overlay_url_2": "",
+              "cyber_button_2_position": "center",
+              "cyber_overlay_url_style": "button_1",
+              "cyber_overlay_position_x": 50,
+              "cyber_overlay_position_y": 51,
+              "cyber_color_label_background": "#ffffff",
+              "cyber_color_label_text": "#333333",
+              "cyber_show_chevron": true,
+              "cyber_product_id_1": "",
+              "cyber_chevron_position_1": "right",
+              "cyber_label_position_x_1": 20,
+              "cyber_label_position_y_1": 45,
+              "cyber_product_id_2": "",
+              "cyber_chevron_position_2": "right",
+              "cyber_label_position_x_2": 80,
+              "cyber_label_position_y_2": 50
+            }
+          }
+        },
+        "block_order": [
+          "1575325852031"
+        ],
+        "settings": {
+          "cyber_slideshow_autoplay": true,
+          "cyber_slideshow_autoplay_speed": 4
+        }
+      },
+      "cyber-christmas-rich-one": {
+        "type": "cyber-christmas-rich-one",
+        "settings": {
+          "cyber_chri_onesection_background_colour": "#ae130e",
+          "cyber_chri_onesection_text_colour": "#ffffff",
+          "cyber_chri_onesection_title": "Contest Rules",
+          "cyber_chri_onetext": "<p>We want to see how you use our seasonal items to create a contemporary holiday look!&nbsp;Get creative with our Christmas trees and winter holiday decor while unleashing your inner photographer.&nbsp;Feature our product in your photo and attach it to a review on the item&rsquo;s&nbsp;bestchoiceproducts.com product page.&nbsp;<\/p>\n<p>&nbsp;Don&rsquo;t forget to tag <strong>#BCPHolidays<\/strong> in the review so we can find your submission.<\/p>\n<p>10 winners will be selected and receive a BCP credit ranging from $100 up to $1,000!&nbsp;Consecutive&nbsp;winners will win $900, $800, until the 10th place winner at $100.<\/p>",
+          "cyber_chri_onesection_url_text": "",
+          "cyber_chri_onesection_url": "",
+          "cyber_chri_onesection_url_style": "button_1"
+        }
+      },
+      "cyber-chri-image-url": {
+        "type": "cyber-chri-image-url",
+        "settings": {
+          "cyber_chri_image": "shopify:\/\/shop_images\/embelishment-D.png",
+          "cyber_chri_mobile_full_image": "shopify:\/\/shop_images\/Untitled-2_317fd2cf-8959-4025-9b5d-301b7f4cdd50.png",
+          "cyber_chri_overlay_url_1_full": ""
+        }
+      },
+      "cyber-christmas-rich-two": {
+        "type": "cyber-christmas-rich-two",
+        "settings": {
+          "cyber_chri_two_section_background_colour": "rgba(0,0,0,0)",
+          "cyber_chri_two_section_text_colour": "#333333",
+          "cyber_chri_two_section_title": "Terms & Conditions",
+          "cyber_chri_two_text": "<p>&lt;li&gt;Contiguous US&nbsp;only&lt;\/li&gt;<br>&lt;li&gt;Any photo submitted in review will subject to Best Choice Products&rsquo; Review terms &amp;amp; conditions.&lt;\/li&gt;<br>&lt;li&gt;To be eligible you must complete a review with a photo of your seasonal d&eacute;cor item on BestChoiceProducts.com. Between the dates of 12\/4\/19-12\/12\/19 11:59 PM PST.&nbsp;Review must include #BCPHolidays&lt;\/li&gt;<br>&lt;li&gt;Must be submitted with a valid email address&lt;\/li&gt;<br>&lt;li&gt;No cash value&nbsp;&lt;\/li&gt;<br><br><\/p>",
+          "cyber_chri_two_section_url_text": "",
+          "cyber_chri_two_section_url": "",
+          "cyber_chri_two_section_url_style": "button_1"
+        }
+      },
+      "cyber-first-rich-text": {
+        "type": "cyber-first-rich-text",
+        "settings": {
+          "cyber_chri_firstonesection_background_colour": "#fbf6f3",
+          "cyber_chri_firstonesection_text_colour": "#282828",
+          "cyber_chri_firstonesection_title": "To Enter:",
+          "cyber_chri_firstonetext": "<p><strong>1.<\/strong> Leave a review&nbsp;<strong>with a photo<\/strong>&nbsp;on a seasonal holiday item purchased in 2019.&nbsp;<\/p>\n<p>&bull; Use the same email address you purchased the item with!&nbsp;<br>&bull; Include the hashtag&nbsp;<strong>#<\/strong><strong>BCPHolidays<\/strong><strong>&nbsp;<\/strong>in the review's body.&nbsp;<\/p>\n<p><strong>2.<\/strong> Confirm your review submission in the&nbsp;<strong>confirmation email<\/strong>.&nbsp;<\/p>\n<p><strong>3.<\/strong> Review must be submitted by<strong>&nbsp;December 12, 2019<\/strong>.&nbsp;<\/p>",
+          "cyber_chri_firstonesection_url_text": "",
+          "cyber_chri_firstonesection_url": "",
+          "cyber_chri_firstonesection_url_style": "button_1"
+        }
+      },
+      "cyber-second-rich-text": {
+        "type": "cyber-second-rich-text",
+        "settings": {
+          "cyber_chri_second_onesection_background_colour": "#ffffff",
+          "cyber_chri_second_onesection_text_colour": "#333333",
+          "cyber_chri_second_onesection_title": "FAQ",
+          "cyber_chri_second_onetext": "<p><strong>Q:<\/strong> <em>I already left a review with or without a photo. What do I do?&nbsp;<\/em><br><strong>A:<\/strong> Leave another following the criteria above!&nbsp;<\/p>\n<p><strong>Q:<\/strong><em> I didn't get the review confirmation email.&nbsp;<\/em><br><strong>A:<\/strong>&nbsp;You must click the confirm button in our email to enter. Make sure you check your spam.<\/p>\n<p><strong>Q: <\/strong><em>Do I also get the reward points for leaving a review?&nbsp;<\/em><br><strong>A:<\/strong>&nbsp;If&nbsp;you're leaving a review with the same email address your rewards account uses, you will get 50 reward points!&nbsp;<\/p>\n<p><strong>Q:<\/strong> <em>Does it have to be a 5-star review?&nbsp;<\/em><br><strong>A:<\/strong>&nbsp;No! We use customer reviews to constantly improve our products. Your honest feedback helps us do that.&nbsp;<\/p>\n<p><strong>Q:<\/strong><em> I purchased multiple applicable products. Can I leave a review for each one?<\/em><br><strong>A:<\/strong> Yes, however you can only review a product once and you can only win one of the ten prizes.<\/p>",
+          "cyber_chri_second_onesection_url_text": "",
+          "cyber_chri_second_onesection_url": "",
+          "cyber_chri_second_onesection_url_style": "button_1"
+        }
+      },
+      "cyber-add-image-section": {
+        "type": "cyber-add-image-section",
+        "settings": {
+          "cyber_chri_second_image": "shopify:\/\/shop_images\/DesktopWinners_eaf14e38-c30c-4b02-b5b6-60c231b54627.jpg",
+          "cyber_chri_second_mobile_full_image": "shopify:\/\/shop_images\/Mobile_2.jpg",
+          "cyber_chri_second_overlay_url_1_full": ""
+        }
+      },
+      "shipping-slideshow": {
+        "type": "shipping-slideshow",
+        "blocks": {
+          "1576093538883": {
+            "type": "image",
+            "settings": {
+              "shipping_image": "shopify:\/\/shop_images\/DesktopGreen.jpg",
+              "shipping_mobile_image": "shopify:\/\/shop_images\/MobileGreen.jpg",
+              "shipping_overlay_title": "Slideshow",
+              "shipping_head_color_overlay_text": "#333333",
+              "shipping_heading_font": "16",
+              "shipping_overlay_text": "Use this section to welcome customers to your store, show off your images or display a promotion",
+              "shipping_sub_color_overlay_text": "#333333",
+              "shipping_sub_heading_font": "14",
+              "shipping_color_overlay_background": "#ffffff",
+              "shipping_overlay_url_text_1": "",
+              "shipping_overlay_url_1": "",
+              "shipping_button_1_position": "center",
+              "shipping_button_1_style": "button_1",
+              "shipping_overlay_url_text_2": "",
+              "shipping_overlay_url_2": "",
+              "shipping_button_2_position": "center",
+              "shipping_overlay_url_style": "button_1",
+              "shipping_overlay_position_x": 50,
+              "shipping_overlay_position_y": 80,
+              "shipping_color_label_background": "#ffffff",
+              "shipping_color_label_text": "#333333",
+              "shipping_show_chevron": true,
+              "shipping_product_id_1": "",
+              "chevron_position_1": "right",
+              "shipping_label_position_x_1": 20,
+              "shipping_label_position_y_1": 30,
+              "product_id_2": "",
+              "chevron_position_2": "right",
+              "shipping_label_position_x_2": 80,
+              "shipping_label_position_y_2": 50
+            }
+          }
+        },
+        "block_order": [
+          "1576093538883"
+        ],
+        "settings": {
+          "slideshow_autoplay": true,
+          "slideshow_autoplay_speed": 4
+        }
+      },
+      "shipping_rich-text-first": {
+        "type": "shipping_rich-text-first",
+        "settings": {
+          "shipping_section_background_colour": "#f9f9f9",
+          "shipping_section_text_colour": "#333333",
+          "shipping_section_title": "Rich text",
+          "shipping_text": "<p>Use this section to share information about your brand with your customers.<\/p>\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+          "shipping_section_url_text": "",
+          "shipping_section_url": "",
+          "shipping_section_url_style": "button_1"
+        }
+      },
+      "shipping-rich-text-second": {
+        "type": "shipping-rich-text-second",
+        "settings": {
+          "shipping_two_section_background_colour": "#f9f9f9",
+          "shipping_two_section_text_colour": "#333333",
+          "shipping_two_section_title": "Rich text",
+          "shipping_two_text": "<p>Use this section to share information about your brand with your customers.<\/p>\n<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+          "shipping_two_section_url_text": "",
+          "shipping_two_section_url": "",
+          "shipping_two_section_url_style": "button_1"
+        }
+      },
+      "bf-text-banner-section": {
+        "type": "bf-text-banner-section",
+        "settings": {
+          "bf_background_colour": "#80d1c1",
+          "logo_text_image": "",
+          "main_text_bf": "<p>Who Am I?<\/p>",
+          "section_text_colour_bf": "#333333",
+          "main_header_fonts_bf": "20px",
+          "main_header_fonts_mobile_bf": "15px",
+          "text_second_bf": "<p>I Am Nobody.<\/p>",
+          "second_section_text_colour_bf": "#333333",
+          "main_sub_header_fonts_bf": "20px",
+          "main_sub_header_mobile_fonts_bf": "15px",
+          "section_url_bf": "shopify:\/\/products\/10-shelf-portable-fabric-closet-w-cover"
+        }
+      },
+      "shipping-faq": {
+        "type": "shipping-faq",
+        "blocks": {
+          "1576093789206": {
+            "type": "faq_block",
+            "settings": {
+              "shipping_question": "Who am I?",
+              "shipping_answer": "I Am Nobody."
+            }
+          },
+          "1576093794330": {
+            "type": "faq_block",
+            "settings": {
+              "shipping_question": "Who am I?",
+              "shipping_answer": "I Am Nobody."
+            }
+          }
+        },
+        "block_order": [
+          "1576093789206",
+          "1576093794330"
+        ],
+        "settings": {
+          "shipping_title": "",
+          "faq_bg_color": "#e1e1e1",
+          "faq_color_ques": "#282828",
+          "faq_color_answer": "#282828"
+        }
+      },
+      "collection_holiday": {
+        "type": "collection_holiday",
+        "settings": {}
+      },
+      "1596223216706": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Shop Best Sellers",
+          "link_text": "Shop All",
+          "collection": "best-sellers",
+          "row_count": 2
+        }
+      },
+      "1601885871652": {
+        "type": "deal-home-bf-section",
+        "blocks": {
+          "1601885871652-0": {
+            "type": "image_block",
+            "settings": {
+              "home_section_image": "shopify:\/\/shop_images\/Asset_6_2x-100.jpg",
+              "home_section_image_link": "shopify:\/\/collections\/outdoor-heating",
+              "home_section_image_title": "OUTDOOR FIREPITS",
+              "home_section_color_title_text": "#282828",
+              "home_section_upto_text": "",
+              "home_section_color_up_image_text": "#ffffff",
+              "home_section_coupon_code": "",
+              "home_section_color_day_image_text": "#aa1919",
+              "home_section_price_text": "",
+              "home_section_color_day_price_text": "#aa1919",
+              "home_section_fonts_title": "14px",
+              "home_section_fonts_price": "14px",
+              "home_section_fonts_up_to": "20px",
+              "home_section_fonts_off": "20px",
+              "home_section_image_size": "one-third",
+              "home_section_image_size_small": "one-third",
+              "home_section_image_size_small_extra": "one-whole"
+            }
+          },
+          "56276cb7-d301-4018-8261-1709d8588c8a": {
+            "type": "image_block",
+            "settings": {
+              "home_section_image": "shopify:\/\/shop_images\/Asset_5_2x-100.jpg",
+              "home_section_image_link": "shopify:\/\/collections\/outdoor-seating",
+              "home_section_image_title": "OUTDOOR SEATING",
+              "home_section_color_title_text": "#282828",
+              "home_section_upto_text": "",
+              "home_section_color_up_image_text": "#ffffff",
+              "home_section_coupon_code": "",
+              "home_section_color_day_image_text": "#aa1919",
+              "home_section_price_text": "",
+              "home_section_color_day_price_text": "#aa1919",
+              "home_section_fonts_title": "14px",
+              "home_section_fonts_price": "20px",
+              "home_section_fonts_up_to": "20px",
+              "home_section_fonts_off": "20px",
+              "home_section_image_size": "one-third",
+              "home_section_image_size_small": "one-third",
+              "home_section_image_size_small_extra": "one-whole"
+            }
+          },
+          "0fe0690b-6b24-4284-b3c3-c1b0f4b1e111": {
+            "type": "image_block",
+            "settings": {
+              "home_section_image": "shopify:\/\/shop_images\/Asset_4_2x-100.jpg",
+              "home_section_image_link": "shopify:\/\/collections\/kids-outdoor-play",
+              "home_section_image_title": "KIDS OUTDOOR PLAY",
+              "home_section_color_title_text": "#282828",
+              "home_section_upto_text": "",
+              "home_section_color_up_image_text": "#ffffff",
+              "home_section_coupon_code": "",
+              "home_section_color_day_image_text": "#aa1919",
+              "home_section_price_text": "",
+              "home_section_color_day_price_text": "#aa1919",
+              "home_section_fonts_title": "14px",
+              "home_section_fonts_price": "20px",
+              "home_section_fonts_up_to": "20px",
+              "home_section_fonts_off": "20px",
+              "home_section_image_size": "one-third",
+              "home_section_image_size_small": "one-third",
+              "home_section_image_size_small_extra": "one-whole"
+            }
+          }
+        },
+        "block_order": [
+          "1601885871652-0",
+          "56276cb7-d301-4018-8261-1709d8588c8a",
+          "0fe0690b-6b24-4284-b3c3-c1b0f4b1e111"
+        ],
+        "settings": {
+          "home_section_title": "",
+          "home_section_bgcolor_day_header_text": "#282828",
+          "home_section_bgcolor_day_image_text": "#ffffff",
+          "home_section_button_link": "",
+          "home_section_image_button": "",
+          "home_section_color_day_new_button": "#aa1919"
+        }
+      },
+      "1604303249965c0473": {
+        "type": "full-width-image-url",
+        "disabled": true,
+        "settings": {
+          "image": "shopify:\/\/shop_images\/banner-desktop.jpg",
+          "mobile_full_image": "shopify:\/\/shop_images\/banner-mobile.jpg",
+          "overlay_url_1_full": "shopify:\/\/products\/6-piece-wicker-patio-furniture-set-w-height-adjustable-dining-table"
+        }
+      },
+      "16059078563e8ec294": {
+        "type": "cyber-chri-image-url",
+        "settings": {
+          "cyber_chri_image": "shopify:\/\/shop_images\/Asset_9_2x-100.jpg",
+          "cyber_chri_mobile_full_image": "shopify:\/\/shop_images\/Asset_8_2x-100.jpg",
+          "cyber_chri_overlay_url_1_full": "shopify:\/\/collections\/shop-all-patio-garden"
+        }
+      },
+      "q4hl": {
+        "type": "q4hl",
+        "settings": {}
+      },
+      "smssection": {
+        "type": "smssection",
+        "settings": {
+          "bg_color_sms": "#c31a1f",
+          "bg_text_header_sms": "Subscribe & Get 10% OFF",
+          "bg_text_sms": "<p>Text <strong>&#x27;BCP&#x27;<\/strong> to <strong>(833)-533-7014 <\/strong>to Sign Up!<\/p>",
+          "bg_text_color_sms": "#ffffff",
+          "image_sms": "shopify:\/\/shop_images\/web-banner_2x_2_2_a6f75c48-d211-4ffd-84b7-bf5129450b76.jpg"
+        }
+      },
+      "about-slideshow": {
+        "type": "about-slideshow",
+        "settings": {
+          "bg_color_about_us": "#cc3333",
+          "bg_text_header_about_us": "",
+          "bg_text_about_us": "Together with customers, our mission is to create the internet’s most popular products.",
+          "bg_text_color_about_us": "#ffffff",
+          "video_url": "um3BkCBSYWs"
+        }
+      },
+      "about-us-second": {
+        "type": "about-us-second",
+        "blocks": {
+          "3f38e9a4-e405-4488-b468-27327bd58248": {
+            "type": "mobile_de",
+            "settings": {
+              "about_mobile_image": "shopify:\/\/shop_images\/mobile-info-icon-1.png",
+              "ab_mobile_header": "DEVELOPMENT",
+              "about_image_number": "1",
+              "about_image_number_opacity": "0.32",
+              "about_image_color": "#db273c",
+              "about_image_body": "Taking customer favorite products online and re-inventing them with useful solutions."
+            }
+          },
+          "6a068873-635c-48d8-92b0-4a8e281f98ac": {
+            "type": "mobile_de",
+            "settings": {
+              "about_mobile_image": "shopify:\/\/shop_images\/mobile-info-icon-2.png",
+              "ab_mobile_header": "CUSTOMER VOICE",
+              "about_image_number": "2",
+              "about_image_number_opacity": "0.32",
+              "about_image_color": "#db273c",
+              "about_image_body": "Always using surveys and customer feedback; we validate the product’s design & solutions."
+            }
+          },
+          "dbb8757b-cf0c-4132-98bf-4469b3f01bc9": {
+            "type": "mobile_de",
+            "settings": {
+              "about_mobile_image": "shopify:\/\/shop_images\/mobile-info-icon-3.png",
+              "ab_mobile_header": "PRODUCTION",
+              "about_image_number": "3",
+              "about_image_number_opacity": "0.32",
+              "about_image_color": "#db273c",
+              "about_image_body": "When the product comes to life, value + quality are meticulously checked!"
+            }
+          },
+          "7ab2eb42-e151-47a6-86f3-dfcc8e9b3a6b": {
+            "type": "mobile_de",
+            "settings": {
+              "about_mobile_image": "shopify:\/\/shop_images\/mobile-info-icon-4.png",
+              "ab_mobile_header": "CREATIVES",
+              "about_image_number": "4",
+              "about_image_number_opacity": "0.32",
+              "about_image_color": "#db273c",
+              "about_image_body": "Our in-house creative and merchandising teams prepare the product for launch."
+            }
+          },
+          "ec1d6562-167f-4d60-91e7-0b6d9ad15846": {
+            "type": "mobile_de",
+            "settings": {
+              "about_mobile_image": "shopify:\/\/shop_images\/mobile-info-icon-5.png",
+              "ab_mobile_header": "LAUNCH!",
+              "about_image_number": "5",
+              "about_image_number_opacity": "0.32",
+              "about_image_color": "#db273c",
+              "about_image_body": ""
+            }
+          }
+        },
+        "block_order": [
+          "3f38e9a4-e405-4488-b468-27327bd58248",
+          "6a068873-635c-48d8-92b0-4a8e281f98ac",
+          "dbb8757b-cf0c-4132-98bf-4469b3f01bc9",
+          "7ab2eb42-e151-47a6-86f3-dfcc8e9b3a6b",
+          "ec1d6562-167f-4d60-91e7-0b6d9ad15846"
+        ],
+        "settings": {
+          "text_about_us_two": "We start by developing products with elevated<br> features you’ll value.",
+          "bg_color_about_us_second": "#cc3333",
+          "image_about_us_two": "shopify:\/\/shop_images\/desktop-info-icons.png"
+        }
+      },
+      "about-us-third": {
+        "type": "about-us-third",
+        "settings": {
+          "color_bg_about_us_third": "#f2efec",
+          "our_header_about_us_third": "We do everything ourselves to make our products the most affordable on the market.",
+          "bg_header_about_us_third": "#cc3333",
+          "our_sub_header_about_us_third": "We partner with the best manufacturers from around the globe who bring our products to you at a reasonable cost, but everything else is done internally:",
+          "bg_sub_header_about_us_third": "#727270",
+          "our_list_one_about_us_third": "Marketing",
+          "our_list_two_about_us_third": "Distribution",
+          "our_list_third_about_us_third": "Packaging",
+          "our_list_fourth_about_us_third": "Content Creation",
+          "our_list_five_about_us_third": "Product Development",
+          "image_about_us_third": "shopify:\/\/shop_images\/Sofa-Price-Compare.png",
+          "our_price_about_us_third": "899.99",
+          "typical_price_about_us_third": "1099.99",
+          "our_percentage_about_us_third": "60%",
+          "typical_percentage_about_us_third": "90%",
+          "color_price_about_us_third": "#cc3333"
+        }
+      },
+      "about-us_fourth": {
+        "type": "about-us_fourth",
+        "blocks": {
+          "a9b79faa-bd97-4fb2-ae7c-dea78ace4820": {
+            "type": "about_us_fourth_section",
+            "settings": {
+              "brand_bio_position": false,
+              "ab_fourth_image": "shopify:\/\/shop_images\/brand-ambassador-image-1.png",
+              "ab_fourth_header": "PRODUCT JOURNEY AMBASSADORS",
+              "ab_fourth_body": "<p>To create products that are truly customer approved, we designed a program where real customers can <strong>share their ideas<\/strong> with us and even <strong>test new products<\/strong> for themselves.<\/p>",
+              "ab_fourth_body_color": "#676765"
+            }
+          },
+          "8ca6c504-912d-4263-b844-ac4e7c2884c9": {
+            "type": "about_us_fourth_section",
+            "settings": {
+              "brand_bio_position": true,
+              "ab_fourth_image": "shopify:\/\/shop_images\/customer-service-image-2.png",
+              "ab_fourth_header": "CUSTOMER & PRODUCT SUPPORT",
+              "ab_fourth_body": "<p>To make sure you’re always satisfied while shopping with us, we&#x27;ve assembled teams for product support and <strong>24\/7 customer support<\/strong>, available via chat, email &amp; phone.<\/p>",
+              "ab_fourth_body_color": "#676765"
+            }
+          }
+        },
+        "block_order": [
+          "a9b79faa-bd97-4fb2-ae7c-dea78ace4820",
+          "8ca6c504-912d-4263-b844-ac4e7c2884c9"
+        ],
+        "settings": {
+          "title_about_us_fourth": "We Treat Quality & Customer Satisfaction as One",
+          "color_title_about_us_fourth": "#cc3333"
+        }
+      },
+      "about-us_fifth": {
+        "type": "about-us_fifth",
+        "blocks": {
+          "95165983-27e2-40f1-9d9f-67fa54bf01b6": {
+            "type": "abt_fifth_section",
+            "settings": {
+              "about_fifth_sub_header": "\" BCP has great quality products for a reasonable price. Their customer service is very responsive and helpful. Definitely recommend! \"",
+              "about_fifth_name": "Mary R."
+            }
+          },
+          "447ebe01-663b-43e5-8c47-30e97f6f6423": {
+            "type": "abt_fifth_section",
+            "settings": {
+              "about_fifth_sub_header": "\" Unbelievable Quality! Unbelievable Service. Best Prices! I’m never disappointed with BCP. Quality is so much better than others I Considered buying. Believe it! \"",
+              "about_fifth_name": "Melissa S."
+            }
+          }
+        },
+        "block_order": [
+          "95165983-27e2-40f1-9d9f-67fa54bf01b6",
+          "447ebe01-663b-43e5-8c47-30e97f6f6423"
+        ],
+        "settings": {
+          "bg_color_ab_fifth": "#cc3333",
+          "bg_text_color_ab_fifth": "#ffffff",
+          "about_fifth_header": "Over 20 Million Customers Served"
+        }
+      },
+      "about_us_seven": {
+        "type": "about_us_seven",
+        "settings": {
+          "text_about_us_seven": "Living Up to Our Name",
+          "bg_color_about_us_seven": "#cc3333",
+          "sub_text_about_us_seven": "No matter who or what you’re shopping for, you can find it with us at Best Choice Products. From fulfillment centers up to management, we are dedicated to providing elevated features & value pricing in all our products. No gimmicks, just our promise to the most important person in this process, you.",
+          "bg_sub_color_about_us_seven": "#676765",
+          "image_about_us_seven": "shopify:\/\/shop_images\/Shipping-Family.jpeg"
+        }
+      },
+      "about-us_fix": {
+        "type": "about-us_fix",
+        "settings": {}
+      },
+      "1618008421dc52f0af": {
+        "type": "cyber-chri-image-url",
+        "settings": {
+          "cyber_chri_image": "shopify:\/\/shop_images\/Asset_77_2x-100.jpg",
+          "cyber_chri_mobile_full_image": "shopify:\/\/shop_images\/homepage-banner-mobile_3aabe793-00d1-444c-9a39-432a16061d22.jpg",
+          "cyber_chri_overlay_url_1_full": "shopify:\/\/pages\/afterpay"
+        }
+      },
+      "1619216419f663016c": {
+        "type": "cyber-chri-image-url",
+        "disabled": true,
+        "settings": {
+          "cyber_chri_image": "shopify:\/\/shop_images\/ChristmasInJuly_Homepage_1.jpg",
+          "cyber_chri_mobile_full_image": "shopify:\/\/shop_images\/ChristmasInJuly_Homepage-mobile.jpg",
+          "cyber_chri_overlay_url_1_full": "shopify:\/\/collections\/shop-all-seasonal-decor"
+        }
+      },
+      "16228543864d8f7486": {
+        "type": "instagram_mother",
+        "disabled": true,
+        "settings": {
+          "i_title": "Real Dads Enjoying BCP Gifts",
+          "i_message": "Shop Here to Save the Time & Stress!",
+          "i_link": "shopify:\/\/collections\/gifts-for-him",
+          "i_linktext": "Find Gifts",
+          "i_instaid": "gallery-ldTmc2e7"
+        }
+      },
+      "FAQ": {
+        "type": "FAQ",
+        "blocks": {
+          "ac3bc3a2-082f-4a8a-b9a5-d73078e68b32": {
+            "type": "faq",
+            "settings": {
+              "faq_question": "Test Question 1",
+              "faq_answer": "<p>Answer goes here <\/p>"
+            }
+          },
+          "3eb7c861-1bb5-4aef-84ee-36102ddd26fc": {
+            "type": "faq",
+            "settings": {
+              "faq_question": "Questions 2 goes here?",
+              "faq_answer": "<p>ANSWERRsss<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "ac3bc3a2-082f-4a8a-b9a5-d73078e68b32",
+          "3eb7c861-1bb5-4aef-84ee-36102ddd26fc"
+        ],
+        "settings": {
+          "enable_categories": false
+        }
+      },
+      "hero-banner": {
+        "type": "hero-banner",
+        "settings": {
+          "three_image": "shopify:\/\/shop_images\/banner-desktop_1.jpg",
+          "three_mobile_full_image": "shopify:\/\/shop_images\/banner-mobile_1.jpg",
+          "three_overlay_url_1_full": "https:\/\/bestchoiceproducts.com"
+        }
+      },
+      "three-image-section": {
+        "type": "three-image-section",
+        "blocks": {
+          "bccb8489-9b92-4740-aa61-9db49025e41f": {
+            "type": "image_block",
+            "settings": {
+              "three_promo_image": "shopify:\/\/shop_images\/step-1.png",
+              "three_promo_image_header": "STEP 1",
+              "three_promo_subheader": "Add all of your favorite BCP items to your shopping cart.",
+              "three_promo_image_size": "one-quarter",
+              "three_promo_image_size_small": "one-half"
+            }
+          },
+          "d6b2868f-cc1f-4867-8f26-3328311dc2e5": {
+            "type": "image_block",
+            "settings": {
+              "three_promo_image": "shopify:\/\/shop_images\/step-2.png",
+              "three_promo_image_header": "STEP 2",
+              "three_promo_subheader": "Select ‘Afterpay Installments’ as your payment method at checkout.",
+              "three_promo_image_size": "one-quarter",
+              "three_promo_image_size_small": "one-half"
+            }
+          },
+          "ff3d6764-ec9d-408a-8d30-d0951fbff0e3": {
+            "type": "image_block",
+            "settings": {
+              "three_promo_image": "shopify:\/\/shop_images\/step-3.png",
+              "three_promo_image_header": "STEP 3",
+              "three_promo_subheader": "Create an account or log in to an existing Afterpay account. <br><i>No Credit Checks & Instant Approval!<\/i>",
+              "three_promo_image_size": "one-quarter",
+              "three_promo_image_size_small": "one-half"
+            }
+          },
+          "dc1d375d-2191-41bc-be22-f9a93475aa9c": {
+            "type": "image_block",
+            "settings": {
+              "three_promo_image": "shopify:\/\/shop_images\/step-4.png",
+              "three_promo_image_header": "STEP 4",
+              "three_promo_subheader": "Place order! Orders will be split into 4 equal payments, payable every 2 weeks.",
+              "three_promo_image_size": "one-quarter",
+              "three_promo_image_size_small": "one-half"
+            }
+          }
+        },
+        "block_order": [
+          "bccb8489-9b92-4740-aa61-9db49025e41f",
+          "d6b2868f-cc1f-4867-8f26-3328311dc2e5",
+          "ff3d6764-ec9d-408a-8d30-d0951fbff0e3",
+          "dc1d375d-2191-41bc-be22-f9a93475aa9c"
+        ],
+        "settings": {
+          "three_promo_title": "How it Works",
+          "three_product_title_desktop_fonts": "",
+          "three_product_title_mobile_fonts": "",
+          "three_product_title_1_style": "three_product_title_2"
+        }
+      },
+      "shipping-faq-after": {
+        "type": "shipping-faq-after",
+        "blocks": {
+          "fa6759be-e083-447a-987c-61be3fa5f6a6": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "What is Installments with Afterpay?",
+              "after_shipping_answer": "Installments with Afterpay is a service that allows you to make purchases now and pay for them in four payments made every 2 weeks without any interest.   <p><br>Shop BCP and checkout as usual. At checkout, choose Afterpay as your payment method. You will be directed to the Afterpay website to register and provide payment details (Visa, Mastercard, or AMEX).  <\/p><p>If you’ve used Afterpay before, just log into your Afterpay account and complete your order -- it’s that simple!  Please note, all items in your shopping bag must be eligible for Afterpay, and the order value must be between $1 and $10,000. <\/p><p>For more information, visit <u><a href=\"https:\/\/help.afterpay.com\/hc\/en-us\/categories\/360001002192-I-M-A-CUSTOMER\">Afterpay’s FAQ page<\/a><\/u>. If you have a question about your Afterpay account, please contact the Afterpay toll-free Customer Support line at 855-289-6014 or submit a question <u><a href=\"https:\/\/help.afterpay.com\/hc\/en-us\/requests\/new\">Here<\/a><\/u>.<\/p>"
+            }
+          },
+          "a188a0d1-6c00-4808-a79e-7c2a2707511b": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "How do I use Installments with Afterpay?",
+              "after_shipping_answer": "Simply add items to your shopping cart and checkout as normal. At the checkout choose Installments with Afterpay as your payment method. First-time customers will need to register with Afterpay and provide payment details, as usual, returning customers simply log in to make their purchase. It’s that easy!  Please note that all items in your shopping bag must be eligible for Installments with Afterpay. A minimum purchase amount may apply and you must meet additional eligibility requirements to qualify."
+            }
+          },
+          "dde8dabb-7e78-4155-893b-07d285d30a02": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "Where can I use Installments with Afterpay?",
+              "after_shipping_answer": "Installments with Afterpay can now be applied to purchases made on the <u><a href=\"https:\/\/bestchoiceproducts.com\/\">BCP<\/a><\/u> website."
+            }
+          },
+          "ad7b85cb-674b-4736-867d-3e9718284dc6": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "Can I use Installments with Afterpay if I’m an international customer?",
+              "after_shipping_answer": "Afterpay is only offered to our customers who have a US billing address, US shipping address, a US Visa or Mastercard (credit or debit card), or American Express and a US mobile phone number. Customers with international billing addresses, shipping addresses, and\/or phone numbers will not be able to set up an account with Afterpay.  <p><br>Best Choice Products only ships to the 48 contiguous states. We currently do not ship to Hawaii, Alaska, Puerto Rico, or Guam. We also do not ship to FPO, APO, or PO Boxes.<\/p>"
+            }
+          },
+          "9ee18cee-f419-41fa-99d9-c0d9ce265a99": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "How does the payment schedule work?",
+              "after_shipping_answer": "All customers are required to make their first payment at the time of purchase, with the remaining three payments deducted every two weeks from your chosen payment method. If you choose to make additional payments before your scheduled pay dates, you may do so through your Afterpay account.  You can log in to your Afterpay account to view your payment schedule and make a payment before the due date if you choose to do so."
+            }
+          },
+          "0a7af516-90bc-4115-afbf-a068e9129229": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "Where can I find common questions about payments?",
+              "after_shipping_answer": "Check out the  <u><a href=\"https:\/\/help.afterpay.com\/hc\/en-us\/sections\/203376123-Payments\">Afterpay Payments FAQ<\/a><\/u>."
+            }
+          },
+          "6ebf43e4-aa39-4768-94fc-061cdea5f02f": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "When will my items be delivered if I use Installments with Afterpay?",
+              "after_shipping_answer": "Afterpay orders are delivered as per our standard shipping time frame after you complete your order online.  Visit our shipping page for more information by clicking <u><a href=\"https:\/\/bestchoiceproducts.com\/pages\/shipping-details\">here<\/a><\/u>."
+            }
+          },
+          "43c9f769-6d39-4082-999f-94489157050f": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "Is there a limit to how much I can spend on a single transaction?",
+              "after_shipping_answer": "Yes, transaction value limits apply to purchases made on bestchoiceproducts.com using Installments by Afterpay.  All items in your shopping bag must be eligible for Afterpay, and the order value must be between $1 and $10,000."
+            }
+          },
+          "befb3636-006c-4352-b0ee-fe51f7531d8d": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "How do I return or exchange an item purchased using Installments with Afterpay?",
+              "after_shipping_answer": "If you have changed your mind, you can return your Afterpay purchase for a refund. To Return an item purchased on bestchoiceproducts.com, please contact BCP Customer Support <u><a href=\"https:\/\/bestchoiceproducts.com\/pages\/help\">here<\/a><\/u>.  <br>Afterpay will be notified of your return and will process the appropriate refunds. Please do not return your purchase to Afterpay.  If you believe there is fault or concern with your Afterpay purchase payment, please contact Afterpay customer support at info@afterpay.com"
+            }
+          },
+          "2b8182cc-fa12-461c-aaae-8a29fbb5ab42": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "What if I can’t pay an Afterpay installment?",
+              "after_shipping_answer": "If funds are not available or you otherwise do not make your payment when it is due, late fees may apply. Click <u><a href=\"https:\/\/www.afterpay.com\/en-US\/installment-agreement\">here<\/a><\/u> for complete terms."
+            }
+          },
+          "fe05bb6e-d0f8-4aa3-b91c-d4865f782a45": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "What happens if I have a partial refund, and how does that affect my payments?",
+              "after_shipping_answer": "Afterpay will be notified once your refund is processed. Your payment plan will be automatically adjusted to reflect the new total order value starting with the last payment and working backward. In the case where a refund amount is larger than 25% of the total order, Afterpay will eliminate the fourth installment payment and apply the remaining amount to your earlier payments."
+            }
+          },
+          "5c822bf9-722c-4b14-bab7-0d8350bb5555": {
+            "type": "faq_block",
+            "settings": {
+              "after_shipping_question": "Where can I find out more about Afterpay?",
+              "after_shipping_answer": "Installments with Afterpay is a service that allows you to make purchases now and pay for them in four payments made every 2 weeks without any interest.   <p><br>Shop BCP and checkout as usual. At checkout, choose Afterpay as your payment method. You will be directed to the Afterpay website to register and provide payment details (Visa, Mastercard, or AMEX).  <\/p><p>If you’ve used Afterpay before, just log into your Afterpay account and complete your order -- it’s that simple!  Please note, all items in your shopping bag must be eligible for Afterpay, and the order value must be between $1 and $10,000. <\/p><p>For more information, visit <u><a href=\"https:\/\/help.afterpay.com\/hc\/en-us\/categories\/360001002192-I-M-A-CUSTOMER\">Afterpay’s FAQ page<\/a><\/u>. If you have a question about your Afterpay account, please contact the Afterpay toll-free Customer Support line at 855-289-6014 or submit a question <u><a href=\"https:\/\/help.afterpay.com\/hc\/en-us\/requests\/new\">here<\/a><\/u>.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "fa6759be-e083-447a-987c-61be3fa5f6a6",
+          "a188a0d1-6c00-4808-a79e-7c2a2707511b",
+          "dde8dabb-7e78-4155-893b-07d285d30a02",
+          "ad7b85cb-674b-4736-867d-3e9718284dc6",
+          "9ee18cee-f419-41fa-99d9-c0d9ce265a99",
+          "0a7af516-90bc-4115-afbf-a068e9129229",
+          "6ebf43e4-aa39-4768-94fc-061cdea5f02f",
+          "43c9f769-6d39-4082-999f-94489157050f",
+          "befb3636-006c-4352-b0ee-fe51f7531d8d",
+          "2b8182cc-fa12-461c-aaae-8a29fbb5ab42",
+          "fe05bb6e-d0f8-4aa3-b91c-d4865f782a45",
+          "5c822bf9-722c-4b14-bab7-0d8350bb5555"
+        ],
+        "settings": {
+          "after_shipping_title": "FAQ",
+          "after_faq_bg_color": "#ffffff",
+          "after_faq_color_ques": "#282828",
+          "after_faq_color_answer": "#282828"
+        }
+      },
+      "162405241884983e45": {
+        "type": "deal-home-bf-section",
+        "disabled": true,
+        "blocks": {
+          "a9082930-1054-413c-aed1-2f7e406ed13f": {
+            "type": "image_block",
+            "settings": {
+              "home_section_image": "shopify:\/\/shop_images\/CIJ_Promo_Image_1.jpg",
+              "home_section_image_link": "shopify:\/\/collections\/pre-lit-artificial-christmas-trees",
+              "home_section_image_title": "PRE-LIT TREES",
+              "home_section_color_title_text": "#282828",
+              "home_section_upto_text": "",
+              "home_section_color_up_image_text": "#ffffff",
+              "home_section_coupon_code": "",
+              "home_section_color_day_image_text": "#aa1919",
+              "home_section_price_text": "",
+              "home_section_color_day_price_text": "#aa1919",
+              "home_section_fonts_title": "14px",
+              "home_section_fonts_price": "16px",
+              "home_section_fonts_up_to": "20px",
+              "home_section_fonts_off": "20px",
+              "home_section_image_size": "one-third",
+              "home_section_image_size_small": "one-half",
+              "home_section_image_size_small_extra": "one-whole"
+            }
+          },
+          "162405241884983e45-0": {
+            "type": "image_block",
+            "settings": {
+              "home_section_image": "shopify:\/\/shop_images\/CIJ_Promo_Image_2.jpg",
+              "home_section_image_link": "shopify:\/\/collections\/pre-decorated",
+              "home_section_image_title": "PRE-DECORATED TREES",
+              "home_section_color_title_text": "#282828",
+              "home_section_upto_text": "",
+              "home_section_color_up_image_text": "#ffffff",
+              "home_section_coupon_code": "",
+              "home_section_color_day_image_text": "#aa1919",
+              "home_section_price_text": "",
+              "home_section_color_day_price_text": "#aa1919",
+              "home_section_fonts_title": "14px",
+              "home_section_fonts_price": "20px",
+              "home_section_fonts_up_to": "20px",
+              "home_section_fonts_off": "20px",
+              "home_section_image_size": "one-third",
+              "home_section_image_size_small": "one-half",
+              "home_section_image_size_small_extra": "one-whole"
+            }
+          },
+          "8b0c6b90-d5d9-4745-869f-c2105440e1d1": {
+            "type": "image_block",
+            "settings": {
+              "home_section_image": "shopify:\/\/shop_images\/CIJ_Promo_Image_4.jpg",
+              "home_section_image_link": "shopify:\/\/collections\/christmas-decorations-1",
+              "home_section_image_title": "SEASONAL DECOR",
+              "home_section_color_title_text": "#282828",
+              "home_section_upto_text": "",
+              "home_section_color_up_image_text": "#ffffff",
+              "home_section_coupon_code": "",
+              "home_section_color_day_image_text": "#aa1919",
+              "home_section_price_text": "",
+              "home_section_color_day_price_text": "#aa1919",
+              "home_section_fonts_title": "14px",
+              "home_section_fonts_price": "20px",
+              "home_section_fonts_up_to": "20px",
+              "home_section_fonts_off": "20px",
+              "home_section_image_size": "one-third",
+              "home_section_image_size_small": "one-half",
+              "home_section_image_size_small_extra": "one-whole"
+            }
+          },
+          "162405241884983e45-2": {
+            "type": "image_block",
+            "disabled": true,
+            "settings": {
+              "home_section_image": "shopify:\/\/shop_images\/CIJ_Promo_Image_5.jpg",
+              "home_section_image_link": "shopify:\/\/collections\/snow-flocked-trees",
+              "home_section_image_title": "FLOCKED TREES",
+              "home_section_color_title_text": "#282828",
+              "home_section_upto_text": "",
+              "home_section_color_up_image_text": "#ffffff",
+              "home_section_coupon_code": "",
+              "home_section_color_day_image_text": "#aa1919",
+              "home_section_price_text": "",
+              "home_section_color_day_price_text": "#aa1919",
+              "home_section_fonts_title": "14px",
+              "home_section_fonts_price": "20px",
+              "home_section_fonts_up_to": "20px",
+              "home_section_fonts_off": "20px",
+              "home_section_image_size": "one-quarter",
+              "home_section_image_size_small": "one-half",
+              "home_section_image_size_small_extra": "one-whole"
+            }
+          }
+        },
+        "block_order": [
+          "a9082930-1054-413c-aed1-2f7e406ed13f",
+          "162405241884983e45-0",
+          "8b0c6b90-d5d9-4745-869f-c2105440e1d1",
+          "162405241884983e45-2"
+        ],
+        "settings": {
+          "home_section_title": "",
+          "home_section_bgcolor_day_header_text": "#ffffff",
+          "home_section_bgcolor_day_image_text": "#ffffff",
+          "home_section_button_link": "",
+          "home_section_image_button": "",
+          "home_section_color_day_new_button": "#aa1919"
+        }
+      },
+      "am_hero-banner": {
+        "type": "am_hero-banner",
+        "settings": {
+          "amb_image": "shopify:\/\/shop_images\/ambassdor-banner-desktop.jpg",
+          "amb_mobile_full_image": "shopify:\/\/shop_images\/ambassdor-banner-mobile.jpg",
+          "amb_overlay_url_1_full": ""
+        }
+      },
+      "amb_two-image-section": {
+        "type": "amb_two-image-section",
+        "settings": {
+          "amb_second_text": "Building Products Alongside Customers",
+          "amb_second_sub_text": "Best Choice Products is proud to share a program where the gap between brand and customer is finally connected! We built this program in pursuit of our mission to include customers when developing best-sellers. This is an exclusive, invite-only program. It’s the perfect program for those who regularly shop at BCP and leave us valuable feedback through reviews. In joining this program, you’ll continue your status as a valued customer, but also provide us with your insights on future BCP best-sellers!",
+          "amb_second_image": "shopify:\/\/shop_images\/PJAP-ZOOM.png"
+        }
+      },
+      "amb_three-image-section": {
+        "type": "amb_three-image-section",
+        "blocks": {
+          "59fbeb58-580e-4f31-acfc-6b1349d5776c": {
+            "type": "image_block",
+            "settings": {
+              "amb_promo_image": "shopify:\/\/shop_images\/review-Icon.png",
+              "amb_promo_image_link": "",
+              "amb_promo_image_header": "Try New BCP Products!",
+              "amb_promo_subheader": "Be the first to experience new releases in the comfort of your home.",
+              "amb_promo_image_size": "one-third",
+              "amb_promo_image_size_small": "one-whole"
+            }
+          },
+          "ad98444c-122a-41fd-bae6-d4531ca3eb2c": {
+            "type": "image_block",
+            "settings": {
+              "amb_promo_image": "shopify:\/\/shop_images\/save-icon.png",
+              "amb_promo_image_link": "",
+              "amb_promo_image_header": "Save More on Future Purchases",
+              "amb_promo_subheader": "Enjoy amplified savings as an ambassador and VIP customer!",
+              "amb_promo_image_size": "one-third",
+              "amb_promo_image_size_small": "one-whole"
+            }
+          },
+          "93000a3d-08a0-4dc1-80aa-9c6f3a3177a8": {
+            "type": "image_block",
+            "settings": {
+              "amb_promo_image": "shopify:\/\/shop_images\/one-on-one-Icon.png",
+              "amb_promo_image_link": "",
+              "amb_promo_image_header": "Interact with the BCP Team",
+              "amb_promo_subheader": "We’ll hop on a zoom call with you to talk product; give us your two cents.",
+              "amb_promo_image_size": "one-third",
+              "amb_promo_image_size_small": "one-whole"
+            }
+          }
+        },
+        "block_order": [
+          "59fbeb58-580e-4f31-acfc-6b1349d5776c",
+          "ad98444c-122a-41fd-bae6-d4531ca3eb2c",
+          "93000a3d-08a0-4dc1-80aa-9c6f3a3177a8"
+        ],
+        "settings": {
+          "amb_promo_title": "Ambassador Perks",
+          "amb_promo_subtitle": "We Match Your Efforts with Perks & Benefits!",
+          "amb_bg_color": "#f9f5f1",
+          "amb_product_title_desktop_fonts": "",
+          "amb_product_title_mobile_fonts": "",
+          "amb_product_title_1_style": "amb_product_title_2"
+        }
+      },
+      "amb_shipping-faq-after": {
+        "type": "amb_shipping-faq-after",
+        "blocks": {
+          "412bbf73-9126-4fd3-a3f4-35f18f281759": {
+            "type": "faq_block",
+            "settings": {
+              "amb_shipping_question": "Is this program exclusive?",
+              "amb_shipping_answer": "Yes! This program is exclusively designed for customers who meet qualifications."
+            }
+          },
+          "8fc9e818-c280-4ace-b940-d08668e0d464": {
+            "type": "faq_block",
+            "settings": {
+              "amb_shipping_question": "Can customers review any product?",
+              "amb_shipping_answer": "Based on the category the customers shop from the most, our team will create an internal list of products from that category that customers can review."
+            }
+          },
+          "14b3b2de-a9fc-4a93-bea7-6dfe29273a4a": {
+            "type": "faq_block",
+            "settings": {
+              "amb_shipping_question": "Do members have to pay a fee?",
+              "amb_shipping_answer": "Absolutely not! Everything from being part of the program to the products the customers receive are all without a cost to them."
+            }
+          },
+          "2faf6d17-0c72-4eac-abcc-799c86f69a41": {
+            "type": "faq_block",
+            "settings": {
+              "amb_shipping_question": "How long is this program?",
+              "amb_shipping_answer": "Our ambassador program is a repetitive program that will run all year long with different campaigns each month."
+            }
+          }
+        },
+        "block_order": [
+          "412bbf73-9126-4fd3-a3f4-35f18f281759",
+          "8fc9e818-c280-4ace-b940-d08668e0d464",
+          "14b3b2de-a9fc-4a93-bea7-6dfe29273a4a",
+          "2faf6d17-0c72-4eac-abcc-799c86f69a41"
+        ],
+        "settings": {
+          "amb_shipping_title": "Q&A",
+          "amb_faq_bg_color": "rgba(0,0,0,0)",
+          "amb_faq_color_ques": "#282828",
+          "amb_faq_color_answer": "#282828"
+        }
+      },
+      "amb_last-section": {
+        "type": "amb_last-section",
+        "settings": {
+          "amb_last_section": "Are you the innovator amongst friends? If you’re interested in using your voice to represent thousands of BCP customers, click the link below to see if you qualify to be a Product Journey Ambassador!",
+          "amb_last_section_button_text": "Join the Program"
+        }
+      },
+      "16261229241368c295": {
+        "type": "new_two_home",
+        "settings": {
+          "about_second_text": "Our Mission is to provide Best Sellers on the Internet",
+          "about_second_sub_text": "We're bringing elevated features to your home and family with every product, carefully curated with the help of our customers and the product development process!",
+          "about_second_image": "shopify:\/\/shop_images\/Homepage-banner.jpg",
+          "about_cta_text": "Get to Know Us!",
+          "about_color_title": "#d42020",
+          "about_link": "shopify:\/\/pages\/about-us-best-choice-products"
+        }
+      }
+    },
+    "content_for_index": [
+      "1619216419f663016c",
+      "162405241884983e45",
+      "16059078563e8ec294",
+      "16228543864d8f7486",
+      "1601885871652",
+      "1526918577590",
+      "1618008421dc52f0af",
+      "1596223216706",
+      "1604303249965c0473",
+      "1526918592986",
+      "1557941630645",
+      "16261229241368c295",
+      "1557972038235",
+      "1526918570503"
+    ]
+  },
+  "presets": {
+    "Spark": {
+      "color_body_background": "#ffffff",
+      "accent_color": "#d5f3f3",
+      "color_body_text": "#230051",
+      "color_body_link": "#5d68bf",
+      "color_sale_text": "#cd201a",
+      "header_bck_color": "#ffffff",
+      "logo_text_color": "#230051",
+      "header_text_color": "#230051",
+      "main_menu_bck_color": "#f4f6f8",
+      "main_menu_link_color": "#230051",
+      "mobile_menu_bck_color": "#b7ecec",
+      "store_messages_bck_color": "#47c1bf",
+      "footer_bck_color": "#00848e",
+      "footer_text_color": "#ffffff",
+      "primary_btn_background": "#50248f",
+      "primary_btn_text": "#ffffff",
+      "secondary_btn_background": "#ffffff",
+      "secondary_btn_text": "#230051",
+      "quickbuy_background": "#ffffff",
+      "quickbuy_form_background": "#ebf5fa",
+      "quickbuy_text": "#230051",
+      "overlay_opacity": 80,
+      "collection_feature_header_background": "#42467e",
+      "filter_bar_colour": "#230051",
+      "type_base_font": "avenir_next_rounded_n4",
+      "type_heading_font": "avenir_next_rounded_n6",
+      "type_nav_font": "avenir_next_rounded_n5",
+      "type_logo_font": "avenir_next_rounded_n5",
+      "font_size_body_int": 16,
+      "font_size_nav_int": 16,
+      "font_size_logo_int": 24,
+      "global_border_radius": 15,
+      "hover_image_enabled": false,
+      "quickbuy_buttons_toggle": true,
+      "quickbuy_labels_toggle": true,
+      "variant_style": "listed",
+      "swatch_enabled": true,
+      "swatch_option_name": "Color",
+      "on_add_to_cart": "ajax",
+      "search_type": "product",
+      "announcement_bar_bck_color": "#43467f",
+      "primary_btn_border": "#50248f",
+      "secondary_btn_border": "#f9fafb"
+    },
+    "Inspire": {
+      "color_body_background": "#ffffff",
+      "accent_color": "#222222",
+      "color_body_text": "#1a1a1a",
+      "color_body_link": "#cd2026",
+      "color_sale_text": "#cd201a",
+      "header_bck_color": "#ffffff",
+      "logo_text_color": "#222222",
+      "header_text_color": "#222222",
+      "main_menu_bck_color": "#f2f2f2",
+      "main_menu_link_color": "#222222",
+      "mobile_menu_bck_color": "#ffffff",
+      "store_messages_bck_color": "#cd2026",
+      "footer_bck_color": "#f2f2f2",
+      "footer_text_color": "#222222",
+      "primary_btn_background": "#1a1a1a",
+      "primary_btn_text": "#ffffff",
+      "secondary_btn_background": "#ffffff",
+      "secondary_btn_text": "#1a1a1a",
+      "quickbuy_background": "#ffffff",
+      "quickbuy_form_background": "#f2f2f2",
+      "quickbuy_text": "#222222",
+      "overlay_opacity": 90,
+      "collection_feature_header_background": "#e9e3e1",
+      "filter_bar_colour": "#ffffff",
+      "type_base_font": "gill_sans_nova_n4",
+      "type_heading_font": "friz_quadrata_n4",
+      "type_nav_font": "gill_sans_nova_n4",
+      "type_logo_font": "gill_sans_nova_n4",
+      "font_size_body_int": 16,
+      "font_size_nav_int": 16,
+      "font_size_logo_int": 24,
+      "global_border_radius": 0,
+      "hover_image_enabled": true,
+      "quickbuy_buttons_toggle": true,
+      "quickbuy_labels_toggle": true,
+      "variant_style": "listed",
+      "swatch_enabled": true,
+      "swatch_option_name": "Color",
+      "on_add_to_cart": "ajax",
+      "search_type": "product",
+      "announcement_bar_bck_color": "#43467f",
+      "primary_btn_border": "#212b36",
+      "secondary_btn_border": "#dfe3e8"
+    },
+    "Flourish": {
+      "color_body_background": "#ffffff",
+      "accent_color": "#dae4e6",
+      "color_body_text": "#212b36",
+      "color_body_link": "#5d68bf",
+      "color_sale_text": "#cd201a",
+      "header_bck_color": "#ffffff",
+      "logo_text_color": "#212b36",
+      "header_text_color": "#212b36",
+      "main_menu_bck_color": "#ffffff",
+      "main_menu_link_color": "#212b36",
+      "mobile_menu_bck_color": "#212b36",
+      "store_messages_bck_color": "#10079f",
+      "footer_bck_color": "#ecf1f2",
+      "footer_text_color": "#212b36",
+      "primary_btn_background": "#212b36",
+      "primary_btn_text": "#ffffff",
+      "secondary_btn_background": "#ffffff",
+      "secondary_btn_text": "#212b36",
+      "quickbuy_background": "#ffffff",
+      "quickbuy_form_background": "#ecf1f2",
+      "quickbuy_text": "#212b36",
+      "overlay_opacity": 80,
+      "collection_feature_header_background": "#dae4e6",
+      "filter_bar_colour": "#ffffff",
+      "type_base_font": "futura_n4",
+      "type_heading_font": "futura_n4",
+      "type_nav_font": "futura_n5",
+      "type_logo_font": "futura_n4",
+      "font_size_body_int": 16,
+      "font_size_nav_int": 16,
+      "font_size_logo_int": 28,
+      "global_border_radius": 0,
+      "hover_image_enabled": true,
+      "quickbuy_buttons_toggle": true,
+      "quickbuy_labels_toggle": true,
+      "variant_style": "listed",
+      "swatch_enabled": true,
+      "swatch_option_name": "Color",
+      "on_add_to_cart": "ajax",
+      "search_type": "product",
+      "announcement_bar_bck_color": "#43467f",
+      "primary_btn_border": "#212b36",
+      "secondary_btn_border": "#dfe3e8"
+    }
+  }
+}

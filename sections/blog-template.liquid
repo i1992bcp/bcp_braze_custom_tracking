@@ -1,0 +1,226 @@
+<style>
+  .fs-timeline{
+  display: flex;flex-direction: column;
+  
+}
+@media only screen and (max-width: 541px) {
+  .fs-timeline{
+    display: block;
+    flex-direction: column;
+  }
+  }
+</style>
+{% assign blog_id = blog.handle %}
+{% assign single_column = true %}
+{% if section.blocks %}
+  {% for block in section.blocks %}
+    {% assign current_id = block.settings.block_blog %}
+    {% if blog_id == current_id %}
+      {% if block.settings.blog_image != blank %}
+        {% assign single_column = false %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+<div class="page-width container">
+  <div class="medium-up--hide">
+    <ul class="product-drop-down about-drop">
+      <li class="about-init"></li>
+      <li class="b_one" data-value="value 1" style="border-top: 1px solid #cccccc;"><a href="https://bestchoiceproducts.com/blogs/bcp-blog">Featured  </a></li>
+      <li class="b_two" data-value="value 2"><a href="https://bestchoiceproducts.com/blogs/bcp-blog/tagged/buying-guides">Buying Guides</a> </li>
+      <li class="b_three" data-value="value 3" ><a href="https://bestchoiceproducts.com/blogs/bcp-blog/tagged/trending-now">Trending now</a></li>
+      <li class="b_four" data-value="value 4" ><a href="https://bestchoiceproducts.com/blogs/bcp-blog/tagged/holiday-tips">Holiday Tips </a></li>
+      <li class="b_five" data-value="value 5"><a href="https://bestchoiceproducts.com/blogs/bcp-blog/tagged/cook-with-bcp">Cook with BCP </a> </li>
+      <li class="b_six" data-value="value 6" style="border-bottom: 1px solid #cccccc;"><a href="https://bestchoiceproducts.com/blogs/bcp-blog/tagged/editorial-list" class="">Editorial List </a></li>
+    </ul> 
+  </div>
+  <div class="navigation-about small-down--hide">
+    <ul class="products-tabs-down blog_tabs">
+      <li class="product-tabs-li"><a href="" class="b_one_d" data-tab="bcp-blog">Featured </a></li>
+      <li class="product-tabs-li"><a href="" class="b_two_d" data-tab="buying-guides">Buying Guides</a></li>
+      <li class="product-tabs-li"><a href="" class="b_three_d" data-tab="trending-now">Trending now</a></li>
+      <li class="product-tabs-li"><a href="" class="b_four_d" data-tab="holiday-tips">Holiday Tips </a></li>
+      <li class="product-tabs-li"><a href="" class="b_five_d" data-tab="cook-with-bcp">Cook with BCP </a></li>
+      <li class="product-tabs-li"><a href="" class="b_six_d" data-tab="editorial-list">Editorial List </a></li>
+    </ul>
+  </div>
+</div>
+<div class="clearfix"></div>
+<section class="blog" data-section-id="{{ section.id }}" data-section-type="blog" style="margin-top:3%;">
+{% paginate blog.articles by 4 %}
+  
+  <div class="page-width container relative">
+    <div class="grid grid--uniform grid--uniform-row-gutters">
+      <div class="left-blog-container grid__item nine-twelfths small-down--one-whole">
+        {% for article in blog.articles %}
+          {% if article.image %}
+            <a href="{{ article.url }}" class="article__grid-image">
+              {{ article | img_url: '1000x' | img_tag: article.title }}
+            </a>
+          {% else %}
+            {% assign my_image_url=article.content | escape %}
+            {% if my_image_url contains '&lt;img' %}
+              {% assign my_image_url = my_image_url | split: 'src=&quot;' %}
+              {% assign my_image_url = my_image_url[1] | split: '&quot;' %}
+              {% assign my_image_url = my_image_url[0] %}
+              {% assign my_image_url = my_image_url | remove: 'http:http://' %}
+              {% assign my_image_url = my_image_url | remove: 'https:' %}
+                <a href="{{ article.url }}" class="article__grid-image">
+                  <img src="{{ my_image_url }}" alt="{{ article.title }}" />
+                </a>       
+            {% endif %}
+          {% endif %} 
+          <div class="article-tags">{% for tag in article.tags %}{{ tag | link_to_tag: tag }}{% unless forloop.last %} / {% endunless %} {% endfor %}</div>
+          <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+            <div class="grid">
+              <div class="grid__item three-quarters">
+                <h2 class="article__title h4">
+                	<a href="{{ article.url }}">{{ article.title }}</a>
+              	</h2>
+              </div>
+            </div>
+            <div class="rte article__grid-excerpt">
+              {% if article.excerpt.size > 0 %}
+                {{ article.excerpt | strip_html | truncate: 220 }}
+              {% else %}
+                {{ article.content | strip_html | truncate: 150 }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    
+    <div class="right-blog-container relative grid__item one-quarter small-down--one-whole text-center">
+      <div class="blog-right-sticky relative">
+        <div class="about-the-blog" style="margin:5% 0;">
+          <div class="bold-bcp" style="margin-top:10px;">About the blog</div>
+          <div class="about-the-blog-body">It’s important for us that your shopping experience is a seamlessly easy one. Before you check out, take time to read the BCP Blog: an in-depth guide to discovering the very best fit for your home. Explore buying guides or find inspiration in DIY tips and keep up to date with the Editorial List: BCP’s staff picks on the season’s best.</div>
+        </div>
+        <div class="stay-one-click">
+          <div class="bold-bcp">Stay in the Know With One Click</div>
+          <form id="email_signup" class="klaviyo_standard_embed_CAYUEE" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+            <input type="hidden" name="g" value="CAYUEE">
+              <div class="klaviyo_messages" style="color:#fff;">
+                <div class="success_message" style="display:none;"></div>
+                <div class="error_message" style="display:none;"></div>
+              </div>
+              <div class="blog_form_div">
+                <input class="footer_email" type="email" value="" name="email" id="k_id_email" onfocus="myFunction(this)" placeholder="Enter Your Email Address"/>
+                <button type="submit" class="klaviyobtn feather-icon"> {% include 'feather-arrow-right' %} </button>
+              </div>
+          </form>
+          <div class="blog-social-icon">  
+            {% include 'social-icons' %}
+          </div>
+        </div>
+        <div style="margin-top: 5%;">
+          <script defer src="//foursixty.com/media/scripts/fs.embed.v2.5.js" data-feed-id="best-choice-products" data-theme="showcase_v2_5" data-page-size="8" data-connector-filter="33305,25754,25843,26532,25896" data-defer-image-loading="true"></script><style>.fs-has-links::after {  padding:  10px 15px; border: 1px solid #fff; color:#fff; content: "SHOP IT";  }.fs-has-links:hover:after { background-color: #fff; color: rgba(0,0,0,0.8)}.fs-desktop .fs-entry-container { width: 100% !important; padding-top: 100% !important; }.fs-mobile .fs-entry-container { width: 50% !important; padding-top: 50% !important; }.fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title{font-family:Times New Roman, serif;font-style:italic;font-weight:normal;}div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text{font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-style:normal;font-weight:bold;}.fs-wrapper div.fs-text-container * {color:#fff}.fs-wrapper div.fs-text-container {background-color:rgba(0,0,0,0.8); margin: 0px}div.fs-entry-date{display:none}div.fs-entry-title{display:none}.fs-wrapper div.fs-timeline-entry{ margin: 1px }</style>
+        </div>
+      </div>    
+    </div>
+  </div>
+  </div>
+    {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+  </div>
+ {% endpaginate %}
+</section>
+
+{% schema %}
+  {
+    "name": "Blog page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "header_image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "header_mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
+<script>
+    var footercounter = 0;
+    function myFunction(x) {
+      if(footercounter == 0){
+        var script = document.createElement('script');
+        script.onload = function() {
+          KlaviyoSubscribe.attachToForms('#email_signup', {
+            hide_form_on_success: true
+          })
+        };
+        script.src = "https://www.klaviyo.com/media/js/public/klaviyo_subscribe.js";
+        document.getElementsByTagName('head')[0].appendChild(script);
+        footercounter++;
+      }
+     
+    }
+  </script>
+  <script>
+  var data_url = window.location.href;
+  var res_text = data_url.substring(data_url.lastIndexOf('/') + 1);
+
+$('.blog_tabs a').click(function(){
+  var tabz = $(this).data("tab");
+  if(tabz == "bcp-blog"){
+    window.location.href = "https://bestchoiceproducts.com//blogs/bcp-blog";
+  }else {
+    window.location.href = "https://bestchoiceproducts.com//blogs/bcp-blog/tagged/"+tabz;
+  }
+  
+});
+
+switch (res_text) {
+  case "bcp-blog":
+    let a = "Featured"
+    change_world(a, "b_one", "b_one_d")
+    break;
+  case "editorial-list":
+    let b = "Editorial List"
+    change_world(b, "b_six", "b_six_d");
+    break;
+  case "cook-with-bcp":
+    let c ="Cook with BCP";
+    change_world(c, "b_five", "b_five_d");
+    break;
+  case "trending-now":
+    let d ="Trending now";
+    change_world(d, "b_three", "b_three_d");
+    break;
+  case "holiday-tips":
+    let e = "Holiday-Tips";
+    change_world(e, "b_four", "b_four_d");
+    break;
+  case "buying-guides":
+    let f = "Buying Guides"
+    change_world(f, "b_two", "b_two_d");
+    break;
+  
+}
+function change_world(aa, clas_a, clas_b) {
+  $(".about-init").text(aa);
+  $(".about-init").append( '<i class="fa fa-angle-down" style="font-size:15px;padding-left: 10px;"></i>' );
+  $('.'+clas_a).css("font-weight", "500");
+  $( '.'+clas_b ).addClass( "active" );
+}
+  </script>
+
+<script type="text/javascript">
+    $(".about-drop").on("click", ".about-init", function() {
+    $(this).closest(".about-drop").children('li:not(.about-init)').toggle();
+
+});
+</script>

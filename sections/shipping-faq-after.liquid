@@ -1,0 +1,116 @@
+<style>
+    .faqs {cursor:pointer;letter-spacing: 0.01px;display:flex;justify-content: space-between;background:{{ section.settings.after_faq_bg_color }}; padding:14px; color:{{ section.settings.after_faq_color_ques }}; font-size:14px; font-weight:bold; text-align:left;}
+    .toggle_icon {font-size:20px; font-weight:500; color:#282828; text-decoration:none; cursor:pointer;}
+    .faq_ans {display:none; padding: 10px 14px 20px 14px; line-height:1.6; color:{{ section.settings.after_faq_color_answer }}; font-size:16px; text-align:left}
+    .faq_section {margin-bottom:15px; border-bottom: 1px solid #979797;}
+    .afterpay_header {
+		font-size: 24px;
+		font-weight: 600;
+		font-family: Roboto Slab;
+	}
+    @media only screen and (min-width: 968px) {
+		.afterpay_header {
+			font-size: 32px;
+		}
+	}
+  </style>
+  <div class="section-margin-collection collection-header-image container page-width">
+    <div class="reading-width text-center">
+      {%- if section.settings.after_shipping_title != blank -%}<h1 class="afterpay_header">{{ section.settings.after_shipping_title | escape }}</h1>{%- endif -%}
+      <div class="rte" style="font-size:14px;"> 
+         {% for block in section.blocks %}
+             <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">{{ block.settings.after_shipping_question }}</div><div class="toggle_icon">+</div></div>
+             <div class="faq_ans">{{ block.settings.after_shipping_answer }}</div></div>
+         {% endfor %}
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  {% schema %}
+    {
+      "name": "Shipping Faq Afterpay",
+      "settings": [
+        {
+          "type": "text",
+          "id": "after_shipping_title",
+          "label": "Heading"
+        },
+        {
+          "type": "color",
+          "id": "after_faq_bg_color",
+          "label": "color for FAQ",
+          "default": "#e1e1e1"
+        },
+        {
+          "type": "color",
+          "id": "after_faq_color_ques",
+          "label": "color for Question",
+          "default": "#282828"
+        },
+        {
+          "type": "color",
+          "id": "after_faq_color_answer",
+          "label": "color for Answer",
+          "default": "#282828"
+        }
+      ],
+       "blocks": [
+          {
+               "type": "faq_block",
+               "name": "String",
+               "settings": [
+                  {
+                    "type": "text",
+                    "id": "after_shipping_question",
+                    "label": "Faq Question",
+                    "default": "Who am I?"
+                  },
+  
+                  {
+                    "type": "text",
+                    "id": "after_shipping_answer",
+                    "label": "Faq Answer",
+                    "default": "I Am Nobody."
+                  }
+              ]
+          }	
+      ],
+      "presets": [
+        {
+          "name": "Shipping Faq Afterpay",
+          "category": "String",
+          "blocks": [
+            {
+              "type": "faq_block"
+            },
+            {
+              "type": "faq_block"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}
+  
+  <script type="text/javascript">
+  // A $( document ).ready() block.
+  $( document ).ready(function() {
+      $(".faqs").click(function(){
+          console.log("parent", $(this).parent());
+        $('.faq_ans').slideUp();
+        if($(this).parent().find('.faq_ans').hasClass('open')){
+            $(this).parent().find(".toggle_icon").text('+');
+            $(this).parent().find('.faq_ans').removeClass('open');
+            $(this).parent().find('.faq_ans').slideUp();
+        }else{
+           $('.faq_ans').removeClass('open');
+           $(".toggle_icon").text('+');
+           $(this).parent().find(".toggle_icon").text('-');
+           $(this).parent().find('.faq_ans').addClass('open'); 
+           $(this).parent().find('.faq_ans').slideDown();
+        }
+  }); 
+  });
+  </script>

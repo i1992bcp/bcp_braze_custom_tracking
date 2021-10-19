@@ -1,0 +1,242 @@
+{% assign brightness_number = section.settings.collection_background | color_brightness %}
+{% if brightness_number < 135 %}{% assign text_color = '#ffffff' %}{% else %}{% assign text_color = '#000000' %}{% endif %}
+
+<style>
+  .section-{{ section.id }} .page-width {
+    background-color: {{ section.settings.collection_background }};
+    color: {{ text_color }};
+  }
+
+  .section-{{ section.id }} .image-product-label {
+    top: {{ section.settings.label_position_y }}%;
+    left: {{ section.settings.label_position_x }}%;
+  }
+</style>
+
+{%- assign collection = collections[section.settings.collection] -%}
+<section class="container container--no-mobile-padding large-row standout-collection-section section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="standout-collection">
+  <div class="page-width standout-collection-flex {% if section.settings.layout == 'right' %}standout-collection-flex--reverse{% endif %} global-border-radius">
+      <div class="one-half small-down--one-whole relative avoid-overlaps">
+        <div class="avoid-overlaps__mobile-container">
+          {% if section.settings.alternative_image != blank or collection.image != blank %}
+            <a href="{{ collection.url }}" class="desktop-background-image lazyload rimage-background"
+              data-bgset="{% if section.settings.alternative_image != blank %}{% include 'bgset', image: section.settings.alternative_image %}{% else %}{% include 'bgset', image: collection.image %}{% endif %}"
+              data-sizes="auto"
+              data-parent-fit="cover">
+              <noscript>
+                {% assign image = section.settings.alternative_image | default: collection.image %}
+                <img src="{{ image | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}" class="rimage-background__image">
+              </noscript>
+            </a>
+          {% endif %}
+
+
+          {% if section.settings.alternative_image != blank %}
+            <a href="{{ collection.url }}" class="standout-collection__image">
+              {% include 'responsive-image' image: section.settings.alternative_image %}
+            </a>
+
+          {% elsif collection.image != blank %}
+            <a href="{{ collection.url }}" class="standout-collection__image">
+              {% include 'responsive-image' image: collection.image %}
+            </a>
+
+          {% else %}
+            <div class="standout-collection__image--svg-placeholder">
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+
+
+          {% if section.settings.product_id != blank %}
+            {% assign product_label = all_products[section.settings.product_id] %}
+            {% capture current_number %}{{ current }}{% endcapture %}
+            {% assign quickbuy_toggle = settings.quickbuy_labels_toggle %}
+            {% include 'image-product-label',
+                      show_chevron: section.settings.show_chevron,
+                      chevron: section.settings.chevron_position,
+                      quickbuy: quickbuy_toggle,
+                      color_bg: section.settings.color_label_background,
+                      color_text: section.settings.color_label_text %}
+          {% endif %}
+        </div>
+
+
+        {%- if collection != blank -%}
+          {%- assign collection_title = collection.title -%}
+          {%- assign collection_url = collection.url -%}
+        {%- else -%}
+          {%- capture collection_title -%}{{ 'homepage.onboarding.collection_title' | t }}{%- endcapture -%}
+          {%- assign collection_url = '#' -%}
+        {%- endif -%}
+
+        {% include 'image-overlay',
+                    background_color: section.settings.color_overlay_background,
+                    text_color: section.settings.color_overlay_text,
+                    title: collection_title,
+                    url: collection_url,
+                    url_text: section.settings.overlay_url_text,
+                    url_style: 'link_style',
+                    position: 'bottom-wide' %}
+      </div>
+
+    <div class="one-half small-down--one-whole relative slider-container slider-container--mobile-padding">
+      <div class="product-carousel-peek standout-collection-slider">
+        <div class="js-standout-collection-slider will-slick">
+          {% assign quickbuy_toggle = settings.quickbuy_buttons_toggle %}
+          {% for product in collection.products limit: 15 %}
+            <div class="slide relative js-contains-quickbuy">
+              {% include 'product-block', grid_class: 'ignore', quickbuy: quickbuy_toggle %}
+            </div>
+          {% else %}
+
+            {% for i in (1..6) %}
+              <div class="product-block slide">
+                <div class="global-border-radius">
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                </div>
+                <div class="product-block__title">
+                  <a href="#" class="product-block__title-link">{{ 'homepage.onboarding.product_title' | t }}</a>
+                </div>
+                <div class="product-price"><span class="theme-money">{{ 1999 | money }}</span></div>
+              </div>
+            {% endfor %}
+          {% endfor %}
+        </div>
+        {% include 'peek-carousel-advice' %}
+      </div>
+      <div class="standout-collection-slider__controls">
+        <button class="btn--plain prev icon feather-icon">{% include 'feather-arrow-left' %}</button>
+        <button class="btn--plain next icon feather-icon">{% include 'feather-arrow-right' %}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Promotional collection",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "color",
+        "id": "collection_background",
+        "label": "Background color",
+        "default": "#fbdfdb"
+      },
+      {
+        "type": "image_picker",
+        "id": "alternative_image",
+        "label": "Image",
+        "info": "If no image is selected, the Collection image will be displayed"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "left",
+            "label": "Image left"
+          },
+          {
+            "value": "right",
+            "label": "Image right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "header",
+        "content": "Text overlay"
+      },
+      {
+        "type": "color",
+        "id": "color_overlay_background",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_overlay_text",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "text",
+        "id": "overlay_url_text",
+        "label": "Link text",
+        "default": "Shop now"
+      },
+      {
+        "type": "header",
+        "content": "Image product label"
+      },
+      {
+        "type": "color",
+        "id": "color_label_background",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_label_text",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "product",
+        "id": "product_id",
+        "label": "Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_chevron",
+        "label": "Show arrow",
+        "default": true
+      },
+      {
+        "type": "radio",
+        "id": "chevron_position",
+        "label": "Arrow position",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "right", "label": "Right" }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "range",
+        "id": "label_position_x",
+        "label": "Horizontal position",
+        "min": 0,
+        "max": 100,
+        "unit": "%",
+        "step": 1,
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "label_position_y",
+        "label": "Vertical position",
+        "min": 0,
+        "max": 100,
+        "unit": "%",
+        "step": 1,
+        "default": 30
+      }
+    ],
+    "presets": [
+      {
+        "name": "Promotional collection",
+        "category": "Collection"
+      }
+    ]
+  }
+
+{% endschema %}

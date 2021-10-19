@@ -1,0 +1,93 @@
+<style>
+  .smsbump_main_wrapper {
+    display: block !important;
+  }
+  .half_to_full {
+  	width: 100%;
+  }
+  .sms_img {
+  	width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .smsbump_main_livetext {
+  	display: grid;
+    justify-content: center;
+    align-content: center;
+  }
+	.sms_header {
+    	font-size: 24px;
+      font-family: Roboto Slab;
+    }
+  .sms_subheader {
+    	font-size:16px;
+    }
+  @media only screen and (min-width: 968px) {
+    .smsbump_main_wrapper {
+  		display: flex !important;
+  	}
+  	.half_to_full {
+  		width: 50%;
+      	flex: 1;
+  	}
+    .sms_header {
+    	font-size: 32px;
+    }
+    .sms_subheader {
+    	font-size:18px;
+    }
+  }
+</style>
+<section class="smsbump_main_wrapper">
+  <div class="half_to_full smsbump_main_livetext" style="background-color: {{ section.settings.bg_color_sms }}; color: {{ section.settings.bg_text_color_sms }}">
+    <div class="sms_header">
+    	{{ section.settings.bg_text_header_sms }}
+    </div>
+    <div class="sms_subheader">
+      {{ section.settings.bg_text_sms }}
+    </div>
+  </div>
+  <div class="half_to_full smsbump_main_image">
+  	<img class="sms_img" src="{{ section.settings.image_sms | img_url : '600x' }}"/>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "SMS Banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left Side"
+      },
+      {
+        "type": "color",
+        "id": "bg_color_sms",
+        "label": "Left Background Color",
+        "default": "#c31a1f"
+      },
+      {
+        "type": "text",
+        "id": "bg_text_header_sms",
+        "label": "Left Background Header Text",
+        "default": "OUR MISSION"
+      },
+      {
+        "type": "richtext",
+        "id": "bg_text_sms",
+        "label": "Left Background Text",
+		"default": "<p>We deliver real-world value and quality in all of our products.</p>"
+      },
+      {
+        "type": "color",
+        "id": "bg_text_color_sms",
+        "label": "Left Background Text Color",
+        "default": "#ffffff"
+      },
+	  {
+        "type": "image_picker",
+        "id": "image_sms",
+        "label": "Desktop Image"
+	  }
+    ]
+  }
+{% endschema %}

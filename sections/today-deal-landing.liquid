@@ -1,0 +1,93 @@
+<section class="relative today_deal_main_wrapper large-row section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="today-deal-section">
+    <div class="page-width">
+        <h1 class="today_title">{{section.settings.title}}</h1>
+        <div class="today_wrapper">
+            <div class="today_image_wrapper"><a href="{{ section.settings.image_link }}" target="_blank"><img src="{{ section.settings.today_image | img_url: '400x400' }}" alt="Today's deal & Free Shipping Best Choice Products" /></a>
+                <div class="numbers_today" style="background-color: {{ section.settings.color_day_today_text }}">{{ section.settings.day_text }}</div>
+            </div>
+            <div class="today_text_wrapper">
+                {% if section.settings.image_text.size > 0 %}<div class="padding_today today_title_page">{{ section.settings.image_text }}</div>{% endif %}
+                {% if section.settings.image_heading.size > 0 %}<div class="padding_today today_price_style">{{ section.settings.image_heading }}</div>{% endif %}
+                {% if section.settings.save_price.size > 0 %}<div class="padding_today today_save_price">{{ section.settings.save_price }}</div>{% endif %}
+                {% if section.settings.coupon_code.size > 0 %}<div class="padding_today today_coupon_code">{{ section.settings.coupon_code }}</div>{% endif %}
+                {% if section.settings.image_button.size > 0 %}<a href="{{ section.settings.image_link }}" target="_blank"><div class="new_deal_button" style="background-color:{{ section.settings.color_day_today_button }};">{{ section.settings.image_button }}</div></a>{% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Today's Deal",
+    "class": "gallery",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+
+          {
+            "type": "image_picker",
+            "id": "today_image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "day_text",
+            "label": "Day Text"
+          },
+          {
+            "type": "color",
+            "id": "color_day_today_text",
+            "label": "color for today text",
+            "default": "#aa1919"
+          },
+          {
+            "type": "url",
+            "id": "image_link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "image_heading",
+            "label": "Price"
+          },
+          {
+            "type": "text",
+            "id": "image_text",
+            "label": "product title"
+          },
+          {
+            "type": "text",
+            "id": "image_button",
+            "label": "Button"
+          },
+          {
+            "type": "color",
+            "id": "color_day_today_button",
+            "label": "color for today button",
+            "default": "#aa1919"
+          },
+		  {
+            "type": "text",
+            "id": "coupon_code",
+            "label": "coupon code"
+          },
+          {
+            "type": "text",
+            "id": "save_price",
+            "label": "Save price"
+          }
+       
+    ],
+    "presets": [
+      {
+        "name": "Today's Deal",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

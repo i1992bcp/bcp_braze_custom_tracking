@@ -1,0 +1,123 @@
+<style>
+    .quotes-slider{
+        display:flex;
+    }
+  .arrow-slide{
+    display:none;
+  }
+  @media only screen and (max-width: 768px){
+    .arrow-slide{
+      display:block;
+    }
+  }
+</style>
+<section class="relative rich-text-section large-section container container--no-mobile-padding large-row section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="testimonials" style="background-color: #f9f9f9;">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2 class="heading-font-every">{{ section.settings.title }}</h2>
+    </div>
+  {% endif %}
+  {% if section.blocks.size > 0 %}
+    <div class="quotes-wrapper page-width">
+      <div class="quotes-slider">
+        {% for block in section.blocks %}
+          <div class="quotes-slide--{{ block.id }} one-quarter" {{ block.shopify_attributes }}>
+            <blockquote class="quotes-slider__text text-center">
+              <div class="stars">
+                  {% if block.settings.stars == '5' %}{% include 'icon-start' %}{% include 'icon-start' %}{% include 'icon-start' %}{% include 'icon-start' %}{% include 'icon-start' %}{% elsif block.settings.stars == '4.5' %}<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>{% elsif block.settings.stars == '4' %}<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>{% endif %}
+                </div>
+                {% if block.settings.profile != blank %}
+                    <div>
+                        <img src="{{ block.settings.profile | img_url: image_size }}" alt="Avatar" style="width:75px;border-radius: 50%;display:inline-block;"/>
+                    </div>
+                {% endif %}
+              {% if block.settings.quote != blank %}
+                <div style="font-size:14px;float:left;">{{ block.settings.quote }}</div>
+              {% endif %}
+              {% if block.settings.author != blank %}
+                <cite style="font-size:14px;">{{ block.settings.author | escape }} {{ block.settings.date | escape }}</cite>
+              {% endif %}
+            </blockquote>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</section>
+{% schema %}
+  {
+    "name": "Testimonials",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Testimonials"
+      },
+      {
+        "type": "text",
+        "id": "slides_to_show",
+        "label": "Slides to show",
+        "default": "3"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          },
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+            "default": "Author's name"
+          },
+          {
+            "type": "text",
+            "id": "date",
+            "label": "Date",
+            "default": "4/5/19"
+          },
+          {
+            "type": "image_picker",
+            "id": "profile",
+            "label": "Profile image"
+          },
+          {
+            "type": "text",
+            "id": "stars",
+            "label": "Stars",
+            "default": "5"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote"
+          },
+          {
+            "type": "quote"
+          },
+          {
+            "type": "quote"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

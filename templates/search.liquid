@@ -1,0 +1,8 @@
+<div id="shopify-section-collection-template" class="shopify-section main-content-search"></div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var final_val = document.getElementById("open-search-bar").value || document.getElementById("Mymobilesearch_").value;
+      	window.inputval = final_val;
+		$('.collection_title').text(`Search Result: ${final_val}`);
+	});
+</script>

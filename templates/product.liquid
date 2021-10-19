@@ -1,0 +1,95 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% section 'hitarth-product' %}
+<script type="application/json" class="ProductJson-{{ product.id }}">{{ product | json }}</script>
+<script type="application/ld+json">
+     {
+		"@context": "http://schema.org/",
+		"@type": "Product",
+		"name": {{ product.title | json }},
+		"url": {{ shop.url | append: product.url | json }},
+		{%- assign image_size = product.featured_image.width | append: 'x' -%}
+		"image": [ {{ product.featured_image.src | img_url: image_size | prepend: "https:" | json }} ],
+		"description": {{ page_description | escape | json }},
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+		"sku": {{ current_variant.sku | json }},
+		"brand": {
+			"@type": "Thing",
+			"name": "Best Choice Products"
+		},
+		"offers": [
+			{%- for variant in product.variants -%}
+				{
+					"@type" : "Offer",
+					"sku": {{ variant.sku | json }},
+					"availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+					"price" : {{ variant.price | divided_by: 100.00 | json }},
+					"priceCurrency" : "USD",
+					"url" : {{ shop.url | append: variant.url | json }},
+					"priceValidUntil" : "2021-12-29"
+				}{% unless forloop.last %},{% endunless %}
+			{%- endfor -%}
+		],
+		"gtin8" : {{ product.variants[0].barcode | json }},
+		"aggregateRating": {
+			"@type": "AggregateRating",
+			"ratingValue":  {{ product.metafields.yotpo.reviews_average }},
+			"reviewCount": {{ product.metafields.yotpo.reviews_count }}
+		},
+		"review": {
+			"@type": "Review",
+			"reviewRating": {
+				"@type": "Rating",
+				"ratingValue": {{ product.metafields.yotpo.reviews_average }},
+				"bestRating": 5.0,
+				"worstRating" : 1.0
+			},
+			"author": {
+				"@type": "Person",
+				"name": "Best Choice"
+			}
+		}
+	}
+</script>
+<script type="text/javascript">
+  window.zESettings = {
+      webWidget: {
+      talk: {
+          suppress: true
+      },
+      helpCenter: {
+          suppress: true
+      },
+      contactForm: {
+          suppress: true
+      }
+      }
+  };
+</script>
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>

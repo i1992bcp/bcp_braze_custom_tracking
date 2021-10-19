@@ -1,0 +1,212 @@
+<div class="container">
+	<div class="main-holder{% unless section.settings.remove_wrapper %} page-width{% endunless %}">
+    {% if section.settings.title != blank %}
+    	<div class="section-header text-center">
+      		<h2 class="{{ section.settings.title_class }}">{{ section.settings.title | escape }}</h2>
+    	</div>
+  	{% endif %}
+    <div class="grid page_new_deal">
+      {% for block in section.blocks %}
+        <div class="{% unless section.settings.masonry %}grid__item test_hide_large extra-small--one-whole small-down--{{ block.settings.image_size_small }} {{ block.settings.image_size }}{% endunless %}" {{ block.shopify_attributes }} style="margin-bottom: 3%;">
+          <div class="landing_holder">
+              <div class="landing-page-flex">
+                {% if block.settings.image.size > 0 %}{% if block.settings.image_button.size > 0 %}<a href="{{ block.settings.image_link }}" target="_blank">{% endif %}<img src="{{ block.settings.image | img_url: '650x500' }}" alt="{{ block.settings.image.alt }}" style="position: relative;" class="extra-small--hide" />{% if block.settings.image_button.size > 0 %}</a>{% endif %}<div class="numbers_today_deal extra-small--hide" style="background-color: {{ block.settings.color_day_image_text }}">{{ forloop.index }}</div>{% endif %}
+                {% if block.settings.mobile_image.size > 0 %}{% if block.settings.image_button.size > 0 %}<a href="{{ block.settings.image_link }}" target="_blank">{% endif %}<img src="{{ block.settings.mobile_image | img_url: '550x500' }}" alt="{{ block.settings.image.alt }}" style="position: relative;{% if block.settings.image_heading.size == 0 %}width:100%;{% endif %}" class="small-up--hide landing_deal_image" />{% if block.settings.image_button.size > 0 %}</a>{% endif %}<div class="small-up--hide numbers_today_deal" style="background-color: {{ block.settings.color_day_image_text }}">{{ forloop.index }}</div>{% endif %}
+                <div class="text-holder-landing" >
+                  {% if block.settings.image_text.size > 0 or block.settings.image_heading.size > 0 or block.settings.image_button.size > 0 %}
+                    {% if block.settings.image_text.size > 0 %}<div class="page_27_title">{{ block.settings.image_text }}</div>{% endif %}
+                    {% if block.settings.image_heading.size > 0 %}<div class="page_27_price">{{ block.settings.image_heading }}</div>{% endif %}
+                    {% if block.settings.coupon_code.size > 0 %}<div class="today_coupon_code font-coupon_page padding_5px">{{ block.settings.coupon_code }}</div>{% endif %}
+                    {% if block.settings.image_button.size > 0 %}<a href="{{ block.settings.image_link }}" target="_blank"><div class="new_deal_button" style="background-color:{{ block.settings.color_day_new_button }};">{{ block.settings.image_button }}</div></a>{% endif %}
+                  {% endif %}
+                </div>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+	</div>
+</div>
+<div class="clearfix"></div>
+{% schema %}
+  {
+    "name": "Gallery Grid",
+    "class": "gallery",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile image"
+          },
+          {
+            "type": "color",
+            "id": "color_day_image_text",
+            "label": "color for image text",
+            "default": "#aa1919"
+          },
+          {
+            "type": "url",
+            "id": "image_link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "image_heading",
+            "label": "Price"
+          },
+          {
+            "type": "text",
+            "id": "image_text",
+            "label": "product title"
+          },
+          {
+            "type": "text",
+            "id": "image_button",
+            "label": "Button"
+          },
+          {
+            "type": "color",
+            "id": "color_day_new_button",
+            "label": "color for new button",
+            "default": "#aa1919"
+          },
+		      {
+            "type": "text",
+            "id": "coupon_code",
+            "label": "coupon code"
+          },
+          
+      	  {
+        	"type": "select",
+        	"id": "image_size",
+        	"label": "Width",
+        	"default": "one-half",
+        	"options": [
+          	{
+              "value": "one-quarter",
+              "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },
+      	  {
+        	"type": "select",
+        	"id": "image_size_small",
+        	"label": "Width",
+        	"default": "one-half",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },
+      	  {
+        	"type": "select",
+        	"id": "text_align",
+        	"label": "Alignment",
+        	"options": [
+          	 {
+               "value": "text-center",
+               "label": "Center"
+          	  },
+          	  {
+               "value": "text-left",
+               "label": "Left"
+          	  },
+              {
+               "value": "text-right",
+               "label": "Right"
+          	  }
+        	]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Gallery Grid",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image_block"
+          },
+          {
+            "type": "image_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

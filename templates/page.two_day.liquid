@@ -1,0 +1,116 @@
+<style>
+    .div_wrapper_two{
+      margin:50px 0px;
+      text-align: center;
+    }
+    #combo_two{
+        width: 310px;
+      border-radius: 4px;
+    }
+    .click_two{
+      width: 310px;
+      margin-top: 20px;
+      height: 40px;
+      border-radius: 4px;
+    }
+  </style>
+  
+  
+  {% capture alt_attr %}{{ page.title | escape }}{% endcapture %}
+  {% if settings.page_featured_image_enable %}
+      {% if settings.wrap_page_header_image %}
+      <div class="wrapper">
+      {% endif %}  
+      <div class="page-featuredimage flex">
+            {{ page.handle | append: '.jpg' | file_url | img_tag: alt_attr }} 
+        {% if settings.page_featured_image_title_enable %}
+          <div class="header-box"><h1>{{ page.title }}</h1></div>
+        {% endif %}      
+      </div>
+      {% if settings.wrap_page_header_image %}
+      </div>
+      {% endif %}  
+  {% endif %}
+  <div class="page-width">
+    <div class="div_wrapper_two">
+      <div>
+        <h1> Shipping State </h1>
+          <select id="combo_two">
+              <option value="Alabama">Alabama</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District Of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+          </select>
+      </div>
+      <div>
+        <button id="button1" class="click_two">
+          Submit
+        </button>
+          <p class="success"></p>
+       </div>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){ 
+    $('#button1').click(function(){
+      var x = $('#combo_two :selected').text();
+      setCookie("two_day_state", x);
+      $(".success").text( "Success !!! You can see 2 day shipping based on your "+x+" state ! " );
+  
+    });
+  });
+    
+  function setCookie(cname,cvalue) {
+    var now = new Date();
+    now.setTime(now.getTime() + 4 * 3600 * 1000);
+    var expires = "expires=" + now.toUTCString();
+    console.log(expires);
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  </script>

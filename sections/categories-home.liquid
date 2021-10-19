@@ -1,0 +1,74 @@
+<style>
+
+</style>
+<section data-section-id="{{ section.id }}" data-section-type="collection-list">
+  <div class="page-width">
+    <div class="flex-body">
+      <div class="flex-row" {{ block.shopify_attributes }} style="width:45%; display:inline-block; height: 100%">
+        <div class="hover-images global-border-radius">
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      </div>
+      <div style="width:45%; display:inline-block;">
+        <div class="pro1 red" style="height:45%">
+          <div class="hover-images global-border-radius">    
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}    
+          </div>    
+        </div>
+        <div class="pro1 yellow" style="height:45%">
+          <div class="hover-images global-border-radius">    
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Categories list",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "header",
+        "content": "Collection - 1"
+      },
+      {      
+        "type": "collection",
+        "id": "collection_1",
+        "label": "Collection 1"    
+      },
+      {
+        "type": "header",
+        "content": "Collection - 2"
+      },
+      {      
+        "type": "collection",
+        "id": "collection_2",
+        "label": "Collection 1"    
+      },
+      {
+        "type": "header",
+        "content": "Collection - 3"
+      },
+       {      
+        "type": "collection",
+        "id": "collection_3",
+        "label": "Collection 1"    
+      }
+    ],
+    "presets": [
+      {
+        "name": "Categories list",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

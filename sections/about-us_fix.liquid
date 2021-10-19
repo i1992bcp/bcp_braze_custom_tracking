@@ -1,0 +1,43 @@
+<div class="wrapper_about_six">
+	<div>
+		{% for block in section.blocks %}
+			<div>
+				<img src = "{{ block.image_about_us_six | img_url: 'medium' }}" class="ab_us_six" />
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "About Image Six",
+		"blocks": [
+			{
+				"type": "abt_six_section",
+				"name": "About Brand Images",
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "image_about_us_six",
+						"label": "Logo Image"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "About Brand Images",
+				"category": "AboutBrandImages",
+				"blocks": [
+					{
+						"type": "abt_six_section"
+					},
+					{
+						"type": "abt_six_section"
+					}
+				]
+			}
+		]
+  }
+{% endschema %}

@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="page-width">
+    <div class="account-pages">
+      <div class="form-success hide" id="ResetSuccess">
+        {{ 'customer.recover_password.success' | t }}
+      </div>
+
+      <div id="CustomerLoginForm">
+
+        <h1 class="text-left">Sign in</h1>
+        <p class="text-left intro">To view your account, BCP Reward Points, and Favorites.</p> 
+
+        
+
+        {% form 'customer_login' %}
+          {{ form.errors | default_errors }}
+          <div class="input-wrapper form-row">
+            <label for="CustomerEmail">
+              {{ 'customer.login.email' | t }}
+            </label>
+            <input type="email"
+                  name="customer[email]"
+                  id="CustomerEmail"
+                  class="{% if form.errors contains 'email' %}input-error{% endif %}"
+                  spellcheck="false"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  data-desktop-autofocus>
+          </div>
+
+          {% if form.password_needed %}
+            <div class="input-wrapper-with-overlay-link">
+              <div class="input-wrapper form-row">
+                <label for="CustomerPassword">
+                  {{ 'customer.login.password' | t }}
+                </label>
+                <input type="password"
+                      name="customer[password]"
+                      id="CustomerPassword"
+                      class="{% if form.errors contains 'password' %}input-error{% endif %}">
+              </div>
+            </div>
+          {% endif %}
+          <div style="text-align: right !important;">
+            <a href="#recover" class="forgot-pass" id="RecoverPassword">Forgot Password?</a>
+          </div>
+          <div class="large-row">
+            <input type="submit" class="btn btn--fullwidth" value="{{ 'customer.login.sign_in' | t }}">
+          </div>
+         <h5>OR</h5>
+        <div class="one-click-social-login"></div>  
+          <h5>New to BCP?</h5>
+          <div class="large-row">
+            <a href="/account/register"><span class="create-button-login btn btn--fullwidth">{{ 'layout.customer.create_account' | t }}</span></a>
+          </div>
+
+        {% endform %}
+
+      </div>
+
+      <div id="RecoverPasswordForm" class="hide">
+        <h2 class="title row">{{ 'customer.recover_password.title' | t }}</h2>
+        <p>{{ 'customer.recover_password.subtext' | t }}</p>
+
+        {% form 'recover_customer_password' %}
+          {{ form.errors | default_errors }}
+
+          {% if form.posted_successfully? %}
+            <span class="hide reset-password-success"></span>
+          {% endif %}
+
+          <div class="input-wrapper form-row">
+            <label for="RecoverEmail">
+              {{ 'customer.recover_password.email' | t }}
+            </label>
+            <input type="email"
+                  name="email"
+                  id="RecoverEmail"
+                  spellcheck="false"
+                  autocomplete="off"
+                  autocapitalize="off">
+          </div>
+
+          <div class="large-row">
+            <input type="submit" class="btn btn--fullwidth" value="{{ 'customer.recover_password.submit' | t }}">
+          </div>
+
+          <div class="row">
+            <a href="#" id="HideRecoverPasswordLink">{{ 'customer.recover_password.cancel' | t }}</a>
+          </div>
+        {% endform %}
+
+      </div>
+
+      {% if shop.checkout.guest_login %}
+        <h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+        {% form 'guest_login' %}
+          <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
+        {% endform %}
+      {% endif %}
+    </div>
+  </div>
+</div>

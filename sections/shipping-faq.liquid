@@ -1,0 +1,108 @@
+<style>
+  .faqs {display:flex;justify-content: space-between;background:{{ section.settings.faq_bg_color }}; padding:14px; color:{{ section.settings.faq_color_ques }}; border-radius:4px; font-size:16px; font-weight:500; text-align:left;}
+  .toggle_icon {font-size:20px; font-weight:500; color:#282828; text-decoration:none; cursor:pointer;}
+  .faq_ans {display:none; padding: 33px 37px; line-height:23px; color:{{ section.settings.faq_color_answer }}; font-size:16px;}
+  .faq_section {margin-bottom:15px;}
+</style>
+<div class="section-margin-collection collection-header-image container page-width">
+  <div class="reading-width text-center">
+    {%- if section.settings.shipping_title != blank -%}<h1 class="heading-font-every faq_head_holiday">{{ section.settings.shipping_title | escape }}</h1>{%- endif -%}
+    <div class="rte" style="font-size:14px;"> 
+       {% for block in section.blocks %}
+           <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">{{ block.settings.shipping_question }}</div><div class="toggle_icon">+</div></div>
+           <div class="faq_ans">{{ block.settings.shipping_answer }}</div></div>
+       {% endfor %}
+      </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Shipping Faq",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "shipping_title",
+        "label": "Heading"
+      },
+	  {
+        "type": "color",
+        "id": "faq_bg_color",
+        "label": "color for FAQ",
+        "default": "#e1e1e1"
+      },
+	  {
+        "type": "color",
+        "id": "faq_color_ques",
+        "label": "color for Question",
+        "default": "#282828"
+      },
+	  {
+        "type": "color",
+        "id": "faq_color_answer",
+        "label": "color for Answer",
+        "default": "#282828"
+      }
+	],
+	 "blocks": [
+		{
+			 "type": "faq_block",
+        	 "name": "String",
+			 "settings": [
+				{
+                  "type": "text",
+                  "id": "shipping_question",
+                  "label": "Faq Question",
+				  "default": "Who am I?"
+                },
+
+                {
+                  "type": "text",
+                  "id": "shipping_answer",
+                  "label": "Faq Answer",
+				  "default": "I Am Nobody."
+                }
+			]
+		}	
+	],
+    "presets": [
+      {
+        "name": "Shipping Faq",
+        "category": "String",
+        "blocks": [
+          {
+            "type": "faq_block"
+          },
+          {
+            "type": "faq_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<script type="text/javascript">
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    $(".toggle_icon").click(function(){
+      $('.faq_ans').slideUp();
+	  if($(this).parent().parent().find('.faq_ans').hasClass('open'))
+	  {
+		  $(this).text('+');
+		  $(this).parent().parent().find('.faq_ans').removeClass('open');
+		  $(this).parent().parent().find('.faq_ans').slideUp();
+	  }
+	  else
+	  {
+		 $('.faq_ans').removeClass('open');
+		 $(".toggle_icon").text('+');
+		 $(this).text('-');
+		 $(this).parent().parent().find('.faq_ans').addClass('open'); 
+	     $(this).parent().parent().find('.faq_ans').slideDown();
+	  }
+}); 
+});
+</script>

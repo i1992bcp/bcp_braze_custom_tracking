@@ -1,0 +1,181 @@
+
+<div class="page-width" >
+<div class="depts grid">
+        <div class="grid__item one-whole text-center" style="margin-top: 5%;">      
+          	<h2 class="heading-font-every h3">{{ section.settings.title }}</h2>
+        </div>      
+    {% for block in section.blocks %}
+      {% case block.settings.width %}
+        {% when '16%' %}
+          {%- assign block_width = 'medium-up--one-sixth' -%}
+          {%- assign image_size = '400x400' -%}     
+        {% when '25%' %}
+          {%- assign block_width = 'medium-up--one-quarter' -%}
+          {%- assign image_size = '400x400' -%}
+        {% when '33%' %}
+          {%- assign block_width = 'medium-up--one-third' -%}
+          {%- assign image_size = '500x500' -%}
+        {% when '50%' %}
+          {%- assign block_width = 'medium-up--one-half' -%}
+          {%- assign image_size = '800x800' -%}
+        {% when '66%' %}
+          {%- assign block_width = 'medium-up--two-thirds' -%}
+          {%- assign image_size = '1024x1024' -%}
+        {% when '75%' %}
+          {%- assign block_width = 'medium-up--three-quarters' -%}
+          {%- assign image_size = '1024x1024' -%}
+        {% when '100%' %}
+          {%- assign block_width = 'one-whole' -%}
+          {%- assign image_size = '2048x2048' -%}
+      {% endcase %} 
+        <div class="block grid__item {{ block_width }} medium--{{ block.settings.medium_width }} small--{{ block.settings.small_width }} career-deptt">      
+        <div class="text text-center">
+          	<h3 class="career-body-header h4">{{ block.settings.heading }}</h3>
+            <span class="body-about">{{ block.settings.text }}</span>
+        </div>            
+      </div>
+    {% endfor %}
+    <div class="clearfix"></div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Deptartments",
+    "class": "depts-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Departments"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "dept",
+        "name": "Department",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "33%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "medium_width",
+            "label": "Medium width",
+            "default": "one-third",
+            "options": [
+              {
+                "value": "one-quarter",
+                "label": "25%"
+              },
+              {
+                "value": "one-third",
+                "label": "33%"
+              },
+              {
+                "value": "one-half",
+                "label": "50%"
+              },
+              {
+                "value": "two-thirds",
+                "label": "66%"
+              },
+              {
+                "value": "three-quarters",
+                "label": "75%"
+              },
+              {
+                "value": "one-whole",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "small_width",
+            "label": "Small width",
+            "default": "one-half",
+            "options": [
+              {
+                "value": "one-third",
+                "label": "33%"
+              },
+              {
+                "value": "one-half",
+                "label": "50%"
+              },
+              {
+                "value": "two-thirds",
+                "label": "66%"
+              },
+              {
+                "value": "three-quarters",
+                "label": "75%"
+              },
+              {
+                "value": "one-whole",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Departments",
+        "category": "Careers",
+        "blocks": [
+          {
+            "type": "dept"
+          },
+          {
+            "type": "dept"
+          },
+          {
+            "type": "dept"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

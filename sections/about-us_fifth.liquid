@@ -1,0 +1,119 @@
+<style>
+    .ab_fifth {
+        text-align: center;
+				padding: 3em 0;
+    }
+		.ab_fifth .slick-dots{
+			position: relative;
+		}
+		.ab_fifth .slick-dots li.slick-active button{
+			background-color: transparent;
+		}
+		.ab_fifth .slick-dots li button{
+			background-color: #fff;
+			border: solid 1px #f7f7f7;
+		}
+    .about_fifth_sub_header {
+        font-family: Roboto Slab;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 1em 0;
+    }
+    .ab_fifth_name_Test {
+        margin: 1em 0;
+        font-size: 16px;
+    }
+		.slick_the_review {
+			padding: 0 1em;
+		}
+    @media only screen and (min-width: 901px) { 
+        .about_fifth_sub_header {
+            font-size: 24px;
+        }
+        .ab_fifth_name_Test {
+            font-size: 12px;
+        }
+				.slick_the_review {
+					padding: 0 13em;
+				}
+
+    }
+</style>
+<section class="ab_fifth" style="background-color:{{ section.settings.bg_color_ab_fifth }};color: {{ section.settings.bg_text_color_ab_fifth }}">
+    <div class="container">
+			<div class="page-width">
+				<div class="about_header">{{ section.settings.about_fifth_header }}</div>
+				<div class="slick_the_review">
+					{% for block in section.blocks %}
+						<div>
+							<div>
+								<?xml version="1.0" encoding="UTF-8"?>
+								<svg width="213px" height="37px" viewBox="0 0 213 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Group</title><g id="3.-Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="ABOUT-US-DESKTOP-FINAL-2_23" transform="translate(-610.000000, -3382.000000)" fill="#FFFFFF"><g id="Group" transform="translate(610.000000, 3382.000000)"><polygon id="Star" points="18.5 27.75 7.62597283 33.4668144 9.70272722 21.3584072 0.905454449 12.7831856 13.0629864 11.0165928 18.5 0 23.9370136 11.0165928 36.0945456 12.7831856 27.2972728 21.3584072 29.3740272 33.4668144"></polygon><polygon id="Star-Copy" points="62.5 27.75 51.6259728 33.4668144 53.7027272 21.3584072 44.9054544 12.7831856 57.0629864 11.0165928 62.5 0 67.9370136 11.0165928 80.0945456 12.7831856 71.2972728 21.3584072 73.3740272 33.4668144"></polygon><polygon id="Star-Copy-2" points="106.5 27.75 95.6259728 33.4668144 97.7027272 21.3584072 88.9054544 12.7831856 101.062986 11.0165928 106.5 0 111.937014 11.0165928 124.094546 12.7831856 115.297273 21.3584072 117.374027 33.4668144"></polygon><polygon id="Star-Copy-3" points="150.5 27.75 139.625973 33.4668144 141.702727 21.3584072 132.905454 12.7831856 145.062986 11.0165928 150.5 0 155.937014 11.0165928 168.094546 12.7831856 159.297273 21.3584072 161.374027 33.4668144"></polygon><polygon id="Star-Copy-4" points="194.5 27.75 183.625973 33.4668144 185.702727 21.3584072 176.905454 12.7831856 189.062986 11.0165928 194.5 0 199.937014 11.0165928 212.094546 12.7831856 203.297273 21.3584072 205.374027 33.4668144"></polygon></g></g></g></svg>
+							</div>
+							<div class="about_fifth_sub_header">{{ block.settings.about_fifth_sub_header }}</div>
+							<div class="ab_fifth_name_Test">{{ block.settings.about_fifth_name }}</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "About us Reviews Section",
+    "settings": [
+			{
+				"type": "color",
+				"id": "bg_color_ab_fifth",
+				"label": "Background Color",
+				"default": "#cc3333"
+			},
+			{
+				"type": "color",
+				"id": "bg_text_color_ab_fifth",
+				"label": "Background Text Color",
+				"default": "#fff"
+			},
+			{
+				"type" : "text",
+				"id": "about_fifth_header",
+				"label": "Title",
+				"default" : "Over 20 Million Customers Served"
+			}
+    ],
+		"blocks": [
+			{
+				"type": "abt_fifth_section",
+				"name": "About Review",
+				"settings": [
+					{
+						"type" : "text",
+						"id": "about_fifth_sub_header",
+						"label": "Sub Header",
+						"default" : "“Best Choice Products has quality products at unbeatable prices, amazing customer service, and fast shipping!”"
+					},
+					{
+						"type" : "text",
+						"id": "about_fifth_name",
+						"label": "Name",
+						"default" : "Kelly Klopfer, Newport Beach CA"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "About Review",
+				"category": "AboutReview",
+				"blocks": [
+					{
+						"type": "abt_fifth_section"
+					},
+					{
+						"type": "abt_fifth_section"
+					}
+				]
+			}
+		]
+  }
+{% endschema %}

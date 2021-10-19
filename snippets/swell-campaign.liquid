@@ -1,0 +1,48 @@
+<div class="swell-campaign-section {% if customer %}logged-in{% endif %}">
+  <div class="swell-section-heading">
+    <h3 class="swell-heading">Earning Points</h3>
+    <p class="swell-detail"> Make purchases and complete the actions below to earn and redeem points!</p>
+  </div>
+  <div class="swell-campaign-holder">
+    <div class="swell-campaign-heading">One Time Only Actions</div>
+    <div class="swell-loader-spinner campaign">
+      <img src="{{ 'swell-loader.svg' | asset_url }}"/>
+    </div>
+    <ul class="swell-campaign-list-one-time {% if customer %}logged-in {%endif%}">
+    </ul>
+    <div class="swell-campaign-heading">Come Back & Earn Again</div>
+    <div class="referral-section">
+      <div class="referral-section-holder {% if customer %}logged-in{% endif %}">
+        <div class="refer-banner">
+          <img src="{{ 'swell-refer.jpg' | asset_url }}">
+          <div class="swell-refer-banner-holder">
+            <div class="swell-refer-banner-icon">
+              <img src="{{ 'referral-icon.svg' | asset_url }}">
+            </div>
+            <div class="swell-refer-banner-heading">
+              REFER A FRIEND
+            </div>
+            <div class="swell-refer-banner-points">
+              Earn 300 Pts.
+            </div>
+            <div class="swell-refer-banner-amount">
+              $10
+            </div>
+          </div>
+        </div>
+        <div class="swell-referral-holder">
+          <div class="swell-referral {% if customer %}logged-in{% endif %}">
+            <div class="swell-loader-spinner refer">
+              <img src="{{ 'swell-loader.svg' | asset_url }}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swell-loader-spinner campaign">
+      <img src="{{ 'swell-loader.svg' | asset_url }}"/>
+    </div>
+    <ul class="swell-campaign-list-multiple {% if customer %}logged-in {%endif%}">
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+
+<section class="container container--no-mobile-padding full-width-image full-width-background section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="full-width-image">
+  <div class="page-width">
+    <div class="full-width relative avoid-overlaps global-border-radius">
+      <div class="avoid-overlaps__mobile-container">
+      <div class="desktop-image-slider">
+        {% if section.settings.cyber_image == blank %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% else %}
+          <a href="{{ section.settings.cyber_overlay_url_1_full }}">{% include 'responsive-image', image: section.settings.cyber_image, nomax: true %}</a>
+        {% endif %}
+      </div>
+      <div class="mobile-image-slider">
+        {% if section.settings.cyber_mobile_full_image == blank %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% else %}
+          <a href="{{ section.settings.cyber_overlay_url_1_full }}">{% include 'responsive-image', image: section.settings.cyber_mobile_full_image, nomax: true %}</a>
+        {% endif %}
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Full width image with url",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "cyber_image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "cyber_mobile_full_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "url",
+        "id": "cyber_overlay_url_1_full",
+        "label": "Button 1 link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full width image with url",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

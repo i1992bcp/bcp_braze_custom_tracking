@@ -1,0 +1,148 @@
+<div id="login" class="lity-hide lity-pop" style="background:#fff">
+	<div class="relative">
+	  <a href="#" class="js-modal-close close lity-close" data-lity-close>×</a>
+	</div>
+	<div class="modal-body">
+      <div>  
+        
+        <h2 class="text-left">{{ 'customer.login.title' | t }}</h2>
+
+        <p class="text-left intro">To view your order history, reward points, and favorites.</p>
+        	
+        
+        
+      {% form 'customer_login' %}
+      
+        {{ form.errors | default_errors }}
+
+        <label for="CustomerEmail" class="label--hidden">{{ 'customer.login.email' | t }}</label>
+        <input type="email" name="customer[email]" id="CustomerEmail" placeholder="{{ 'customer.login.email' | t }}"{% if form.errors contains "email" %} class="error"{% endif %} autocorrect="off" autocapitalize="off" autofocus>
+
+          <label for="CustomerPassword" class="label--hidden">{{ 'customer.login.password' | t }}</label>
+          <input type="password" value="" name="customer[password]" id="CustomerPassword" placeholder="{{ 'customer.login.password' | t }}" {% if form.errors contains "password" %} class="error"{% endif %}>
+          <input type="hidden" name="checkout_url" id="redirect_url" value="" />
+        <p style="text-align:right;"><a class="forgot-link" href="#password" data-modal-id="password" data-lity>{{ 'customer.login.forgot_password' | t }}</a></p>
+          <input type="submit" class="btn" value="{{ 'customer.login.sign_in' | t }}">
+        <span class="or">OR</span>
+        <div class="one-click-social-login"></div>  
+        <span class="or">new to BCP?</span>
+          <p class="bottom-links">           
+            <a class="js-open-modal btn register clear" href="#register" data-lity>{{ 'customer.register.title' | t }}</a>
+          </p>
+      {% endform %}
+      </div>
+	</div>
+</div>        
+<div id="password" class="lity-hide lity-pop" style="background:#fff">   
+	<div class="header">
+	  <a href="#" class="js-modal-close close lity-close" data-lity-close>×</a>
+	</div>
+	<div class="modal-body">
+      <div>    
+    <div id="RecoverPasswordForm">
+
+        <h2 class="text-left">{{ 'customer.recover_password.title' | t }}</h2>
+
+      <p>{{ 'customer.recover_password.subtext' | t }}</p>
+
+      {% comment %}
+        This form must use 'recover_customer_password'
+      {% endcomment %}
+      {% form 'recover_customer_password' %}
+
+        {{ form.errors | default_errors }}
+
+        {% comment %}
+          form.posted_successfully? is true only inside this form, but we want
+          to show a success message outside of it. To do so, set the variable
+          reset_success to true, then use JS to show our success message above.
+        {% endcomment %}
+        {% if form.posted_successfully? %}
+          {% assign reset_success = true %} 
+        {% endif %}
+
+        <label for="RecoverEmail" class="label--hidden">{{ 'customer.recover_password.email' | t }}</label>
+        <input type="email" value="" name="email" id="RecoverEmail" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+
+        <p>
+          <input type="submit" class="btn" value="{{ 'customer.recover_password.submit' | t }}">
+        </p>
+        <a href="#" class="cancel" data-lity-close>{{ 'customer.recover_password.cancel' | t }}</a>
+      {% endform %}
+	</div>
+<script> 
+  /*
+    Show/hide the recover password form when requested.
+  */
+  function showRecoverPasswordForm() {
+    document.getElementById('RecoverPasswordForm').style.display = 'block';
+    document.getElementById('CustomerLoginForm').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('RecoverPasswordForm').style.display = 'none';
+    document.getElementById('CustomerLoginForm').style.display = 'block';
+  }
+
+  // Allow deep linking to the recover password form
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  // reset_success is only true when the reset form is
+  {% if reset_success %}
+    document.getElementById('ResetSuccess').style.display = 'block';
+  {% endif %}
+</script>
+          </div>
+      </div>
+ </div>
+
+<div id="register" class="lity-hide lity-pop" style="background:#fff"> 
+	<div class="header">
+	  <a href="#" class="js-modal-close close lity-close" data-lity-close>×</a>
+	</div>
+	<div class="modal-body">      
+
+      <h2 class="text-left">{{ 'customer.register.title' | t }}</h2>
+      <p class="text-left intro">To earn reward points, review order history and favorites.</p>
+      
+      <div class="one-click-social-login"></div> 
+      
+    {% form 'create_customer' %}
+      {{ form.errors | default_errors }}
+
+      <label for="FirstName" class="label--hidden">{{ 'customer.register.first_name' | t }}</label>
+      <input type="text" name="customer[first_name]" id="FirstName" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+
+      <label for="LastName" class="label--hidden">{{ 'customer.register.last_name' | t }}</label>
+      <input type="text" name="customer[last_name]" id="LastName" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+
+      <label for="Email" class="label--hidden">{{ 'customer.register.email' | t }}</label>
+      <input type="email" name="customer[email]" id="Email" placeholder="{{ 'customer.register.email' | t }}" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+
+      <label for="CreatePassword" class="label--hidden">{{ 'customer.register.password' | t }}</label>
+      <input type="password" name="customer[password]" id="CreatePassword" placeholder="{{ 'customer.register.password' | t }}" {% if form.errors contains "password" %} class="error"{% endif %}>
+      
+        <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
+
+      	<h5>already a member?</h5>
+          <a href="#login" data-lity class="login-link" style="margin-bottom:10px;display:block;"><span class="btn clear">Sign In</span></a>      
+    {% endform %}  
+        
+	</div>
+</div> 
+<script>
+      $(document).ready(function() {
+           var url =  window.location.href; 
+           $("#redirect_url").val(url);
+        });
+      $(document).ready(function() {
+           var url =  window.location.href; 
+           $("#redirect_url2").val(url);
+        }); 
+  $('#login .register').click(function(){
+  	$('#login .close').trigger('click');
+  });  
+  $('#register .login-link').click(function(){
+  	$('#register .close').trigger('click');
+  });   
+</script>

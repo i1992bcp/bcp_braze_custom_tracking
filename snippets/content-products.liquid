@@ -1,0 +1,43 @@
+{% assign products_html = '' %}
+{% assign split_content = content | split: '"' %}
+
+{% for chunk in split_content %}
+  {% if forloop.first %}
+    {% assign all_product_handles = product_handle | split: ' ' %}
+  {% endif %}
+  {% if chunk contains '/products/' %}
+    {% assign chunk_handle = chunk | split: '/' | last | split: '?' | first %}
+    {% assign product = all_products[chunk_handle] %}
+    {% unless all_product_handles contains chunk_handle %}
+      {% if product != blank %}
+          {% capture products_html %}{{ products_html }}{% include 'product-block', grid_class: 'grid__item one-third small-down--one-half' %}{% endcapture %}
+      {% endif %}
+    {% endunless %}
+  {% endif %}
+  {% assign add_product_handle = chunk_handle | split: ' ' %}
+  {% assign all_product_handles = all_product_handles | concat: add_product_handle %}
+  {% if forloop.length > 3 %}{% assign show_controls = true %}{% endif %}
+{% endfor %}
+
+{% unless products_html == blank %}
+  <div class="content-products product-carousel-peek">
+    {% capture title %}{{ 'blogs.article.products_title' | t }}{% endcapture %}
+    <div class="flex">
+      {% if title != blank %}
+        <div class="content-products__title">{{ title }}</div>
+      {% endif %}
+      {% if show_controls == true %}
+        <div class="content-products-controls">
+          <button class="btn--plain prev icon feather-icon">{% include 'feather-arrow-left' %}</button>
+          <button class="btn--plain next icon feather-icon">{% include 'feather-arrow-right' %}</button>
+        </div>
+      {% endif %}
+    </div>
+    <div class="content-products__products">
+      <div class="grid grid--uniform">
+        {{ products_html }}
+      </div>
+    </div>
+    {% include 'peek-carousel-advice' %}
+  </div>
+{% endunless %}

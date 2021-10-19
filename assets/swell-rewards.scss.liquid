@@ -1,0 +1,2109 @@
+$min: min-width;
+$small: 480px;
+$medium: 768px;
+$large: 1024px;
+$theme-font-montserrat: 'Montserrat',
+sans-serif;
+$theme-font-mont-regular: 'Montserrat';
+$theme-font-roboto: 'Roboto Slab', serif;
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
+}
+.swell-loader-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+.swell-BCP-rewards {
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center top;
+    object-position: center top;
+    vertical-align: -webkit-baseline-middle;
+  }
+  .swell-desktop {
+    display: none;
+  }
+  .swell-mobile {
+    display: block;
+  }
+  @media ($min:$medium) {
+    .swell-desktop {
+      display: block;
+    }
+    .swell-mobile {
+      display: none;
+    }
+  }
+  .swell-section-heading {
+    margin-bottom: 30px;
+    @media($min: $small) {
+      margin-bottom: 40px;
+    }
+    @media($min: $medium) {
+      margin-bottom: 45px;
+    }
+    .swell-heading {
+      font-family: $theme-font-roboto;
+      font-size: 19px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #282828;
+      margin-bottom: 20px;
+      @media($min: $small) {
+        margin-bottom: 25px;
+        font-size: 28px;
+      }
+      @media($min: $medium) {
+        margin-bottom: 12px;
+        font-size: 27px;
+      }
+    }
+    .swell-detail {
+      font-family: $theme-font-mont-regular;
+      font-size: 13.5px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #989998;
+      margin: 0 auto;
+      max-width: 290px;
+      @media($min: $small) {
+        font-size: 20.5px;
+        max-width: 440px;
+      }
+      @media($min: $medium) {
+        font-size: 16px;
+        max-width: 100%;
+      }
+      span {
+        font-family: $theme-font-montserrat;
+        font-weight: bold;
+      }
+    }
+  }
+  .swell-link-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .swell-link {
+      margin-bottom: 15px;
+      @media($min: $small) {
+        margin-bottom: 20px;
+      }
+      &:last-child {
+        margin: 0;
+        .swell-link-button {
+          text-decoration: underline;
+          background: transparent;
+          border: 0;
+          height: 100%;
+          min-width: 100%;
+        }
+      }
+      .swell-link-button {
+        display: block;
+        cursor: pointer;
+        font-family: $theme-font-montserrat;
+        font-size: 11px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        width: 100%;
+        margin: 0 auto;
+        text-decoration: none;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        min-width: 135px;
+        height: 36px;
+        background-color: #ae8d4f;
+        border: 1px solid #ae8d4f;
+        @media ($min: $small) {
+          min-width: 205px;
+          height: 45px;
+          font-size: 16px;
+        }
+        @media($min: $medium) {
+          height: 42px;
+          min-width: 365px;
+          font-size: 15px;
+        }
+        &:hover {
+          background: transparent;
+          color: #ae8d4f;
+        }
+      }
+    }
+  }
+  .swell-container {
+    max-width: 1340px;
+    margin: 0 auto;
+  }
+  .swell-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1340px;
+    margin: 0 auto;
+    @media($min: $medium) {
+      padding: 0 20px;
+    }
+    @media($min: 969px) {
+      padding: 0 30px;
+    }
+    @media($min: 1340px) {
+      padding: 0;
+    }
+    .swell-banner-outer-holder {
+      position: relative;
+      width: 100%;
+      @media($min: $medium) {
+        background: transparent;
+      }
+      .swell-desktop-banner {
+        min-height: 450px;
+      }
+      .banner-holder {
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        border-bottom: 0;
+        background: rgba(34, 34, 34, 0.4);
+        margin: 0;
+        @media($min: $medium) {
+          align-items: center;
+        }
+        .banner-caption {
+          text-align: center;
+          padding: 15px 0;
+          margin: 0 auto;
+          @media($min: $small) {
+            padding: 20px 0;
+          }
+          @media ($min: $medium) {
+            padding: 130px 0 30px;
+            margin: 0 auto;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          }
+          &.logged-in {
+            padding: 15px 0 30px;
+            @media($min: $small) {
+              padding: 20px 0 40px;
+            }
+            @media ($min: $medium) {
+              padding: 95px 0 30px;
+            }
+            .banner-caption-holder {
+              .swell-mobile-logo {
+                margin: 0 auto 40px;
+                @media($min: $small) {
+                  margin: 0px auto 55px;
+                }
+              }
+            }
+          }
+          .banner-caption-holder {
+            margin: 0 auto;
+            max-width: 260px;
+            @media($min: $small) {
+              max-width: 410px;
+            }
+            @media($min: $medium) {
+              margin: 0 auto;
+              max-width: 570px;
+            }
+            .swell-desktop-logo {
+              @media(min-width: 768px) {
+                margin: 0 auto 85px;
+                max-width: 565px;
+                min-width: 565px;
+              }
+            }
+            .swell-mobile-logo {
+              margin: 0 auto 30px;
+              max-width: 185px;
+              min-width: 185px;
+              @media($min: $small) {
+                margin: 0px auto 40px;
+                max-width: 275px;
+                min-width: 275px;
+              }
+            }
+            .swell-customer-name {
+              font-family: $theme-font-roboto;
+              font-size: 20px;
+              font-weight: normal;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              text-align: center;
+              color: #ffffff;
+              text-transform: capitalize;
+              @media($min: $small) {
+                font-size: 28px;
+              }
+              @media($min: $medium) {
+                font-size: 32px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .swell-hiw-joining {
+    max-width: 1340px;
+    background: #f9f7f2;
+    padding: 40px 0 25px;
+    margin: 0 0 30px;
+    @media($min: $small) {
+      padding: 45px 0 30px;
+      margin: 0 0 35px;
+    }
+    @media($min: $medium) {
+      padding: 45px 0 75px;
+      margin: 0 20px 65px;
+    }
+    @media($min: 969px) {
+      margin: 0 30px 65px;
+    }
+    @media($min: 1340px) {
+      margin: 0 auto 65px;
+    }
+    &.logged-in {
+      padding: 40px 0;
+      @media($min: $small) {
+        padding: 45px 0;
+      }
+      @media($min: $medium) {
+        padding: 45px 0 30px;
+      }
+    }
+    .swell-section-heading {
+      .swell-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .swell-joining-logo {
+          object-fit: contain;
+          max-width: 35px;
+          margin-left: 15px;
+          @media($min: $small) {
+            max-width: 50px;
+            margin-left: 20px;
+          }
+          @media($min: $medium) {
+            max-width: 40px;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+    .swell-joining-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 45px;
+      @media($min: $small) {
+        margin-bottom: 55px;
+      }
+      @media($min: $medium) {
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 50px;
+      }
+      .swell-joining-outer-holder {
+        position: relative;
+        flex-basis: 33.3%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-bottom: 40px;
+        margin-bottom: 50px;
+        @media($min: $small) {
+          padding-bottom: 45px;
+          margin-bottom: 55px;
+        }
+        @media($min:$medium) {
+          padding-bottom: 0;
+          margin-bottom: 0;
+        }
+        &:after {
+          position: absolute;
+          content: "";
+          background-color: #979797;
+          width: 100%;
+          height: 100%;
+          min-height: 1px;
+          max-height: 1px;
+          bottom: 0;
+          max-width: 180px;
+          @media($min: $small) {
+            max-width: 250px;
+          }
+          @media($min: $medium) {
+            max-width: 1px;
+            min-height: 78px;
+            max-height: 78px;
+            top: 0;
+            right: 0;
+            bottom: unset;
+          }
+          @media($min: $large) {
+            min-height: 100px;
+            max-height: 100px;
+          }
+        }
+        &:nth-child(2) {
+          margin-bottom: 30px;
+          padding-bottom: 50px;
+          @media($min: $small) {
+            margin-bottom: 35px;
+            padding-bottom: 55px;
+          }
+          @media($min: $medium) {
+            padding-bottom: 0;
+            margin-bottom: 0px;
+          }
+        }
+        &:last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+          &:after {
+            display: none;
+          }
+        }
+        .swell-joining-holder {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          .swell-joining-heading {
+            font-family: $theme-font-montserrat;
+            font-size: 14px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #282828;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+            @media($min: $small) {
+              font-size: 20px;
+              margin-bottom: 10px;
+            }
+            @media($min:$medium) {
+              font-size: 12px;
+              margin-bottom: 15px;
+            }
+            @media($min: $large) {
+              font-size: 18px;
+            }
+          }
+          .swell-customer-status {
+            font-family: $theme-font-roboto;
+            font-size: 24px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #282828;
+            text-transform: uppercase;
+            @media($min: $small) {
+              font-size: 31px;
+            }
+            @media($min: $medium) {
+              font-size: 22px;
+              margin-bottom: 5px;
+            }
+            @media($min:$large) {
+              font-size: 32px;
+            }
+          }
+          .swell-start-shopping {
+            font-family: $theme-font-montserrat;
+            font-size: 11px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: italic;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #989998;
+            margin-top: 7px;
+            @media($min: $small) {
+              font-size: 15px;
+              margin-top: 10px;
+            }
+            @media($min: $medium) {
+              margin-top: 0px;
+              font-size: 11px;
+            }
+            @media($min: $large) {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .swell-link-list {
+      .swell-link {
+        .swell-link-button {
+          min-width: 290px;
+          height: 50px;
+          @media($min: $small) {
+            min-width: 430px;
+            height: 60px;
+          }
+          @media($min: $medium) {
+            min-width: 365px;
+            height: 42px;
+          }
+          &.swell-account-button {
+            background-color: #ae8d4f;
+            border: 1px solid #ae8d4f;
+            text-decoration: none;
+            &:hover {
+              background: transparent;
+            }
+          }
+        }
+        .swell-link-history {
+          color: #282828;
+          height: 100%;
+          min-width: 100%;
+        }
+      }
+    }
+  }
+  .swell-campaign-section {
+    max-width: 1340px;
+    margin: 0 auto 45px;
+    @media($min: $small) {
+      margin: 0 auto 50px;
+    }
+    @media($min: $medium) {
+      padding: 0 20px;
+    }
+    @media($min: 969px) {
+      padding: 0 30px;
+    }
+    @media($min: 1340px) {
+      padding: 0;
+    }
+    .swell-section-heading {
+      margin-bottom: 55px;
+      @media($min: $small) {
+        margin-bottom: 65px;
+      }
+      @media($min: $medium) {
+        margin-bottom: 60px;
+      }
+      .swell-detail {
+        font-size: 12px;
+        max-width: 280px;
+        @media($min: $small) {
+          font-size: 18px;
+          max-width: 420px;
+        }
+        @media($min: $medium) {
+          max-width: 100%;
+          font-size: 16px;
+        }
+      }
+    }
+    .swell-campaign-holder {
+      padding: 0 12.5px;
+      @media($min: $medium) {
+        padding: 0;
+      }
+      .swell-campaign-heading {
+        font-family: $theme-font-roboto;
+        font-size: 18.5px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #282828;
+        text-align: center;
+        margin-bottom: 30px;
+        @media($min: $small) {
+          font-size: 27px;
+          margin-bottom: 40px;
+        }
+        @media($min: $medium) {
+          text-align: left;
+          font-size: 21px;
+          margin-bottom: 20px;
+        }
+      }
+      .swell-campaign-list-one-time,
+      .swell-campaign-list-multiple {
+        justify-content: space-between;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        .swell-campaign {
+          position: relative;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #f9f7f2;
+          border-radius: 5px;
+          border: 1px solid #f9f7f2;
+          flex-basis: 100%;
+          margin-bottom: 20px;
+          @media($min: $small) {
+            margin-bottom: 25px;
+          }
+          @media($min: $medium) {
+            flex-basis: 31.5%;
+            margin-bottom: 30px;
+          }
+          .swell-campaign-content {
+            width: 100%;
+            padding: 10px 0;
+            @media($min: $small) {
+              padding: 15px 0;
+            }
+            @media($min: $large) {
+              padding: 20px 0;
+            }
+            .swell-campaign-image {
+              height: 100%;
+              margin: 0 auto;
+              max-width: 65px;
+              margin-bottom: 10px;
+              @media($min: $small) {
+                max-width: 95px;
+                margin-bottom: 15px;
+              }
+              @media($min:$medium) {
+                margin-bottom: 8px;
+                max-width: 65px;
+              }
+              @media($min:$large) {
+                margin-bottom: 12px;
+                max-width: 90px;
+              }
+              img {
+                object-fit: contain;
+              }
+            }
+            .swell-campaign-value {
+              font-family: $theme-font-roboto;
+              font-size: 17px;
+              font-weight: bold;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              text-align: center;
+              color: #ae8d4f;
+              text-transform: uppercase;
+              @media($min: $small) {
+                font-size: 27px;
+              }
+              @media($min: $medium) {
+                font-size: 18px;
+              }
+              @media($min: $large) {
+                font-size: 24px;
+              }
+            }
+            .swell-campaign-type {
+              text-align: center;
+              margin-bottom: 10px;
+              @media($min: $small) {
+                margin-bottom: 15px;
+              }
+              @media($min: $medium) {
+                margin-bottom: 5px;
+              }
+              @media($min: $large) {
+                margin-bottom: 10px;
+              }
+              .swell-campaign-type-content {
+                font-family: $theme-font-montserrat;
+                font-size: 14px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #282828;
+                text-transform: uppercase;
+                @media($min: $small) {
+                  font-size: 20.5px;
+                }
+                @media($min: $medium) {
+                  font-size: 13.5px;
+                }
+                @media($min: $large) {
+                  font-size: 18px;
+                }
+              }
+            }
+            .swell-campaign-detail {
+              text-align: center;
+              margin-top: 10px;
+              @media($min: $small) {
+                margin-top: 15px;
+              }
+              @media($min: $medium) {
+                margin: 5px auto 0;
+                max-width: 220px;
+              }
+              @media($min: $large) {
+                margin: 8px auto 0;
+                max-width: 290px;
+              }
+              .swell-campaign-detail-content {
+                display: block;
+                font-family: $theme-font-mont-regular;
+                font-size: 11.5px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #282828;
+                @media($min: $small) {
+                  font-size: 18px;
+                }
+                @media($min: $medium) {
+                  font-size: 11px;
+                  min-height: 28px;
+                }
+                @media($min: $large) {
+                  font-size: 14.5px;
+                  min-height: 36px;
+                }
+                .swell-share-allow {
+                  font-family: $theme-font-montserrat;
+                  font-size: 11px;
+                  font-style: italic;
+                  @media($min: $small) {
+                    font-size: 15px;
+                  }
+                  @media($min: $medium) {
+                    font-size: 11px;
+                  }
+                  @media($min: $large) {
+                    font-size: 13px;
+                  }
+                }
+              }
+            }
+          }
+          .swell-campaign-completed {
+            display: none;
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            @media($min: $small) {
+              top: 17px;
+              right: 27px;
+              max-width: 35px;
+              min-width: 35px;
+            }
+            @media($min: $medium) {
+              min-width: unset;
+              max-width: 100%;
+              right: 15px;
+            }
+            img {
+              object-fit: contain;
+            }
+          }
+        }
+      }
+      .swell-campaign-list-one-time {
+        margin-bottom: 30px;
+        @media($min: $small) {
+          margin-bottom: 35px;
+        }
+        @media($min: $medium) {
+          margin-bottom: 60px;
+        }
+      }
+    }
+  }
+  .swell-purchase-review {
+    background: #f9f7f2;
+    padding: 25px 0 60px;
+    margin-bottom: 60px;
+    @media($min: $small) {
+      padding: 30px 0 65px;
+      margin-bottom: 65px;
+    }
+    @media($min: $medium) {
+      padding: 60px 0;
+      margin-bottom: 65px;
+    }
+    .swell-purchase-review-heading-holder {
+      margin-bottom: 10px;
+      @media($min: $small) {
+        margin-bottom: 15px;
+      }
+      @media($min: $medium) {
+        margin-bottom: 35px;
+      }
+      &.logged-in {
+        @media($min: $medium) {
+          margin-bottom: 15px;
+        }
+        .swell-purchase-review-detail-holder {
+          @media($min: $medium) {
+            display: block;
+          }
+        }
+      }
+      .swell-heading {
+        font-family: $theme-font-roboto;
+        font-size: 18px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #333333;
+        margin-bottom: 7px;
+        @media($min: $small) {
+          font-size: 26.5px;
+          margin-bottom: 10px;
+        }
+        @media($min: $medium) {
+          font-size: 25.5px;
+          margin-bottom: 20px;
+        }
+        @media($min: $large) {
+          font-size: 32px;
+        }
+      }
+      .swell-purchase-review-detail-holder {
+        margin: 0 auto;
+        padding: 0 30px;
+        @media($min: $small) {
+          padding: 0 50px;
+        }
+        @media($min: $medium) {
+          display: none;
+          padding: 0 17px;
+          max-width: 950px;
+        }
+        .swell-detail {
+          display: block;
+          font-family: $theme-font-montserrat;
+          font-size: 13.5px;
+          font-weight: 600;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          text-align: center;
+          color: #ffffff;
+          background-color: #ae8d4f;
+          padding: 10px 0;
+          @media($min: $small) {
+            font-size: 20px;
+            padding: 12px 0;
+          }
+          @media($min: $medium) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .swell-purchase-review-holder {
+      .swell-purchase-review-list {
+        padding: 0;
+        list-style: none;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        @media($min: $small) {
+          padding: 0 50px;
+        }
+        @media ($min: $medium) {
+          flex-direction: row;
+          max-width: 950px;
+          margin: 0 auto;
+          padding: 0;
+        }
+        .swell-purchase-review-list-item {
+          width: 100%;
+          background-color: #282828;
+          border-radius: 5px;
+          margin: 0 0 30px;
+          padding: 50px 0 30px;
+          @media($min: $small) {
+            margin: 0 0 35px;
+            padding: 55px 0 35px;
+          }
+          @media ($min: $medium) {
+            padding: 35px 0 15px;
+            margin: 0 17px;
+            flex: 1;
+          }
+          @media($min: $large) {
+            padding: 40px 0 20px;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .swell-purchase-review-list-holder {
+            text-align: center;
+            .swell-purchase-review-icon {
+              margin-bottom: 20px;
+              @media($min: $small) {
+                margin-bottom: 25px;
+              }
+              @media($min: $medium) {
+                margin-bottom: 20px;
+              }
+              img {
+                object-fit: contain;
+                max-width: 77px;
+                @media($min: $small) {
+                  max-width: 110px;
+                }
+                @media($min: $medium) {
+                  max-width: 70px;
+                }
+                @media($min: $large) {
+                  max-width: 85px;
+                }
+              }
+            }
+            .swell-purchase-review-title {
+              position: relative;
+              font-family: $theme-font-montserrat;
+              font-size: 21px;
+              font-weight: bold;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #ae8d4f;
+              margin-bottom: 13px;
+              padding-bottom: 15px;
+              @media($min: $small) {
+                margin-bottom: 18px;
+                font-size: 30px;
+                padding-bottom: 20px;
+              }
+              @media($min: $medium) {
+                font-size: 18.5px;
+                margin-bottom: 12px;
+                padding-bottom: 15px;
+              }
+              @media($min: $large) {
+                font-size: 23px;
+              }
+              &:after {
+                position: absolute;
+                content: "";
+                background-color: #ffffff;
+                height: 1px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                margin: 0 auto;
+                max-width: 208px;
+                @media($min: $small) {
+                  max-width: 300px;
+                }
+                @media($min: $medium) {
+                  max-width: 185px;
+                }
+                @media($min: $large) {
+                  max-width: 232px;
+                }
+              }
+            }
+            .swell-purchase-review-details {
+              .swell-purchase-review-points {
+                display: block;
+                font-family: $theme-font-mont-regular;
+                font-size: 18px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #ffffff;
+                margin: 0;
+                @media($min: $small) {
+                  font-size: 22.5px;
+                  margin-bottom: 12px;
+                }
+                @media($min: $medium) {
+                  font-size: 14px;
+                  margin-bottom: 15px;
+                }
+                @media($min: $large) {
+                  font-size: 17px;
+                }
+              }
+              .swell-purchase-review-dollar {
+                display: block;
+                font-family: $theme-font-roboto;
+                font-size: 35px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #ae8d4f;
+                @media($min: $small) {
+                  font-size: 50px;
+                }
+                @media($min: $medium) {
+                  font-size: 27.5px;
+                }
+                @media($min: $large) {
+                  font-size: 35px
+                }
+              }
+            }
+          }
+        }
+      }
+      .swell-purchase-review-note {
+        font-family: $theme-font-mont-regular;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #282828;
+        margin: 25px auto 0;
+        max-width: 290px;
+        @media($min: $small) {
+          max-width: 430px;
+          font-size: 17.5px;
+          margin: 30px auto 0;
+        }
+        @media($min: $medium) {
+          font-size: 11.5px;
+          max-width: 720px;
+        }
+        @media($min: $large) {
+          font-size: 14px;
+          max-width: 885px;
+        }
+        span {
+          font-family: $theme-font-montserrat;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .swell-tiers-section {
+    max-width: 1340px;
+    margin: 0 auto 65px;
+    @media($min: $small) {
+      margin: 0 auto 75px;
+    }
+    @media($min: $medium) {
+      margin: 0 auto 65px;
+      padding: 0 20px;
+    }
+    @media($min: 969px) {
+      padding: 0 30px;
+    }
+    @media($min: 1340px) {
+      padding: 0;
+    }
+    .swell-section-heading {
+      .swell-heading {
+        margin-bottom: 45px;
+        @media($min: $small) {
+          margin-bottom: 55px;
+        }
+        @media($min: $medium) {
+          margin-bottom: 12px;
+        }
+      }
+      .swell-detail {
+        @media($min: $medium) {
+          font-size: 12px;
+        }
+        @media($min: $large) {
+          font-size: 15.8px;
+        }
+        span {
+          font-family: $theme-font-montserrat;
+          display: block;
+          font-weight: bold;
+          margin-bottom: 20px;
+          @media($min: $small) {
+            margin-bottom: 25px;
+          }
+          @media($min: $medium) {
+            margin-bottom: 0px;
+            display: inline;
+            font-weight: normal;
+            font-family: $theme-font-mont-regular;
+          }
+        }
+      }
+    }
+  }
+  .swell-redeem-point-section {
+    max-width: 1340px !important;
+    margin: 0 auto 40px;
+    padding: 0 10px;
+    @media($min: $small) {
+      margin: 0 auto 50px;
+    }
+    @media($min: $medium) {
+      margin: 0 auto 65px;
+      padding: 0 20px;
+    }
+    @media($min: 969px) {
+      padding: 0 30px;
+    }
+    @media($min: 1340px) {
+      padding: 0;
+    }
+    .swell-redeem-point-section-holder {
+      .swell-section-heading {
+        .swell-heading {
+          font-size: 25px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: 0.29px;
+          text-align: center;
+          color: #333333;
+          text-transform: uppercase;
+          margin-bottom: 15px;
+          @media($min: $small) {
+            font-size:28px;
+          }
+          @media($min: $medium) {
+            font-size: 22px;
+          }
+        }
+      }
+      .swell-redemption-holder {
+        .swell-redemption-list {
+          display: flex;
+          width: 100%;
+          .swell-redemption-list-items {
+            flex-basis: 50%;
+            margin: 0 2.5px;
+            @media($min: $small) {
+              margin: 0 3px;
+            }
+            @media($min: $medium) {
+              margin: 0 2.5px;
+            }
+            .swell-redemption-list-heading,
+            .swell-redemption-list-points,
+            .swell-redemption-list-amount {
+              font-weight: bold;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              text-align: center;
+              color: #ffffff;
+              border-radius: 5px;
+              background-color: #282828;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 4px;
+              min-height: 75px;
+              @media($min: $small) {
+                min-height: 90px;
+                margin-bottom: 5px;
+              }
+              @media($min: $medium) {
+                min-height: 73px;
+                margin-bottom: 4px;
+              }
+            }
+            .swell-redemption-list-heading {
+              font-family: $theme-font-montserrat;
+              font-size: 14px;
+              text-transform: uppercase;
+              @media($min: $small) {
+                font-size: 22px;
+              }
+            }
+            .swell-redemption-list-points {
+              font-family: $theme-font-mont-regular;
+              font-size: 14px;
+              font-weight: normal;
+              @media($min: $small) {
+                font-size: 22px;
+              }
+              @media($min: $medium) {
+                font-size: 18px;
+              }
+            }
+            .swell-redemption-list-amount {
+              font-family: $theme-font-roboto;
+              font-size: 19px;
+              @media($min: $small) {
+                font-size: 27px;
+              }
+              @media($min: $medium) {
+                font-size: 22px;
+              }
+              span {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .referral-section {
+    margin-bottom: 1px;
+    margin: 0 0 45px;
+    @media($min: $small) {
+      margin: 0 0 50px;
+    }
+    @media($min: $medium) {
+      margin: 40px 0 65px
+    }
+    .referral-section-holder {
+      @media($min: $medium) {
+        display: flex;
+      }
+      .refer-banner {
+        position: relative;
+        flex-basis: 40%;
+        .swell-refer-banner-holder {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          .swell-refer-banner-icon {
+            width: 100%;
+            margin: 0 auto 15px;
+            max-width: 80px;
+            @media($min: $small) {
+              max-width: 115px;
+            }
+            @media($min: $medium) {
+              margin: 0 auto 20px;
+              max-width: 82px;
+            }
+            img {
+              object-fit: contain;
+            }
+          }
+          .swell-refer-banner-heading {
+            position: relative;
+            font-family: $theme-font-montserrat;
+            font-size: 22px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #ae8d4f;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            @media($min: $small) {
+              font-size: 31px;
+              padding-bottom: 15px;
+              margin-bottom: 17px;
+            }
+            @media($min: $medium) {
+              font-size: 24px;
+            }
+            &:after {
+              position: absolute;
+              content: "";
+              background-color: #ffffff;
+              width: 100%;
+              min-height: 1px;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: 0 auto;
+              max-width: 225px;
+              @media($min: $small) {
+                max-width: 315px;
+              }
+              @media($min: $medium) {
+                max-width: 250px;
+              }
+            }
+          }
+          .swell-refer-banner-points {
+            font-family: $theme-font-mont-regular;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #ffffff;
+            margin-bottom: 5px;
+            @media($min: $small) {
+              font-size: 23px;
+              margin-bottom: 10px;
+            }
+            @media($min: $medium) {
+              font-size: 18px;
+            }
+          }
+          .swell-refer-banner-amount {
+            font-family: $theme-font-roboto;
+            font-size: 31px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #ae8d4f;
+            @media($min: $small) {
+              font-size: 40px;
+            }
+            @media($min: $medium) {
+              font-size: 36px;
+            }
+          }
+        }
+      }
+      .swell-referral-holder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #f9f7f2;
+        border-radius: 0 0 5px 5px;
+        padding: 15px 0px 30px;
+        @media($min: $small) {
+          padding: 20px 0px 35px;
+        }
+        @media ($min: $medium) {
+          border-radius: 0 5px 5px 0;
+          padding: 15px 10px;
+          flex-basis: 60%;
+        }
+        @media ($min: $large) {
+          padding: 20px 10px;
+          flex-basis: 60%;
+        }
+        .swell-referral {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .swell-referral-content-container {
+          .swell-referral-content-sidebar {
+            display: none;
+          }
+          .swell-referral-content-main {
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 270px;
+            @media ($min: $small) {
+              max-width: 430px;
+            }
+            @media ($min: $medium) {
+              max-width: 650px;
+            }
+            .swell-referral-register {
+              width: 100%;
+            }
+            .swell-referral-refer {
+              width: 100%;
+              .swell-referral-form-wrapper {
+                .swell-referral-form-header-details {
+                  @media ($min: $medium) {
+                    margin: 0 0 20px;
+                  }
+                  @media ($min: $large) {
+                    margin: 0 0 25px;
+                  }
+                }
+              }
+            }
+            .swell-referral-heading {
+              font-family: $theme-font-roboto;
+              font-weight: bold;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              text-align: center;
+              color: #282828;
+              text-transform: uppercase;
+              display: none;
+              @media ($min: $medium) {
+                display: block;
+                font-size: 19px;
+                margin: 0 0 25px;
+              }
+              @media ($min: $large) {
+                font-size: 27.5px;
+                margin: 0 0 30px;
+              }
+              @media($min: 1090px) {
+                font-size: 30px;
+              }
+              @media($min: 1155px) {
+                font-size: 32px;
+              }
+            }
+            .swell-referral-details {
+              font-family: $theme-font-mont-regular;
+              font-size: 13px;
+              font-weight: normal;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              text-align: center;
+              color: #282828;
+              width: 100%;
+              margin: 0 auto 25px;
+              @media ($min: $small) {
+                font-size: 21px;
+                margin: 0 auto 30px;
+              }
+              @media ($min: $medium) {
+                font-size: 14.5px;
+                max-width: 350px;
+                margin: 0 auto 15px;
+              }
+              @media($min: $large) {
+                font-size: 24px;
+                max-width: 550px;
+                margin: 0 auto 20px;
+              }
+              span {
+                font-family: $theme-font-montserrat;
+                font-weight: bold;
+              }
+            }
+            .refer-customer-error {
+              color: red;
+              text-align: center;
+              font-size: 12px;
+              margin-bottom: 10px;
+              @media($min: $small) {
+                font-size: 13px;
+              }
+              @media($min: $medium) {
+                font-size: 12px;
+                margin-bottom: 5px;
+              }
+              @media($min: $large) {
+                font-size: 14px;
+                margin-bottom: 10px;
+              }
+            }
+            .swell-link-list {
+              .swell-link {
+                width: 100%;
+                @media($min: $medium) {
+                  width: auto;
+                  margin-bottom: 15px;
+                }
+                &:last-child {
+                  margin: 0;
+                }
+                .swell-refer-button {
+                  font-size: 13px;
+                  height: 45px;
+                  @media($min: $small) {
+                    font-size: 21px;
+                    height: 60px;
+                  }
+                  @media($min: $medium) {
+                    font-size: 13px;
+                    min-width: 250px;
+                    height: 46px;
+                  }
+                  @media($min: $large) {
+                    min-width: 330px;
+                    font-size: 18px;
+                    height: 49px;
+                  }
+                  &.swell-refer-signin {
+                    border: 1px solid #ae8d4f;
+                    color: #ae8d4f;
+                    height: 45px;
+                    text-decoration: none;
+                    @media($min: $small) {
+                      height: 60px;
+                    }
+                    @media($min: $medium) {
+                      height: 46px;
+                      min-width: 250px;
+                    }
+                    @media($min: $large) {
+                      height: 49px;
+                      min-width: 330px;
+                    }
+                    &:hover {
+                      background: #ae8d4f;
+                      color: #ffffff;
+                    }
+                  }
+                }
+              }
+            }
+            .swell-referral-form-wrapper {
+              .swell-referral-form-list {
+                @media($min: $medium) {
+                  display: flex;
+                  max-width: 380px;
+                  margin: 0 auto;
+                }
+                @media($min: $large) {
+                  max-width: 480px;
+                }
+                .swell-referral-form-list-field {
+                  flex-basis: 38%;
+                  width: 100%;
+                  margin-bottom: 0;
+                  &:first-child {
+                    flex-basis: 62%;
+                    margin-right: 10px;
+                  }
+                }
+              }
+              .swell-referral-form-header-details {
+                font-family: $theme-font-montserrat;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: italic;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #aaaaaa;
+                display: none;
+                @media ($min: $medium) {
+                  display: block;
+                  font-size: 10.5px;
+                  margin: 0 0 35px;
+                }
+                @media ($min: $large) {
+                  font-size: 14px;
+                  margin: 0 0 40px;
+                }
+              }
+              .swell-referral-form-list-field-input {
+                font-family: $theme-font-mont-regular;
+                font-size: 11px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #aaaaaa;
+                outline: 0;
+                width: 100%;
+                box-shadow: none;
+                height: 45px;
+                outline: none;
+                border-radius: 4px;
+                border: solid 1px #ae8d4f;
+                background-color: #ffffff;
+                padding: 0 5px;
+                margin: 0 0 10px;
+                @media ($min: $small) {
+                  font-size: 16px;
+                  height: 60px;
+                  margin: 0 0 15px;
+                }
+                @media ($min: $medium) {
+                  font-size: 11px;
+                  height: 46px;
+                  margin: 0;
+                }
+                @media ($min: $large) {
+                  font-size: 14px;
+                  height: 49px;
+                }
+                &::placeholder {
+                  color: #aaaaaa;
+                }
+              }
+              .swell-referral-form-list-submit {
+                outline: none;
+                font-family: $theme-font-montserrat;
+                font-size: 12.5px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #ffffff;
+                width: 100%;
+                height: 45px;
+                outline: 0;
+                padding: 0;
+                margin: 0;
+                cursor: pointer;
+                border-radius: 4px;
+                background-color: #ae8d4f;
+                border: 1px solid #ae8d4f;
+                text-transform: uppercase;
+                @media ($min: $small) {
+                  height: 60px;
+                  font-size: 18px;
+                }
+                @media ($min: $medium) {
+                  font-size: 12px;
+                  height: 46px;
+                }
+                @media ($min: $large) {
+                  font-size: 16px;
+                  height: 49px;
+                }
+                &:hover {
+                  background-color: transparent;
+                  color: #ae8d4f;
+                }
+              }
+            }
+            .swell-referral-media-wrapper {
+              .swell-referral-media-details {
+                display: block;
+                font-size: 11px;
+                font-family: $theme-font-montserrat;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: italic;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #aaaaaa;
+                margin-top: 15px;
+                @media($min: $small) {
+                  font-size: 16px;
+                  margin-top: 20px;
+                }
+                @media ($min: $medium) {
+                  display: none;
+                }
+              }
+              .swell-referral-media-list {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 160px;
+                margin: 10px auto 0;
+                @media($min: $small) {
+                  max-width: 220px;
+                  margin: 15px auto 0;
+                }
+                @media($min: $medium) {
+                  max-width: 200px;
+                  margin: 30px auto 0;
+                }
+                @media($min: $large) {
+                  margin: 40px auto 0;
+                }
+                .swell-referral-medium {
+                  .swell-referral-medium-content {
+                    cursor: pointer;
+                    border: 2px solid #ae8d4f;
+                    border-radius: 100%;
+                    padding: 12px;
+                    @media($min: $small) {
+                      padding: 15px;
+                    }
+                    @media ($min: $medium) {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    }
+                    .swell-referral-media-icon {
+                      display: block;
+                      margin: 0px;
+                      font-size: 12px;
+                      color: #ae8d4f;
+                      min-width: 11.2px;
+                      @media($min: $small) {
+                        font-size: 14px;
+                        min-width: 13px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            .swell-referral-thanks {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              padding: 0 15px;
+              min-height: 252px;
+              @media ($min: $small) {
+                min-height: 342px;
+              }
+              @media ($min: $medium) {
+                min-height: 258px;
+              }
+              @media ($min: $large) {
+                min-height: 331px;
+              }
+              .swell-referral-back-link {
+                top: 15%;
+                @media($min: $medium) {
+                  top: 10%;
+                }
+              }
+              .swell-referral-heading {
+                display: block;
+                font-size: 18px;
+                margin-bottom: 20px;
+                @media ($min: $small) {
+                  font-size: 30px;
+                }
+                @media ($min: $medium) {
+                  font-size: 24px;
+                  margin-bottom: 15px;
+                }
+                @media ($min: $large) {
+                  font-size: 38px;
+                }
+              }
+              .swell-referral-details {
+                font-size: 11px;
+                @media ($min: $small) {
+                  font-size: 16px;
+                }
+                @media ($min: $medium) {
+                  font-size: 13.5px;
+                }
+                @media ($min: $large) {
+                  font-size: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .swell-faqs-section {
+    .swell-section-heading {
+      .swell-detail {
+        text-decoration: underline;
+        @media($min: $medium) {
+          text-decoration: none;
+        }
+      }
+    }
+    .swell-faq-outer-holder {
+      background-color: #f9f7f2;
+      padding: 40px 0;
+      @media($min: $small) {
+        padding: 50px 0;
+      }
+      @media($min: $medium) {
+        padding: 90px 0 50px;
+      }
+      .faq-holder {
+        padding: 0 10px;
+        @media($min: $medium) {
+          max-width: 650px;
+          margin: 0 auto;
+          padding: 0;
+        }
+        li {
+          list-style: none;
+          .accordian {
+            overflow: hidden;
+            border-bottom: 1px solid #aaaaaa;
+            margin-bottom: 20px;
+            @media($min: $small) {
+              margin-bottom: 25px;
+            }
+            @media($min: $medium) {
+              margin-bottom: 20px;
+            }
+            li {
+              list-style: none;
+              border: none;
+              &.question {
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-family: $theme-font-mont-regular;
+                font-size: 12px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: left;
+                padding: 0;
+                margin: 0;
+                padding: 0 15px 20px;
+                @media($min: $small) {
+                  padding: 0 20px 25px;
+                  font-size: 14px;
+                }
+                @media($min: $medium) {
+                  padding: 0 10px 20px;
+                }
+                .cross {
+                  -webkit-transition: all 300ms ease-in-out;
+                  -moz-transition: all 300ms ease-in-out;
+                  transition: all 300ms ease-in-out;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 11px;
+                  height: 11px;
+                  @media($min: $small) {}
+                  .fa-minus {
+                    display: none;
+                  }
+                  i {
+                    font-size: 12px;
+                    -webkit-text-stroke: 2px #f9f7f2;
+                    @media($min: $small) {
+                      font-size: 15px;
+                    }
+                  }
+                }
+                &.open {
+                  padding: 0 10px 10px;
+                  .cross {
+                    -webkit-transform: rotate(180deg);
+                    -moz-transform: rotate(180deg);
+                    -ms-transform: rotate(180deg);
+                    transform: rotate(180deg);
+                    margin-right: 1px;
+                    .fa-plus {
+                      display: none;
+                    }
+                    .fa-minus {
+                      display: block;
+                    }
+                  }
+                }
+              }
+              &.answer {
+                opacity: 0;
+                height: 0;
+                line-height: 2;
+                margin: 0;
+                position: relative;
+                -webkit-transition: all 0.3s ease;
+                -moz-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+                font-family: $theme-font-mont-regular;
+                font-weight: normal;
+                line-height: normal;
+                font-size: 11px;
+                @media($min: $small) {
+                  font-size: 12px;
+                }
+                &.open {
+                  opacity: 1;
+                  height: auto;
+                  padding: 0 10px 10px;
+                  @media($min: $small) {
+                    padding: 0 10px 15px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.swell-referral-back-link {
+  width: 1.5em;
+  height: 1.5em;
+  max-width: 17px;
+  max-height: 17px;
+  display: block;
+  vertical-align: middle;
+  margin-left: auto;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  cursor: pointer;
+  &:after,
+  &:before {
+    background: #282828;
+    content: "";
+    height: 1.5px;
+    max-width: calc(17px * 1.414);
+    position: absolute;
+    top: 0;
+    transition: 0.05s ease-in-out background-color;
+    width: calc(1.5em * 1.414);
+  }
+  &:before {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: left;
+    -ms-transform-origin: left;
+    transform-origin: left;
+  }
+  &:after {
+    right: 0;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: right;
+    -ms-transform-origin: right;
+    transform-origin: right;
+  }
+  @media($min: $small) {
+    max-width: 20px;
+    max-height: 20px;
+    &:after,
+    &:before {
+      max-width: calc(20px * 1.414);
+    }
+  }
+}
+.swell-referral-copy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  .swell-referral-copy-content {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .swell-referral-copy-sidebar {
+      display: none;
+    }
+  }
+  .swell-referral-copy-main {
+    position: relative;
+    background: #ffffff;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 32px 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    @media($min: $small) {
+      max-width: 450px;
+      padding: 40px 0;
+    }
+    @media($min: $medium) {
+      padding: 50px 0px;
+      max-width: 520px;
+    }
+    .swell-referral-heading {
+      display: none;
+    }
+    .swell-referral-back-link {
+      top: -55px;
+      &:before,
+      &:after {
+        background: #ffffff;
+      }
+    }
+    .swell-referral-copy-link {
+      font-family: $theme-font-roboto;
+      font-size: 28px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: lowercase;
+      @media($min: $small) {
+        font-size: 42px;
+      }
+      @media($min:$medium) {
+        font-size: 40px;
+      }
+    }
+    .swell-referral-copy-button {
+      max-width: 120px;
+      min-width: 120px;
+      width: 100%;
+      display: block;
+      margin: 0 auto 20px;
+      font-size: 14px;
+      font-family: $theme-font-montserrat;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #ffffff;
+      background-color: #ae8d4f;
+      border: 1px solid #ae8d4f;
+      padding: 0;
+      border-radius: 5px;
+      text-transform: uppercase;
+      height: 45px;
+      @media($min: $small) {
+        font-size: 16px;
+        max-width: 150px;
+        min-width: 150px;
+        height: 50px;
+      }
+      @media ($min: $medium) {
+        min-width: 150px;
+        max-width: 150px;
+        font-size: 14px;
+        height: 45px;
+      }
+      &:hover {
+        background-color: transparent;
+        color: #ae8d4f;
+      }
+    }
+    .swell-referral-details {
+      font-size: 11px;
+      font-family: $theme-font-mont-regular;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      text-transform: capitalize;
+      margin-bottom: 0;
+      @media ($min: $small) {
+        font-size: 15px;
+      }
+    }
+  }
+}
+.swell-rewards {
+  #mp-pusher {
+    .breadcrumb {
+      display: none;
+    }
+    #MainContent {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<style>
+  .btn{display:none};
+</style>
+
+{% capture alt_attr %}{{ page.title | escape }}{% endcapture %}
+{% if settings.page_featured_image_enable %}
+	{% if settings.wrap_page_header_image %}
+	<div class="wrapper">
+    {% endif %}  
+	<div class="page-featuredimage flex">
+  		{{ page.handle | append: '.jpg' | file_url | img_tag: alt_attr }} 
+      {% if settings.page_featured_image_title_enable %}
+        <div class="header-box"><h1>{{ page.title }}</h1></div>
+      {% endif %}      
+	</div>
+	{% if settings.wrap_page_header_image %}
+	</div>
+    {% endif %}  
+{% endif %}
+  <div class="grid">
+    <div class="grid__item {{ settings.page_text_align }}">
+      {% comment %}
+      {% unless settings.page_featured_image_title_enable %}
+      <div class="section-header text-center">
+        <h1>{{ page.title }}</h1>
+      </div>
+      {% endunless %}
+      {% endcomment %}
+
+      <div class="rte">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>

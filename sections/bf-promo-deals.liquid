@@ -1,0 +1,296 @@
+<style>
+
+    .bf_promo_page_27_title_th {
+        font-size : {{ section.settings.bf_product_title_desktop_fonts_th }};
+        {% if bf_product_title_1_style == 'bf_product_title_1' %}
+            font-weight : 500;
+        {% endif %}
+    }
+     @media only screen and (max-width: 968px) { 
+         .bf_promo_page_27_title_th {
+             font-size : {{ section.settings.bf_product_title_mobile_fonts_th }};
+         }
+     }
+</style>
+<div class="bf_container">
+	<div class="page-width relative main-holder">
+   
+    	<div class="section-header text-center">
+      		{% if section.settings.bf_promo_title != blank %}<h2 class="{{ section.settings.title_class }}">{{ section.settings.bf_promo_title | escape }}</h2>	{% endif %}
+    	</div>
+  
+    <div class="grid page_new_deal">
+      {% for block in section.blocks %}
+        <div class="{% unless section.settings.masonry %}grid__item test_hide_large extra-small--{{ block.settings.bf_promo_image_size_small_extra }} small-down--{{ block.settings.bf_promo_image_size_small }} {{ block.settings.bf_promo_image_size }}{% endunless %}" {{ block.shopify_attributes }} style="margin-bottom: 3%;padding-left:10px; padding-right:10px;">
+          <div class="landing_holder">
+              <div class="landing-page-flex">
+                {% if block.settings.bf_promo_image.size > 0 %}<a href="{{ block.settings.bf_promo_image_link }}" target="_blank"><img src="{{ block.settings.bf_promo_image | img_url: '650x500' }}" alt="{{ block.settings.bf_promo_image.alt }}" style="position: relative;" /></a>{% endif %}
+                <div class="text-holder-landing" style="position:relative;">
+                  {% if block.settings.bf_promo_image_text.size > 0 or block.settings.bf_promo_image_heading.size > 0 or block.settings.bf_promo_image_button.size > 0 %}
+                    {% if block.settings.bf_promo_image_text.size > 0 %}<div class="bf_promo_page_27_title_th">{{ block.settings.bf_promo_image_text }}</div>{% endif %}
+                    {% if block.settings.bf_promo_image_heading.size > 0 %}<div class="page_27_price">{{ block.settings.bf_promo_image_heading }}</div>{% endif %}
+                    {% if block.settings.bf_promo_coupon_code.size > 0 %}<div class="today_coupon_code font-coupon_page padding_5px" style="font-weight:normal;font-size:14px;">{{ block.settings.bf_promo_coupon_code }}</div>{% endif %}
+                    {% if block.settings.bf_promo_image_button.size > 0 %}<a href="{{ block.settings.bf_promo_image_link }}" target="_blank"><div class="new_deal_button" style="padding: 8px 0;color:{{ block.settings.bf_promo_color_day_new_button_text }};{% if block.settings.bf_promo_color_day_new_button_border == 'rgba(0,0,0,0)' or block.settings.bf_promo_color_day_new_button_border.size < 1 %}background-color:{{ block.settings.bf_promo_color_day_new_button }};{% else %}border: solid 4px {{ block.settings.bf_promo_color_day_new_button_border }};{% endif %}">{{ block.settings.bf_promo_image_button }}</div></a>{% endif %}
+                  {% endif %}
+                </div>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+	</div>
+</div>
+<div class="clearfix"></div>
+{% schema %}
+  {
+    "name": "Black Friday Promo Deal",
+    "class": "gallery",
+    "settings": [
+      {
+        "type": "text",
+        "id": "bf_promo_title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "bf_product_title_desktop_fonts_th",
+        "label": "product title desktop fonts"
+        },
+        {
+            "type": "text",
+            "id": "bf_product_title_mobile_fonts_th",
+            "label": "product title mobile fonts"
+        },
+        {
+            "type": "radio",
+            "id": "bf_product_title_1_style",
+            "label": "Button 1 style",
+            "options": [
+                { "value": "bf_product_title_1", "label": "Fonts-weight : bold" },
+                { "value": "bf_product_title_2", "label": "Fonts-weight : normal" }
+            ],
+            "default": "bf_product_title_2"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "bf_promo_image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "bf_promo_mobile_image",
+            "label": "Mobile image"
+          },
+          {
+            "type": "color",
+            "id": "bf_promo_color_day_image_text",
+            "label": "color for image text",
+            "default": "#aa1919"
+          },
+          {
+            "type": "url",
+            "id": "bf_promo_image_link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "bf_promo_image_heading",
+            "label": "Price"
+          },
+          {
+            "type": "text",
+            "id": "bf_promo_image_text",
+            "label": "product title"
+          },
+         
+          {
+            "type": "text",
+            "id": "bf_promo_image_button",
+            "label": "Button"
+          },
+           {
+            "type": "color",
+            "id": "bf_promo_color_day_new_button_text",
+            "label": "color for new button Text",
+            "default": "#282828"
+          },
+          {
+            "type": "color",
+            "id": "bf_promo_color_day_new_button",
+            "label": "color for new button",
+            "default": "#aa1919"
+          },
+          {
+            "type": "color",
+            "id": "bf_promo_color_day_new_button_border",
+            "label": "color for new button border"
+          },
+		  {
+            "type": "text",
+            "id": "bf_promo_coupon_code",
+            "label": "coupon code"
+          },
+          
+      	  {
+        	"type": "select",
+        	"id": "bf_promo_image_size",
+        	"label": "Width",
+        	"default": "one-half",
+        	"options": [
+          	{
+              "value": "one-quarter",
+              "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },
+      	  {
+        	"type": "select",
+        	"id": "bf_promo_image_size_small",
+        	"label": "Width",
+        	"default": "one-half",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },{
+        	"type": "select",
+        	"id": "bf_promo_image_size_small_extra",
+        	"label": "Width",
+        	"default": "one-half",
+        	"options": [
+          	{
+            "value": "one-quarter",
+            "label": "quarter - 25%"
+          	},
+          	{
+            "value": "one-third",
+            "label": "third - 33.333%"
+          	},
+          	{
+            "value": "two-fifths",
+            "label": "two-fifths - 40%"
+          	},
+          	{
+            "value": "one-half",
+            "label": "half - 50%"
+          	},
+          	{
+            "value": "three-fifths",
+            "label": "three-fifths - 60%"
+          	},
+          	{
+            "value": "two-thirds",
+            "label": "two-thirds - 66.666%"
+          	},
+          	{
+            "value": "three-quarters",
+            "label": "three-quarters - 75%"
+          	},
+          	{
+            "value": "one-whole",
+            "label": "one-whole - 100%"
+          	}
+          ]
+		 },
+      	  {
+        	"type": "select",
+        	"id": "bf_promo_text_align",
+        	"label": "Alignment",
+        	"options": [
+          	 {
+               "value": "text-center",
+               "label": "Center"
+          	  },
+          	  {
+               "value": "text-left",
+               "label": "Left"
+          	  },
+              {
+               "value": "text-right",
+               "label": "Right"
+          	  }
+        	]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Black Friday Promo Deal",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image_block"
+          },
+          {
+            "type": "image_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

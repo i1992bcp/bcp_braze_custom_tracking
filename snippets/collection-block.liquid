@@ -1,0 +1,15 @@
+{% if collection.image %}
+  {% assign collection_image = collection.image %}
+{% else %}
+  {% assign collection_image = collection.products.first.featured_image %}
+{% endif %}
+<div class="product-block grid__item one-quarter small-down--one-half extra-small--one-whole" {{ extra_attrs }}>
+  <div class="hover-images global-border-radius">
+    <a class="product-block__image image-one" href="{{ collection.url }}">
+      {% include 'responsive-image', image: collection_image %}
+    </a>
+  </div>
+  <div class="product-block__title" style="padding: 10px 0px;background-color: #920d0d; font-size:16px;line-height:1.2;margin-top:0;">
+    <a href="{{ collection.url }}" style="color:#fff;font-weight:500;">{{ collection.title }}</a>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+<style>
+  .arrow-slide{
+    display:none;
+  }
+  .border-rich{
+    border-left: solid 1px #cccccc;
+    border-right: solid 1px #cccccc;
+  }
+  .statement-sub{
+      font-size:14px;
+      padding:0px 50px;
+    }
+  
+  @media only screen and (min-width: 769px){
+    .rich-padding-global { 
+      margin: 30px 0px;
+    padding: 0 20px 0 20px;
+    flex-grow: 1;
+      min-width: 33.33333%;
+    }
+    
+    
+  }
+  @media only screen and (max-width: 768px){
+    .arrow-slide{
+      display:block;
+    }
+    .border-rich{
+      border : 0;
+    }
+    .rich-padding-global{
+      padding:0;
+      margin : 0;
+    }
+  }
+   .feather-icon-rich .icon {
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 1px;
+    width: 50px;
+    height: 50px;
+  }
+</style>
+
+<section class="relative container container--no-mobile-padding large-row section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="richStatement">
+<div>
+<div style="display:flex;justify-content: space-around;" class="page-width relative mobile-slide-richstatement">
+    <div class="statement-1 rich-padding-global" style="text-align:center;">
+      {%- if section.settings.statement_1_image != blank -%}
+      <div class="feather-icon-rich">{% include 'product' %}</div>
+      {%- endif -%}
+        <div class="statement-head">
+            {{section.settings.statement_1_title}}
+        </div>
+        <div class="statement-sub">
+             {{section.settings.statement_1_text}}
+        </div>
+    </div>
+    <div class="statement-2 border-rich rich-padding-global" style="text-align:center;">
+        {%- if section.settings.statement_2_image != blank -%}
+      <div class="feather-icon-rich">{% include 'customer' %}</div>
+      {%- endif -%}
+        <div class="statement-head">
+         {{section.settings.statement_2_title}}
+        </div>
+        <div class="statement-sub">
+         {{section.settings.statement_2_text}}
+        </div>
+    </div>
+    <div class="statement-3 rich-padding-global" style="text-align:center;">
+        {%- if section.settings.statement_3_image != blank -%}
+        <div class="feather-icon-rich">{% include 'savings' %}</div>
+        {%- endif -%}
+        <div class="statement-head">
+         {{section.settings.statement_3_title}}
+        </div>
+        <div class="statement-sub">
+         {{section.settings.statement_3_text}}
+        </div>
+    </div>
+</div>
+  <div class="arrow-slide">
+    <div class="full-width-slideshow-controls full-width-slideshow-controls--prev">
+      <button class="btn--plain prev icon feather-icon">{% include 'left-arrow-01' %}</button>
+    </div>
+    <div class="full-width-slideshow-controls full-width-slideshow-controls--next">
+      <button class="btn--plain next icon feather-icon">{% include 'feather-arrow-right' %}</button>
+    </div>
+  </div>
+</div>
+</section>
+{% schema %}
+  {
+    "name": "Rich text Statement",
+    "settings": [
+     {
+        "type": "header",
+        "content": "Statement - 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "statement_1_image",
+        "label": "Statement - 1 - Image"
+      },
+      {
+        "type": "text",
+        "id": "statement_1_title",
+        "label": "Heading",
+        "default": "Rich text"
+      },
+      {
+        "type": "richtext",
+        "id": "statement_1_text",
+        "label": "Text",
+        "default": "<p>Use this section to share information about your brand."
+      },
+      {
+        "type": "header",
+        "content": "Statement - 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "statement_2_image",
+        "label": "Statement - 2 - Image"
+      },
+      {
+        "type": "text",
+        "id": "statement_2_title",
+        "label": "Heading",
+        "default": "Rich text"
+      },
+      {
+        "type": "richtext",
+        "id": "statement_2_text",
+        "label": "Text",
+        "default": "<p>Use this section to share information about your brand."
+      },
+      {
+        "type": "header",
+        "content": "Statement - 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "statement_3_image",
+        "label": "Statement - 3 - Image"
+      },
+      {
+        "type": "text",
+        "id": "statement_3_title",
+        "label": "Heading",
+        "default": "Rich text"
+      },
+      {
+        "type": "richtext",
+        "id": "statement_3_text",
+        "label": "Text",
+        "default": "<p>Use this section to share information about your brand."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich text Statement",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,120 @@
+<style>
+  @media only screen and (min-width: 541px) {
+  .small-up--hides {
+    display: none;
+  }
+  .extra-small--hides {
+    display:inline-block;
+  }
+ 
+}
+@media only screen and (max-width: 541px) {
+  .small-up--hides {
+    display: block;
+  }
+  .extra-small--hides {
+    display:none;
+  }
+}
+.feather-icon-toggle .icon {
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 1px;
+}
+.bread-up .icon {
+  width: 17px;
+  height: 18px;
+}
+</style>
+
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+{% unless template == 'index' %}
+<nav class="breadcrumb {{ settings.breadcrumb_align }} container" role="navigation" aria-label="breadcrumbs">
+  <div class="page-width" style="{%- if template contains 'collection' and collection.handle -%}padding-left:30px;margin-bottom:1%;{%- endif -%}">
+{%- if template contains 'product' -%}
+	{%- for tag in product.tags -%}  
+    {%- if tag contains 'hierarchy' -%}  
+      {%- assign tagx = tag | split: 'hierarchy:' | last -%}
+      {%- assign bread = tagx | split: '/' -%}  
+        <span class="mobile-bread">
+          <a href="/collections/{% if bread[0] contains '&' %}{{ bread[0] | replace: '_&_', '-' | replace: '_', '-' | handleize }}{% else %}{{ bread[0] | handleize | replace: '_', '-' }}{% endif %}"><span class="small-up--hides feather-icon">{% include 'left-arrow-01' %}</span> {{ bread[0] | replace: '_', ' ' }}</a> <span aria-hidden="true" class="breadcrumb__sep extra-small--hides">/</span>
+          <a href="/collections/{% if bread[1] contains '&' %}{{ bread[1] | replace: '_&_', '-' | replace: '_', '-' | handleize }}{% else %}{{ bread[1] | handleize | replace: '_', '-' }}{% endif %}"><span class="small-up--hides feather-icon">{% include 'left-arrow-01' %}</span> {{ bread[1] | replace: '_', ' ' }}</a> <span aria-hidden="true" class="breadcrumb__sep extra-small--hides">/</span>
+          <a href="/collections/{% if bread[2] contains '&' %}{{ bread[2] | replace: '_&_', '-' | replace: '_', '-' | handleize }}{% else %}{{ bread[2] | handleize | replace: '_', '-' }}{% endif %}"><span class="small-up--hides feather-icon">{% include 'left-arrow-01' %}</span> {{ bread[2] | replace: '_', ' ' }}</a>
+  	{%- endif -%}
+  	{%- endfor -%}  
+    <span aria-hidden="true" class="breadcrumb__sep extra-small--hides">/</span>
+    <span class="extra-small--hides bread-sku">{{ product.variants.first.sku }}</span>
+  </span>
+  <div class="small-up--hides dots-sku">
+    <span class="bread-dots"><span class="feather-icon-toggle">{% include 'left-arrow-01' %}</span><span class="feather-icon-toggle bread-up" style="display:none;">{% include 'feather-chevron-up' %}</span> View more similiar items</span>
+   <span class="small-sku" style="float:right;">{{ product.variants.first.sku }}</span>
+    <div class="clearfix"></div>
+  </div>
+  {%- elsif template contains 'collection' and collection.handle -%} 
+    {%- for link in linklists.1-home-main-navigation.links -%}
+  	  {%- assign child_list_handle = link.title | handle -%}
+  		{%- for child_link in linklists[child_list_handle].links -%}  
+    		{%- if child_link.handle == collection.handle -%}
+ 				<a href="{{ link.url }}">{{ link.title }}</a>
+  				<span aria-hidden="true" class="breadcrumb__sep">/</span>
+    		{%- endif -%}
+   		{%- endfor -%}   
+    {%- endfor -%} 
+    {%- for link in linklists.1-home-main-navigation.links -%}
+  	  {%- assign child_list_handle = link.title | handleize -%}
+  		{%- for child_link in linklists[child_list_handle].links -%}  
+          {%- assign grand_child_list_handle = child_link.title | handleize -%}
+  			{%- if linklists[grand_child_list_handle].links != blank -%}
+  			{%- for grand_child_link in linklists[grand_child_list_handle].links -%}
+    			{%- if grand_child_link.handle == collection.handle -%}
+ 					<a href="{{ link.url }}">{{ link.title }}</a>
+					<span aria-hidden="true" class="breadcrumb__sep">/</span>
+ 					<a href="{{ child_link.url }}">{{ child_link.title }}</a>  
+  					<span aria-hidden="true" class="breadcrumb__sep">/</span>
+    			{%- endif -%}
+  			{%- endfor -%}
+  			{%- else -%}
+  			{%- endif -%}
+   		{%- endfor -%}   
+    {%- endfor -%}
+    {%- if current_tags -%}
+      {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+      {{ collection.title | link_to: url }}
+      <span aria-hidden="true" class="breadcrumb__sep">/</span>
+      <span>{{ current_tags | join: " + " }}</span>
+    {%- else -%}
+      <h1 class="collection_title_bread" style="display:inline-block;">{{ collection.title }}</h1>
+    {%- endif -%}
+  {%- elsif template contains 'blog' -%}
+    {%- if current_tags -%}
+      {{ blog.title | link_to: blog.url }}
+      <span aria-hidden="true" class="breadcrumb__sep">/</span>
+      <span>{{ current_tags | join: " + " }}</span>
+    {%- else -%}
+    <span>{{ blog.title }}</span>
+    {%- endif -%}
+  {%- elsif template contains 'article' -%}
+    {{ blog.title | link_to: blog.url }}
+    <span aria-hidden="true" class="breadcrumb__sep">/</span>
+    <span>{{ article.title }}</span>
+  {%- elsif template contains 'page' -%}
+   <span>{{ page.title }}</span>
+  {%- elsif template contains 'search' -%}
+   <span></span>
+  {%- else -%}
+
+   <h1>{{ page_title }}</h1>
+
+  {%- endif -%}
+  </div>
+</nav>
+{% endunless %}
+
+<Script>
+    $(".bread-dots").click(function(){
+      $(".mobile-bread").slideToggle();
+      $(".feather-icon-toggle").toggle();
+  });  
+  </Script>

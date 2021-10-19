@@ -1,0 +1,21 @@
+{%- if template contains 'page' and page.url == '/pages/textmarketinglist' -%}
+<style>
+  .success {
+  	display: block !important;
+  }
+  .subscription-page-title {
+  	font-family : "Roboto Slab";
+  }
+</style>
+{%- endif -%}
+<div class="container row large-row-under">
+  <div class="page-width">
+    {%- if template contains 'page' and page.url == '/pages/textmarketinglist' -%}
+    {%- else -%}
+    <h1 class="large-title row">{{ page.title }}</h1>
+	{%- endif -%}
+    <div class="rte rte--expanded-images">
+      {{ page.content }}
+    </div>
+  </div>
+</div>

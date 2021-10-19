@@ -1,0 +1,37 @@
+<div class="swell-BCP-rewards">
+  <div class="swell-banner">
+    <div class="swell-banner-outer-holder">
+      <img src="{{ 'swell-banner.jpg' | asset_url }}" class="swell-desktop swell-desktop-banner">
+      <img src="{{ 'swell-banner-mobile.jpg' | asset_url }}" class="swell-mobile swell-banner-image">
+      <div class="banner-holder">
+        <div class="banner-caption {% if customer %}logged-in{% endif %}">
+          <div class="banner-caption-holder">
+            <img src="{{ 'swell-banner-logo.png' | asset_url }}" class="swell-desktop-logo swell-desktop">
+            <img src="{{ 'swell-banner-logo-mobile.png' | asset_url }}" class="swell-mobile-logo swell-mobile">
+            {% if customer %}
+            <div class="swell-customer-name">Hi {{customer.first_name}},</div>
+            {% else %}
+            <ul class="swell-link-list">
+              <li class="swell-link">
+                <a href="/account/register" class="swell-link-button"> 
+                Join Now
+                </a>
+              </li>
+              <li class="swell-link">
+                <a href="/account/login" class="swell-link-button"> 
+                Sign In
+                </a>
+              </li>
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include "swell-hiw-joining" %}
+  {% include "swell-campaign" %}
+  {% include "swell-tiers" %}
+  {% include "swell-redemption" %}
+  {% include "swell-faqs" %}
+</div>

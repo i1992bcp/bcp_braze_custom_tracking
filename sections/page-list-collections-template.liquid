@@ -1,0 +1,128 @@
+<style>
+  {% capture brightness %}{{ section.settings.collection_background }}{% endcapture %}
+  {% assign brightness_number = brightness | color_brightness %}
+  {% if brightness_number < 135 %}{% assign text_color = '#ffffff' %}{% else %}{% assign text_color = '#000000' %}{% endif %}
+
+  .standout-collection-flex {
+    background-color: {{ section.settings.collection_background }};
+    color: {{ text_color }}
+  }
+</style>
+
+<div class="container standout-collection-section" data-section-id="{{ section.id }}" data-section-type="list-collections">
+
+  <div class="page-width large-row center {% unless section.settings.show_title %}visually-hidden{% endunless %}">
+    <h1 class="large-title row">{{ page.title }}</h1>
+  </div>
+
+  {% if page.content != blank %}
+  <div class="reading-width row">
+    <div class="rte rte--expanded-images">
+      {{ page.content }}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="page-width">
+    <div class="large-row">
+      {% if section.settings.layout == 'grid' %}
+        <div class="grid grid--uniform grid--uniform-row-gutters collection-list-plain">
+          {% for link in linklists[page.handle].links %}
+            {% if link.type == 'collection_link' %}
+              {% assign collection = link.object %}
+              {% include 'collection-block' %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        {% for link in linklists[page.handle].links %}
+          {% if link.type == 'collection_link' %}
+            {% assign collection = link.object %}
+            {%- assign reverse_this_layout = false -%}
+            {%- assign index_modulo = forloop.index | modulo: 2 -%}
+            {%- if section.settings.alternate_rows and index_modulo == 0 -%}
+              {%- assign reverse_this_layout = true -%}
+            {%- endif -%}
+            {% include 'collection-block-special',
+                  block_id: '0',
+                  block_attributes: '',
+                  alternative_image: false,
+                  reverse_layout: reverse_this_layout,
+                  overlay_background_color: section.settings.color_overlay_background,
+                  overlay_text_color: section.settings.color_overlay_text,
+                  overlay_url_text: section.settings.overlay_url_text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Collection list pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_title",
+        "label": "Show title",
+        "default": true
+      },
+      {
+        "type": "radio",
+        "id": "layout",
+        "label": "Layout",
+        "default": "magazine",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          },
+          {
+            "value": "magazine",
+            "label": "Magazine"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Magazine layout"
+      },
+      {
+        "type": "checkbox",
+        "id": "alternate_rows",
+        "label": "Alternate layout every other row",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "collection_background",
+        "label": "Row background color",
+        "default": "#fbdfdb"
+      },
+      {
+        "type": "header",
+        "content": "Text overlay"
+      },
+      {
+        "type": "color",
+        "id": "color_overlay_background",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_overlay_text",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "text",
+        "id": "overlay_url_text",
+        "label": "Link text",
+        "default": "Shop now"
+      }
+    ]
+  }
+{% endschema %}

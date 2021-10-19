@@ -1,0 +1,247 @@
+<style>
+  .about-us_sub_heaeder {
+    margin: 5% 0;
+    font-size: 14px;
+    color: #676765;
+  }
+  #about_us_third_banner ul {
+    list-style-type:none;font-size:16px;margin-right: 4em;
+  }
+  #about_us_third_banner li {
+    font-weight: 600;
+  }
+  .about_image_third {
+    padding: 20px 0;
+  }
+  #about_us_third_banner ul li::before {
+    content: "\25E6";
+    color: #cc3333;
+    font-weight: 600;
+    font-size:18px;
+    display: inline-block; 
+    width: 1.5em;
+    margin-left: -1em;
+  }
+  #about_us_third_banner {
+    display: block;
+    padding-left: 20px;
+  }
+  .about-us-third-main_thread {
+    display: block !important;
+    padding: 5em 0;
+  }
+  .about_header_third {
+    margin-bottom: 5%;
+    text-align: center;
+  }
+  .pricebar-bar {
+    background-color: {{ section.settings.color_price_about_us_third }};
+  }
+  .pricebar {
+    background: #ccc;
+    margin: 10px 0;
+  }
+  .svg_class_image_png {
+    position: absolute;
+    width: 100%;
+    line-height: 0;
+    top: -5%;
+  }
+  .svg_class_image_png svg {
+    width: 100%;
+  }
+  .price-title {
+      font-family: Roboto Slab;
+      font-weight: 600;
+    }
+  @media only screen and (min-width: 901px) {
+    .about_header_third {
+      text-align: left;
+    }
+    .about_image_third {
+      padding: 0;
+    }
+    .about-us-third-main_thread {
+      display: flex !important;
+      justify-content: space-between;
+      padding: 3em 0;
+    }
+    #about-us-live_text {
+      width: 50%;
+    }
+    .about-us_sub_heaeder {
+      font-size:18px;
+    }
+    #about_us_third_banner ul {
+      font-size:18px;
+    }
+    #about_us_third_banner ul li::before {
+      font-size:20px;
+    }
+    #about_us_third_banner {
+      display: flex;justify-content: center;padding-left: 0;
+    }
+    .svg_class_image_png {
+      top: -10%;
+    }
+  }
+</style>
+<div style="position: relative;margin-top: 7em;">
+  <div class="svg_class_image_png desktop_show">
+    <?xml version="1.0" encoding="UTF-8"?>
+    <svg width="100%" height="87px" viewBox="0 0 100% 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <title>Path 3</title>
+        <g id="3.-Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M0.46459701,5 C381.342797,31.9640557 736.661793,38.978873 1060.69638,32.1422414 C1569.80359,21.4008621 1875.62771,-11.5905172 2309.17837,4.90517241 C2403.85056,8.50724992 2556.19947,23.8065421 2559.0429,24 C2560.9385,24.128971 2560.9385,42.128971 2559.0429,78 L0.46459701,87 L0.46459701,5 Z" id="Path-3" fill="#F2EFEC"></path>
+        </g>
+    </svg>
+  </div>
+  <div class="svg_class_image_png mobile_show">
+    <?xml version="1.0" encoding="UTF-8"?>
+<svg width="801px" height="87px" viewBox="0 0 801 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path 3</title>
+    <g id="3.-Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ABOUT-US-DESKTOP-FINAL-2_23" transform="translate(-199.000000, -1351.000000)" fill="#F2EFEC">
+            <path d="M199.464597,1356 C318.489034,1382.96406 429.526221,1389.97887 530.78703,1383.14224 C689.883032,1372.40086 785.453069,1339.40948 920.937651,1355.90517 C950.522711,1359.50725 998.131746,1374.80654 999.020316,1375 C999.612691,1375.12897 999.612691,1393.12897 999.020316,1429 L199.464597,1438 L199.464597,1356 Z" id="Path-3"></path>
+        </g>
+    </g>
+</svg>
+  </div>
+  <div class="container" style="background-color: {{ section.settings.color_bg_about_us_third }};">
+    <div class="page-width">
+      <section class="about-us-third-main_thread">
+        <div id="about-us-live_text">
+          <div class="about_header about_header_third" style="color: {{ section.settings.bg_header_about_us_third }};">{{ section.settings.our_header_about_us_third }}</div>
+          <div class="about-us_sub_heaeder about_header_third" style="color: {{ section.settings.bg_sub_header_about_us_third }};">{{ section.settings.our_sub_header_about_us_third }}</div>
+          <div id="about_us_third_banner">
+            <ul class="ab-first">
+              <li>{{ section.settings.our_list_one_about_us_third }}</li><li>{{ section.settings.our_list_two_about_us_third }}</li><li>{{ section.settings.our_list_third_about_us_third }}</li>
+            </ul>
+            <ul class="ab-second">
+              <li>{{ section.settings.our_list_fourth_about_us_third }}</li><li>{{ section.settings.our_list_five_about_us_third }}</li>
+            </ul>
+          </div>
+        </div>
+        <div id="about-us_banner_img">
+          <img src="{{ section.settings.image_about_us_third | img_url : '450x' }}"  class="about_image_third"/>
+          <div>
+            <div class="about-us-flex"><div class="price-title">Our Price</div>
+              <div class="counter-holder">$<span class="counter" data-count="{{ section.settings.our_price_about_us_third }}">0</span></div></div>
+              <div class="pricebar clearfix " data-percent="{{ section.settings.our_percentage_about_us_third }}">
+                  <div class="pricebar-bar"></div>
+              </div>
+              <div class="about-us-flex"> <div class="price-title">Typical Retailer</div>
+              <div class="counter-holder">$<span class="counter" data-count="{{ section.settings.typical_price_about_us_third }}">0</span></div></div>
+              <div class="pricebar clearfix " data-percent="{{ section.settings.typical_percentage_about_us_third }}">
+                  <div class="pricebar-bar"></div>
+              </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "About us Third Section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_bg_about_us_third",
+        "label": "Color for Background",
+        "default": "#f2efec"
+      },
+      {
+        "type": "text",
+        "id": "our_header_about_us_third",
+        "label": "Header Title",
+        "default": "We do everything ourselves to make our products the most affordable on the market."
+      },
+      {
+        "type": "color",
+        "id": "bg_header_about_us_third",
+        "label": "Header Color",
+        "default": "#cc3333"
+      },
+      {
+        "type": "text",
+        "id": "our_sub_header_about_us_third",
+        "label": "Sub Header text",
+        "default": "We partner with the best manufacturers from around the globe who bring our products to you at a reasonable cost, but everything else is done internally:"
+      },
+      {
+        "type": "color",
+        "id": "bg_sub_header_about_us_third",
+        "label": "Sub Header Color",
+        "default": "#727270"
+      },
+      {
+        "type": "header",
+        "content": "List 5 Name"
+      },
+      {
+        "type": "text",
+        "id": "our_list_one_about_us_third",
+        "label": "list one",
+        "default": "Marketing"
+      },
+      {
+        "type": "text",
+        "id": "our_list_two_about_us_third",
+        "label": "list two",
+        "default": "Distribution"
+      },
+      {
+        "type": "text",
+        "id": "our_list_third_about_us_third",
+        "label": "list third",
+        "default": "Packaging"
+      },
+      {
+        "type": "text",
+        "id": "our_list_fourth_about_us_third",
+        "label": "list fourth",
+        "default": "Content Creation"
+      },
+      {
+        "type": "text",
+        "id": "our_list_five_about_us_third",
+        "label": "list fifth",
+        "default": "Product Development "
+      },
+      {
+        "type": "image_picker",
+        "id": "image_about_us_third",
+        "label": "Product Image"
+      },
+      {
+        "type": "text",
+        "id": "our_price_about_us_third",
+        "label": "Our Price"
+      },
+      {
+        "type": "text",
+        "id": "typical_price_about_us_third",
+        "label": "Typical Price"
+      },
+      {
+        "type": "text",
+        "id": "our_percentage_about_us_third",
+        "label": "Our Price Percentage",
+        "default": "60%"
+      },
+      {
+        "type": "text",
+        "id": "typical_percentage_about_us_third",
+        "label": "Typical Price Percentage",
+        "default": "90%"
+      },
+      {
+        "type": "color",
+        "id": "color_price_about_us_third",
+        "label": "Color for Bar",
+        "default": "#cc3333"
+      }
+    ]
+  }
+{% endschema %}

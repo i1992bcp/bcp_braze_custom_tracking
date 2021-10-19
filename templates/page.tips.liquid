@@ -1,0 +1,40 @@
+<div class="page-width container" id="tips-ideas">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="rte">
+        {{ page.content | split: '<!-- split -->' | first }}
+      </div>
+    </div>
+    <div class="grid__item one-whole"><div class="tips-ideas-heading medium-down--text-center"><span class="h3">Recent Blog Posts</span><span class="tips-ideas-viewmore medium-down--hide"><a href="/blogs/bcp-blog">View More Posts</a></span></div></div>
+      {% for link in linklists.blog-products.links limit:4 %}
+        {% assign articlex = link.title %}
+        {% assign article = articles[articlex] %}
+        <div class="blog-tips grid__item one-half text-center small-down--one-whole">
+          <a href="{{ article.url }}">{{ article | img_url: '900x' | img_tag: article.title }}</a>
+          <div class="tips-overlay">
+            <a href="{{ article.url }}"><div class="h4">{{ article.title }}</div></a>
+            <div class="medium-down--hide">{{ article.excerpt | truncate: 150 }}</div>   
+          </div>
+        </div>
+      {% endfor %} 
+    <div class="grid__item one-whole"><div class="tips-ideas-heading medium-down--text-center"><span class="h3">Featured Videos</span><span class="tips-ideas-viewmore medium-down--hide"><a href="https://www.youtube.com/user/bestchoiceproducts">View All Videos</a></span></div></div>
+    {% comment %} {% for link in linklists.promo-videos-1.links limit:3 %}
+        <div class="video-link grid__item one-third medium-down--one-whole">
+            <div class="video-wrapper">
+                <iframe src="//www.youtube.com/embed/{{ link.url | split: '?v=' | last }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>                           
+            </div>
+            {% assign xyz = link.title | split:' ' | first %}
+            <div class="video-title" style="display:none;">Best Choice Products' {{ link.title | remove: xyz }}</div>
+        </div>
+    {% endfor %}  {% endcomment %}
+    {% if page.content contains '<!-- split -->' %}
+    	<div class="grid__item" style="margin-top:50px;">{{ page.content | split: '<!-- split -->' | last }}</div>
+    {% endif %}
+     <div class="grid__item one-whole instagram"><div class="tips-ideas-heading medium-down--text-center"><span class="h3">#myBCP</span><span class="tips-ideas-viewmore medium-down--hide"><a href="/pages/mybcp">View All Instagram</a></span></div></div>
+    <div class="grid__item">
+<script src="//foursixty.com/media/scripts/fs.embed.v2.5.js" data-feed-id="best-choice-products" data-theme="sizes_v2_5" data-page-size="7" data-connector-filter="25843,25844,26532"></script><style><!--
+.fs-has-links::after { padding:  10px 15px; border: 1px solid rgb(255, 255, 255); color:rgb(255, 255, 255); content: "SHOP IT";  }.fs-has-links:hover:after { background-color: rgb(255, 255, 255); color: rgba(40, 40, 40, 0.5)}.fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title{font-family:Helvetica Neue;font-style:normal;font-weight:normal;}div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text{font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-style:normal;font-weight:bold;}.fs-slider-next-button, .fs-slider-prev-button { opacity: 1; }.fs-wrapper div.fs-text-container * {color:rgb(255, 255, 255)}.fs-wrapper div.fs-text-container {background-color:rgba(40, 40, 40, 0.5); margin: 0px}div.fs-entry-date{display:none}div.fs-entry-title{display:none}.fs-wrapper div.fs-timeline-entry{ margin: 5px }
+--></style>    
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+<style>
+  #about_banner_subHeader {
+    font-family: Roboto Slab;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px;
+    line-height: 1.3;
+  }
+  .about-us-video-banner {
+    display: block;
+  }
+  .half_to_full {
+    width: 100%;
+  }
+  .banner_live_video video {
+    object-fit: cover;
+  }
+  .banner_live_video  {
+    position: relative;
+  }
+  .banner_live_text_main_wrapper {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding: 1em 0;
+  }
+  .ab_bannerheader {
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+  }
+  .play_video_abt {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    color: #fff;
+    bottom: 20px;
+    left: 16px;
+    font-weight: 600;
+    background: transparent;
+    cursor: pointer;
+  }
+  .play_video_abt span {
+    padding-left: 15px;
+  }
+  
+  @media only screen and (min-width: 901px) {
+    .ab_bannerheader {
+
+      font-size: 18px;
+    }
+    .banner_live_text_main_wrapper {
+      padding: 0;width: 50%; flex: 1;
+    }
+    .banner_live_video {
+      width: 50%;
+      flex: 1;
+    }
+    
+    #about_banner_subHeader {
+      font-size: 48px;
+      text-align: left;
+      padding: 50px;
+    }
+    .about-us-video-banner {
+      display: flex;
+    }
+  }
+  @media only screen and (min-width: 1341px) {
+    .banner_live_text_main_wrapper {
+      width: calc(100% - 700px);; flex: none;
+    }
+    .banner_live_video {
+      width: 700px; flex: none;
+    }
+    .about_page_width {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+
+<section class="about-us-video-banner">
+  <div class="container half_to_full banner_live_text_main_wrapper" style="background-color: {{ section.settings.bg_color_about_us }};">
+    <div class="about_page_width" style="color: {{ section.settings.bg_text_color_about_us }};">
+      <div id="about_banner_subHeader">{% if section.settings.bg_text_header_about_us != '' %}<span class="ab_bannerheader">{{ section.settings.bg_text_header_about_us }}</span><br/>{% endif %}{{ section.settings.bg_text_about_us }}</div></div>
+    </div>
+  <div class="half_to_full banner_live_video">
+    <video width="100%" height="100%" autoplay loop muted playsinline>
+      <source src="https://cdn.shopify.com/s/files/1/0636/7991/files/BRAND_VIDEO_CUT_DOWN_FOR_WEBSITE_3_2.mp4?v=1616779049" type="video/mp4">
+      <source src="https://cdn.shopify.com/s/files/1/0636/7991/files/about-us.webm?v=1616016282" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+    <div class="play_video_abt video-overlat-start" data-src="{{ section.settings.video_url }}"><svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Group 6</title><g id="3.-Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.778206759"><g id="ABOUT-US-DESKTOP-FINAL-2_23" transform="translate(-749.000000, -597.000000)" stroke="#FFFFFF"><g id="Group-6" transform="translate(749.000000, 597.000000)" opacity="0.95405506"><circle id="Oval" stroke-width="3" cx="22" cy="22" r="20.5"></circle><polygon id="Triangle" fill="#FFFFFF" stroke-linejoin="round" transform="translate(24.500000, 22.500000) rotate(-270.000000) translate(-24.500000, -22.500000) " points="24.5 15 34 30 15 30"></polygon></g></g></g></svg> <span>WATCH FULL VIDEO</span></div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "About Us Banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left Side"
+      },
+      {
+        "type": "color",
+        "id": "bg_color_about_us",
+        "label": "Left Background Color",
+        "default": "#cc3333"
+      },
+      {
+        "type": "text",
+        "id": "bg_text_header_about_us",
+        "label": "Left Background Header Text",
+        "default": "OUR MISSION"
+      },
+      {
+        "type": "text",
+        "id": "bg_text_about_us",
+        "label": "Left Background Text",
+        "default": "We deliver real-world value and quality in all of our products."
+      },
+      {
+        "type": "color",
+        "id": "bg_text_color_about_us",
+        "label": "Left Background Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "text",
+        "id": "video_url",
+        "label": "Youtube Video Id",
+        "default": "um3BkCBSYWs"
+      }
+    ]
+  }
+{% endschema %}
+

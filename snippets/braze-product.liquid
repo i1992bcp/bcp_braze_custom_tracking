@@ -1,0 +1,193 @@
+// Product 
+{%if product%}
+    var product = {{ product | json }};
+    if (product && !product.error) {
+        BrazeDataLayer.ecommerce.detail = {products: []}
+        BrazeDataLayer.ecommerce.detail.products.push({
+            product_id: product.id,
+            price: parseFloat(product.price/100),
+            name: product.title,
+            type: product.type
+        });
+    }
+    var viewedProductDetails = BrazeDataLayer.ecommerce.detail;
+
+    // Product Viewed
+    appboy.logCustomEvent("Product Viewed", {
+        product_id: BrazeDataLayer.ecommerce.detail.products[0].product_id,
+        price: BrazeDataLayer.ecommerce.detail.products[0].price,
+    });
+    
+    $(document).ready(function() {
+        
+        $(".custom-add-to-wishlist").on("click", function(e){
+            
+            // Product Added To Wishlist
+            appboy.logCustomEvent("Product Added to Wishlist", {
+                product:BrazeDataLayer.ecommerce.detail.products[0].name,
+                category: BrazeDataLayer.ecommerce.detail.products[0].type,
+                product_id: BrazeDataLayer.ecommerce.detail.products[0].product_id,
+                price: BrazeDataLayer.ecommerce.detail.products[0].price,
+            })
+        }); 
+        
+        $('i.share').live('click', function() {
+            // Product Shared
+            appboy.logCustomEvent("Product Shared", {
+                product_id: BrazeDataLayer.ecommerce.detail.products[0].product_id,
+                price: BrazeDataLayer.ecommerce.detail.products[0].price,
+                share_via: this.textContent
+            })
+        });
+
+        $('.main-widget.yotpo-display-wrapper form .yotpo-submit').live('click', function() {
+            
+            // if (
+            //     $('#yotpo_input_review_title').val().length > 0 &&
+            //     $('#yotpo_input_review_content').val().length > 0 &&
+            //     $('#yotpo_input_review_username').val().length > 0 &&
+            //     $('#yotpo_input_review_username').val().length > 0
+            // ) {
+            //     console.log('Product Reviewed');
+            // }
+
+            // Product Reviewed
+            appboy.logCustomEvent("Product Reviewed", {
+                product_id: product.id
+            })
+        });
+    })
+
+{% endif%}
+
+var collectionNames = [];
+{% if collection.handle == "all" %}
+    var collections = {{collections | json}};
+{% else %}
+    var collections = [{{collection | json}}];
+{% endif %}
+
+
+if (collections && !collections.error) {
+    collections.forEach(function(c){
+        if (c) collectionNames.push(c.handle);
+    });
+
+    // After everything loads
+    $(window).on('load', function() {
+        var results = $('.ais-facet-product_type .ais-RefinementList-item.ais-facet--item label').text().replace(/\s{2,}/g, ' ').replace(/[ 0-9]/g, ' ').replace(/[ 0-9]/g, ' ').split('  ');
+        for ( const type of results) {
+            if ( type.length <= 1 ) {
+                results.pop(type)
+            }
+        }
+        BrazeDataLayer.ecommerce.search = {types: []}
+        BrazeDataLayer.ecommerce.search.types.push({
+            results
+        });
+
+        // Collection | Search
+        if (window.location.href.indexOf("search?q") > -1 || window.location.href.indexOf("/collections/") > -1) {
+            
+            $('a')
+
+            $('a')
+            .filter(function(){ 
+                /* only add event to products */ 
+                return this.href.indexOf('/products') !== -1 
+            })
+            .click(function(ev){
+                // Product Clicked ( Collection | Search )
+                if (collections && !collections.error) {
+                    appboy.logCustomEvent("Product Clicked", {
+                        price: $(this).find('.ais-hit--price b').text(),
+                        product_id: $(this).attr("data-id") 
+                    })
+                }
+            })
+        }
+
+        {% unless search.results_count == 0 %}
+            {% if search.performed %}
+                // Product Searched
+                appboy.logCustomEvent("Product Searched", {
+                    query: '{{ search.terms }}',
+                    results: results
+                })
+            {% endif %}
+        {% endunless %}
+    });
+}
+
+// Collection Products
+var collectionProducts = {{ collection.products | json }};
+if (collectionProducts && !collectionProducts.error) {
+    collectionNames.forEach(function(c){
+        collectionProducts.forEach(function(p){
+            BrazeDataLayer.ecommerce.impressions.push({
+                product_id: p.id,
+                price: parseFloat(p.price/100)
+            })
+        });
+    });
+}
+
+BrazeDataLayer.ecommerce.impressions = [...new Set(BrazeDataLayer.ecommerce.impressions)]
+
+$(document).ready(function() {
+    var product = BrazeDataLayer.ecommerce.detail
+        && BrazeDataLayer.ecommerce.detail.products
+        && BrazeDataLayer.ecommerce.detail.products[0]
+
+    var tracker = new CartTracker();
+    tracker.onChange(function(changes) {
+        changes.added.forEach( function(addedProduct) {
+            var productPrice = parseFloat(addedProduct.price/100);
+            if (product) {
+                // Product Added
+                appboy.logCustomEvent("Product Added", {
+                    product_id: addedProduct.product_id,
+                    price: productPrice
+                })
+            }
+        })
+    })
+
+    $('a')
+    .filter(function(){ 
+        /* only add event to products */ 
+        return this.href.indexOf('/products') !== -1 
+    })
+    .click(function(ev){
+        // Product Clicked ( Home )
+        appboy.logCustomEvent("Product Clicked", {
+            price: $('.product-price__compare').text().split('$')[1],
+            product_id: $(this).attr("data-id") 
+        })
+    })
+
+    $('button.custom-wishlist-add-to-cart')
+    .click(function(){
+        // Wishlist Product Added to Cart
+        appboy.logCustomEvent("Wishlist Product Added to Cart", {
+            // wishlist_id: ,
+            product_id: $(this).attr("data-product-id") ,
+            price: $(this).attr("data-product-price") 
+        })
+    })
+
+    // Homepage Banner Module
+    $('.desktop-image-slider a')
+    .click(function(ev){
+        appboy.logCustomEvent("Module Clicked", {});
+    })
+
+    // Homepage Button Module
+    $('.cta_home_page')
+    .click(function(ev){
+        appboy.logCustomEvent("Module Clicked", {});
+    });
+
+
+});
+

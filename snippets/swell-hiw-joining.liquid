@@ -1,0 +1,54 @@
+<div class="swell-hiw-joining {% if customer %}logged-in{% endif %}">
+  {% if customer %}
+  <div class="swell-section-heading">
+    <h3 class="swell-heading">Your Rewards <img src="{{ 'pts-icon-gray.svg' | asset_url }}" class="swell-joining-logo"></h3>
+  </div>
+  <div class="swell-joining-section">
+    <div class="swell-joining-outer-holder">
+      <div class="swell-joining-holder">
+        <div class="swell-joining-heading">
+          CURRENT POINTS 
+        </div>
+        <h3 class="swell-customer-status swell-point-balance">
+          X
+        </h3>
+      </div>
+    </div>
+    <div class="swell-joining-outer-holder">
+      <div class="swell-joining-holder">
+        <div class="swell-joining-heading">
+          REDEEMABLE POINTS BALANCE
+        </div>
+        <h3 class="swell-customer-status">
+          $<span class="swell-checkout-dollar-balance">X</span>
+        </h3>
+        <div class="swell-start-shopping">start shopping to redeem</div>
+      </div>
+    </div>
+    <div class="swell-joining-outer-holder">
+      <div class="swell-joining-holder">
+        <div class="swell-joining-heading">
+          CURRENT TIER
+        </div>
+        <h3 class="swell-customer-status swell-customer-current-tier">
+          X
+        </h3>
+      </div>
+    </div>
+  </div>
+  <ul class="swell-link-list">
+    <li class="swell-link">
+      <a href="/" class="swell-link-button"> 
+      START SHOPPING 
+      </a>
+    </li>
+    <li class="swell-link">
+      <a href="javascript:void(0)" class="swell-link-button swell-history-link swell-link-history">
+      VIEW HISTORY 
+      </a>
+    </li>
+  </ul>
+  {% else %}
+  <div class="yotpo-widget-instance" data-yotpo-instance-id="7048"></div>
+  {% endif %}
+</div>

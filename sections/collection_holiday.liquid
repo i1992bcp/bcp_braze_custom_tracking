@@ -1,0 +1,332 @@
+<style>
+    .collection_holiday {
+        padding-left: 50px;
+    }
+    @media only screen and (max-width: 968px) {
+        .collection_holiday {
+        padding-left: 0px;
+    }
+    }
+    .product-block{
+        margin-bottom:2%;
+    }
+{%- if template contains 'collection' and collection.url == '/collections/christmas-trees' or collection.url == '/collections/patio-garden' or collection.url == '/collections/musical-instruments' -%}
+
+  .section-1526918570503 .rich-text-section {background-color: #fafafa; color: #333333;}
+ 
+  .faqs {display:flex;justify-content: space-between;background:#e1e1e1; padding:14px; color:#282828; border-radius:4px; font-size:16px; font-weight:500; text-align:left;}
+  .toggle_icon {font-size:20px; font-weight:500; color:#282828; text-decoration:none; cursor:pointer;}
+  .faq_ans {display:none; padding: 33px 37px; line-height:23px; color:#282828; font-size:16px;}
+  .faq_section {margin-bottom:15px;}
+{%- endif -%}
+</style>
+{%- assign linkw = collection.handle | prepend: 'quick-link-' -%}
+{% assign colss = collection.handle | prepend: 'sidebar-' %}
+{%- assign linkx = collection.handle | prepend: 'landing-banner-' -%}
+    {%- assign pop_cols = collection.handle | prepend: 'popular-' -%}
+{% assign cols = 'sidebar-home' %}
+{% assign colsss = 'popular-home' %}
+{%- assign tipsidea = 'no' -%}
+{%- for link in linklists.blog-products.links -%}
+    {%- assign articlex = link.title -%}
+    {%- assign article = articles[articlex] -%}
+    {%- assign productx = link.object -%}
+    {%- assign collectionx = collection.title | replace: ' ', '_' -%}
+    {%- for tag in productx.tags -%}
+        {%- if tag contains 'hierarchy:' and tag contains collectionx -%}
+            {%- assign tipsidea = 'yes' -%}
+        {%- endif -%}
+    {%- endfor -%}
+    
+{%- endfor -%}
+        <div class="relative collection-landing-section new_collection_holiday">
+            <div id="collection-landing" >
+                <div class="collection-header-image container page-width">
+                     {{ collection.description | split: '<!-- banner -->' | last | split: '<!--' | first }}
+                </div>
+                <div class="quick-link-menu container page-width" style="margin-top: 0.5%;">
+                    <div class="quick-link-menu-collection">
+                        {%- for link in linklists[linkw].links -%}
+                        {%- if forloop.first == true -%}
+                         {% assign color_box = link.title %} 
+                        {%- else -%}
+                            <a href="{{ link.url }}" class="one-third small-down--one-half" style="display: inline-block;">
+                                <div class="quick-link-css text-center {% if forloop.index == 4 or forloop.index == 7 or forloop.index == 10 %}{% else %}quick-margin-coll{% endif %}{% if forloop.index == 3 or forloop.index == 5 or forloop.index == 7 or forloop.index == 9 %} mobile-quick-margin-coll{% else %}{% endif %}" style="background-color:{{ color_box }};">{{ link.title }}</div>
+                            </a>
+                        {%- endif -%}
+                        
+                        {%- endfor -%}
+                    </div>
+                </div>
+                <div class="collection-category container page-width section-margin-collection ">
+                    <h2 class="heading-font-every text-center">Shop by Category</h2>
+                    <div class="grid shop-categories-slider-menu vertical-align-bottom" id="landing-more" style="margin:0 auto;">
+                        {%- for link in linklists[colss].links -%}
+                        {%- if forloop.first == true -%}
+                            <div style="margin-top:0.5%;margin-bottom:3%;text-align: center;"><a class="shop_all_col text-center" style="color:#5c79b9;text-decoration: underline;" href="{{ link.url }}">{{ link.title }}</a></div>
+                        {%- else -%}
+                        
+                            <div class="one-fifth small-down--one-half landing-feature-collections-holiday" style="float:none;">
+                                <a href="{{ link.url }}">
+                                    <div><img class="mobile-image" src="{{ link.handle | append:'.jpg' | file_img_url: '250x250' }}" alt="{{ link.handle }}" /></div>
+                                    <h4 class="title-under-photo" style="text-align: center;color:#282828;">{{ link.title }}</h4>   
+                                </a> 
+                            </div>  
+                        {%- endif -%}
+                        {%- endfor -%}   
+                    </div>
+                </div>
+                <div class="collection-header-image container page-width section-margin-collection relative">
+                    {%- if template contains 'collection' and collection.url == '/collections/christmas-trees'  -%}
+                        <img class="small-down--hide collection-image" src="{{ 'test-landing-banner-seasonal-1-d.png' | file_url }}" alt="The Holiday Christmas Tree By Best Choice Products" onerror="this.style='display:none;'" />
+                        <img class="medium-up--hide collection-image" src="{{ 'test-landing-banner-department-seasonal-1-m.png' | file_url }}" alt="The Holiday Christmas Tree By Best Choice Products" onerror="this.style='display:none;'" />
+<!--                         <div class="seasonal_landing_holiday">
+                            <h3 class="landing_sub-header_collection_holiday">Marina’s Tree-mendous Treasures</h3>
+                            <div class="landing_sub_text-header_collection_holiday">“You know that warm, fuzzy, Christmas feeling? While developing products, I wanted to make sure you got that same, one of a kind feeling. This year I focused on simplified decorations and trendy accessories to produce that Christmas magic that comes once a year!”</div>
+                        </div> -->
+                    {%- else -%}
+                        <img class="small-down--hide collection-image" src="{{ linkx | append: '-1-d.png' | file_url }}" alt="landing image" onerror="this.style='display:none;'" />
+                        <img class="medium-up--hide collection-image" src="{{ linkx | append: '-1-m.png' | file_url }}" alt="landing image" onerror="this.style='display:none;'" />
+                    {%- endif -%}
+                 </div>
+                <div class="collection-feature-items-landing container page-width section-margin-collection">
+                    <div class="heading-font-every text-center heading-margin-collection">Our Favorite Products</div>
+                    <div class="collection-landing-fetured-overflow">
+                        
+                            {%- for product in collection.products limit: 12 -%}
+                                {%- assign quickbuy_toggle = settings.quickbuy_buttons_toggle -%}
+                                <div class="top_twe">
+                                    {% include 'product-block', quickbuy: quickbuy_toggle %}
+                                </div>
+                            {%- endfor -%}
+                        
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="collection-popular container page-width text-center section-margin-collection">
+                    <h2 class="heading-font-every text-center heading-margin-collection">Popular Collections</h2>
+                    <div class="popular-collection_holiday">
+                        {%- for link in linklists[pop_cols].links limit: 3 -%}
+                            {%- assign collectionx = link.object -%}
+                            <div class="one-third small-down--one-whole popular-block popular_block_holiday" style="padding-left:0;">
+                                <a href="{{ link.url }}">  
+                                    <div class="popular-image">
+                                        {%- if collectionx.image -%}
+                                            {% include 'responsive-image', image: collectionx.image %}      
+                                        {%- elsif collection.products.first and collection.products.first.images != empty -%}
+                                            {% include 'responsive-image', image: collectionx.image %}
+                                        {%- else -%}
+                                        {%- endif -%}
+                                    </div>
+                                    <div class="title-under-photo popular-title body-heading-font-every" style="padding:10px 0px;background-color:#fff;color:#282828;">{{ link.title }}</div>
+                                    <!-- <div class="title-under-photo popular-title body-heading-font-every">{{ collectionx.image.alt }}</div> -->
+                                </a>  
+                            </div>
+                        {%- endfor -%}
+                    </div>
+                </div>
+                <div class="collection-header-image container page-width section-margin-collection">
+                    <img class="small-down--hide collection-image" src="{{ linkx | append: '-2-d.jpg' | file_url }}" alt="landing image" onerror="this.style='display:none;'" />
+                    <img class="medium-up--hide collection-image" src="{{ linkx | append: '-2-m.jpg' | file_url }}" alt="landing image" onerror="this.style='display:none;'" />
+                </div>
+                {%- if tipsidea == 'yes' -%}
+                    <div class="collection-tip-ideas-items-landing container page-width section-margin-collection">
+                        <div class="heading-font-every text-center heading-margin-collection">Tips & Ideas</div>
+                        {%- assign count = 0 -%}
+                        {%- assign typeList = ',' -%}
+                        {%- for link in linklists.blog-products.links -%}
+                            {%- assign articlex = link.title -%}
+                            {%- assign article = articles[articlex] -%}
+                            {%- assign productx = link.object -%}
+                            {%- assign collectionx = collection.title | replace: ' ', '_' -%}
+                            {%- for tag in productx.tags -%}
+                                {%- if tag contains 'hierarchy:' and tag contains collectionx -%}
+                                    {%- assign count = count | plus: 1 -%}
+                                    {%- if count < 3 -%}
+                                        {%- capture compareType -%},{{ article.title }},{%- endcapture -%}
+                                        {%- if typeList contains compareType -%}{%- else -%}
+                                        <div class="blog-tips {{ count }} grid__item one-half text-left extra-small--one-whole">
+                                            <a href="{{ article.url }}">
+                                                <div class="tips-image">
+                                                    {% include 'responsive-image', image: article.image, nomax: true %}
+                                                </div>
+                                                <div class="title-under-photo popular-title body-heading-font-every" style="margin-top:10px;font-weight: 500;color:#282828;">{{ article.title }}</div>
+                                                <div class="tips-body body-about" style="color:#282828;margin-top:10px;">{{ article.excerpt | truncate: 150 }}</div>
+                                            </a>
+                                        </div>
+                                        {%- capture tempList -%}{{ typeList }}{{ article.title }},{%- endcapture -%}
+                                        {%- assign typeList = tempList -%}
+                                        {%- endif -%}
+                                    {%- endif -%}
+                                {%- endif -%}
+                            {%- endfor -%}  
+                        {%- endfor -%}
+                    </div>
+                {%- endif -%}
+                <div class="clearfix"></div>
+                <div class="collection-header-image container page-width">
+                    <div class="heading-font-every text-center heading-margin-collection">#mybcp</div>
+                    <div>
+                        {%- if template contains 'collection' and collection.url == '/collections/patio-garden'  -%}
+                            <div data-crl8-container-id="category" data-crl8-filter="label:patio"></div>
+                        {%- elsif template contains 'collection' and collection.url == '/collections/home'  -%}
+                            <div data-crl8-container-id="category" data-crl8-filter="label:home"></div>
+                        {%- elsif template contains 'collection' and collection.url == '/collections/toys-games'  -%}
+                            <div data-crl8-container-id="category" data-crl8-filter="label:toys"></div>                
+                        {%- elsif template contains 'collection' and collection.url == '/collections/christmas-trees'  -%}
+                            <div data-crl8-container-id="category" data-crl8-filter="label:seasonal"></div>
+                        {%- elsif template contains 'collection' and collection.url == '/collections/pet-supplies'  -%}
+                            <div data-crl8-container-id="category" data-crl8-filter="label:pet"></div>
+                        {%- elsif template contains 'collection' and collection.url == '/collections/fitness'  -%}
+                            <div data-crl8-container-id="category" data-crl8-filter="label:fitness"></div>
+                        {%- elsif template contains 'collection' and collection.url == '/collections/musical-instruments'  -%}
+                            <div data-crl8-container-id="category" data-crl8-filter="label:musical"></div>
+                        {%- else -%}
+                            <div data-crl8-container-id="homepage"></div>
+                        {%- endif -%}
+                    </div>    
+                </div>
+                  {%- if template contains 'collection' and collection.url == '/collections/christmas-trees'  -%}
+                <div class="section-margin-collection collection-header-image container page-width">
+                    <div class="reading-width text-center">
+                        <h2 class="heading-font-every faq_head_holiday">Any Questions? FAQs About Buying Christmas Tree Online</h2>
+                        <div class="rte" style="font-size:14px;">
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What are the best artificial Christmas trees?</div><div class="toggle_icon">+</div></div>
+                              <div class="faq_ans">The Pre-Lit Snow Flocked Pine, the minimalist-style Pre-Lit Hinged Fir Pencil Tree, and the darker green <b><a href="https://bestchoiceproducts.com/products/pre-lit-hinged-douglas-artificial-christmas-tree-w-stand">Pre-Lit Hinged Douglas</a></b> are all popular for their unique features. And they combine Christmas Tree and décor into one purchase.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What is the average price of a Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The typical tree will be about $89.99, but price point depends on many factors, like branch tip count or weather it comes with Christmas tree accessories. An un-lit Christmas tree will be less expensive than a pre-lit or snow-flocked pick.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What is the best way to decorate a Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">First, decide between lights or ribbon. Next spread out big globes and use smaller décor to fill gaps. Try to buy ornaments in 2-3 colors max. Lastly, deck gifts underneath with Christmas tree gift wraps and trims in matching designs.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">How to decorate Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Use Christmas tree décor sales to stock on essentials like lights, tinsel and ribbons. Pick shatterproof ornaments that will last. Add green paper clips and sturdy scissors and you've got a DYI Christmas tree décor kit to reuse over the years.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What are some trending ways to decorate the Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Keep in mind the deep, moody rustic look with variations like black, deep green Douglas or snow-flocked trees. Pick 2 base colors and 1 accent in décor. Match with a Pre-Lit Artificial Flocked Christmas Pine Wreath and your décor is up to date.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">How to put lights on a fake Christmas Tree?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Don't spiral each layer in lights; spread randomly to look natural and include both tips and roots. You can simplify Christmas tree decoration with a pre-lit Christmas tree and even match with a pre-lit Christmas garland.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What are the most popular Christmas trees?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">You won't find certain trends in a typical Christmas tree shop. Snow-flocked and pre-lit trees add to the look of decor. Tinsel, white or other non-green trees are highly aesthetic. Instant setup trees are also trending for their convenience.</div></div>
+                        </div>
+                    </div>
+                </div>
+          <div class="grid__item small-down--hide">&nbsp;</div>
+              <div class="rte page-width collection-description seo">
+          <div class="heading-font-every border-bottom" style="font-weight: 500;margin-bottom:20px;">Shop Christmas Trees</div>
+                <div class="seo-text"><p>When you pick a <b><a href="https://bestchoiceproducts.com/collections/christmas-trees">Christmas tree</a></b>, you are not just picking a fun decoration piece. You’re picking an iconic memento to display “baby’s first Christmas” and a familiar monument that will be in family pictures for years on end! A tree that will spark sentimental feelings as the kids run down the stairs December 25th to see pretty gift wraps and trims underneath its boughs. 
+               At Best Choice Products, we have a collection of trees to fill your home with nostalgic Christmas magic. Choose one that speaks the most to you; go for a classic look, like a lush, hearty pine. Or try a trendy pick, perfect for small spaces, like one of our pencil Christmas trees for that minimalistic style. Our diverse collection of Artificial Christmas trees offers everything from spruce to alpine, and our trees come in multiple sizes to fit your living room, as well as your budget!</p>
+
+               <p><b>Stay Classic</b></p>
+                  <p>If you’re going for a traditional look, search no further! Best Choice Products offers numerous, full, green trees that have been bestsellers time and time again! Our <b><a href="https://bestchoiceproducts.com/products/snow-flocked-hinged-artificial-pine-christmas-tree-w-metal-stand">Hinged Artificial Christmas trees</a></b> are easy to fluff and style for a full-bodied, dreamy look. We even have Instant Set-Up trees for a quicker, simpler process. Dreading untangling the Christmas lights? Try our popular Pre-Lit Hinged Douglas Artificial Christmas Tree or choose from over a dozen other pre-lit options! 
+  To get into the winter theme and take your tree game even further, we suggest our snow-flocked options to bring a wintery ambiance to your living room, entryway, or any other area you want to display these majestic white-powdered greens!</p>
+
+               <p><b>Go Unconventional</b></p>
+                  <p>Although tradition is at the heart of Christmas, sometimes you want to spice things up a bit. We get it! That is why we offer a few non-traditional colorful trees for a fun twist to the evergreen, while still maintaining the full, lush shape you love to see this time of year. Try our gorgeous <b><a href="https://bestchoiceproducts.com/products/black-artificial-christmas-tree-w-easy-assembly-foldable-metal-stand">Black Artificial Tree</a></b> that can be kept up from Halloween to New Year’s Day! Or for a far-cry from the Jones’ decor, try our <b><a href="https://bestchoiceproducts.com/products/rose-gold-artificial-tinsel-christmas-tree-w-foldable-stand">Tinsel Christmas Trees</a></b> in pink, silver, or champagne. 
+  Whether you’re a holiday tradition aficionado or going for an avant-garde spin on the classic décor; you can find your family’s Christmas Tree right here at Best Choice Products and save big on quality you can celebrate!</p>
+                  <p>Get your <b><a href="https://bestchoiceproducts.com/collections/tabletop-trees">Tabletop Christmas Tree</a></b> from <a href="https://bestchoiceproducts.com/">Best Choice Products</a> today! Also our mini <b><a href="https://bestchoiceproducts.com/products/pre-lit-15in-ceramic-halloween-tree-w-orange-purple-bulb-lights">Ceramic Halloween Tree</a></b> and <b><a href="https://bestchoiceproducts.com/products/15in-pre-lit-hand-painted-ceramic-tabletop-christmas-tree-w-64-lights">Hand Painted Ceramic Christmas Tree</a></b> is the perfect addition to your holiday decor which is beautifully hand-painted and finished with a smooth gloss.</p>
+                </div>
+              </div>
+            {%- endif -%}
+              {%- if template contains 'collection' and collection.url == '/collections/patio-garden'  -%}
+                <div class="section-margin-collection collection-header-image container page-width">
+                    <div class="reading-width text-center">
+                        <h1 class="heading-font-every faq_head_holiday">Any Questions? FAQs About Buying Patio Furniture and Gardening Tools Online</h1>
+                        <div class="rte" style="font-size:14px;">
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Is the Handwoven Cotton Macrame Hammock Hanging Chair Swing weather resistance?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">This elegant cotton hammock swing chair is constructed of comfortable, soft cotton that provides a perfect place to lounge in any indoor or outdoor space.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What is the weight limit of the Hanging Curved Chaise Lounge Chair?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The weight limit of the Hanging Curved Chaise lounger is 265 lbs.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Does Wicker Bistro Outdoor Furniture Set Come In Different Colors?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Yes of course. Wicker Bistro Outdoor Furniture Set comes with light blue, green, light green, brown and red.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Is Brazilian-Style Cotton Double Hammock Suitable For Hanging Between Two Trees?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Brazilian-Style Cotton Double Hammock is equipped with two loops that are best suited to be used with a hammock stand but can be used anywhere that can support the weight.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Are The Cushions of the Modular 7-Piece Wicker Sectional Conversation Set Water Resistant?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The cushions of Modular 7-piece Wicker Sectional Conversation Ser are not weather resistant, however the frame is. Please make sure to take precaution during inclement weather conditions.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What Wood Is the 3-tier Garden Planter Made Of?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The 3 Tier Garden Planter is made out of fir wood.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Does The Mesh Protect The Plants From Getting Too Much Sun?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The Mesh of the greenhouse is a 50% screen which means, 50% of sunlight gets through. The crops needs sunlights, lots of it.</div></div>
+                          
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">How Much Weight Can The Shelves of the 4-tier mini Greenhouse Hold?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The Shelves of the 4-tier mini Greenhouse holds up to 18lbs max.</div></div>
+                          
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What is the diameter of the smallest Metal Nesting Plant Stands?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The diameter of the smallest Metal Nesting Plant stand is 5.5. x 9.4 inches diameter.</div></div>
+                        </div>
+                    </div>
+                </div>
+            {%- endif -%}
+              {%- if template contains 'collection' and collection.url == '/collections/musical-instruments'  -%}
+                <div class="section-margin-collection collection-header-image container page-width">
+                    <div class="reading-width text-center">
+                        <h1 class="heading-font-every faq_head_holiday">Any Questions? FAQs About Buying Musical Instruments Online</h1>
+                        <div class="rte" style="font-size:14px;">
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">How many keys are there on a digital piano keyboard?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">There are 88 keys in a digital piano keyboard.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What is the Acoustic Electric Cutaway Guitar made of?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The Acoustic Electric Cutaway Guitar is made of Okoume,Spruce and Linden Wood.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">What does Acoustic Concert Sapele Ukulele Starter Kit include?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The Acoustic Concert Sapele Ukulele Starter Kit includes gig bag, removable strap, picks, extra strings and a digital clip-on tuner so you have everything you need to practice and perform.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Does the full size drum set Include A Bass Kick Pedal?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Yes, a full size drum set includes a Bass Kick Pedal.</div></div>
+                           
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Does the Acoustic guitar come with Amp Plug In?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The Acoustic guitar does not come with an amp plug in.</div></div>
+                            
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">How Do You Attach The Strap of the Acoustic guitar?</div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">The strap ties at the head of the Acoustic guitar under the strings.</div></div>
+                          
+                            <div class="faq_section"><div class="faqs"><div style="margin-right:2%;">Does the Acoustic guitar Come Stringed Or Do You Have To String It Yourself? </div><div class="toggle_icon">+</div></div>
+                            <div class="faq_ans">Acoustic guitar does come stringed. However, some adjusting and or tightening may be required.</div></div>
+                        </div>
+                    </div>
+                </div>    
+            {%- endif -%}
+            </div>
+        </div>
+{%- if template contains 'collection' and collection.url == '/collections/christmas-trees'  -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the best artificial Christmas trees?","acceptedAnswer":{"@type":"Answer","text":"The Pre-Lit Snow Flocked Pine, the minimalist-style Pre-Lit Hinged Fir Pencil Tree, and the darker green Pre-Lit Hinged Douglas are all popular for their unique features. And they combine Christmas Tree and décor into one purchase."}},{"@type":"Question","name":"What is the average price of a Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"The typical tree will be about $89.99, but price point depends on many factors, like branch tip count or weather it comes with Christmas tree accessories. An un-lit Christmas tree will be less expensive than a pre-lit or snow-flocked pick."}},{"@type":"Question","name":"What is the best way to decorate a Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"First, decide between lights or ribbon. Next spread out big globes and use smaller décor to fill gaps. Try to buy ornaments in 2-3 colors max. Lastly, deck gifts underneath with Christmas tree gift wraps and trims in matching designs. "}},{"@type":"Question","name":"How to decorate some Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"Use Christmas tree décor sales to stock on essentials like lights, tinsel and ribbons. Pick shatterproof ornaments that will last. Add green paper clips and sturdy scissors and you've got a DYI Christmas tree décor kit to reuse over the years. "}},{"@type":"Question","name":"What are some trending ways to decorate the Christmas Tree? ","acceptedAnswer":{"@type":"Answer","text":"Keep in mind the deep, moody rustic look with variations like black, deep green Douglas or snow-flocked trees. Pick 2 base colors and 1 accent in décor. Match with a Pre-Lit Artificial Flocked Christmas Pine Wreath and your décor is up to date."}},{"@type":"Question","name":"How to put lights on a fake Christmas Tree?","acceptedAnswer":{"@type":"Answer","text":"Don't spiral each layer in lights; spread randomly to look natural and include both tips and roots. You can simplify Christmas tree decoration with a pre-lit Christmas tree and even match with a pre-lit Christmas garland."}},{"@type":"Question","name":"What are the most popular Christmas trees?","acceptedAnswer":{"@type":"Answer","text":"You won't find certain trends in a typical Christmas tree shop. Snow-flocked and pre-lit trees add to the look of decor. Tinsel, white or other non-green trees are highly aesthetic. Instant setup trees are also trending for their convenience."}}]}</script>
+{%- endif -%}
+{%- if template contains 'collection' and collection.url == '/collections/patio-garden'  -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the Handwoven Cotton Macrame Hammock Hanging Chair Swing wather resistance?","acceptedAnswer":{"@type":"Answer","text":"This elegant cotton hammock swing chair is constructed of comfortable, soft cotton that provides a perfect place to lounge in any indoor or outdoor space."}},{"@type":"Question","name":"What is the weight limit of the Hanging Curved Chaise Lounge Chair?","acceptedAnswer":{"@type":"Answer","text":"The weight limit of the Hanging Curved Chaise lounger is 265 lbs."}},{"@type":"Question","name":"Does Wicker Bistro Outdoor Furniture Set Come In Different Colors?","acceptedAnswer":{"@type":"Answer","text":"Yes of course. Wicker Bistro Outdoor Furniture Set comes with light blue, green, light green, brown and red."}},{"@type":"Question","name":"Is Brazilian-Style Cotton Double Hammock Suitable For Hanging Between Two Trees?","acceptedAnswer":{"@type":"Answer","text":"Brazilian-Style Cotton Double Hammock is equipped with two loops that are best suited to be used with a hammock stand but can be used anywhere that can support the weight."}},{"@type":"Question","name":"Are The Cushions of the Modular 7-Piece Wicker Sectional Conversation Set Water Resistant?","acceptedAnswer":{"@type":"Answer","text":"The cushions of Modular 7-piece Wicker Sectional Conversation Ser are not weather resistant, however the frame is. Please make sure to take precaution during inclement weather conditions."}},{"@type":"Question","name":"What Wood Is the 3-tier Garden Planter Made Of?","acceptedAnswer":{"@type":"Answer","text":"The 3 Tier Garden Planter is made out of fir wood."}},{"@type":"Question","name":"Does The Mesh Protect The Plants From Getting Too Much Sun?","acceptedAnswer":{"@type":"Answer","text":"The Mesh of the greenhouse is a 50% screen which means, 50% of sunlight gets through. The crops needs sunlights, lots of it."}},{"@type":"Question","name":"How Much Weight Can The Shelves of the 4-tier mini Greenhouse Hold?","acceptedAnswer":{"@type":"Answer","text":"The Shelves of the 4-ties mini Greenhouse holds up to 18lbs max."}},{"@type":"Question","name":"What is the diameter of the smallest Metal Nesting Plant Stands?","acceptedAnswer":{"@type":"Answer","text":"The diameter of the smallest Metal Nesting Plant stand is 5.5. x 9.4 inches diameter."}}]}</script>
+{%- endif -%}
+{%- if template contains 'collection' and collection.url == '/collections/musical-instruments'  -%}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many keys are there on a digital piano keyboard?","acceptedAnswer":{"@type":"Answer","text":"There are 88 keys in a digital piano keyboard."}},{"@type":"Question","name":"What is the Acoustic Electric Cutaway Guitar made of?","acceptedAnswer":{"@type":"Answer","text":"The Acoustic Electric Cutaway Guitar is made of Okoume,Spruce and Linden Wood."}},{"@type":"Question","name":"What does Acoustic Concert Sapele Ukulele Starter Kit include?","acceptedAnswer":{"@type":"Answer","text":"The Acoustic Concert Sapele Ukulele Starter Kit includes gig bag, removable strap, picks, extra strings and a digital clip-on tuner so you have everything you need to practice and perform."}},{"@type":"Question","name":"Does the full size drum set Include A Bass Kick Pedal?","acceptedAnswer":{"@type":"Answer","text":"Yes, a full size drum set includes a Bass Kick Pedal."}},{"@type":"Question","name":"Does the Acoustic guitar come with Amp Plug In?","acceptedAnswer":{"@type":"Answer","text":"The Acoustic guitar does not come with an amp plug in."}},{"@type":"Question","name":"How Do You Attach The Strap of the Acoustic guitar?","acceptedAnswer":{"@type":"Answer","text":"The strap ties at the head of the Acoustic guitar under the strings."}},{"@type":"Question","name":"Does the Acoustic guitar Come Stringed Or Do You Have To String It Yourself?","acceptedAnswer":{"@type":"Answer","text":"Acoustic guitar does come stringed. However, some adjusting and or tightening may be required."}}]}</script>
+{%- endif -%}
+{%- if template contains 'collection' and collection.url == '/collections/christmas-trees' or collection.url == '/collections/patio-garden' or collection.url == '/collections/musical-instruments' -%}
+<script type="text/javascript">
+// A $( document ).ready() block..
+$( document ).ready(function() {
+    $(".toggle_icon").click(function(){
+      $('.faq_ans').slideUp();
+	  if($(this).parent().parent().find('.faq_ans').hasClass('open'))
+	  {
+		  $(this).text('+');
+		  $(this).parent().parent().find('.faq_ans').removeClass('open');
+		  $(this).parent().parent().find('.faq_ans').slideUp();
+	  }
+	  else
+	  {
+		 $('.faq_ans').removeClass('open');
+		 $(".toggle_icon").text('+');
+		 $(this).text('-');
+		 $(this).parent().parent().find('.faq_ans').addClass('open'); 
+	     $(this).parent().parent().find('.faq_ans').slideDown();
+	  }
+}); 
+});
+</script>
+{%- endif -%}

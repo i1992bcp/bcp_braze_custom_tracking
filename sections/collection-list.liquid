@@ -1,0 +1,82 @@
+<section class="relative large-row container" data-section-id="{{ section.id }}" data-section-type="collection-list">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="text-center row title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+    <div class="large-row">
+      <div class="grid grid--uniform grid--uniform-row-gutters">
+        {% for block in section.blocks %}
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% if collection != blank %}
+            {% include 'collection-block', extra_attrs: block.shopify_attributes %}
+          {% else %}
+            <div class="product-block grid__item one-quarter small-down--one-half extra-small--one-whole" {{ block.shopify_attributes }}>
+              <div class="hover-images global-border-radius">
+                <span class="product-block__image image-one">
+                  {% capture placeholder_type %}collection-{{ forloop.index0 | modulo: 4 | plus: 1 }}{% endcapture %}
+                  {{ placeholder_type | placeholder_svg_tag: 'placeholder-svg' }}
+                </span>
+              </div>
+              <div class="product-block__title" style="">
+                <a>{{ 'homepage.onboarding.collection_title' | t }}</a>
+              </div>
+            </div>
+
+          {% endif %}
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "settings": {
+        },
+        "blocks": [
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

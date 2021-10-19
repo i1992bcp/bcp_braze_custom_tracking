@@ -1,0 +1,386 @@
+<style>
+   afterpay-placement {
+    margin-block: 0 !important ;
+    color: #676765 !important;
+    --logo-badge-width: 70px;
+  }
+</style>
+<section class="cart" data-section-id="{{ section.id }}" data-section-type="cart" data-ajax-update="true">
+  <div class="container">
+    <div class="page-width">
+        <div class="text-left">
+          <span class="cart-header">My Cart</span>
+        </div>
+      {%- if cart.item_count > 0 -%}
+        <form action="/cart" method="post" novalidate style="display:flex;flex-wrap: wrap;">
+          <table class="cart_table">
+            <tbody>
+              {%- for item in cart.items -%}
+              <tr class="cart__row border-bottom line{{ forloop.index }} cart-flex{% if forloop.first %} border-top{% endif %}">
+                <td class="cart__image-wrapper cart-flex-item">
+                  <a href="{{ item.url | within: collections.all }}">
+                    <img class="cart__image" src="{{ item | img_url: '100x' }}" alt="{{ item.title | escape }}">
+                  </a>
+                </td>
+                <td class="cart__meta cart-flex-item" >
+                  <div style="margin-bottom:10px;">
+                    <div class="bold">
+                      {{ item.line_price | money }}
+                      <span style="float:right;">
+                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove icon feather-icon">{% include 'feather-x' %}</a>
+                      </span>     
+                    </div>
+                    {% for discount in item.discounts %}
+                      <div class="cart-item__discount">save:{{ discount.title }}</div>
+                    {% endfor %}              
+                  </div>
+                  <div class="list-view-item__title" style="font-size:14px;margin-bottom:10px;padding-right: 15px;">
+                    <a href="{{ item.url }}">
+                      <span >{{ item.product.title }}</span>
+                      {% if item.quantity > 1 %}
+                        <span><span class="visually-hidden">{{ 'cart.label.quantity' | t }}</span>(x{{ item.quantity }})</span>
+                      {% endif %}
+                    </a>
+                  </div>
+                  <div class="parent" style="margin-bottom: 10px;"></div>
+                    {% comment %}
+                      Optional, loop through custom product line items if available
+    
+                      Line item properties come in as having two parts. The first part will be passed with the default form,
+                      but p.last is the actual custom property and may be blank. If it is, don't show it.
+    
+                      For more info on line item properties, visit:
+                        - http://docs.shopify.com/support/your-store/products/how-do-I-collect-additional-information-on-the-product-page-Like-for-a-monogram-engraving-or-customization
+                    {% endcomment %}
+                    {%- assign property_size = item.properties | size -%}
+                    {% if property_size > 0 %}
+                      <div class="cart__meta-text">
+                        {% for p in item.properties %}
+                          {% unless p.last == blank %}
+                            {{ p.first }}:
+    
+                            {% comment %}
+                              Check if there was an uploaded file associated
+                            {% endcomment %}
+                            {% if p.last contains '/uploads/' %}
+                              <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                            {% else %}
+                              {{ p.last }}
+                            {% endif %}
+                          {% endunless %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                    <div class="quantity__change flex" style="width:40%;">
+                        <a class="quantity__minus feather-icon {% if item.quantity < 2 %}quantity__unusable{% endif %}" href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}">{% include 'feather-minus' %}</a>
+                        <input
+                          class="quantity__number"
+                          type="text"
+                          size="1"
+                          name="updates[]"
+                          value="{{ item.quantity }}"
+                          data-line="{{ forloop.index }}"
+                          {% if item.variant.inventory_management == 'shopify' and item.variant.inventory_policy == 'deny' %}data-max="{{ item.variant.inventory_quantity }}"{% endif %}
+                          aria-label="{{ 'cart.general.item_quantity' | t | escape }}" />
+                        <a class="quantity__plus feather-icon {% unless can_increase %}quantity__unusable{% endunless %}" href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}">{% include 'feather-plus' %}</a>
+                      </div>
+                  </td>
+            
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+          <div class="cart__footer cart_footer_div">
+              <div class="grid">
+      
+                <div class="grid__item text-right">
+                      
+                    <div class="grid__item order_summary">
+                       <p class="order_summary_p" >  Order Summary </p>
+                      <div style="padding: 0px 20px;">
+                        <div style="margin-bottom:10px;">
+                          <span class="cart__subtotal-title">Shipping:</span>
+                          <span class="cart__subtotal small--text-right">Free</span>
+                        </div>            
+                        <div style="margin-bottom:10px;">
+                          <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
+                          <span class="cart__subtotal bold"><span id="bk-cart-subtotal-price">{{ cart.total_price | money }}</span></span>
+                        </div>                 
+                         {% if cart.total_discounts > 0 %}
+                        <div class="cart__savings">
+                          <span style="float:left;">{{ 'cart.general.savings' | t }}</span>
+                          <span class="cart__savings-amount bold">{{ cart.total_discounts | money }}</span>
+                        </div>
+                      {% endif %}
+                        <div style="text-align:left;">
+                          <input type="submit" name="update" class="cart__update cart_update_input" value="{{ 'cart.general.update' | t }}" style="font-size:14px;padding: 0;background: transparent;color:#5C79B9;margin: 0;text-decoration: underline;min-width: 0;margin-bottom: 10px;" >
+                        </div> 
+                        <div style="text-align:left;">
+                          <afterpay-placement data-locale="en_US" data-currency="USD" data-size="xs" data-amount="{{ cart.total_price | money }}"></afterpay-placement>
+                        </div>
+                         <div class="shipandcal" style="text-align: left;">{{ 'cart.general.shipping_at_checkout' | t }}</div>
+                      </div>
+                    </div>               
+                
+                 
+                  <input type="submit" name="checkout" class="btn btn--small-wide checkout_btn" style="width: 100%;border-radius: 4px;" value="{{ 'cart.general.checkout' | t }}">
+                  {% if additional_checkout_buttons %}
+                    <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+                  {% endif %}
+      
+                  <div class="clearfix"></div>
+      
+                </div>
+              </div>
+            </div>
+        </form>
+      {%- endif -%}
+    </div>  
+  </div> 
+</section>
+
+
+
+
+
+  
+  {% schema %}
+    {
+      "name": "Cart page",
+      "settings": [
+      {
+          "type": "checkbox",
+          "id": "enable_cart_notes",
+          "label": "Enable cart notes",
+          "default": false
+        },
+        {
+          "type": "page",
+          "id": "cart_terms_page",
+          "label": "Terms and Conditions Page"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_recently_viewed",
+          "label": "Show recently viewed products",
+          "default": true,
+          "info": "Must also be enabled on product pages"
+        },
+        {
+          "type": "header",
+          "content": "Shipping rates calculator"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_shipping_calculator",
+          "label": "Show",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "shipping_calculator_default_country",
+          "label": "Default country selection",
+          "default": "United States"
+        },
+        {
+          "type": "paragraph",
+          "content": "If a customer is logged-in, their default country shipping address will be selected. For correct spelling to use here, refer to checkout page dropdown."
+        }
+      ]
+    }
+  {% endschema %}
+  
+
+  <script type="text/javascript"> 
+  
+    var allthe = [];
+    var state_name;
+    var bcp_eligable = [];
+  function myFunction() {
+      setTimeout(function(){ checkCookie(); }, 2000);
+  }
+    //call the function
+    myFunction();
+    //End call
+  function setCookie(cname,cvalue) {
+    
+    var now = new Date();
+    now.setTime(now.getTime() + 4 * 3600 * 1000);
+    var expires = "expires=" + now.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+    
+  async function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
+  async function fetchQuote() {
+       function callback(json){
+         return json.state;
+       }
+       const result = await $.ajax({
+         url: "https://geoip-db.com/jsonp",
+         jsonpCallback: "callback",
+         dataType: "jsonp",
+       })
+       return result.state;
+     }
+ 
+     async function cart_liquid_check() {
+       var arr = [];
+       {% for item in cart.items %}
+         {% for tag in item.product.tags %}
+           {% if tag contains 'bcp2day_eligible' %}
+               {% assign bcpeligible = tag | split: ":" %}
+                 bcp_eligable.push({{bcpeligible[1]}});
+             {% endif %}
+           {% if tag contains item.sku %} 
+           {% assign new_tagg = tag %}
+             allthe.push('{{new_tagg}}');
+           {% endif %}  		
+        {% endfor %}                     
+             var ne = '{{item.sku}}';
+             var orif = await variant(ne);  
+             arr.push(orif) ;
+       {% endfor %} 
+ 
+ 
+       return arr;
+     }
+    
+ async function checkCookie() {
+   state_name = await getCookie("two_day_state");
+   if (state_name == 'null' || state_name == "" || state_name == 'undefined' || state_name == null || state_name == undefined ) {
+     state_name = "California";  
+     setCookie("two_day_state", state_name);
+       let new_arrr = await cart_liquid_check();
+       console.log("okie wait ", new_arrr);
+//        lastrun(new_arrr);
+      
+   }else {
+     let new_arrr = await cart_liquid_check();
+     console.log("okie wait ", new_arrr);
+//      lastrun(new_arrr);
+   }
+  }  
+    //check state
+     function abbrState(a){const i=[['Arizona', 'AZ'], ['Alabama', 'AL'], ['Alaska', 'AK'], ['Arkansas', 'AR'], ['California', 'CA'], ['Colorado', 'CO'], ['Connecticut', 'CT'], ['Delaware', 'DE'], ['Florida', 'FL'], ['Georgia', 'GA'], ['Hawaii', 'HI'], ['Idaho', 'ID'], ['Illinois', 'IL'], ['Indiana', 'IN'], ['Iowa', 'IA'], ['Kansas', 'KS'], ['Kentucky', 'KY'], ['Kentucky', 'KY'], ['Louisiana', 'LA'], ['Maine', 'ME'], ['Maryland', 'MD'], ['Massachusetts', 'MA'], ['Michigan', 'MI'], ['Minnesota', 'MN'], ['Mississippi', 'MS'], ['Missouri', 'MO'], ['Montana', 'MT'], ['Nebraska', 'NE'], ['Nevada', 'NV'], ['New Hampshire', 'NH'], ['New Jersey', 'NJ'], ['New Mexico', 'NM'], ['New York', 'NY'], ['North Carolina', 'NC'], ['North Dakota', 'ND'], ['Ohio', 'OH'], ['Oklahoma', 'OK'], ['Oregon', 'OR'], ['Pennsylvania', 'PA'], ['Rhode Island', 'RI'], ['South Carolina', 'SC'], ['South Dakota', 'SD'], ['Tennessee', 'TN'], ['Texas', 'TX'], ['Utah', 'UT'], ['Vermont', 'VT'], ['Virginia', 'VA'], ['Washington', 'WA'], ['West Virginia', 'WV'], ['Wisconsin', 'WI'], ['Wyoming', 'WY']].find(i=>i.find(i=>i.toLowerCase()===a.toLowerCase()));return i?i.filter(i=>i.toLowerCase()!==a.toLowerCase()).join(""):null}
+    // check which state
+     function checkstate(N){return["AZ","CA","CO","ID","MT","NM","NV","OR","UT","WA","WY","ND","AR","KS","MO","NE","OK","SD"," TX"].includes(N)?1:["AR","CT","DE","IA","IL","IN","KS","KY","MA","MD","ME","MI","MN","MO","ND","NE","NH","NJ","NY","OH","PA","RI","SD","VT","WI","WV","AL","AZ","CO","DC","FL","GA","LA","MS","MT","NC","NM","OK","SC","TN","TX","VA","WY"].includes(N)?2:["AL","DC","FL","GA","LA","MS","NC","OK","SC","TN","TX","VA","AR","CT","DE","IA","IL","IN","KS","KY","MA","MD","ME","MI","MN","MO","NE","NH","NJ","NY","OH","PA","RI","SD","VT","WI","WV","CO","ND","NM"].includes(N)?3:0}
+     function checkstate_with_prioprity(state, arry_qty) {
+           var find_state_with = [{"Destination_State":"AZ","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"CA","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"CO","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"ID","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"MT","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"NM","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"NV","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"OR","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"UT","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"WA","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"WY","Origin_Warehouse_Location":0,"Priority":1},{"Destination_State":"AL","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"DC","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"FL","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"GA","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"LA","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"MS","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"NC","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"OK","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"SC","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"TN","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"TX","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"VA","Origin_Warehouse_Location":1,"Priority":1},{"Destination_State":"AR","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"CT","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"DE","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"IA","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"IL","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"IN","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"KS","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"KY","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"MA","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"MD","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"ME","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"MI","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"MN","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"MO","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"ND","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"NE","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"NH","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"NJ","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"NY","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"OH","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"PA","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"RI","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"SD","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"VT","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"WI","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"WV","Origin_Warehouse_Location":2,"Priority":1},{"Destination_State":"ND","Origin_Warehouse_Location":0,"Priority":2},{"Destination_State":"AR","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"CT","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"DE","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"IA","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"IL","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"IN","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"KS","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"KY","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"MA","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"MD","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"ME","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"MI","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"MN","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"MO","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"NE","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"NH","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"NJ","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"NY","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"OH","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"PA","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"RI","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"SD","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"VT","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"WI","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"WV","Origin_Warehouse_Location":1,"Priority":2},{"Destination_State":"AL","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"AZ","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"CO","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"DC","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"FL","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"GA","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"LA","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"MS","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"MT","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"NC","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"NM","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"OK","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"SC","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"TN","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"TX","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"VA","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"WY","Origin_Warehouse_Location":2,"Priority":2},{"Destination_State":"AR","Origin_Warehouse_Location":0,"Priority":3},{"Destination_State":"KS","Origin_Warehouse_Location":0,"Priority":3},{"Destination_State":"MO","Origin_Warehouse_Location":0,"Priority":3},{"Destination_State":"NE","Origin_Warehouse_Location":0,"Priority":3},{"Destination_State":"OK","Origin_Warehouse_Location":0,"Priority":3},{"Destination_State":"SD","Origin_Warehouse_Location":0,"Priority":3},{"Destination_State":"TX","Origin_Warehouse_Location":0,"Priority":3},{"Destination_State":"CO","Origin_Warehouse_Location":1,"Priority":3},{"Destination_State":"ND","Origin_Warehouse_Location":1,"Priority":3},{"Destination_State":"NM","Origin_Warehouse_Location":1,"Priority":3}];
+           for (let i = 0 ; i< find_state_with.length; i++){
+             if ( find_state_with[i].Destination_State == state && find_state_with[i].Priority == 1){
+               if (arry_qty[find_state_with[i].Origin_Warehouse_Location] > 50 ){
+                 return find_state_with[i].Origin_Warehouse_Location; 
+                 break;
+               }
+             }else if(find_state_with[i].Destination_State == state && find_state_with[i].Priority == 2){
+               if (  arry_qty[find_state_with[i].Origin_Warehouse_Location] > 50){
+                 return find_state_with[i].Origin_Warehouse_Location;
+                 break;
+               }
+             }else if(find_state_with[i].Destination_State == state && find_state_with[i].Priority == 3){
+               if ( arry_qty[find_state_with[i].Origin_Warehouse_Location] > 50){
+                 return find_state_with[i].Origin_Warehouse_Location;
+                 break;
+               }else {
+                 return 5;
+               }
+             }
+           }
+         }
+   async function fetchbigquery_table(s){
+     var data_Array = [{"destination_state":"PA","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"NJ","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"FL","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"VT","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"5.0"},{"destination_state":"MO","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"3.0"},{"destination_state":"NH","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"5.0"},{"destination_state":"AR","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"CT","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"5.0"},{"destination_state":"DE","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"MN","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"WI","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"GA","georgia_pooler_shipping_days":"1.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"NC","georgia_pooler_shipping_days":"1.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"KS","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"3.0"},{"destination_state":"SC","georgia_pooler_shipping_days":"1.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"NY","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"5.0"},{"destination_state":"AL","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"IA","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"TN","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"MA","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"5.0"},{"destination_state":"MD","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"VA","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"LA","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"RI","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"5.0"},{"destination_state":"MS","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"2.0","california_shipping_days":"4.0"},{"destination_state":"OK","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"3.0"},{"destination_state":"MT","georgia_pooler_shipping_days":"4.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"3.0"},{"destination_state":"NE","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"3.0"},{"destination_state":"ME","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"5.0"},{"destination_state":"SD","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"4.0"},{"destination_state":"CO","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"3.0"},{"destination_state":"AZ","georgia_pooler_shipping_days":"4.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"2.0"},{"destination_state":"ND","georgia_pooler_shipping_days":"4.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"4.0"},{"destination_state":"TX","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"3.0"},{"destination_state":"NM","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"3.0","california_shipping_days":"3.0"},{"destination_state":"ID","georgia_pooler_shipping_days":"4.0","indiana_4_3374_plainfield_shi":"4.0","california_shipping_days":"3.0"},{"destination_state":"OR","georgia_pooler_shipping_days":"5.0","indiana_4_3374_plainfield_shi":"4.0","california_shipping_days":"3.0"},{"destination_state":"WA","georgia_pooler_shipping_days":"5.0","indiana_4_3374_plainfield_shi":"4.0","california_shipping_days":"3.0"},{"destination_state":"UT","georgia_pooler_shipping_days":"4.0","indiana_4_3374_plainfield_shi":"4.0","california_shipping_days":"2.0"},{"destination_state":"CA","georgia_pooler_shipping_days":"4.0","indiana_4_3374_plainfield_shi":"4.0","california_shipping_days":"1.0"},{"destination_state":"WY","georgia_pooler_shipping_days":"4.0","indiana_4_3374_plainfield_shi":"4.0","california_shipping_days":"3.0"},{"destination_state":"NV","georgia_pooler_shipping_days":"5.0","indiana_4_3374_plainfield_shi":"5.0","california_shipping_days":"2.0"},{"destination_state":"KY","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"1.0","california_shipping_days":"4.0"},{"destination_state":"IN","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"1.0","california_shipping_days":"4.0"},{"destination_state":"WV","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"1.0","california_shipping_days":"4.0"},{"destination_state":"OH","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"1.0","california_shipping_days":"4.0"},{"destination_state":"IL","georgia_pooler_shipping_days":"2.0","indiana_4_3374_plainfield_shi":"1.0","california_shipping_days":"4.0"},{"destination_state":"MI","georgia_pooler_shipping_days":"3.0","indiana_4_3374_plainfield_shi":"1.0","california_shipping_days":"4.0"}];
+     for (let i = 0 ; i< data_Array.length ; i++) {
+       if (s == data_Array[i].destination_state){
+         return data_Array[i];
+       }
+     }
+   }
+   async function variant(n){
+   let two_latter_state = await abbrState(state_name);
+   let state_value_with_whole = await fetchbigquery_table(two_latter_state);
+     for (let i = 0; i < allthe.length; i++) {
+       var split_sku = allthe[i].split(":");
+         if (n == split_sku[0]) {
+           var inventory_qty = split_sku[1].split("-");
+           let accurate_result = await checkstate_with_prioprity(two_latter_state, inventory_qty);
+           console.log("hey there it's me : ", accurate_result );
+           switch (accurate_result) {
+             case 0:
+               return state_value_with_whole.california_shipping_days;
+               break;
+             case 1:
+               //return state_value_with_whole.georgia_pooler_shipping_days;
+               return 6;
+               break;
+             case 2:
+               return state_value_with_whole.indiana_4_3374_plainfield_shi
+               break;
+             case 5:
+               let whichst = await checkstate(two_latter_state);
+               if(whichst == 2) {
+                return 0;
+                break;
+               }else {
+                let defualt_value = await new_function_to_check_defualt(whichst, state_value_with_whole, inventory_qty);
+                return defualt_value;
+                break;
+               }
+             default:
+               let whichst_d = await checkstate(two_latter_state);
+               if(whichst_d == 2) {
+                return 0;
+               }else {
+                let defualt_value_d = await new_function_to_check_defualt(whichst_d, state_value_with_whole, inventory_qty);
+                return defualt_value_d;
+               }
+           }
+           break;
+         } 
+       }
+     }
+     function new_function_to_check_defualt(i,_,a){switch(i){case 1:return a[0]>50?_.california_shipping_days:a[1]>50?_.georgia_pooler_shipping_days:a[2]>50?_.indiana_4_3374_plainfield_shi:0;case 2:return a[1]>50?_.georgia_pooler_shipping_days:a[2]>50?_.indiana_4_3374_plainfield_shi:a[0]>50?_.california_shipping_days:0;case 3:return a[2]>50?_.indiana_4_3374_plainfield_shi:a[1]>50?_.georgia_pooler_shipping_days:a[0]>50?_.california_shipping_days:0}}
+   async function lastrun(ni){
+      console.log("new array : ", ni.length);
+     var one_day = '<span class="two_days_shipping" style="color: #3f944f;font-size:13px;font-weight:500;">FREE 1-DAY SHIPPING</span>';
+     var two_day = '<span class="two_days_shipping" style="color: #3f944f;font-size:13px;font-weight:500;">FREE 2-DAY SHIPPING</span>';
+     var free_day = '<span class="two_days_shipping" style="color: #3f944f;font-size:13px;font-weight:500;">FREE SHIPPING</span>';
+  //         var normal_day = '<span class="free-shipping-label">FREE SHIPPING<span style="font-size:12px;"> - orders arrive in 3-5 business days </span></span>';       
+      if(ni.length == 0 ){
+         $('.parent').append("");
+         console.log("heyss")
+      }else{
+        for(let i=0 ; i<ni.length ; i++){
+          console.log("hey")
+          var n =  $("tr").eq(i);
+          if(bcp_eligable[i] == false){
+            console.log("sdfsdf", ni[i])
+            n.find('.parent').append("");
+          }else{
+           console.log("sdfsdf", ni[i])
+            if(ni[i] == '1.0'){
+              console.log("two");
+              n.find('.parent').append(one_day);
+            }else if(ni[i] == '2.0'){
+             n.find('.parent').append(two_day);
+            }else {
+              n.find('.parent').append("");
+            } 
+          }
+        } 
+      }     
+    }
+  </script>

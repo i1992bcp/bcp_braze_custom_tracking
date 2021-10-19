@@ -1,0 +1,123 @@
+<style>
+	.flex_main_wrapper {
+		display: block;
+	}
+	.amb_img {
+		width: 100%;
+		height: auto;
+	}
+	.amb_left_header {
+		font-family: Roboto Slab;
+		font-weight: 600;
+		font-size:21px;
+		margin-bottom: 2%;
+		text-align: center;
+	}
+	.amb_left_subheader {
+		color: #727270;
+		font-size:14px;
+		text-align: center;
+	}
+	.amb_left_side {
+		margin: 0;
+		padding: 2%;
+	}
+    .amb_two-side_wrapper {
+        margin: 3% 0;
+    }
+	@media only screen and (min-width: 901px) {
+		.flex_main_wrapper {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+  		    grid-template-rows: auto auto;
+			grid-gap: 10px;
+		}
+		.amb_left_side {
+			display: -ms-grid;
+			display: grid;
+			place-content: center;
+			padding:14%;
+		}
+		.amb_left_header {
+			font-size: 32px;
+			text-align:left;
+		}
+		.amb_left_subheader {
+			font-size:16px;
+			text-align:left;
+		}
+		.cta_home_page {
+			color: #fff;
+			border-radius: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 40px;
+			width: 180px;
+			margin-top: 5%;
+			font-size: 14px;
+			font-weight: 600;
+		}
+	}
+</style>
+<section class="amb_two-side_wrapper page-width container">
+	<div class="flex_main_wrapper">
+        <div class="amb_right_side amb_same">
+			<img class="amb_img" src="{{ section.settings.about_opp_second_image | img_url: 'x500' }}" alt="Product Journey Ambassador Program" height="500"/>
+		</div>
+		<div class="amb_left_side amb_same">
+			<div class="amb_left_header">{{ section.settings.about_opp_second_text }}</div>
+			<div class="amb_left_subheader">{{ section.settings.about_opp_second_sub_text }}</div>
+			<a href="{{ section.settings.about_opp_link }}"><div class="cta_home_page" style="background-color: {{ section.settings.about_color_title }};">{{ section.settings.about_cta_text }}</div></a>
+
+		</div>
+	</div>
+</section>
+
+{% schema %}
+    {
+      "name": "Brand Opposite Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "about_opp_second_text",
+          "label": "Header",
+          "default": "Building Products Alongside Customers"
+        },
+        {
+          "type": "text",
+          "id": "about_opp_second_sub_text",
+          "label": "Sub Header",
+          "default": "Best Choice Products is proud to share a program where the gap between brand and customer is finally connected! We built this program in pursuit of our mission to include customers when developing best-sellers. This is an exclusive, invite-only program. It’s the perfect program for those who regularly shop at BCP and leave us valuable feedback through reviews. In joining this program, you’ll continue your status as a valued customer, but also provide us with your insights on future BCP best-sellers!"
+        },
+        {
+          "type": "image_picker",
+          "id": "about_opp_second_image",
+          "label": "Image"
+        },
+		{
+          "type": "text",
+          "id": "about_opp_cta_text",
+          "label": "CTA Text",
+          "default": "Get to Know Us!"
+        },
+		{
+		  "type": "color",
+		  "id": "about_opp_color_title",
+		  "label": "CTA BG color",
+		  "default": "#d42020"
+		},
+		{
+          "type": "url",
+          "id": "about_opp_link",
+          "label": "CTA link"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Brand Opposite Section",
+          "category": "Text"
+        }
+      ]
+    }
+  {% endschema %}

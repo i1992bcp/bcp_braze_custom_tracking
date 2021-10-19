@@ -1,0 +1,65 @@
+<section class="relative container container--no-mobile-padding large-row video-section js-video-section section-{{ section.id }}" data-section-id="{{ section.id }}"  data-section-type="video">
+  <div class="page-width container">
+    <div class="full-width relative">
+      <div class="video-container global-border-radius">
+        {% if section.settings.title != blank %}
+          <div class="text-center body-heading-font-every">
+            <h2 class="row">{{ section.settings.title | escape }}</h2>
+          </div>
+        {% endif %}
+        {% if section.settings.sub_title != blank %}
+          <div class="text-center video_sub_heading">
+            <div class="row">{{ section.settings.sub_title | escape }}</div>
+          </div>
+        {% endif %}
+        {% if section.settings.video_url == blank %}
+          <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          {% if section.settings.video_url.type == "youtube" %}
+            <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+      
+        {% endif %}
+          {% if section.settings.video_url.type == "vimeo" %}
+            <iframe src="//player.vimeo.com/video/{{ section.settings.video_url.id }}" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Video",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Video"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub Heading",
+        "default": "Sub Heading text goes here, this can be a small blurb about our pillars and brand."
+      },
+      {
+        "type": "video_url",
+        "id": "video_url",
+        "label": "Video link",
+        "accept": ["youtube", "vimeo"],
+        "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Video",
+        "category": "Video",
+        "settings": {
+          "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc"
+        }
+      }
+    ]
+  }
+{% endschema %}

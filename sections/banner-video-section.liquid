@@ -1,0 +1,134 @@
+<style>
+    {% for block in section.blocks %}
+        .section-{{ section.id }} .block-{{ forloop.index }} .overlay {
+            top: 70%;
+            left: 50%;
+        } 
+    {% endfor %}
+</style>
+<section class="container container--no-mobile-padding large-row full-width-slideshow full-width-background relative section-{{ section.id }}">
+    <div class="page-width relative">
+        <div class="full-width relative js-slideshow-section" id="about-1">
+            {%- for block in section.blocks -%}
+                <div class="slide relative avoid-overlaps block-{{ forloop.index }}" {{ block.shopify_attributes }}>
+                    <div class="avoid-overlaps__mobile-container">
+                        <div class="desktop-image-slider">
+                            {% if block.settings.image == blank %}
+                                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% else %}
+                                {% include 'responsive-image', image: block.settings.image, nomax: true %}
+                            {% endif %}
+                        </div>
+                        <div class="mobile-image-slider">
+                            {% if block.settings.mobile_image == blank %}
+                                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% else %}
+                                {% include 'responsive-image', image: block.settings.mobile_image, nomax: true, class:desktop %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="overlay overlay--center global-border-radius-overlays avoid-overlaps__item">
+                        <div class="overlay__content">
+                            {%- if block.settings.overlay_title != blank -%}
+                                <h2 class="large-title">{{ block.settings.overlay_title }}</h2>      
+                            {%- endif -%}
+                            {%- if block.settings.overlay_text != blank -%}
+                                <div class="overlay-text">{{ block.settings.overlay_text }}</div>
+                            {%- endif -%}
+                            {%- if block.settings.overlay_url_text_1 != blank -%}
+                                <a class="btn btn--small btn--primary">{{ block.settings.overlay_url_text_1 | escape }}</a>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "max_blocks": 10,
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Desktop-Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile-Image"
+          },
+          {
+            "type": "header",
+            "content": "Overlay"
+          },
+          {
+            "type": "text",
+            "id": "overlay_title",
+            "label": "Heading",
+            "default": "Slideshow"
+          },
+          {
+            "type": "text",
+            "id": "overlay_text",
+            "label": "Subheading",
+            "default": "Use this section to welcome customers to your store, show off your images or display a promotion"
+          },
+          {
+            "type": "text",
+            "id": "overlay_url_text_1",
+            "label": "Button 1 text"
+          },
+          {
+            "type": "url",
+            "id": "overlay_url_1",
+            "label": "Button 1 link"
+          },
+          {
+            "type": "radio",
+            "id": "button_1_position",
+            "label": "Button 1 position",
+            "options": [
+              { "value": "right", "label": "Button - right" },
+              { "value": "center", "label": "Button - center" },
+              { "value": "left", "label": "left"}
+            ],
+            "default": "center"
+          },
+          {
+            "type": "radio",
+            "id": "button_1_style",
+            "label": "Button 1 style",
+            "options": [
+              { "value": "button_1", "label": "Button - primary" },
+              { "value": "button_2", "label": "Button - secondary" },
+              { "value": "link_style", "label": "Link"}
+            ],
+            "default": "button_1"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slideshow",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

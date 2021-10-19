@@ -1,0 +1,197 @@
+var hasLocalStorage = (function() {
+    try {
+        localStorage.setItem('test_storage', 'test');
+        localStorage.removeItem('test_storage');
+        return true;
+    } catch (ex) {
+        return false;
+    }
+})();
+
+function CartTracker() {
+    var _cart = hasLocalStorage && localStorage.ldCart && JSON.parse(localStorage.ldCart)
+    var _interval;
+    var _onChangeCbs = [];
+    var self = this;
+
+    this.start = function() {
+        interval = setInterval(function() {
+            fetchCart(function(newCart) {
+                if (JSON.stringify(_cart.items) !== JSON.stringify(newCart.items)) {
+                    _onChangeCbs.forEach(function(_onChangeCb) {
+                        _onChangeCb(getChanges(_cart, newCart))
+                    })
+                    _cart = newCart;
+                    if (hasLocalStorage) localStorage.ldCart = JSON.stringify(newCart);
+                }
+
+            })
+        }, 2000)
+    }
+
+    function fetchCart(_cb) {
+        $.getJSON('/cart.json', function(__cart) {
+            _cb(__cart);
+        })
+
+    }
+
+
+    function getChanges(pastCart, currentCart) {
+        var pastCartProds = pastCart.items.map(cloneObject)
+        var currentCardProds = currentCart.items.map(cloneObject)
+
+        var changes = pastCartProds.length ? getArrChanges(pastCartProds, currentCardProds) : getArrChanges(currentCardProds, pastCartProds);
+        function getArrChanges(cart1, cart2) {
+            var returnVal = cart1
+                .map(function(pastProd) {
+                    var currentCartProd = cart2.filter(function(prod) {
+                        if (prod.id === pastProd.id) {
+                            prod.analysed = true;
+                            return true
+                        }
+
+                        return false;
+                    })[0]
+                    var returnProd = cloneObject(pastProd);
+                    if (!currentCartProd) {
+                        returnProd.quantity = -returnProd.quantity;
+                        return returnProd;
+                    }
+
+                    returnProd.quantity = currentCartProd.quantity - pastProd.quantity;
+
+                    return returnProd;
+                })
+                .concat(cart2.filter(function(currentProd) { /* in case cart2 has new prods that weren't in cart */
+                    return !currentProd.analysed
+                }))
+
+            return returnVal
+        }
+
+        function unwindProds(arr) {
+            var returnArr = [];
+
+            arr.forEach(function(prod) {
+                var i;
+                var clonedProduct;
+                var quantity = Math.abs(prod.quantity);
+                clonedProduct = cloneObject(prod);
+                clonedProduct.quantity = 1;
+
+                for (i = 0; i < quantity; i++) {
+                    returnArr.push(clonedProduct);
+                }
+            })
+
+            return returnArr;
+        }
+
+        function cloneObject (item) {
+            return JSON.parse(JSON.stringify(item))
+        }
+
+        return {
+            added: unwindProds(changes
+                .filter(function (prod) {
+                    return pastCartProds.length ? prod.quantity > 0 : prod.quantity < 0;
+                })),
+            removed: unwindProds(changes
+                .filter(function (prod) {
+                    return pastCartProds.length ? prod.quantity < 0 : prod.quantity > 0;
+                })),
+        }
+    }
+
+    this.onChange = function (newCb) { _onChangeCbs.push(newCb) }
+    this.stop = function () { clearInterval(interval) }
+
+    if (!_cart) {
+        fetchCart(function(newCart) {
+            _cart = newCart;
+            if (hasLocalStorage) localStorage.ldCart = JSON.stringify(newCart);
+            self.start();
+        })
+    } else {
+        self.start();
+    }
+}
+
+ // Cart Page
+ if (window.location.href.indexOf("cart") > -1) {
+
+    fetch('/cart.js/').then(async res => {
+        let cartJSON = await res.json();
+        let products = cartJSON.items;
+
+        var productIDs = products.map(({id, product_title}) => {
+            return {
+                product: product_title,
+                product_id: id
+            }
+        })
+
+        // Cart Viewed
+        setTimeout(() => {
+            appboy.logCustomEvent("Cart Viewed", {
+                products: productIDs
+            });
+        }, 
+        3000)
+    })
+
+}
+
+$(document).ready(function() {
+    // var product = BrazeDataLayer.ecommerce.detail
+    //     && BrazeDataLayer.ecommerce.detail.products
+    //     && BrazeDataLayer.ecommerce.detail.products[0]
+
+    // var tracker = new CartTracker();
+    // tracker.onChange(function(changes) {
+    //     changes.added.forEach( function(addedProduct) {
+    //         var productPrice = parseFloat(addedProduct.price/100);
+    //         if (product) {
+    //             // Product Added
+    //             appboy.logCustomEvent("Product Added", {
+    //                 product_id: addedProduct.product_id,
+    //                 price: productPrice
+    //             })
+    //         }
+    //     })
+    // })
+
+    // $('a')
+    // .filter(function(){ 
+    //     /* only add event to products */ 
+    //     return this.href.indexOf('/products') !== -1 
+    // })
+    $('.site-header__cart-toggle.js-drawer-open-right')
+    .click(function(ev){
+
+        fetch('/cart.js/').then(async res => {
+            let cartJSON = await res.json();
+            let products = cartJSON.items;
+    
+            var productIDs = products.map(({id, product_title}) => {
+                return {
+                    product: product_title,
+                    product_id: id
+                }
+            })
+    
+            if ($('#CartDrawer').css('display') === 'block') {
+                // Cart Viewed
+                setTimeout(() => {
+                    appboy.logCustomEvent("Cart Viewed", {
+                        products: productIDs
+                    });
+                }, 
+                3000)
+                // console.log('Cart Viewed');
+            }
+        })
+    })
+});
+

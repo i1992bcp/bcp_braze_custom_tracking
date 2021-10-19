@@ -1,0 +1,114 @@
+<style>
+  .section-{{ section.id }} .subscribe-section {
+    background-color: {{ section.settings.section_background_colour }};
+    color: {{ section.settings.section_text_colour }};
+  }
+
+  .section-{{ section.id }} .subscribe-form__inputs .input-wrapper label {
+    color: {{ section.settings.section_text_colour | color_modify: 'alpha', 0.7 }};
+  }
+
+  .section-{{ section.id }} .subscribe-form__email {
+    border-bottom: 1px solid {{ section.settings.section_text_colour | color_modify: 'alpha', 0.3 }};
+  }
+</style>
+
+<section class="container container--no-mobile-padding large-row section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="subscribe">
+  <div class="subscribe-section large-section page-width global-border-radius">
+    <div class="reading-width subscribe-content">
+      <h2 class="large-title">{{ section.settings.section_title }}</h2>
+      {% if section.settings.section_subtitle != blank %}
+        <div class="overlay-text rte">{{ section.settings.section_subtitle }}</div>
+      {% endif %}
+    </div>
+    <div class="reading-width subscribe-form">
+      {% form 'customer' %}
+        {% if form.posted_successfully? %}
+          <div class="subscribe-form__response subscribe-form__response--success">
+            <h4>{{ 'homepage.subscribe.success_message' | t }}</h4>
+          </div>
+        {% else %}
+          {% if form.errors %}
+            <div class="subscribe-form__response">
+              {% for field in form.errors %}
+              <p class="error-message">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+          <div class="subscribe-form__inputs">
+            <div class="input-wrapper grid__item two-thirds small-down--one-whole">
+              <label class="subscribe-form__label" for="mailinglist_email">{{ section.settings.form_placeholder_text }}</label>
+              <input type="email" required class="subscribe-form__email required grid__item one-third" value="" id="mailinglist_email" name="contact[email]" />
+            </div>
+            <div class="grid__item one-third small-down--one-whole">
+              <button class="btn {% if section.settings.form_button_style == 'button_1' %} btn--primary{% else %} btn--secondary{% endif %} subscribe-form__submit" type="submit">{{ section.settings.form_button_text }}</button>
+            </div>
+          </div>
+        {% endif %}
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "color",
+        "id": "section_background_colour",
+        "label": "Background color",
+        "default": "#fbeae5"
+      },
+      {
+        "type": "color",
+        "id": "section_text_colour",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Heading",
+        "default": "Newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "section_subtitle",
+        "label": "Subheading",
+        "default": "<p>Sign up now!<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "form_placeholder_text",
+        "label": "Label",
+        "default": "Email address"
+      },
+      {
+        "type": "text",
+        "id": "form_button_text",
+        "label": "Button text",
+        "default": "Sign up"
+      },
+      {
+        "type": "radio",
+        "id": "form_button_style",
+        "label": "Button style",
+        "options": [
+          { "value": "button_1", "label": "Button - primary" },
+          { "value": "button_2", "label": "Button - secondary" }
+        ],
+        "default": "button_1"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter",
+        "category": "Promotional",
+        "settings": {}
+      }
+    ]
+  }
+
+{% endschema %}

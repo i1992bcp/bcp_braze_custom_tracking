@@ -1,0 +1,34 @@
+
+{%- assign flags = false -%}
+{%- assign count_flags = false -%}
+{%- for tag in product.tags -%}
+    {%- if flags -%}   
+    {%- else -%}
+        {%- if tag contains 'avg_rating'  -%}
+        {%- assign flags = true -%}
+        {%- assign avg_r = tag | split: ":" -%}
+        {%- assign rating_value = avg_r[1] -%}
+        {%- assign avg_width = rating_value | times: 100 | divided_by: 5 -%}
+        <div class="hp_ratings">
+            <div class="hp_empty-stars"></div>
+            <div class="hp_full-stars" id="set_width_rating_h" style="color : #ffd700;width:{{ avg_width }}%"></div>
+        </div><span id="rating_display">({{ rating_value }})</span>
+    {%- endif -%}
+   {%- endif -%} 
+  {%- if tag contains 'review_count'  -%}
+    {%- if count_flags -%}
+    {%- else -%}
+        {%- assign count_flags = true -%}    
+        {%- assign avg_c = tag | split: ":" -%}
+        {%- assign count_value = avg_c[1] -%}
+        <span id="number_rating_count_h" style="color: #282828; margin-left: 5px;">{{ count_value }}</span>
+     {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if flags == false -%}
+    <div class="hp_ratings">
+        <div class="hp_empty-starss"></div>
+        <div class="hp_full-stars" id="set_width_rating_h"></div>
+    </div>
+{%- endif -%}

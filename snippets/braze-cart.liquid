@@ -124,6 +124,7 @@ function CartTracker() {
     fetch('/cart.js/').then(async res => {
         let cartJSON = await res.json();
         let products = cartJSON.items;
+        
 
         var productIDs = products.map(({id, product_title}) => {
             return {
@@ -132,6 +133,18 @@ function CartTracker() {
             }
         })
 
+        var productQuantity = 
+            products.map(({id, quantity}) => {
+                return {
+                    quantity
+                }
+            }
+        )
+
+        // productUpdate.push(productQuantity);
+        // console.log('products~')
+        // console.log(productQuantity);
+
         // Cart Viewed
         setTimeout(() => {
             appboy.logCustomEvent("Cart Viewed", {
@@ -139,6 +152,44 @@ function CartTracker() {
             });
         }, 
         3000)
+
+        
+        // $('input.cart__update.cart_update_input')
+        // .click(function() {
+        //     fetch('/cart.js/').then(async res => {
+        //         let cart = await res.json();
+        //         let products = cart.items;
+
+        //         let productQuantityB = 
+        //             products.map(({id, quantity}) => {
+        //                 return {
+        //                     quantity
+        //                 }
+        //             }
+        //         )
+
+        //         productQuantity.forEach()
+
+        //         if ( productQuantityB == productQuantity) {
+        //             console.log('same!');
+        //         } else {
+        //             console.log('different!');
+        //             console.log(productQuantityB)
+        //             console.log(productQuantity)
+        //         }
+            
+        //     })
+        // })
+
+
+        // $('#shopify-section-cart-template form input.checkout_btn')
+        // .click(function() {
+        //     // appboy.logCustomEvent("Product Added", {
+        //     //     product_id: $('.quickbuy-form.placeholder').attr("data-product-id"),
+        //     //     price: $('.quickbuy__price .theme-money').text().split('$189.99')[0]
+        //     // })
+        //     console.log('product added');
+        // })
     })
 
 }

@@ -1,12 +1,42 @@
 // Product 
 {%if product%}
     var product = {{ product | json }};
+
     if (product && !product.error) {
+
+        fetch('/cart.js/').then(async res => {
+            var cartJSON = await res.json();
+            var cartId = cartJSON.token;
+            var productQuantity = $('.quantity-proxy').val();
+    
+            BrazeDataLayer.ecommerce.detail.products[0]['quantity'] = productQuantity;
+            BrazeDataLayer.ecommerce.detail.products[0]['cart_id'] = cartId;
+    
+            // var cartProducts = cartJSON.items;
+            // var cart = cartProducts.map(({id, product_title}) => {
+            //     return {
+            //         product: product_title,
+            //         product_id: id
+            //     }
+            // })
+        })
+
+
         BrazeDataLayer.ecommerce.detail = {products: []}
+
         BrazeDataLayer.ecommerce.detail.products.push({
             product_id: product.id,
-            price: parseFloat(product.price/100),
+            sku: product.variants[0].sku,
+            category: product.type,
             name: product.title,
+            // brand: these items might not have brands?
+            variant: product.variants[0].title,
+            price: ('$' + parseFloat(product.price/100)),
+            // quantity: productQuantity,
+            // coupon: not applicable till checkout?
+            // position: not applicable?
+            url: window.location.href,
+            image_url: product.images[0],
             type: product.type
         });
     }
@@ -14,11 +44,25 @@
 
     // Product Viewed
     appboy.logCustomEvent("Product Viewed", {
+        cart_id: BrazeDataLayer.ecommerce.detail.products[0].cart_id,
         product_id: BrazeDataLayer.ecommerce.detail.products[0].product_id,
+        sku: BrazeDataLayer.ecommerce.detail.products[0].sku,
+        category: BrazeDataLayer.ecommerce.detail.products[0].category,
+        name: BrazeDataLayer.ecommerce.detail.products[0].name,
+        variant: BrazeDataLayer.ecommerce.detail.products[0].variant,
         price: BrazeDataLayer.ecommerce.detail.products[0].price,
+        quantity: BrazeDataLayer.ecommerce.detail.products[0].quantity,
+        url: BrazeDataLayer.ecommerce.detail.products[0].url,
+        image_url: BrazeDataLayer.ecommerce.detail.products[0].image_url
     });
     
     $(document).ready(function() {
+
+        $('.quantity-proxy')
+        .change(function() {
+            productQuantity = $('.quantity-proxy').val();
+            BrazeDataLayer.ecommerce.detail.products.quantity = productQuantity
+        });
         
         $(".custom-add-to-wishlist").on("click", function(e){
             
@@ -89,7 +133,7 @@ if (collections && !collections.error) {
         // Collection | Search
         if (window.location.href.indexOf("search?q") > -1 || window.location.href.indexOf("/collections/") > -1) {
             
-            $('a')
+            // $('a')
 
             $('a')
             .filter(function(){ 
@@ -105,6 +149,12 @@ if (collections && !collections.error) {
                     })
                 }
             })
+            
+            // $('a')
+            // .click(function(ev){
+            //     ev.preventDefault()
+            //     console.log($(this).parent()[0].attr(''))
+            // })
         }
 
         {% unless search.results_count == 0 %}
@@ -144,31 +194,62 @@ $(document).ready(function() {
         changes.added.forEach( function(addedProduct) {
             var productPrice = parseFloat(addedProduct.price/100);
             if (product) {
+
                 // Product Added
                 appboy.logCustomEvent("Product Added", {
                     product_id: addedProduct.product_id,
                     price: productPrice
+                });
+
+                fetch('/cart.js/').then(async res => {
+                    let cartJSON = await res.json();
+                    let products = cartJSON.items;
+
+                    var productIDs = products.map(({id, product_title}) => {
+                        return {
+                            product: product_title,
+                            product_id: id
+                        }
+                    })
+
+                    appboy.logCustomEvent("Cart Viewed", {
+                        products: productIDs
+                    });
+      
                 })
+
             }
         })
     })
 
-    $('a')
-    .filter(function(){ 
-        /* only add event to products */ 
-        return this.href.indexOf('/products') !== -1 
-    })
-    .click(function(ev){
-        // Product Clicked ( Home )
-        appboy.logCustomEvent("Product Clicked", {
-            price: $('.product-price__compare').text().split('$')[1],
-            product_id: $(this).attr("data-id") 
+    if (window.location.href == 'https://bestchoiceproducts.com/') {
+        $('a')
+        .filter(function(){ 
+            /* only add event to products */ 
+            return this.href.indexOf('/products') !== -1 
         })
+        .click(function(ev){
+            // Product Clicked ( Home )
+            appboy.logCustomEvent("Product Clicked", {
+                price: $('.product-price__compare').text().split('$')[1],
+                product_id: $(this).attr("data-id") 
+            })
+        })
+    }
+
+    // Quick Shop Add to Cart
+    $('#AddToCartForm')
+    .submit(function() {
+        // appboy.logCustomEvent("Product Added", {
+        //     product_id: $('.quickbuy-form.placeholder').attr("data-product-id"),
+        //     price: $('.quickbuy__price .theme-money').text().split('$189.99')[0]
+        // })
+        console.log('product added');
     })
 
+    // Wishlist Product Added to Cart
     $('button.custom-wishlist-add-to-cart')
     .click(function(){
-        // Wishlist Product Added to Cart
         appboy.logCustomEvent("Wishlist Product Added to Cart", {
             // wishlist_id: ,
             product_id: $(this).attr("data-product-id") ,
@@ -178,16 +259,22 @@ $(document).ready(function() {
 
     // Homepage Banner Module
     $('.desktop-image-slider a')
-    .click(function(ev){
+    .click(function(){
         appboy.logCustomEvent("Module Clicked", {});
     })
 
     // Homepage Button Module
     $('.cta_home_page')
-    .click(function(ev){
+    .click(function(){
         appboy.logCustomEvent("Module Clicked", {});
     });
 
+    // Identify Call on Newsletter Signup using Email
+    $('#email_signup')
+    .submit(function() {
+        appboy.changeUser($('#k_id_email').val())
+    })
 
 });
 
+// Added the identify newsletter functionality to our latest version copy theme and tested on my end with the email working as Irving demo'd

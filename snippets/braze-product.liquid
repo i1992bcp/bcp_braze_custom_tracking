@@ -68,19 +68,32 @@
             
             // Product Added To Wishlist
             appboy.logCustomEvent("Product Added to Wishlist", {
-                product:BrazeDataLayer.ecommerce.detail.products[0].name,
-                category: BrazeDataLayer.ecommerce.detail.products[0].type,
                 product_id: BrazeDataLayer.ecommerce.detail.products[0].product_id,
+                sku: BrazeDataLayer.ecommerce.detail.products[0].sku,
+                category: BrazeDataLayer.ecommerce.detail.products[0].category,
+                name: BrazeDataLayer.ecommerce.detail.products[0].name,
+                variant: BrazeDataLayer.ecommerce.detail.products[0].variant,
                 price: BrazeDataLayer.ecommerce.detail.products[0].price,
+                quantity: BrazeDataLayer.ecommerce.detail.products[0].quantity,
+                url: BrazeDataLayer.ecommerce.detail.products[0].url,
+                image_url: BrazeDataLayer.ecommerce.detail.products[0].image_url
             })
         }); 
         
         $('i.share').live('click', function() {
             // Product Shared
             appboy.logCustomEvent("Product Shared", {
+                share_via: this.textContent,
+                // share_message: not sure if we can for now since it's another box
+                // recipient: shared to a social page rather than receiver
                 product_id: BrazeDataLayer.ecommerce.detail.products[0].product_id,
+                sku: BrazeDataLayer.ecommerce.detail.products[0].sku,
+                category: BrazeDataLayer.ecommerce.detail.products[0].category,
+                name: BrazeDataLayer.ecommerce.detail.products[0].name,
+                variant: BrazeDataLayer.ecommerce.detail.products[0].variant,
                 price: BrazeDataLayer.ecommerce.detail.products[0].price,
-                share_via: this.textContent
+                url: BrazeDataLayer.ecommerce.detail.products[0].url,
+                image_url: BrazeDataLayer.ecommerce.detail.products[0].image_url
             })
         });
 
@@ -223,18 +236,50 @@ $(document).ready(function() {
     })
 
     if (window.location.href == 'https://bestchoiceproducts.com/') {
-        $('a')
-        .filter(function(){ 
-            /* only add event to products */ 
-            return this.href.indexOf('/products') !== -1 
-        })
-        .click(function(ev){
-            // Product Clicked ( Home )
-            appboy.logCustomEvent("Product Clicked", {
-                price: $('.product-price__compare').text().split('$')[1],
-                product_id: $(this).attr("data-id") 
+
+        fetch('/cart.js/').then(async res => {
+            let cartJSON = await res.json();
+            let products = cartJSON.items;
+            let cartID = cartJSON.token;
+
+            // var productIDs = products.map(({id, product_title}) => {
+            //     return {
+            //         product: product_title,
+            //         product_id: id
+            //     }
+            // })
+
+            $('a')
+            .filter(function(){ 
+                /* only add event to products */ 
+                return this.href.indexOf('/products') !== -1 
             })
+            .click(function(ev){
+
+                // console.log($(this)[0])
+                // console.log($(this)[0].href)
+                // console.log($(this).child().text()
+                // console.log($(this).children('span').eq(0))
+                // console.log($(this).children('span').eq(0).text())
+                
+                // Product Clicked ( Home )
+                appboy.logCustomEvent("Product Clicked", {
+                    cart_id: cartID,
+                    product_id: $(this).attr("data-id"),
+                    sku: $(this).attr("data-sku"),
+                    category: $(this).attr("data-category"), 
+                    name: $(this).children('span').eq(0).text(),
+                    // variant: not sure if these have variants from the home page
+                    price: $('.product-price__compare').text().split('$')[1],
+                    quantity: "1",
+                    url: $(this)[0].href,
+                    image_url: "https:" + $(this).attr("data-image")
+                })
+            })
+
         })
+
+       
     }
 
     // Quick Shop Add to Cart
@@ -260,13 +305,23 @@ $(document).ready(function() {
     // Homepage Banner Module
     $('.desktop-image-slider a')
     .click(function(){
-        appboy.logCustomEvent("Module Clicked", {});
+        appboy.logCustomEvent("Module Clicked", {
+            promotion_id: $(this).attr("data-section-id"),
+            promotion_creative: $('.cta_home_page').text(),
+            promotion_name: "Desktop Image Slider",
+            position: "Banner"
+        });
     })
 
     // Homepage Button Module
     $('.cta_home_page')
     .click(function(){
-        appboy.logCustomEvent("Module Clicked", {});
+        appboy.logCustomEvent("Module Clicked", {
+            // promotion_id: not sure if existant for this button/section
+            promotion_creative: $('.cta_home_page').text(),
+            promotion_name: "About",
+            position: "Body"
+        });
     });
 
     // Identify Call on Newsletter Signup using Email

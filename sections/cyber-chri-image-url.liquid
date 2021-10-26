@@ -7,14 +7,14 @@
         {% if section.settings.cyber_chri_image == blank %}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {% else %}
-          <a href="{{ section.settings.cyber_chri_overlay_url_1_full }}">{% include 'responsive-image', image: section.settings.cyber_chri_image, nomax: true %}</a>
+          <a href="{{ section.settings.cyber_chri_overlay_url_1_full }}" data-section-id="{{ section.id }}">{% include 'responsive-image', image: section.settings.cyber_chri_image, nomax: true %}</a>
         {% endif %}
       </div>
       <div class="mobile-image-slider">
         {% if section.settings.cyber_chri_mobile_full_image == blank %}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {% else %}
-          <a href="{{ section.settings.cyber_chri_overlay_url_1_full }}">{% include 'responsive-image', image: section.settings.cyber_chri_mobile_full_image, nomax: true %}</a>
+          <a href="{{ section.settings.cyber_chri_overlay_url_1_full }}" data-section-id="{{ section.id }}">{% include 'responsive-image', image: section.settings.cyber_chri_mobile_full_image, nomax: true %}</a>
         {% endif %}
       </div>
       </div>

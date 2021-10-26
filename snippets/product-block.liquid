@@ -3,9 +3,15 @@
 <div class="product-block {{ grid_class | default: 'grid__item one-quarter small-down--one-half' }} {% if quickbuy %} js-contains-quickbuy{% endif %}">
   <div class="product-block__image-container global-border-radius hover-images {% if product.images.size > 1 and settings.hover_image_enabled == true %} hover-images--two {% if product.featured_image.aspect_ratio == product.images[1].aspect_ratio %}same-aspect-ratio{% endif %}{% endif %} relative">
 
-    <a class="product-block__image" href="{{ product.url }}"  data-id={{ product.id }}>
+    <a class="product-block__image" href="{{ product.url }}" 
+      data-sku={{ product.selected_or_first_available_variant.sku }} 
+      data-category= {{ product.type }}
+      data-quantity= {{ product.available }}
+      data-price= {{ product.price }}
+      data-image = {{ product | img_url }}
+      data-id={{ product.id }}>
+      <span class="image-name" style="display:none;">{{ product.title }}</span>
       {%- if product.featured_image != blank -%}
-
         <div class="image-one">
           {% include 'responsive-image', image: product.featured_image %}
         </div>

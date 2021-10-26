@@ -123,15 +123,28 @@ function CartTracker() {
 
     fetch('/cart.js/').then(async res => {
         let cartJSON = await res.json();
+        let cartID = cartJSON.token;
         let products = cartJSON.items;
         
 
-        var productIDs = products.map(({id, product_title}) => {
+        var productJSON = products.map(({id, image, final_price, quantity, sku, product_title, product_type, variant_title, url, vendor}) => {
             return {
-                product: product_title,
-                product_id: id
+                product_id: id,
+                sku: sku, 
+                category: product_type, 
+                name: product_title,
+                brand: vendor,
+                variant: variant_title,
+                price: ('$' + final_price.toString().slice(0, -2) + '.' + final_price.toString().slice(-2)),
+                quantity: quantity,
+                // coupon: applied on next page
+                // position: only one position?
+                url: (window.location.href + url),
+                image_url: image
             }
         })
+
+        console.log(productJSON)
 
         var productQuantity = 
             products.map(({id, quantity}) => {
@@ -148,10 +161,22 @@ function CartTracker() {
         // Cart Viewed
         setTimeout(() => {
             appboy.logCustomEvent("Cart Viewed", {
-                products: productIDs
+                cart_id: cartID,
+                products: productJSON
             });
         }, 
         3000)
+
+        // Cart Page Plus Sign
+        $('.quantity__plus')
+        .click(() => {
+            appboy.logCustomEvent("Product Added", {
+                cart_id: cartID,
+
+                // Adding JSON since this needs to reference the quantity in the Cart JSON
+                products: productJSON
+            });
+        })
 
         
         // $('input.cart__update.cart_update_input')

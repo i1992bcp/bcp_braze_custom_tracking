@@ -18,21 +18,42 @@ $(document).ready(function() {
             console.log('cart');
             console.log(cartJSON);
 
-            var productIDs = products.map(({id, product_title}) => {
+            var productJSON = products.map(({id, product_title, sku, product_type, vendor, variant_title, price, quantity, url, image}) => {
                 return {
-                    product: product_title,
-                    product_id: id
+                    product_id: id,
+                    sku: sku,
+                    category: product_type,
+                    name: product_title,
+                    brand: vendor,
+                    variant: variant_title,
+                    price: ('$' + price.toString().slice(0, -2) + '.' + price.toString().slice(-2)),
+                    quantity: quantity,
+                    // coupon: none are per item to my knowledge so far
+                    // position: only one layout since checkout page
+                    url: window.location.href + url,
+                    image: image
                 }
             })
 
             if (window.location.href.indexOf("checkouts") > -1) {
+
+                // if ($('tr.total-line.total-line--reduction span.reduction-code span.reduction-code__text').text().length > 0) {
+                        
+                //     console.log('Discount Applied');
+                // }
                 // Checkout Started
                 setTimeout(() => {
                     appboy.logCustomEvent("Checkout Started", {
                         order_id: orderID,
-                        affiliation: 
+                        affiliation: window.location.href.split('com')[0] + 'com',
+                        total: $('.payment-due__price')[0].innerText,
                         revenue: d,
-                        products: productIDs
+                        // shipping: provided on the next step
+                        tax: $('.total-line--taxes span')[0].innerText,
+                        discount: $('.total-line.total-line--reduction .total-line__price span.order-summary__emphasis')[0].innerText.split('- ')[1],
+                        coupon: $('.reduction-code__text')[0].innerText,
+                        currency: Shopify.Checkout.currency,
+                        products: productJSON
                     });
                 }, 
                 3000)
@@ -53,14 +74,18 @@ $(document).ready(function() {
                 ) {
                     
                     // Payment Info Entered Correctly
-                    // console.log('Payment Info Entered');
+                    console.log('Payment Info Entered');
                     appboy.logCustomEvent("Payment Info Entered", {
+                        // checkout_id: doesn't exist until order is created or if we use server graphql
                         order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+                        step: "Contact Information",
+                        // shipping_method: provided on second,
+                        // payment_method: provided on third step,
                     })
                 } else {
 
                     // Payment Info Entered Incorrectly
-                    // console.log('Payment Info Entered Incorrect');
+                    console.log('Payment Info Entered Incorrect');
                 }
             })
 
@@ -101,9 +126,9 @@ $(document).ready(function() {
                             // coupon_name: same as coupon currently
                         })
 
-                        setTimeout(() => {
-                            location.href = location.href;
-                        }, 4000);
+                        // setTimeout(() => {
+                        //     location.href = location.href;
+                        // }, 4000);
 
 
                         // Coupon Accepted [Optional]
@@ -119,8 +144,9 @@ $(document).ready(function() {
             });
 
             $('div.tags-list div.tag form.edit_checkout div.tag__wrapper button.tag__button')
-            .click(() => {
+            .click((e) => {
                 // Coupon Removed
+                e.preventDefault();
                 console.log('Appboy Coupon Removed');
                 var coupon_id = $('.total-line.total-line--reduction .reduction-code__text').text();
                 appboy.logCustomEvent("Coupon Removed", {
@@ -131,11 +157,31 @@ $(document).ready(function() {
                     discount: $('.visually-hidden.skeleton-while-loading-sr').text().split(' off ')[0].trim()
 
                 });
-                setTimeout(() => {
-                    location.href = location.href;
-                }, 4000);
+                // setTimeout(() => {
+                //     location.href = location.href;
+                // }, 4000);
 
             })
+
+            // .click(function(ev){
+            //     ev.preventDefault();
+            //     var self = this;
+            //     // var clickedProductDetails = segmentDataLayer.ecommerce.impressions.filter(function(product){
+            //     //     var linkSplit = self.href.split('/products/')
+            //     //     var productLink = linkSplit && linkSplit[1]
+            //     //     return productLink == product.handle
+            //     // })[0];
+
+            //     if (clickedProductDetails) {
+            //         /* only wait 1 second before redirecting */
+            //         self.timeout = window.setTimeout(function(){
+            //             document.location = self.href;
+            //         },1000)
+            //             analytics.track('Product Clicked', clickedProductDetails)
+
+            //     }
+            //     else document.location = self.href;
+            // })
         })
 
 });

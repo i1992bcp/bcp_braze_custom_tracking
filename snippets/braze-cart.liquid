@@ -144,15 +144,21 @@ function CartTracker() {
             }
         })
 
-        console.log(productJSON)
+        // var productQuantityOld = products.map(({id, quantity}) => {
+        //     return {
+        //         quantity: quantity,
+        //     }
+        // })
 
-        var productQuantity = 
-            products.map(({id, quantity}) => {
-                return {
-                    quantity
-                }
-            }
-        )
+        // console.log(productJSON)
+
+        // var productQuantity = 
+        //     products.map(({id, quantity}) => {
+        //         return {
+        //             quantity
+        //         }
+        //     }
+        // )
 
         // productUpdate.push(productQuantity);
         // console.log('products~')
@@ -173,7 +179,7 @@ function CartTracker() {
             appboy.logCustomEvent("Product Added", {
                 cart_id: cartID,
 
-                // Adding JSON since this needs to reference the quantity in the Cart JSON
+                // Adding since click permanently updates Cart JSON and since this references the quantity that changes in the Cart JSON
                 products: productJSON
             });
         })

@@ -18,6 +18,8 @@ $(document).ready(function() {
             console.log('cart');
             console.log(cartJSON);
 
+            localStorage.setItem("cart_id", orderID);
+
             var productJSON = products.map(({id, product_title, sku, product_type, vendor, variant_title, price, quantity, url, image}) => {
                 return {
                     product_id: id,
@@ -37,28 +39,55 @@ $(document).ready(function() {
 
             if (window.location.href.indexOf("checkouts") > -1) {
 
-                // if ($('tr.total-line.total-line--reduction span.reduction-code span.reduction-code__text').text().length > 0) {
-                        
-                //     console.log('Discount Applied');
-                // }
-                // Checkout Started
-                setTimeout(() => {
-                    appboy.logCustomEvent("Checkout Started", {
-                        order_id: orderID,
-                        affiliation: window.location.href.split('com')[0] + 'com',
-                        total: $('.payment-due__price')[0].innerText,
-                        revenue: d,
-                        // shipping: provided on the next step
-                        tax: $('.total-line--taxes span')[0].innerText,
-                        discount: $('.total-line.total-line--reduction .total-line__price span.order-summary__emphasis')[0].innerText.split('- ')[1],
-                        coupon: $('.reduction-code__text')[0].innerText,
-                        currency: Shopify.Checkout.currency,
-                        products: productJSON
-                    });
-                }, 
-                3000)
-            }
+                // var discount = $('.form.edit_checkout[data-reduction-form="true"]')
 
+                // if (discount === undefined ) {
+                //     // Checkout Started
+                //     console.log('No Discount Applied');
+                //     appboy.logCustomEvent("Checkout Started", {
+                //         order_id: orderID,
+                //         affiliation: window.location.href.split('com')[0] + 'com',
+                //         total: $('.payment-due__price')[0].innerText,
+                //         revenue: d,
+                //         // shipping: provided on the next step
+                //         tax: $('.total-line--taxes span')[0].innerText,
+                //         discount: "None Applied",
+                //         coupon: $('.reduction-code__text')[0].innerText,
+                //         currency: Shopify.Checkout.currency,
+                //         products: productJSON
+                //     });
+                // } else {
+
+                //     // Checkout Started
+                //     console.log('Discount Applied');
+                //     appboy.logCustomEvent("Checkout Started", {
+                //         order_id: orderID,
+                //         affiliation: window.location.href.split('com')[0] + 'com',
+                //         total: $('.payment-due__price')[0].innerText,
+                //         revenue: d,
+                //         // shipping: provided on the next step
+                //         tax: $('.total-line--taxes span')[0].innerText,
+                //         discount: discount,
+                //         price: $('span.payment-due__price[data-checkout-payment-due-target]')[0].outerText,
+                //         coupon: $('.reduction-code__text')[0].innerText,
+                //         currency: Shopify.Checkout.currency,
+                //         products: productJSON
+                //     });
+                // }
+
+                appboy.logCustomEvent("Checkout Started", {
+                    order_id: orderID,
+                    affiliation: window.location.href.split('com')[0] + 'com',
+                    total: $('.payment-due__price')[0].innerText,
+                    revenue: d,
+                    // shipping: provided on the next step
+                    tax: $('.total-line--taxes span')[0].innerText,
+                    price: $('span.payment-due__price[data-checkout-payment-due-target]')[0].outerText,
+                    currency: Shopify.Checkout.currency,
+                    products: productJSON
+                });
+
+            }
 
             // Validate Payment Info Entered
             $('.edit_checkout .step__footer #continue_button')
@@ -91,19 +120,9 @@ $(document).ready(function() {
 
             $('.order-summary__section.order-summary__section--discount form.edit_checkout:nth-child(3) div.fieldset button.field__input-btn.btn')
             .click(() => {
-
-                // Coupon Entered [A]
-                // var coupon = $('input#checkout_reduction_code').val();
-                // appboy.logCustomEvent("Coupon Entered", {
-                //     order_id: BrazeDataLayer.ecommerce.order[0].o_id,
-                //     coupon_id: coupon
-                // })
-
                 // After firing
                 setTimeout(function(){ 
-
                     if ( $('#error-for-reduction_code').text().length > 0 ) {
-                        
                         // Coupon Denied
                         var coupon_id = $('#checkout_reduction_code').val();
                         appboy.logCustomEvent("Coupon Denied", {
@@ -113,75 +132,104 @@ $(document).ready(function() {
                             // coupon_name: not used since coupon_id is used
                             reason: "Enter a valid discount code or gift card"
                         })
-
-
-                    } else if ($('tr.total-line.total-line--reduction span.reduction-code span.reduction-code__text').text().length > 0) {
-                        
-                        // Coupon Entered [B]
-                        var coupon = $('.total-line.total-line--reduction .reduction-code__text').text();
-                        appboy.logCustomEvent("Coupon Entered", {
-                            order_id: BrazeDataLayer.ecommerce.order[0].o_id,
-                            cart_id: orderID,
-                            coupon_id: coupon,
-                            // coupon_name: same as coupon currently
-                        })
-
-                        // setTimeout(() => {
-                        //     location.href = location.href;
-                        // }, 4000);
-
-
-                        // Coupon Accepted [Optional]
-                        // var coupon_id = $('.total-line.total-line--reduction .reduction-code__text').text();
-                        //     appboy.logCustomEvent("Coupon Accepted", {
-                        //         product_id: addedProduct.product_id,
-                        //         price: productPrice
-                        //     })
-                        // }
                     }
-
                 }, 3000);
             });
-
-            $('div.tags-list div.tag form.edit_checkout div.tag__wrapper button.tag__button')
-            .click((e) => {
-                // Coupon Removed
-                e.preventDefault();
-                console.log('Appboy Coupon Removed');
-                var coupon_id = $('.total-line.total-line--reduction .reduction-code__text').text();
-                appboy.logCustomEvent("Coupon Removed", {
-                    order_id: BrazeDataLayer.ecommerce.order[0].o_id,
-                    cart_id: orderID,
-                    coupon_id: coupon_id,
-                    // coupon_name: same as coupon id since there's no current ID's
-                    discount: $('.visually-hidden.skeleton-while-loading-sr').text().split(' off ')[0].trim()
-
-                });
-                // setTimeout(() => {
-                //     location.href = location.href;
-                // }, 4000);
-
-            })
-
-            // .click(function(ev){
-            //     ev.preventDefault();
-            //     var self = this;
-            //     // var clickedProductDetails = segmentDataLayer.ecommerce.impressions.filter(function(product){
-            //     //     var linkSplit = self.href.split('/products/')
-            //     //     var productLink = linkSplit && linkSplit[1]
-            //     //     return productLink == product.handle
-            //     // })[0];
-
-            //     if (clickedProductDetails) {
-            //         /* only wait 1 second before redirecting */
-            //         self.timeout = window.setTimeout(function(){
-            //             document.location = self.href;
-            //         },1000)
-            //             analytics.track('Product Clicked', clickedProductDetails)
-
-            //     }
-            //     else document.location = self.href;
-            // })
         })
 
 });
+
+$(document)
+.submit(function(event) {
+    // cookie to prevent multiple calls on the "Coupon Applied" event
+    const cookieName = localStorage.getItem("cookieName", 0);
+
+    const cookieAttributes = {
+      path: '/',
+      domain: 'bestchoiceproducts.com'
+    }
+
+    // remove cookie if coupon is removed
+    if (event.target.closest('form.edit_checkout[data-reduction-form="true"]')) {
+        localStorage.removeItem("cookieName");
+        var coupon_id = $('.total-line.total-line--reduction .reduction-code__text').text();
+        appboy.logCustomEvent("Coupon Removed", {
+            order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+            cart_id: localStorage.getItem('cart_id'),
+            coupon_id: coupon_id,
+            discount: $('.visually-hidden.skeleton-while-loading-sr').text().split(' off ')[0].trim()
+
+        });
+
+    }
+
+
+    // targeting just one of the 2-3 forms with .edit_checkout 
+    if (event.target.closest('form.edit_checkout:not([data-reduction-form="true"])')) {
+
+      // to retry at most 10 times
+      let iterations = 0;
+      const interval = setInterval(async function () {
+        try {
+          const reductionForm = document.querySelector('#order-summary [data-reduction-form="true"]');
+          const errorForReduction = document.querySelector('.field--error #error-for-reduction_code');
+          iterations++;
+
+          if (reductionForm) {
+
+            // if coupon is applied already, do not send event
+            if (cookieName) {
+              return;
+            }
+
+            // check if cookie is there, if not add it, if it is, do not fire
+            // Cookies.set(cookieName, 1, cookieAttributes);
+            localStorage.setItem("cookieName", 1);
+
+            clearInterval(interval);
+            iterations = 0;
+
+            const response = await fetch("/cart.js");
+            const body = await response.json();
+            const cart_id = body.token;
+            const coupon = document.querySelector('.tag__wrapper .reduction-code__text').innerText;
+
+            let total = 0;
+            let discount = 0
+
+            const originalTotalPrice = document.querySelectorAll('.js-line-item-price .order-summary__small-text');
+            const totalAfterDiscount = document.querySelectorAll('.js-line-item-price .order-summary__emphasis');
+
+
+            originalTotalPrice.forEach((elm) => {
+              total += parseFloat(elm.innerText.replace(/\$/g, ''));
+            })
+
+            totalAfterDiscount.forEach((elm) => {
+              discount += parseFloat(elm.innerText.replace(/\$/g, ''));
+            })
+
+            let totalDiscount = total - discount;
+            // round to correct precision error
+            totalDiscount = Math.round(totalDiscount * 100) / 100;
+
+            appboy.logCustomEvent("Coupon Entered", {
+                order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+                cart_id: localStorage.getItem('cart_id'),
+                coupon_id:  $('.total-line.total-line--reduction .reduction-code__text').text(),
+            })
+
+          } else if (iterations >= 10 || errorForReduction) {
+            iterations = 0;
+            clearInterval(interval);
+          }
+
+        } catch (error) {
+          clearInterval(interval);
+          throw error;
+        }
+      }, 750);
+
+    }
+})
+

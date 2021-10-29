@@ -9,6 +9,7 @@
       data-quantity= {{ product.available }}
       data-price= {{ product.price }}
       data-image = {{ product | img_url }}
+      data-variant="{{ current_variant.title | upcase }}"
       data-id={{ product.id }}>
       <span class="image-name" style="display:none;">{{ product.title }}</span>
       {%- if product.featured_image != blank -%}

@@ -53,7 +53,7 @@
       </div> 
       <div class="grid__item medium-up--no-gutter small-down--no-gutter">
         <script style="display: none;" id="product-item-tmpl" type="x-tmpl-mustache"> 
-          <div class="grid__item extra-small--one-whole small-down--one-half one-quarter border-small" data-product-eventid="<%_id%>" data-product-id="<%epi%>"" data-product-price="<%pr%">
+          <div class="grid__item extra-small--one-whole small-down--one-half one-quarter border-small" data-product-eventid="<%_id%>" data-product-price="<%pr%>" data-product-id="<%epi%>">
             <div class="collection-grid-item row">             
               <div class="small_img">
                 <a onclick="location.href='<%du%>'" style="cursor: pointer;">
@@ -70,7 +70,10 @@
                   <span class="old-price" style="text-decoration: line-through;">$<%op%></span> <span class="new-price">$<%pr%></span>
                     </span>
                 </div>
-                <button class="custom-wishlist-add-to-cart" data-product-id="<%epi%>">Add to cart</button>
+                <button class="custom-wishlist-add-to-cart" 
+                
+                data-product-price="<%pr%>" 
+                data-product-id="<%epi%>">Add to cart</button>
                 <a class="remove_from custom-wishlist-delete delete_product" data-product-eventid="<%_id%>" style="cursor: pointer;color:#676765;"> Remove item</a>
               </div>
             </div>

@@ -174,16 +174,13 @@ function CartTracker() {
         3000)
 
         // Cart Page Plus Sign
-        $('.quantity__plus')
-        .click(() => {
-            appboy.logCustomEvent("Product Added", {
-                cart_id: cartID,
-
-                // Adding since click permanently updates Cart JSON and since this references the quantity that changes in the Cart JSON
-                products: productJSON
-            });
-        })
-
+        // $('.quantity__plus')
+        // .click(() => {
+        //     appboy.logCustomEvent("Product Added", {
+        //         cart_id: cartID,
+        //         products: productJSON
+        //     });
+        // })
         
         // $('input.cart__update.cart_update_input')
         // .click(function() {

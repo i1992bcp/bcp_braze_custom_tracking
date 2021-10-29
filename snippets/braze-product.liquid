@@ -1,8 +1,10 @@
-// Product 
+// Product Page
 {%if product%}
     var product = {{ product | json }};
 
     if (product && !product.error) {
+
+        BrazeDataLayer.ecommerce.detail = {products: []}
 
         fetch('/cart.js/').then(async res => {
             var cartJSON = await res.json();
@@ -12,17 +14,7 @@
             BrazeDataLayer.ecommerce.detail.products[0]['quantity'] = productQuantity;
             BrazeDataLayer.ecommerce.detail.products[0]['cart_id'] = cartId;
     
-            // var cartProducts = cartJSON.items;
-            // var cart = cartProducts.map(({id, product_title}) => {
-            //     return {
-            //         product: product_title,
-            //         product_id: id
-            //     }
-            // })
         })
-
-
-        BrazeDataLayer.ecommerce.detail = {products: []}
 
         BrazeDataLayer.ecommerce.detail.products.push({
             product_id: product.id,
@@ -97,6 +89,54 @@
             })
         });
 
+        // Product Clicked [ /Product ]
+        $('a')
+        .filter(function(){ 
+            /* only add event to products */ 
+            return this.href.indexOf('/products') !== -1 
+        })
+        .click(function(ev){
+            // Product Clicked ( Collection | Search )
+            if (collections && !collections.error) {
+                // appboy.logCustomEvent("Product Clicked", {
+                //     price: $(this).find('.ais-hit--price b').text(),
+                //     product_id: $(this).attr("data-id") 
+                // })
+
+                // console.log()
+                // console.log($(this).children("div)"))
+
+                // Product Clicked [ Home ]
+                appboy.logCustomEvent("Product Clicked", {
+                    cart_id: BrazeDataLayer.ecommerce.detail.products[0].cart_id,
+                    product_id: $(this).attr("data-id"),
+                    sku: $(this).attr("data-sku"),
+                    category: $(this).attr("data-category"), 
+                    name: $(this).children("p")[0].innerText,
+                    variant: $(this).attr("data-variant"),
+                    price: $(this).children("div.bundle_price")[0].innerText,
+                    quantity: "1",
+                    url: $(this)[0].href,
+                    image_url: "https:" + $(this).attr("data-image")
+                })
+
+
+                 // Product Clicked [ Home ]
+                // appboy.logCustomEvent("Product Clicked", {
+                //     cart_id: BrazeDataLayer.ecommerce.detail.products[0].cart_id,
+                //     product_id: $(this).attr("data-id"),
+                //     sku: $(this).attr("data-sku"),
+                //     category: $(this).attr("data-category"), 
+                //     name: $(this).children('span').eq(0).text(),
+                //     // variant: not sure if these have variants from the home page
+                //     price: $('.product-price__compare').text().split('$')[1],
+                //     quantity: "1",
+                //     url: $(this)[0].href,
+                //     image_url: "https:" + $(this).attr("data-image")
+                // })
+            }
+        })
+
         $('.main-widget.yotpo-display-wrapper form .yotpo-submit').live('click', function() {
             
             // if (
@@ -130,19 +170,29 @@ if (collections && !collections.error) {
         if (c) collectionNames.push(c.handle);
     });
 
+    BrazeDataLayer.ecommerce.cart = {id: []}
+
+    fetch('/cart.js/').then(async res => {
+        var cartJSON = await res.json();
+        var cartId = cartJSON.token;
+        BrazeDataLayer.ecommerce.cart.id.push(cartId)
+        // BrazeDataLayer.ecommerce.detail.cart
+        // BrazeDataLayer.ecommerce.cart.id
+
+    })
+
+
     // After everything loads
     $(window).on('load', function() {
-        var results = $('.ais-facet-product_type .ais-RefinementList-item.ais-facet--item label').text().replace(/\s{2,}/g, ' ').replace(/[ 0-9]/g, ' ').replace(/[ 0-9]/g, ' ').split('  ');
-        for ( const type of results) {
-            if ( type.length <= 1 ) {
-                results.pop(type)
-            }
-        }
-        var tResults = results.map(s => s.trim());
-        
+        let resultsJSON = [];
+        var results = $('.ais-facet-product_type .ais-RefinementList-item.ais-facet--item label')
+        .map(function(i, v) {
+            resultsJSON.push(v.innerText);
+        })
+
         BrazeDataLayer.ecommerce.search = {types: []}
         BrazeDataLayer.ecommerce.search.types.push({
-            tResults
+            resultsJSON
         });
 
         // Collection | Search
@@ -156,28 +206,35 @@ if (collections && !collections.error) {
                 return this.href.indexOf('/products') !== -1 
             })
             .click(function(ev){
-                // Product Clicked ( Collection | Search )
+                // Product Clicked [ /Collection | /Search ]
                 if (collections && !collections.error) {
+
+                    // Product Clicked [ Home ]
                     appboy.logCustomEvent("Product Clicked", {
-                        price: $(this).find('.ais-hit--price b').text(),
-                        product_id: $(this).attr("data-id") 
+                        cart_id: BrazeDataLayer.ecommerce.detail.cart.id,
+                        product_id: $(this).attr("data-id"),
+                        sku: $(this).attr("data-sku"),
+                        category: $(this).attr("data-category"), 
+                        name: $(this).children('p.data-title').eq(0).text(),
+                        variant: $(this).attr("data-variant"),
+                        price: $(this).children('p.ais-hit--price').eq(0).text(),
+                        quantity: "1",
+                        url: $(this)[0].href,
+                        image_url: $(this).attr("data-image")
                     })
+
+
                 }
             })
-            
-            // $('a')
-            // .click(function(ev){
-            //     ev.preventDefault()
-            //     console.log($(this).parent()[0].attr(''))
-            // })
         }
+
 
         {% unless search.results_count == 0 %}
             {% if search.performed %}
                 // Product Searched
                 appboy.logCustomEvent("Product Searched", {
                     query: '{{ search.terms }}',
-                    results: tResults
+                    results: resultsJSON
                 })
             {% endif %}
         {% endunless %}
@@ -257,14 +314,14 @@ $(document).ready(function() {
             })
             .click(function(ev){
 
-                // Product Clicked ( Home )
+                // Product Clicked [ Home ]
                 appboy.logCustomEvent("Product Clicked", {
                     cart_id: BrazeDataLayer.ecommerce.order[0].cart_id,
                     product_id: $(this).attr("data-id"),
                     sku: $(this).attr("data-sku"),
                     category: $(this).attr("data-category"), 
                     name: $(this).children('span').eq(0).text(),
-                    // variant: not sure if these have variants from the home page
+                    variant: $(this).attr("data-variant"),
                     price: $('.product-price__compare').text().split('$')[1],
                     quantity: "1",
                     url: $(this)[0].href,
@@ -283,16 +340,6 @@ $(document).ready(function() {
         //     price: $('.quickbuy__price .theme-money').text().split('$189.99')[0]
         // })
         console.log('product added');
-    })
-
-    // Wishlist Product Added to Cart
-    $('button.custom-wishlist-add-to-cart')
-    .click(function(){
-        appboy.logCustomEvent("Wishlist Product Added to Cart", {
-            // wishlist_id: ,
-            product_id: $(this).attr("data-product-id") ,
-            price: $(this).attr("data-product-price") 
-        })
     })
 
     // Homepage Banner Module

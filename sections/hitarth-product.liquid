@@ -248,14 +248,26 @@
               	{%- endif -%}
               {%- endif -%}
             </div>
+            <!-- alt="{{ product.title }}" -->
             <div class="product_bundle_main_thing" id="product_bundle_main_thing_sticky">
               <div id="product_bundle_title">Frequently bought together</div>
               <div id="product_bundle_wrapper">
                 <div class="first_bundle_wrapper" id="bundle_wrapper_one">
                   <div>
-                    <a href="" id="bundle_link_one" data-id={{ product.id }}>
+                    <a href="" id="bundle_link_one" 
+                      data-id="{{ product.id }}" 
+                      data-sku={{ product.selected_or_first_available_variant.sku }} 
+                      data-category= {{ product.type }}
+                      data-quantity= {{ product.available }}
+                      data-price= {{ product.price }}
+                      data-image = {{ product | img_url }}
+                      data-id={{ product.id }}
+                      data-variant="{{ current_variant.title | upcase }}"
+                    >
+                      <p style="display:none;">{{ product.title }}</p>
                       <div class="bundle_image" style="height:200px;"><img src="" class="product_bundle_image_one" alt="${a[z]}"/></div>
                       <div class="bundle_title_one bundle_title"></div><div class="bundle_price_one bundle_price"></div>
+                      
                   
                     </a>
                     <form method="post" id="AddToCartForm_one" accept-charset="UTF-8" action="/cart/add" class="form-vertical addtocartform product-form-hitarth-product" enctype="multipart/form-data" style=" margin-top:5px;text-align: center;">
@@ -267,7 +279,17 @@
                 </div>
                 <div class="first_bundle_wrapper" id="bundle_wrapper_two">
                   <div>
-                    <a href="" id="bundle_link_two" data-id={{ product.id }}>
+                    <a href="" id="bundle_link_two" 
+                      data-id="{{ product.id }}" 
+                      data-sku={{ product.selected_or_first_available_variant.sku }} 
+                      data-category= {{ product.type }}
+                      data-quantity= {{ product.available }}
+                      data-price= {{ product.price }}
+                      data-image = {{ product | img_url }}
+                      data-id={{ product.id }}
+                      data-variant="{{ current_variant.title | upcase }}"
+                    > 
+                      <p style="display:none;">{{ product.title }}</p>
                       <div class="bundle_image" style="height:200px;"><img src="" class="product_bundle_image_two" alt="${a[z]}"/></div>
                       <div class="bundle_title_two bundle_title"></div><div class="bundle_price_two bundle_price"></div>
                       
@@ -281,7 +303,17 @@
                 </div>
                 <div class="first_bundle_wrapper" id="bundle_wrapper_three">
                   <div>
-                    <a href="" id="bundle_link_three" data-id={{ product.id }}>
+                    <a href="" id="bundle_link_three" 
+                      data-id="{{ product.id }}" 
+                      data-sku={{ product.selected_or_first_available_variant.sku }} 
+                      data-category= {{ product.type }}
+                      data-quantity= {{ product.available }}
+                      data-price= {{ product.price }}
+                      data-image = {{ product | img_url }}
+                      data-id={{ product.id }}
+                      data-variant="{{ current_variant.title | upcase }}"
+                    >
+                      <p style="display:none;">{{ product.title }}</p>
                       <div class="bundle_image" style="height:200px;"><img src="" class="product_bundle_image_three" alt="${a[z]}"/></div>
                       <div class="bundle_title_three bundle_title"></div><div class="bundle_price_three bundle_price"></div>
                       

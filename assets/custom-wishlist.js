@@ -5,9 +5,8 @@
   }
   window.SwymCallbacks.push(function(){
     _swat.fetchWrtEventType(function(products){
-      console.log(products);
+      // console.log(products);
       renderProducts(products);
-      
     }, _swat.EventTypes.addToWishlist);});
 
 
@@ -50,6 +49,24 @@
     $(document).on('click', '.custom-wishlist-add-to-cart', function(){
       var productId = $(this).data()["productId"];
       var productData = _products[productId];
+      
+      // Wishlist Product Added to Cart
+      appboy.logCustomEvent("Wishlist Product Added to Cart", {
+        wishlist_name: "My Wishlist",
+        cart_id: localStorage.getItem("cart_id"),
+        product_id: $(this).attr("data-product-id"),
+        // sku: $(this).attr("data-product-sku"),
+        // category: $(this).attr("data-product-type"),
+        // name: $(this).attr("data-product-name"),
+        // brand: $(this).attr("data-product-brand"),
+        // variant: $(this).attr("data-product-variant"),
+        // price: $(this).attr("data-product-price"),
+        // quantity: "1",
+        // url: $(this).attr("data-product-url"),
+        // image_url: $(this).attr("data-product-image")
+        
+      });
+
       _swat.replayAddToCart(productData, productData.epi, function() {
         // Successfully added, open cart
         _swat.openCartPage();
@@ -131,16 +148,19 @@
   }
   
   function rerenderProduct(data){
-    
-    
-   
-    
     var productsHtml = data.map(function(product){
-     _products[product.epi] = product;
-      return renderProduct( product);
-    });
-    $("#wishlist-product-list").html(productsHtml);
+      _products[product.epi] = product;
+       return renderProduct( product);
+     });
+     console.log(productsHtml);
+     let productsHtmlDiv = "";
+     productsHtml.map(markup=>{
+         productsHtmlDiv += markup;
+     })
+     productsHtmlDiv = "<div>" + productsHtmlDiv + "</div>"
+     $("#wishlist-product-list").html(productsHtmlDiv);
   }
+  
 
   function renderProduct(product){
     

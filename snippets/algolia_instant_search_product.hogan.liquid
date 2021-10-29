@@ -5,8 +5,19 @@
   #[[ sku ]] {
     background-image: url('[[# helpers.mediumImage ]][[/ helpers.mediumImage ]]');
   }
-</style><div class="[[ sku ]] ais-infinite-list-view" data-algolia-image="[[ meta.global.VARIANT_IMAGE_URLS ]]" data-algolia-index="[[ index ]]" data-aloglia-sku="[[ sku ]]" data-algolia-position="[[ productPosition ]]" data-algolia-queryid="[[ queryID ]]" data-algolia-objectid="[[ objectID ]]" class="ais-hit ais-product" data-handle="[[ handle ]]" data-variant-id="[[ objectID ]]" data-distinct="[[ _distinct ]]">
-  <a class="image_hover" href="[[# helpers.instantsearchLink ]][[/ helpers.instantsearchLink ]]" data-id="[[ objectID ]]">
+</style>
+  <div class="[[ sku ]] ais-infinite-list-view" data-algolia-image="[[ meta.global.VARIANT_IMAGE_URLS ]]" data-algolia-index="[[ index ]]" data-aloglia-sku="[[ sku ]]" data-algolia-position="[[ productPosition ]]" data-algolia-queryid="[[ queryID ]]" data-algolia-objectid="[[ objectID ]]" class="ais-hit ais-product" data-handle="[[ handle ]]" data-variant-id="[[ objectID ]]" data-distinct="[[ _distinct ]]">
+  <a class="image_hover" href="[[# helpers.instantsearchLink ]][[/ helpers.instantsearchLink ]]" 
+    data-id="[[ id ]]"
+    data-sku="[[ sku ]]"
+    data-category="[[ product_type ]]"
+    data-quantity= "1"
+    data-price="[[ price ]]"
+    data-image ="[[ product_image ]]"
+    data-variant="[[ variants_count ]]"
+  >
+  
+    <p class="data-title" style="display: none;">[[ title ]]</p>
     <p class="ais-hit--price" style="display: none;">[[# helpers.instantsearchPrice ]][[/ helpers.instantsearchPrice ]]</p>
     <div style="position: relative;">
       <div id="[[ sku ]]" class="rimage-background fade-in lazyload ais-hit--picture"></div>

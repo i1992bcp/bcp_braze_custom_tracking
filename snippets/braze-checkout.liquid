@@ -118,23 +118,23 @@ $(document).ready(function() {
                 }
             })
 
-            $('.order-summary__section.order-summary__section--discount form.edit_checkout:nth-child(3) div.fieldset button.field__input-btn.btn')
-            .click(() => {
-                // After firing
-                setTimeout(function(){ 
-                    if ( $('#error-for-reduction_code').text().length > 0 ) {
-                        // Coupon Denied
-                        var coupon_id = $('#checkout_reduction_code').val();
-                        appboy.logCustomEvent("Coupon Denied", {
-                            order_id: BrazeDataLayer.ecommerce.order[0].o_id,
-                            cart_id: orderID,
-                            coupon_id: coupon_id,
-                            // coupon_name: not used since coupon_id is used
-                            reason: "Enter a valid discount code or gift card"
-                        })
-                    }
-                }, 3000);
-            });
+            // $('.order-summary__section.order-summary__section--discount form.edit_checkout:nth-child(3) div.fieldset button.field__input-btn.btn')
+            // .click(() => {
+            //     // After firing
+            //     setTimeout(function(){ 
+            //         if ( $('#error-for-reduction_code').text().length > 0 ) {
+            //             // Coupon Denied
+            //             var coupon_id = $('#checkout_reduction_code').val();
+            //             appboy.logCustomEvent("Coupon Denied", {
+            //                 order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+            //                 cart_id: orderID,
+            //                 coupon_id: coupon_id,
+            //                 // coupon_name: not used since coupon_id is used
+            //                 reason: "Enter a valid discount code or gift card"
+            //             })
+            //         }
+            //     }, 3000);
+            // });
         })
 
 });
@@ -172,7 +172,8 @@ $(document)
       const interval = setInterval(async function () {
         try {
           const reductionForm = document.querySelector('#order-summary [data-reduction-form="true"]');
-          const errorForReduction = document.querySelector('.field--error #error-for-reduction_code');
+        //   const errorForReduction = document.querySelector('.field--error #error-for-reduction_code');
+          const errorForReduction = $('#error-for-reduction_code');
           iterations++;
 
           if (reductionForm) {
@@ -216,13 +217,22 @@ $(document)
             appboy.logCustomEvent("Coupon Entered", {
                 order_id: BrazeDataLayer.ecommerce.order[0].o_id,
                 cart_id: localStorage.getItem('cart_id'),
-                coupon_id:  $('.total-line.total-line--reduction .reduction-code__text').text(),
+                coupon_id: $('.total-line.total-line--reduction .reduction-code__text').text(),
             })
 
           } else if (iterations >= 10 || errorForReduction) {
             iterations = 0;
             clearInterval(interval);
+            var coupon_id = $('#checkout_reduction_code').val();
+            appboy.logCustomEvent("Coupon Denied", {
+                order_id: BrazeDataLayer.ecommerce.order[0].o_id,
+                cart_id: localStorage.getItem('cart_id'),
+                coupon_id: $('#checkout_reduction_code').val(),
+                // coupon_name: not used since coupon_id is used
+                reason: "Enter a valid discount code or gift card"
+            })
           }
+          
 
         } catch (error) {
           clearInterval(interval);
